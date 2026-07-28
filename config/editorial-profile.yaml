@@ -1,0 +1,207 @@
+# Shared configuration for all 6 skills under repo root/.
+# Edit this file directly to retune discovery scope or editorial priorities.
+# editorial-strategist only ever proposes changes here — it never writes to this file.
+
+# --- Skill 1: Research Discovery -------------------------------------------
+
+discovery:
+  categories:
+    - cs.AI
+    - cs.CL
+    - cs.LG
+    - cs.SE
+    - cs.IR
+  lookback_days: 7
+  max_results: 100  # hard cap: never fetch more than this many papers in one week's run
+
+# --- Skill 2 / 6: Editorial mission and scope -------------------------------
+
+mission: >
+  Find research that changes how enterprise AI systems are designed,
+  evaluated and deployed.
+
+priority_topics:
+  - enterprise AI
+  - agent systems
+  - evaluation
+  - LLMOps
+  - observability
+  - RAG
+  - memory
+  - orchestration
+  - governance
+
+secondary_topics:
+  - multimodal
+  - coding agents
+  - benchmarking
+
+ignore_topics:
+  - robotics
+  - computer vision
+  - speech
+
+# --- Screening rubric (editorial-triage) -------------------------------------
+# The single triage rubric. Determines whether a paper deserves a full review,
+# based solely on its metadata and abstract (research-discovery never downloads
+# a PDF at discovery time — PDF download is a separate, later gate keyed off
+# the recommendation below). Replaces the old 6-dimension sum-to-label gate and
+# the separate 3-axis "detailed" publication-priority rubric — this is now the
+# only scoring pass; see editorial-triage/SKILL.md for the full question set
+# (Sections A-F) this schema backs.
+
+screening:
+  # Section A, Q2 — fixed checklist, multi-select ("Other" allowed as free text)
+  business_functions:
+    - CIO/CTO
+    - Chief AI Officer
+    - Engineering
+    - Data Science
+    - Security
+    - Compliance
+    - Product
+    - Operations
+    - Other
+
+  # Section A, Q3 — fixed checklist, multi-select ("Other" allowed as free text)
+  enterprise_ai_themes:
+    - Agentic AI
+    - RAG
+    - Memory
+    - Evaluation
+    - LLMOps
+    - Observability
+    - Governance
+    - Security
+    - Reliability
+    - Cost Optimization
+    - Infrastructure
+    - Fine-tuning
+    - Other
+
+  # Section A, Q4 — fixed single-select
+  primary_types:
+    - Scientific research
+    - Engineering technique
+    - System architecture
+    - Evaluation methodology
+    - Framework
+    - Benchmark
+    - Operational guidance
+
+  # Section C, Q11 — fixed single-select, ordered nearest-to-furthest
+  adoption_horizons:
+    - Immediate
+    - "<12 months"
+    - 1-3 years
+    - Long-term research
+
+  # Sections B-E's gradable questions, each scored 1-5. overall_score is their
+  # unweighted sum (max 85) -- a sortable/legacy-compatible number, but never
+  # the gate itself; the recommendation below (Section F) is the actual gate,
+  # a reasoned judgment informed by all of these, not a mechanical cutoff.
+  quantitative_dimensions:
+    # Section B — Strategic Importance
+    - architectural_influence   # Q5: if validated, how much could this influence enterprise AI architectures?
+    - challenges_best_practice  # Q6: does it challenge an existing best practice? (1=no, 5=fundamentally)
+    - novelty                   # Q7: does it introduce a genuinely new concept?
+    - enterprise_improvement    # Q8: does it improve how enterprise AI is built/evaluated/deployed/governed?
+    - innovation_scale          # Q9: incremental (1) to transformational (5)
+    # Section C — Practicality
+    - implementable_today       # Q10: could an enterprise implement this today?
+    - implementation_barriers   # Q12: obvious barriers? (1=none, 5=severe)
+    - deployment_evidence       # Q13: lab-only (1) to production-validated (5)
+    # Section D — Evidence
+    - validation_strength       # Q14: convincing experimental validation?
+    - evaluation_clarity        # Q15: are evaluation methods clearly explained?
+    - limitations_acknowledged  # Q16: are limitations honestly acknowledged?
+    - rigor                     # Q17: does the paper appear rigorous overall?
+    # Section E — Editorial Value
+    - executive_interest        # Q18: would an enterprise executive care?
+    - platform_team_interest    # Q19: would an AI platform team care?
+    - business_implication      # Q20: is there an obvious business implication?
+    - surprise_factor           # Q21: is there an interesting or surprising idea?
+    - linkedin_potential        # Q22: could this become a strong LinkedIn article?
+
+  # Section F, Q24 — the actual gate. Ordered best-to-worst; used to rank
+  # candidates within download_top_n and to sort papers.csv.
+  recommendation_order:
+    - Priority review
+    - Review fully
+    - Read later
+    - Archive
+    - Ignore
+
+  # What each recommendation triggers downstream. Ignore and Archive are both
+  # terminal and non-eligible -- kept as distinct labels because they mean
+  # different things editorially (Ignore: doesn't deserve attention; Archive:
+  # on-topic but not worth acting on now, e.g. weak evidence or superseded) --
+  # but they behave identically in the pipeline.
+  recommendations:
+    Priority review:
+      status: triaged
+      download_eligible: true
+      extract_eligible: true
+    Review fully:
+      status: triaged
+      download_eligible: true
+      extract_eligible: true
+    Read later:
+      status: triaged
+      download_eligible: false
+      extract_eligible: false
+    Archive:
+      status: ignored
+      download_eligible: false
+      extract_eligible: false
+    Ignore:
+      status: ignored
+      download_eligible: false
+      extract_eligible: false
+
+download_top_n: 5       # cap: at most this many PDFs downloaded per week, highest-ranked eligible first
+weekly_limit: 10        # max papers promoted through extraction per week
+
+# --- Extraction rubric (knowledge-extraction) ---------------------------------
+# The full-text worksheet, run only on papers editorial-triage already marked
+# extract_eligible and that have a downloaded PDF. Sections A-H in
+# knowledge-extraction/SKILL.md; two outputs per paper: a structured record
+# (papers/metadata/extractions/<id>.yaml, always written) and, only if the
+# Final Assessment's "keep" is true, an ArxivWiki page rendered from that same
+# record. A paper editorial-triage thought promising can still come back
+# keep: false here -- full-text reading is a second, deeper gate.
+
+extraction:
+  # Final Assessment -- fixed single-select
+  knowledge_base_priorities:
+    - Low
+    - Medium
+    - High
+    - Essential
+
+  # Final Assessment -- fixed single-select, only reached if keep: true
+  recommended_next_actions:
+    - Archive
+    - Monitor
+    - Add to LLM Wiki
+    - Write LinkedIn Post
+    - Write Long-form Article
+
+  # Section E, Q23 -- fixed checklist, multi-select
+  enterprise_ai_patterns:
+    - Agent design
+    - RAG
+    - Memory
+    - Evaluation
+    - Governance
+    - Security
+    - LLMOps
+    - Infrastructure
+
+  # Final Assessment's four gradable scores, each 1-5. Not summed to a gate --
+  # each stands alone, read individually when selecting what to write about.
+  quantitative_dimensions:
+    - executive_relevance
+    - technical_novelty
+    - practical_applicability
+    - thought_leadership_potential

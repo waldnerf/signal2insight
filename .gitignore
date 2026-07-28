@@ -1,0 +1,14 @@
+# Regenerable and/or binary -- not the source of truth for this system.
+# Re-derive via research-discovery / research-librarian; don't hand-edit.
+/papers/pdf/**
+!/papers/pdf/.gitkeep
+/archive/pdf/**
+/logs/**
+!/logs/.gitkeep
+
+# Generated aggregate -- rebuilt from papers/metadata/*.json by build_index.py
+/papers/papers.csv
+
+# Python
+__pycache__/
+*.pyc
