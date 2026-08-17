@@ -1,0 +1,25 @@
+{
+  "arxiv_id": "2608.12311",
+  "title": "The Role Specialization Model (RSM): Coordinating LLM-Based Tools in Agentic Software Development - An Exploratory Case Study",
+  "authors": [
+    "Carlos Alberto Fernández-y-Fernández",
+    "Jorge R. Aguilar-Cisneros"
+  ],
+  "abstract": "The integration of large language models (LLMs) into software development workflows has given rise to a paradigm known as Agentic Software Engineering (SE 3.0), in which autonomous agents manage full development life cycles under human supervision. This paper presents an exploratory case study in which three LLM-based tools, Antigravity (an agentic IDE with a Gemini 2.5 backend), Gemini CLI, and Qwen Code (local execution via Ollama), are coordinated according to a role-distribution framework proposed in this work as the Role Specialization Model (RSM). Three research questions guide the study: (RQ1) how can LLM-based tools with distinct capabilities be coordinated through the RSM in a real development workflow; (RQ2) what deviations from the planned role distribution emerge during RSM execution and what factors explain them; and (RQ3) how does the resulting product compare against the ISO/IEC 25010 quality model. The objective was to propose the RSM with the incremental development of a Python desktop application for interactive climate-data visualization. The workflow, observed deviations, prompt-hardening techniques, and a qualitative quality assessment are documented. Results suggest that explicit role coordination can support development cycle organization and architectural quality, but requires deliberate coordination strategies, context management, and human verification of agent-generated outputs.",
+  "categories": [
+    "cs.SE"
+  ],
+  "published": "2026-08-12T17:57:16Z",
+  "updated": "2026-08-12T17:57:16Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.12311v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-08-13T18:35:09.579487+00:00",
+  "discovery_date": "2026-W33",
+  "overall_score": 15,
+  "recommendation": "Read later",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-13T19:49:41.869317+00:00"
+}

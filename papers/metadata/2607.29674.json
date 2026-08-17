@@ -1,0 +1,26 @@
+{
+  "arxiv_id": "2607.29674",
+  "title": "Sign compression for Muon: SignMuon, MuonSign, and the Limits of Error Feedback",
+  "authors": [
+    "Maria Smirnova",
+    "Alexey Kravatskiy"
+  ],
+  "abstract": "SignMuon compresses the Muon update to one bit per parameter by taking its elementwise sign, providing the most direct way to run a matrix-aware optimizer under an extremely low communication budget. It outperforms SignSGD in practice, yet it can ascend even on a linear function. Signing the gradient before the Linear Minimization Oracle (LMO), rather than after, does not repair this: we construct a small explicit instance on which sign-before (MuonUSign) and sign-on-both-sides (MuonSign) ascend as well, so no placement of the sign around the oracle descends in general. Error feedback, the standard remedy for a biased compressor, does not rescue SignMuon: when applied to Muon's output, error feedback can fail for every smoothness constant, step size, and momentum. Applied to the gradient, error feedback does work, and EF21-MuonUSign and EF21-MuonSign attain the standard $\\mathcal{O}(T^{-1/2})$ rate for the squared gradient norm on smooth nonconvex problems, the latter at one bit in each direction. Experiments then reverse the ordering: across centralized CIFAR-10, federated CIFAR-10, and the nanoGPT speedrun, the strongest compressed method is consistently sign-after-the-LMO, precisely the placement we prove divergent, with the provably convergent variants trailing it. Compressing after the LMO, a heuristic, matters more at these scales than the guarantee does.",
+  "categories": [
+    "math.OC",
+    "cs.LG"
+  ],
+  "published": "2026-07-31T17:54:46Z",
+  "updated": "2026-07-31T17:54:46Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29674v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:21:22.553253+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 11,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:25:16.113656+00:00"
+}

@@ -1,0 +1,25 @@
+enterprise_problem: Applying graph models to enterprise entities that carry text and
+  images requires labels and fine-tuning for every new domain, which is often infeasible.
+headline: Graph foundation models aim to transfer across domains without per-domain
+  labels.
+recommendation_reasoning: 'Zero-shot transfer across multimodal graphs has a plausible
+  enterprise reading (knowledge graphs over heterogeneous entities without per-domain
+  labelling), but the abstract reports only ''consistent improvements'' with no numbers,
+  no named baselines and no benchmarks, which is not enough to judge the contribution.
+  Archive rather than ignore: the direction is relevant, this write-up is not evidence.'
+business_functions:
+- Data Science
+- Engineering
+enterprise_ai_themes:
+- Infrastructure
+- Other
+primary_type: Scientific research
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 11
+recommendation: Archive
+fulltext_reassessed: false

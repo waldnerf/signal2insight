@@ -1,0 +1,25 @@
+enterprise_problem: Training deep networks across mobile devices is limited by device
+  energy budgets and the cost of continuously exchanging model data over wireless
+  links.
+headline: Different numeric precision on device and server cuts the energy cost of
+  split training.
+recommendation_reasoning: Wireless-edge federated split learning with stochastic quantisation
+  -- a telecom and embedded-systems concern, not an enterprise AI one. The decoupling
+  idea (asymmetric precision on each side of the split) is neat but the entire framing
+  assumes resource-constrained wireless clients, which is not the deployment model
+  this profile is about. No LLM or agent relevance.
+business_functions:
+- Engineering
+enterprise_ai_themes:
+- Infrastructure
+- Cost Optimization
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

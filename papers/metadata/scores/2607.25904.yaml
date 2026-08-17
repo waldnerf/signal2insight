@@ -1,0 +1,27 @@
+enterprise_problem: Judging whether a GUI agent actually completed a task, when the
+  answer depends on system state that no screenshot shows.
+headline: Verifying an agent's work by inspecting the system it changed, not the screen
+  it left behind.
+recommendation_reasoning: 'The propose-then-verify design is sound -- state completion
+  conditions, then check them by calling system and application tools rather than
+  trusting a screenshot -- and 86.9% accuracy plus a downstream 34.0% OSWorld success
+  rate shows it works as a training reward too. Demoted for the same reasons the reviewer
+  archived Desktop-Delta Bench earlier in this run: GUI-agent evaluation is a narrow,
+  platform-team concern with no business reader.'
+business_functions:
+- Engineering
+- Operations
+enterprise_ai_themes:
+- Evaluation
+- Agentic AI
+- Reliability
+primary_type: Evaluation methodology
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

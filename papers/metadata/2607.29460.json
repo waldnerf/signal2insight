@@ -1,0 +1,25 @@
+{
+  "arxiv_id": "2607.29460",
+  "title": "Parameter-Free Heavy-Tailed Bandits",
+  "authors": [
+    "Gianmarco Genalti",
+    "Alberto Maria Metelli"
+  ],
+  "abstract": "Heavy-tailed distributions arise naturally in sequential decision-making problems such as financial investment, online advertising, and network management, where rare but extreme outcomes can dominate performance. Heavy-tailed bandits model online decision-making in these settings by assuming only that rewards $X$ satisfy $\\mathbb{E}[|X|^{1+ε}]\\leq u$, for some tail exponent $ε\\in(0,1]$ and moment bound $u<+\\infty$. However, most existing regret minimization algorithms require these parameters to be known. This assumption is particularly restrictive in practice: $ε$ and $u$ govern the frequency and magnitude of rare events and are therefore precisely the quantities that are hardest to infer reliably from limited observations. Motivated by an open problem posed by Genalti and Metelli at COLT 2025, we resolve the assumption-free adaptation problem for heavy-tailed bandits and characterize the price in the regret of not knowing the tail parameters. We first study adaptation to the moment bound $u$ for a fixed tail exponent $ε$. We prove that every algorithm unaware of $u$, or of any upper bound on it, must obey a sharp trade-off between its distribution-dependent and distribution-free regret guarantees. We then introduce a scheduled-exploration algorithm that requires no knowledge of $u$ and matches the resulting adaptation frontier up to logarithmic factors. Finally, we show that the same algorithm can be instanced without knowing $ε$ by calibrating its exploration schedule to the endpoint $ε=1$. It achieves sublinear regret for every fixed $ε>0$, while no algorithm can guarantee sublinear regret uniformly over all $ε\\in(0,1]$. Altogether, our results resolve the COLT open problem without additional distributional assumptions and provide a sharp characterization of the statistical cost of adapting to unknown heavy tails.",
+  "categories": [
+    "cs.LG"
+  ],
+  "published": "2026-07-31T14:27:28Z",
+  "updated": "2026-07-31T14:27:28Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29460v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:43:02.287545+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 11,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:45:41.375756+00:00"
+}

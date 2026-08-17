@@ -1,0 +1,30 @@
+{
+  "arxiv_id": "2607.25946",
+  "title": "A Low-Cost Human-in-the-Loop Investigation of Toxicity on GitHub at Scale",
+  "authors": [
+    "Rahat Rizvi Rahman",
+    "Mia Mohammad Imran",
+    "Kostadin Damevski"
+  ],
+  "abstract": "Toxic interactions in open source discussions can alienate contributors and threaten project sustainability, yet prior empirical studies of GitHub toxicity have been limited in scale, raising questions about their generalizability. Scaling up is difficult because toxicity on GitHub is often implicit and context-dependent, making both fully manual annotation and LLM-based labeling unreliable. We present a human-in-the-loop (HITL) annotation methodology that makes large-scale, domain-calibrated toxicity labeling practical. A single call to a small, local LLM produces both a toxicity prediction and a set of interpretable event category scores. A lightweight Random Forest validator then uses those scores to flag the small subset of conversations most likely to be mislabeled, directing human review only where it is needed. The validator outperforms confidence-based and multi-LLM baselines while adding low annotation cost. We apply this pipeline to over 124,000 GitHub issue and pull request conversations. Using the resulting dataset, we evaluate key findings from prior small-scale research, confirming some and qualifying others, and present new insights into the prevalence, characteristics, and dynamics of toxicity across diverse open source projects.",
+  "categories": [
+    "cs.SE"
+  ],
+  "published": "2026-07-28T16:33:36Z",
+  "updated": "2026-07-28T16:33:36Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25946v1",
+  "downloaded": true,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-07-29T21:20:49.543786+00:00",
+  "discovery_date": "2026-W31",
+  "overall_score": 19,
+  "recommendation": "Review fully",
+  "download_eligible": true,
+  "extract_eligible": true,
+  "reviewed_at": "2026-07-29T21:47:43.873786+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "approve",
+  "human_reviewed_at": "2026-07-29T21:58:28.301719+00:00",
+  "downloaded_at": "2026-07-29T22:16:59.700325+00:00"
+}

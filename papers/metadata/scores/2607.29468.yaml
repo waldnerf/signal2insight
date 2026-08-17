@@ -1,0 +1,30 @@
+enterprise_problem: Agents that train through self-play discard what they learned
+  from each failure, so the practice curriculum never reflects where the agent actually
+  struggles.
+headline: Let failures rewrite the skill bank, and let the skill bank choose the next
+  problem.
+recommendation_reasoning: 'Structurally the same family as 2607.29658, which was approved
+  this week -- distil failures into reusable skills, then reuse them -- but positioned
+  inside the training loop rather than at inference, so it requires the ability to
+  train agents through self-play, which almost no enterprise has. The co-evolution
+  loop between problem generation and skill memory is an elegant idea. Gains are modest
+  and honestly reported: 1.2-3.2 points over SSP and 0.9 over SkillRL. Worth tracking
+  as the research direction behind a capability enterprises will eventually buy rather
+  than build, but nothing to act on now.'
+business_functions:
+- Data Science
+- Engineering
+enterprise_ai_themes:
+- Agentic AI
+- Memory
+- Fine-tuning
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 3
+overall_score: 13
+recommendation: Read later
+fulltext_reassessed: false

@@ -1,0 +1,17 @@
+enterprise_problem: Survey of visual explanation techniques across CNN, Transformer,
+  and foundation models
+headline: 'Class Activation Mapping review: Survey of visual explanation techniques'
+recommendation_reasoning: Review paper, not novel research. Interpretability remains
+  research-focused; practical enterprise use cases are limited. No actionable recommendation.
+business_functions: []
+enterprise_ai_themes: []
+primary_type: Evaluation methodology
+adoption_horizon: Long-term research
+novelty: 2
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

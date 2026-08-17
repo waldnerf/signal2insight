@@ -1,0 +1,31 @@
+{
+  "arxiv_id": "2607.29626",
+  "title": "AgentHPOBench: A Benchmark For Evaluating LLM Agents as Sequential Hyperparameter Optimizers",
+  "authors": [
+    "Tianyu Huai",
+    "Tingshuo Fan",
+    "Xinchi Chen",
+    "Yining Zheng",
+    "Yuxin Wang",
+    "Shuang Chen",
+    "Jie Zhou",
+    "Xuanjing Huang"
+  ],
+  "abstract": "As LLMs evolve from code completion systems into autonomous scientific agents, evaluating their ability to conduct experiments has become increasingly important. Existing benchmarks typically focus on static code generation, paper replication, or final answer correctness, but do not directly assess whether agents can interpret experimental evidence and use it to guide subsequent hyperparameter decisions. To address this gap, we introduce AgentHPOBench, a sequential benchmark comprising 30 executable machine learning tasks across seven research categories. Each task begins with a validated baseline run, after which an agent performs several sequential interventions. At each step, the agent observes the accumulated configurations, metrics, and logs before proposing the next valid configuration. We evaluate 12 widely used agents and conventional HPO baselines under a unified protocol. The results show that current agents exhibit measurable experimental optimization ability across domains, but still face clear limitations in sustained iterative refinement, complex log diagnosis, and consistent progress toward reported reference performance.",
+  "categories": [
+    "cs.AI"
+  ],
+  "published": "2026-07-31T16:58:00Z",
+  "updated": "2026-07-31T16:58:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29626v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-08-03T21:21:22.557172+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 16,
+  "recommendation": "Read later",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:25:16.095810+00:00"
+}

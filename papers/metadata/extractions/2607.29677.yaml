@@ -1,0 +1,345 @@
+summary_five_sentences: 'ExtractBench evaluates schema-guided document extraction,
+  where an agent receives a document and a user-defined schema and must return schema-valid
+  JSON with source evidence. The benchmark spans 370 enterprise documents and 4,869
+  pages across 8 business domains and 67 document types, tagged by task challenge,
+  perception challenge, table structure, domain and length, and is the first to score
+  value accuracy, long-record completeness, grounding and measured cost together.
+  The central finding is a length cliff: commercial vision-language models perform
+  well on short documents and collapse on long ones, with Gemini 3.5 Flash dropping
+  from 87.9% to 27.9%, because systems without an iteration strategy simply truncate
+  long record lists. Coding agents stay robust but cost more than 15 cents per page
+  against under 1 cent for VLMs, which at a million pages is a $150,000 difference.
+  Grounding is the weakest area across the board: most systems return no word-level
+  source boxes at all, and even specialised systems that do stay below 50% word-level
+  grounding F1.'
+executive_explanation: 'Document extraction is one of the few AI use cases with an
+  unambiguous business case, and this benchmark shows the buying decision is much
+  less obvious than the demos suggest. Three things matter. First, performance on
+  a short invoice tells you nothing about performance on a long statement: the best
+  general models fall from 88% to 28% accuracy on long documents because they quietly
+  stop partway through a list rather than failing visibly. Second, price and quality
+  are not correlated in the way you would assume, with flagship model tiers sometimes
+  scoring worse than their cheaper siblings. Third, at enterprise volume a single
+  cent per page is $10,000 per million pages, so the cost axis is a real constraint
+  rather than a rounding error. The caveat to hold onto: this benchmark was published
+  by a vendor whose own product tops every table, so treat the failure-mode findings
+  as the durable content and the leaderboard as a claim needing independent replication.'
+architect_explanation: 'The task is defined as schema-guided extraction: one schema
+  per document type, shared across all documents of that type, so systems cannot be
+  tuned to a fixed template. Scoring is order-insensitive value F1 over extracted
+  JSON values, plus two grounding metrics, word-level (requires a predicted box overlapping
+  an accepted box at IoU 0.5, and only counts if the value is also correct) and page-level
+  (correct source page only). Ground truth is built three ways depending on document
+  provenance: independent-system agreement with adjudication and human fix-up for
+  real documents, known values set before rendering for synthetic long lists, and
+  field-by-field human verification for forms, recorded as evidence lists supporting
+  OR-acceptance of multiple defensible readings. Failed or rejected documents remain
+  in the denominator scoring zero, so the numbers measure end-to-end robustness rather
+  than quality-given-success. 14 systems are compared across three families: single-call
+  VLMs, coding agents with filesystem and tool access, and specialised extraction
+  APIs.'
+central_contribution: A challenge-tagged benchmark that measures value accuracy, long-record
+  completeness, source grounding and per-page cost together for schema-guided extraction,
+  exposing a severe document-length cliff in commercial VLMs and a near-universal
+  weakness in source traceability.
+industry_problem: 'Enterprises are replacing manual document keying with agents, but
+  the schema changes with every new workflow, so systems cannot be tuned per template.
+  Real-world failures are specific and unglamorous: missing rows in long lists, selecting
+  the wrong occurrence of a sparse fact, overfilling dense forms, confusing similar
+  dates or identifiers, and perception noise from scans, handwriting, hierarchical
+  headers and cross-page continuation. Because errors are inevitable, humans need
+  source evidence to audit and correct output, and at production volume the cost per
+  page decides whether the initiative is financially viable at all.'
+problem_importance: 'Document extraction is high volume, high consequence and directly
+  substitutable for labour, which makes it one of the clearest enterprise AI business
+  cases. That also makes procurement error expensive: a system chosen on short-document
+  demo performance can fail silently on the long documents that carry the most value,
+  and truncation is a silent failure that produces plausible, incomplete output rather
+  than an error.'
+assumptions_challenged: That model tier predicts extraction quality, when Gemini stayed
+  flat from 0.17 to 3.83 cents per page and Claude was non-monotonic across Haiku,
+  Sonnet and Opus. That frontier VLM performance on documents generalises across length,
+  when it collapses. That spending more produces better results, since the highest-cost
+  coding agents were beaten by a cheaper specialised system. And that grounding comes
+  for free, when most systems return no word-level evidence at all.
+gaps_identified: 'Fixed-ontology KIE benchmarks such as SROIE and DocILE do not handle
+  user-specified schemas. Existing schema-guided benchmarks each cover one slice:
+  schema-conformant JSON, row completeness on synthetic arrays, or long filings, and
+  none measures cost, scores grounding, or contains scanned or handwritten documents.
+  No prior benchmark reported accuracy, completeness at scale, traceability and cost
+  jointly, which is what is needed to make an actual procurement decision.'
+proposed_architecture: 'A benchmark and evaluation harness rather than a system. 370
+  documents in three provenance classes: real born-digital enterprise documents, synthetic
+  long lists rendered from real layouts with values known before rendering, and real
+  regulatory and tax forms with schemas authored from blank templates. Documents tagged
+  on five axes and stratified into short, medium (11-50 pages) and long (over 50 pages)
+  tiers, the long tier including an SEC 13F with 3,063 holdings rows, a bankruptcy
+  creditor matrix with 8,624 address blocks and an unclaimed-property list with 26,725
+  rows as truncation stress. Ground truth recorded as evidence lists with OR-acceptance,
+  16,534 human-verified evidence rules on the forms of which roughly 84% carry a human-placed
+  value box.'
+differentiation: 'It is the only benchmark in its comparison table that jointly covers
+  long-record completeness, real scans and handwriting, word- and page-level grounding,
+  and measured cost. The per-challenge tagging is what makes it diagnostic rather
+  than merely comparative: it shows where each system degrades, not just that it does.
+  Keeping failed and rejected documents in the denominator at zero is a more honest
+  robustness measure than the common practice of scoring only successful outputs.'
+novel_concepts: Evidence lists with OR-acceptance for genuinely ambiguous fields;
+  grounding scored only when the value is also correct, so a well-placed box around
+  a wrong answer earns nothing; challenge tagging across task, perception, table structure,
+  domain and length as first-class evaluation axes; and treating measured per-page
+  cost as a scored dimension alongside accuracy.
+improves_upon: SROIE, DocILE and RealKIE on the fixed-ontology side; Contextual AI's
+  similarly named ExtractBench, Extend LongArray, Micro1 LongExtract-50 and VAREX
+  on the schema-guided side, each of which covers a narrower slice and none of which
+  scores cost or grounding.
+tradeoffs: The benchmark's construction has real tensions. Synthetic long lists give
+  exact ground truth by construction but are re-renders rather than found documents.
+  Ground truth for real documents comes from independent-system agreement with human
+  adjudication, which risks anchoring on what current systems agree about. Keeping
+  rejections in the denominator is honest for procurement but conflates policy refusals
+  with capability failures, which matters when interpreting Claude's results. And
+  the LLM-derived cost figures reflect published rates at a point in time (July 2026)
+  in a market where those change fast.
+evaluation_method: 14 systems evaluated on identical document-schema pairs with no
+  benchmark-specific tuning, runs conducted June-July 2026. Unweighted document-level
+  means reported for value F1, word- and page-level grounding F1, and cost, with per-page
+  costs computed by applying published provider rates to actual token or credit consumption.
+  Failed or rejected documents remain in the denominator and score zero. Results broken
+  down across five challenge axes plus a within-family quality-cost scaling study
+  over nine commercial VLM configurations spanning basic, medium and flagship tiers
+  of GPT, Gemini and Claude.
+statistically_convincing: 'The failure-mode findings are convincing; the ranking is
+  not independent. The corpus is large and genuinely diverse, the ground-truth pipeline
+  is described in unusual detail with 16,534 human-verified evidence rules on the
+  forms subset, and design choices such as OR-acceptance, grounding conditional on
+  value correctness, and keeping rejections in the denominator all cut against inflating
+  scores. The length cliff is a large, consistent effect across multiple systems and
+  is corroborated by an obvious mechanism (context limits and no iteration strategy),
+  so it should be trusted. The leaderboard is a different matter: this is a vendor
+  benchmark in which the publishing vendor''s product ranks first on all three metrics,
+  and the Claude family scoring around 30-35 F1 while GPT scores 88 is a large enough
+  anomaly to suggest a harness or configuration issue on that path rather than a capability
+  gap. The authors note Claude rejected two schemas but show the gap persists on completed
+  documents, which explains the rejections without explaining the score.'
+evaluation_weaknesses: Vendor-authored benchmark with the vendor's own product topping
+  every metric, and no independent replication. The Claude results are implausibly
+  low relative to every other reported evaluation of those models, and the authors
+  explicitly leave the cause undetermined, noting a controlled sweep would be needed
+  to establish whether schema size drives the failures. Ground truth for real documents
+  derives from cross-system agreement, which can encode the current consensus rather
+  than the truth. Synthetic documents are re-renders. Costs reflect a single month's
+  published rates. And the tool configuration given to coding agents strongly affects
+  their results but is relegated to an appendix.
+open_questions: Whether the Claude and Datalab end-to-end failures are caused by schema
+  size, harness configuration or genuine capability, which the authors leave open.
+  Whether the leaderboard reproduces under independent evaluation. Why word-level
+  grounding remains below 50% even for systems purpose-built to return boxes. Whether
+  iterative extraction strategies close the length cliff for general models, and at
+  what cost. And how the quality-cost frontier shifts as model prices move.
+enterprise_meaning: 'For anyone running or planning a document-extraction programme,
+  three things transfer regardless of who published the benchmark. Evaluate on your
+  longest documents, not your typical ones, because the failure mode on long documents
+  is silent truncation that produces plausible incomplete output rather than a visible
+  error. Do not assume the flagship tier is the right buy: within-family scaling was
+  flat for one vendor and non-monotonic for another, so the quality-cost frontier
+  has to be measured rather than inferred from price. And if your workflow needs a
+  human to verify or correct output, check whether the system returns word-level source
+  evidence at all, because most do not, and that single capability determines whether
+  human review is a quick audit or a full re-read. On the vendor rankings, treat them
+  as a hypothesis to test on your own documents.'
+enterprise_patterns_affected: 'Document AI and intelligent document processing pipelines
+  directly. More broadly, it affects how any long-context extraction workload is architected,
+  since the finding is that single-pass generation truncates and iteration strategies
+  do not: that applies to summarisation and reconciliation as much as extraction.
+  It also affects human-in-the-loop design, since grounding availability determines
+  whether review is auditable, and vendor evaluation practice generally.'
+reduces_cost: 'It quantifies the cost decision rather than reducing costs itself,
+  and the quantification is the value: at one million pages each cent per page is
+  $10,000, VLMs run under 1 cent, coding agents over 15 cents, and specialised APIs
+  span 1 to 8 cents. The actionable finding is that the highest-cost option was not
+  the highest quality, so the frontier has to be located empirically. Within the GPT
+  family, moving from Mini to flagship cost nearly ten times as much for 3.5 additional
+  F1 points.'
+improves_reliability: It exposes a reliability failure that aggregate accuracy hides.
+  Silent truncation on long record lists is worse than an error because the output
+  is well-formed and incomplete, and no single accuracy number surfaces it. The per-challenge
+  tagging turns that into something a team can test for deliberately.
+improves_governance: Yes, through the grounding argument. Word-level source evidence
+  is what makes extraction auditable, and the finding that most systems return none
+  and the best return under 50% word-level F1 is a direct constraint on deploying
+  extraction into any regulated or audited workflow. That is a governance requirement
+  most procurement processes are not currently checking.
+improves_developer_productivity: Indirectly, by giving teams a challenge taxonomy
+  to test against rather than discovering failure modes in production. The five-axis
+  tagging (task, perception, table structure, domain, length) is reusable as an internal
+  test-suite structure for any document workload.
+cio_action: Re-run your extraction evaluation on your longest and densest documents
+  rather than representative samples, and check specifically for silent truncation
+  of record lists. Make word-level source grounding an explicit requirement if a human
+  will ever verify the output, because most systems do not provide it and adding it
+  later is not possible. Model cost at production volume before choosing a tier, since
+  a cent per page is $10,000 per million pages and the flagship tier is not reliably
+  the most accurate. And discount vendor-published rankings, including this one, until
+  reproduced on your own corpus.
+ai_team_action: Build a challenge-tagged internal evaluation set along the five axes
+  rather than a single accuracy number, and keep failures in the denominator so the
+  metric measures end-to-end robustness. For long documents, design an explicit iteration
+  or chunking strategy rather than relying on a single pass, since that is the mechanism
+  behind the length cliff. Score grounding only when the value is also correct. And
+  use evidence lists with OR-acceptance for genuinely ambiguous fields instead of
+  forcing a single ground-truth reading.
+surprising_claim: 'That the flagship tier is often not the best buy: within the nine
+  commercial VLM configurations tested, quality was flat or non-monotonic against
+  cost for two of three model families, so paying more produced no gain or a loss.
+  Combined with the length cliff, this means the two intuitions procurement usually
+  relies on, that bigger models are better and that demo performance generalises,
+  both fail here.'
+misconceptions_challenged: That document extraction is a solved commodity. That performance
+  on typical documents predicts performance on long ones. That extraction errors are
+  visible. That flagship models are the safe default. That grounding is a feature
+  you can add later. And that a single accuracy number is a sufficient basis for a
+  procurement decision in this category.
+business_implications: 'For high-volume document workflows, the procurement criteria
+  most organisations use are the wrong ones, and the failure they miss is silent rather
+  than loud. The cost dimension is genuinely decisive at scale, with a 15-fold spread
+  between system families translating to six-figure annual differences at a million
+  pages. The grounding gap is the sharper constraint: if regulated workflows require
+  auditable extraction and no general model provides word-level evidence, that narrows
+  the viable vendor set considerably and should be established before, not after,
+  a pilot. The honest caveat is that this analysis comes from an interested party,
+  so the framework transfers more safely than the rankings.'
+future_trends: Extraction consolidating around agentic and iterative strategies rather
+  than single-pass generation, driven directly by the length problem. Grounding and
+  traceability becoming a procurement requirement rather than a differentiator, particularly
+  in regulated sectors. Cost-per-page emerging as a first-class evaluation dimension
+  alongside accuracy across enterprise AI generally. And continued proliferation of
+  vendor-published benchmarks, which raises the value of independent replication.
+future_research_to_monitor: Independent replication of these rankings, particularly
+  the anomalous Claude results. Controlled studies isolating schema size as a failure
+  driver. Work on word-level grounding, which is the clearest open technical gap.
+  VAREX and the Contextual AI benchmark of the same name as the nearest comparators,
+  and any emerging neutral benchmark for this task.
+worth_linkedin_post: 'Yes, with the framing kept on the failure modes rather than
+  the leaderboard. The strongest hook is the length cliff: a frontier model scoring
+  88% on short documents and 28% on long ones, failing silently by truncating rather
+  than erroring. The vendor authorship should be stated in the post, not omitted.'
+worth_long_article: Only as a supporting section. The durable material is the failure
+  taxonomy and the cost-versus-quality point, which fit well inside a broader piece
+  on evaluating enterprise AI procurement. A standalone long article built on a vendor
+  benchmark whose author wins every table would be hard to defend, and the rankings
+  need independent replication before they can carry a full piece.
+strongest_narrative: 'A frontier model scores 88% extracting data from short documents
+  and 28% on long ones, and it does not tell you. It just stops partway through the
+  list and returns well-formed, incomplete output. Meanwhile paying more does not
+  reliably help: across nine model configurations, two of three families showed flat
+  or worsening quality as price rose. If you are buying document AI on demo performance
+  and flagship model tiers, you are optimising for the documents that matter least.'
+key_takeaway: Evaluate document extraction on your longest documents and on whether
+  it can point to its source, not on demo accuracy or model tier. The dangerous failure
+  is silent truncation, and most systems cannot show you where an answer came from.
+datasets_used:
+- ExtractBench corpus (370 documents, 4,869 pages, 8 domains, 67 document types)
+- Texas Railroad Commission energy regulatory filings
+- US federal tax forms (Form 1040, W-2, Schedule K-1, 1099-B) from public releases
+- Synthetic rendered long lists (SEC 13F-style holdings, bankruptcy creditor matrix,
+  unclaimed-property list, clinical adverse-event listings)
+- Real enterprise financial, legal, healthcare, supply-chain and real-estate documents
+benchmarks_used:
+- ExtractBench (introduced here)
+- Compared against SROIE, DocILE, RealKIE, Contextual EB, Extend LongArray, Micro1
+  LongExtract-50, VAREX
+industries_benefiting:
+- Financial services and asset management
+- Insurance
+- Government and public sector
+- Healthcare
+- Legal and professional services
+- Supply chain and logistics
+- Real estate
+- Automotive
+influences:
+- Evaluation
+- Agent design
+- LLMOps
+- Infrastructure
+top_three_insights:
+- Frontier vision-language models fall off a cliff on long documents, with Gemini
+  3.5 Flash dropping from 87.9% to 27.9%, because systems without an iteration strategy
+  silently truncate long record lists rather than failing visibly. Short-document
+  benchmark performance is therefore close to worthless as a predictor for the documents
+  that carry the most value.
+- Price does not predict quality within a model family. Gemini stayed essentially
+  flat from 0.17 to 3.83 cents per page, Claude was non-monotonic across its three
+  tiers, and only GPT scaled monotonically, where the flagship cost nearly ten times
+  the mid-tier for 3.5 more F1 points. The quality-cost frontier has to be measured,
+  not inferred.
+- 'Source traceability is the sector''s weakest link: commercial VLMs and coding agents
+  return no word-level boxes at all, and even specialised systems built to return
+  them stay below 50% word-level grounding F1, which directly constrains any workflow
+  where a human must audit the output.'
+new_concepts:
+- Evidence lists with OR-acceptance for ambiguous fields
+- Grounding scored conditionally on value correctness
+- Challenge tagging across task, perception, table structure, domain and length
+- Measured per-page cost as a scored evaluation dimension
+- Keeping rejections and failures in the denominator as an end-to-end robustness measure
+terminology:
+- Schema-guided extraction
+- Key information extraction (KIE)
+- Order-insensitive value F1
+- Word-level and page-level grounding F1
+- Long-record completeness
+- Needle-in-haystack extraction
+- Perception challenge
+- Truncation failure
+- Quality-cost frontier
+architectural_patterns:
+- Iterative or chunked traversal of long documents rather than single-pass generation
+- Multi-provenance ground truth (cross-system adjudication, known-before-render synthesis,
+  human field verification)
+- Challenge-tagged evaluation sets supporting per-dimension diagnosis rather than
+  aggregate scoring
+- Scoring evidence and value jointly so correct provenance for a wrong answer earns
+  nothing
+- Failures retained in the denominator to measure end-to-end rather than conditional
+  performance
+evaluation_methods:
+- Order-insensitive value F1 for structured output
+- Word-level grounding F1 at fixed IoU with correctness precondition
+- Per-challenge-tag stratified breakdown
+- Within-family quality-cost scaling curves across model tiers
+- Cost measured from actual token or credit consumption against published rates
+- OR-acceptance scoring against multi-reading evidence lists
+papers_to_read_next:
+- 'Barzelay et al. 2026, VAREX: A benchmark for multi-modal structured extraction
+  from documents (CVPR Workshops)'
+- Contextual AI's ExtractBench (the unrelated academic benchmark of the same name)
+- Simsa et al., DocILE benchmark for document information localization and extraction
+- Huang et al., SROIE (ICDAR robust reading on scanned receipts)
+- Micro1 LongExtract-50 and Extend LongArray on long-document extraction
+wiki_concepts_to_link:
+- schema-guided-extraction
+- grounding-and-traceability
+- agent-evaluation-design
+- cost-quality-frontier
+- human-in-the-loop-review
+- vendor-benchmark-caution
+tags:
+- document-ai
+- agent-evaluation
+- benchmark
+- cost-efficiency
+- human-in-the-loop
+candidate_titles:
+- 88% on Short Documents, 28% on Long Ones, and It Never Tells You
+- Why Paying More for Document AI Often Buys You Nothing
+- 'The Question Nobody Asks a Document AI Vendor: Can You Show Me Where That Came
+  From?'
+keep: true
+knowledge_base_priority: High
+executive_relevance: 4
+technical_novelty: 3
+practical_applicability: 5
+thought_leadership_potential: 3
+recommended_next_action: Add to LLM Wiki

@@ -1,0 +1,44 @@
+enterprise_problem: Optimising gas injection rates across wells to raise production,
+  without the downhole gauges or multi-rate well tests that are usually prerequisites
+  and are often too costly to install.
+headline: A 5% production uplift from data the operator already had, with no new sensors
+  installed.
+recommendation_reasoning: 'The strongest business evidence across three batches: a
+  30-well pilot delivering over 5% average production uplift, followed by full deployment
+  across 200+ wells. Almost nothing in the queue gets past a pilot, let alone reports
+  a production number. The techniques are unremarkable (an ML forecast of the performance
+  curve plus Bayesian optimisation under capacity constraints) and novelty is scored
+  accordingly, but the transferable move is the constraint they designed around --
+  using historical production time series instead of requiring new instrumentation,
+  which is what made it deployable. That pattern generalises to any capacity-constrained
+  throughput problem where the business case dies on sensor cost.'
+business_functions:
+- Operations
+- Data Science
+- CIO/CTO
+enterprise_ai_themes:
+- Cost Optimization
+- Infrastructure
+- Other
+primary_type: Operational guidance
+adoption_horizon: Immediate
+novelty: 2
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 4
+overall_score: 15
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Priority review
+human_override: true
+human_override_reason: 'narrow focus to oil and gas clients. Key calibration: industry-vertical
+  lock is itself a translatability penalty and deployment evidence does not offset
+  it; deployed at one operator in one industry is not enterprise readiness 5.'
+human_score_adjustments:
+  enterprise_readiness:
+    from: 5
+    to: 3
+  business_translatability:
+    from: 5
+    to: 2

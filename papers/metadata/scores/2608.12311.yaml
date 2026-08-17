@@ -1,0 +1,22 @@
+enterprise_problem: How to coordinate multiple LLM-based tools in agentic software
+  development workflows
+headline: 'Agentic software development: How to coordinate multiple LLM tools in a
+  production codebase'
+recommendation_reasoning: Exploratory case study of coordination patterns in agentic
+  SE. While timely and engineering-relevant (teams deploying agentic tools now), this
+  is a single organization's internal engineering pattern, not cross-industry guidance.
+  No business/executive decision hook.
+business_functions:
+- Engineering
+enterprise_ai_themes:
+- Agentic AI
+primary_type: System architecture
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 4
+business_translatability: 2
+story_potential: 2
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

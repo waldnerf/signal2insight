@@ -1,0 +1,31 @@
+enterprise_problem: Aggregate benchmark scores can certify a model as reliable while
+  hiding systematic failures that appear only when the underlying evidence is vague,
+  absent or contradictory.
+headline: High average scores hid the failures that only appear when the evidence
+  is unclear.
+recommendation_reasoning: 'The transferable lesson is strong and applies to any enterprise
+  evaluation: models held up under clear evidence and broke down under absent, vague
+  or contradictory input, so a good aggregate score certified nothing about the conditions
+  that matter. Method is careful, varying clarity, noise and consistency deliberately.
+  Held back for this profile because the instrument is an elections benchmark grounded
+  in a political-theory norm, so an enterprise reader has to do the whole transfer
+  themselves, and the politically specific framing limits how usable it is as a business
+  narrative.'
+business_functions:
+- Compliance
+- Chief AI Officer
+- Data Science
+enterprise_ai_themes:
+- Evaluation
+- Governance
+- Reliability
+primary_type: Benchmark
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 3
+story_potential: 4
+overall_score: 16
+recommendation: Read later
+fulltext_reassessed: false

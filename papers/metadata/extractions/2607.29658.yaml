@@ -1,0 +1,288 @@
+summary_five_sentences: 'STAIR converts successful historical repair trajectories
+  from coding agents into a multi-level abstraction tree, from concrete diagnostic
+  steps up to general repair strategies, then retrieves across levels and adapts the
+  result into issue-specific executable plans. On SWE-bench Verified it reaches 81.2%
+  Pass@1 with MiniMax M2.5 and 79.2% with GPT-5, ahead of the experience-reuse agents
+  it compares against. The plans transfer without modification to a structurally different
+  agent, lifting mini-SWE-agent v2 from 75.8% to 81.0% while slightly reducing token
+  usage through fewer steps. Ablation is the most transferable part: using raw unabstracted
+  trajectories drops resolution from 80.0% to 57.6%, and collapsing to any single
+  abstraction level costs 16 to 21.6 points. The authors conclude that the effectiveness
+  of experience reuse depends less on the source of historical knowledge than on how
+  it is structured and applied.'
+executive_explanation: 'This is a technique paper about making AI coding agents learn
+  from their own past work, and its business relevance is narrow. The one idea that
+  travels beyond software engineering is the ablation result: raw logs of what an
+  agent did before are nearly useless as reference material, and summarising them
+  at a single level of detail is not much better. What worked was organising past
+  experience at several levels of abstraction simultaneously, from the specific fix
+  to the general principle, and then rewriting it for the current situation rather
+  than pasting it in. That is a design lesson for anyone building agent memory. Everything
+  else here is a leaderboard result on a software benchmark, and it does not end in
+  a decision anyone outside engineering makes.'
+architect_explanation: 'Offline, each successful trajectory is segmented into localisation,
+  planning, and execution-and-verification stages, then recursively abstracted: an
+  LLM grouping operator partitions nodes at level L into coherent-intent groups and
+  an abstraction operator summarises each group into a parent node carrying repair
+  intent, key actions, applicable conditions and pitfalls, repeating until the level
+  holds at most K nodes (K=2). Leaf nodes are raw trajectory steps with thought, action
+  and observation. At inference, retrieval is per-stage: textual similarity scoring,
+  then an LLM verifier filters for procedural rather than lexical relevance, and retained
+  nodes are ordered by their original execution sequence to form guidance. An LLM
+  then adapts that guidance against the issue report into a concrete stage-specific
+  plan, injected into the agent prompt. Implemented on LangGraph over Lingxi''s scaffold
+  with knowledge reuse disabled. Costs are worth noting: $0.84 per instance on MiniMax,
+  $1.60 on GPT-5, plus roughly $211 one-time preprocessing for 479 trajectories.'
+central_contribution: A hierarchical multi-level abstraction of agent trajectories
+  into reusable procedural knowledge, adapted into issue-specific plans, with ablation
+  evidence that the multi-level structure and the adaptation step, rather than the
+  historical data itself, are what make experience reuse work.
+industry_problem: LLM repair agents treat every issue independently and discard the
+  procedural knowledge accumulated from previous repairs, so an organisation running
+  thousands of agent repairs learns nothing from them. Existing reuse attempts either
+  summarise issue-patch pairs, losing the intermediate reasoning, or summarise trajectories
+  at a single fixed granularity, forcing a trade-off between concrete but non-transferable
+  guidance and general but unactionable strategy, then inject the result as-is without
+  adapting it to the current repository.
+problem_importance: 'Within software engineering it matters because agent repair costs
+  real money per attempt and failed attempts are pure waste. Beyond software engineering
+  the importance is narrower than it first appears: the concrete problem is a coding-agent
+  efficiency question, and the transferable content is a single design principle about
+  how agent experience should be structured.'
+assumptions_challenged: 'That more or better historical data drives experience reuse,
+  when the ablation shows structure dominates: raw trajectories cost 22.4 points against
+  the same information abstracted. That a single well-chosen level of summarisation
+  suffices, when every single-level variant underperformed the mixture. And the intuition
+  that high-level principles transfer best, when high-level-only was the worst single-level
+  variant at 58.4% against low-level-only at 64.0%.'
+gaps_identified: Prior trajectory-learning work produces flat knowledge lists with
+  no association to repair stage and no abstraction hierarchy, derived from individual
+  trajectories in isolation rather than aggregated across issues. Prior plan-induction
+  work (AWM, SAGE) improves the same task through self-reflection rather than transferring
+  across issues. And no prior work evaluated whether extracted knowledge transfers
+  across agents with different scaffolds.
+proposed_architecture: 'Two phases. Offline: stage-segmented trajectories are recursively
+  grouped and abstracted by paired LLM operators into a multi-level tree, with a decision
+  prompt selecting among low-level (project-specific artifacts), medium-level (project-agnostic
+  investigation strategies) and high-level (general problem-solving principles) views
+  at each iteration. Online: per-stage similarity retrieval plus LLM relevance verification
+  produces execution-ordered guidance, which an LLM adapts against the issue report
+  into structured plans for localisation, planning, and execution-and-verification,
+  injected into the agent prompt while leaving the agent''s own logic intact.'
+differentiation: Against SWE-Exp, Lingxi and ExpeRepair, the differences are the multi-level
+  rather than single-level representation, the stage-indexed rather than flat organisation,
+  aggregation across issues rather than per-trajectory isolation, and the adaptation
+  step that turns retrieved guidance into an issue-specific plan rather than a generic
+  hint. Against AWM and SAGE, the difference is cross-issue transfer rather than self-improvement
+  on the same task. The cross-scaffold transfer experiment is the genuinely new evidence
+  contribution.
+novel_concepts: Procedural knowledge nodes organised into a stage-indexed multi-level
+  abstraction tree; the guidance-versus-plan distinction, where guidance is retrieved
+  abstract procedure and a plan is its adaptation to the concrete issue; and paired
+  LLM grouping and abstraction operators applied iteratively to build the hierarchy.
+improves_upon: Lingxi (74.6% same-backbone), SWE-Exp (73.0%) and ExpeRepair (74.6%)
+  among experience-reuse agents; OpenHands (71.8%) and Prometheus (74.4%) on the same
+  backbone; and mini-SWE-agent v2 (75.8%) as the transfer target.
+tradeoffs: 'The abstraction pipeline is a real cost: roughly $0.44 per source trajectory,
+  $211 total for 479 trajectories, before any repair runs, amortised only if the corpus
+  is reused heavily. Per-instance repair costs $0.84 to $1.60 and takes 10-15 minutes.
+  The whole pipeline depends on LLM grouping, abstraction and relevance verification,
+  so node quality varies with trajectory complexity and the filter may discard useful
+  plans. Regressions occur: 17 across both agents, half from plans that captured the
+  main direction but under-specified the scope of changes needed.'
+evaluation_method: SWE-bench Verified, all 500 instances, Pass@1 as the metric, with
+  two backbones (GPT-5 High Reasoning and MiniMax M2.5 High Reasoning) and identical
+  settings and prompts across models and scaffolds. Historical candidates restricted
+  to issues created before the target to prevent temporal leakage. Cross-scaffold
+  transfer tested by prepending plans to mini-SWE-agent v2 with no code changes. Gain
+  and regression instances manually labelled by two authors independently with disagreements
+  resolved by consensus (Cohen kappa 0.85). Ablation run on a difficulty-stratified
+  125-instance subset weighted roughly 3:1 toward medium and hard tiers.
+statistically_convincing: 'Reasonably, for a benchmark paper, with the ablation carrying
+  most of the weight. Effect sizes are large where it matters: -22.4 points for raw
+  trajectories and -16 to -21.6 for single-level variants are not marginal differences.
+  The manual gain and regression analysis is done properly with independent double-labelling
+  and Cohen kappa 0.85. Temporal leakage is explicitly controlled. Two backbones,
+  one commercial and one open-weight, give some robustness. The weaknesses are that
+  no confidence intervals or repeated runs are reported for any Pass@1 figure, the
+  ablation runs on 125 rather than 500 instances, and the headline comparisons are
+  against published numbers from agents using different backbones, which the authors
+  partly address by re-running Lingxi on matched backbones.'
+evaluation_weaknesses: Single-run Pass@1 with no variance estimate on a metric known
+  to fluctuate. Ablation on a 125-instance subset rather than the full benchmark,
+  for cost reasons. Pass@1 measures test-suite passage, not semantic correctness,
+  so overfitted patches count as successes, which the authors acknowledge. Trajectories
+  all originate from one base agent (Lingxi), so plan quality is entangled with that
+  agent's behaviour. And the benchmark is 500 Python instances from 12 repositories,
+  which is a narrow slice of real software.
+open_questions: Whether the approach holds outside Python and outside SWE-bench's
+  repository set. Whether the preprocessing cost amortises favourably at organisational
+  rather than benchmark scale. Whether the abstraction hierarchy needs to be rebuilt
+  as a codebase evolves. Whether a different base agent produces materially different
+  plan quality. And whether the same hierarchical structuring helps agent memory in
+  non-code domains, which is the question that would make this broadly interesting.
+enterprise_meaning: 'Limited outside engineering organisations building on coding
+  agents, and the paper does not claim otherwise. The one finding with reach is the
+  ablation: agent experience stored as raw logs transfers poorly, and structure plus
+  adaptation is what makes it usable, which is a design constraint for anyone building
+  agent memory in any domain. For engineering leaders specifically, the practical
+  signal is that plan injection improved a different agent''s success rate by 5.2
+  points while reducing token usage, so the gains here are not purchased with more
+  compute. That is a genuine but internal result.'
+enterprise_patterns_affected: Agent memory design, specifically how accumulated experience
+  is represented for reuse. Secondarily, coding-agent platform architecture and the
+  economics of agent operation, given the reported token reduction.
+reduces_cost: Modestly and within a narrow scope. Transferred plans reduced average
+  tokens per instance from 1,245k to 1,180k and steps from 60.45 to 58.18, so accuracy
+  improved while cost fell slightly, which is the unusual direction. Against that,
+  the offline abstraction pipeline costs roughly $0.44 per trajectory and $211 for
+  the corpus used here, so net savings depend entirely on reuse volume.
+improves_reliability: 'Within its scope, yes: gains outnumber regressions substantially
+  (43 versus 10, and 33 versus 7), and the manual analysis shows plans mainly correct
+  wrong fault localisation, expand incomplete fix coverage, and restrain over-modification.
+  Regressions did occur and half stemmed from plans that under-specified the required
+  change scope.'
+improves_governance: Marginally. Explicit stage-specific plans make an agent's intended
+  approach inspectable before execution, which is a small auditability gain, but the
+  paper neither claims nor evaluates this.
+improves_developer_productivity: 'Yes, within a specific workflow: higher first-attempt
+  repair success at slightly lower token cost, with plans that direct the agent to
+  the correct location earlier. The mechanism analysis (wrong location, partial fix,
+  over-modification) maps onto failure modes engineers will recognise.'
+cio_action: Little to act on directly. If your organisation runs coding agents at
+  volume, the question worth asking is whether trajectories from successful runs are
+  being retained and structured for reuse at all, since most setups discard them.
+  Otherwise this is a monitor-only item.
+ai_team_action: 'If you are building agent memory, do not store raw trajectories and
+  do not settle on a single summarisation granularity: the ablation quantifies both
+  mistakes at 22.4 and 16-21.6 points respectively. Index experience by workflow stage
+  so retrieval can be stage-specific. And adapt retrieved experience to the current
+  context with a generation step rather than injecting it verbatim, which is the difference
+  between a generic hint and an executable plan.'
+surprising_claim: That high-level, generalisable principles were the worst single-level
+  abstraction to reuse (58.4%), performing below concrete repository-specific detail
+  (64.0%). The intuition that abstraction improves transfer is exactly backwards here
+  unless the concrete level is retained alongside it.
+misconceptions_challenged: That agent experience reuse is a retrieval or data-volume
+  problem. That summarising trajectories is enough. That more abstract knowledge transfers
+  better. And that knowledge learned inside one agent scaffold is specific to it.
+business_implications: Narrow. For organisations operating coding agents at scale,
+  it suggests a modest efficiency and success-rate gain from retaining and structuring
+  past repair runs, with a real but amortisable preprocessing cost. The broader implication,
+  that agent memory design is a structuring problem rather than a storage problem,
+  is genuine but is a technical design constraint rather than a business decision.
+future_trends: Agent systems accumulating structured procedural memory across tasks
+  rather than starting cold each run, and that memory becoming portable across scaffolds
+  and vendors. Multi-granularity representation becoming a standard pattern in agent
+  memory. And experience corpora emerging as an organisational asset in engineering,
+  with the associated questions about ownership and portability.
+future_research_to_monitor: Whether hierarchical procedural abstraction helps agent
+  memory outside code. Agent Workflow Memory (AWM) and SAGE as the nearest plan-induction
+  lines. SWE-PRM on in-flight process supervision. And evaluation work addressing
+  SWE-bench Pass@1's insensitivity to semantic correctness beyond the test suite.
+worth_linkedin_post: Not on its own. The subject is a SWE-bench leaderboard result
+  and the audience for that is engineering, not the business readership this pipeline
+  targets. The one quotable finding, that raw agent logs are worth 22 points less
+  than the same information structured, could serve as supporting evidence inside
+  a post about agent memory design led by a stronger paper.
+worth_long_article: No. It is a technique paper whose contribution is internal to
+  coding-agent construction, and the business decision it ends in belongs to an engineering
+  team rather than to anyone outside IT.
+strongest_narrative: 'Agents that fix code throw away everything they learned doing
+  it. The interesting finding is not that reusing past work helps, but how badly it
+  helps when done naively: handing an agent raw logs of its previous repairs was worth
+  22 points less than handing it the same information organised at several levels
+  of abstraction, and the general principles alone transferred worst of all. Experience
+  is only useful if it is structured and rewritten for the situation at hand.'
+key_takeaway: Agent experience is only reusable if it is structured at multiple levels
+  of abstraction and rewritten for the current situation. Storing raw trajectories,
+  or summarising them at a single granularity, throws away most of the value.
+datasets_used:
+- SWE-bench Verified (500 human-curated real GitHub issues from 12 Python repositories)
+- 479 historical repair trajectories generated by running Lingxi without knowledge
+  reuse
+benchmarks_used:
+- SWE-bench Verified
+industries_benefiting:
+- Software and technology
+- Any organisation with substantial in-house engineering running coding agents at
+  volume
+- Developer tooling vendors
+influences:
+- Agent design
+- Memory
+- Evaluation
+- LLMOps
+top_three_insights:
+- 'Raw agent trajectories transfer badly as reference material: replacing the abstraction
+  hierarchy with raw logs dropped resolution from 80.0% to 57.6%, a 22.4-point cost
+  for the same underlying information stored unstructured.'
+- No single level of abstraction is sufficient. Low-level-only reached 64.0%, medium
+  60.8% and high 58.4% against 80.0% for the mixture, and counterintuitively the general
+  principles transferred worst because they lacked grounding for direct action.
+- Procedural plans learned on one agent scaffold transferred to a structurally different
+  agent with no modification, raising Pass@1 from 75.8% to 81.0% while reducing token
+  usage, which indicates the knowledge captured is agent-agnostic rather than scaffold-specific.
+new_concepts:
+- Procedural knowledge nodes
+- Stage-indexed multi-level trajectory abstraction tree
+- Guidance versus plan distinction
+- Paired LLM grouping and abstraction operators applied iteratively
+- Cross-scaffold plan transfer
+terminology:
+- Hierarchical trajectory abstraction
+- Procedural knowledge
+- Repair stages (localisation, planning, execution-and-verification)
+- Pass@1
+- Agent scaffold
+- Experience reuse
+- Temporal leakage
+- Case-based reasoning
+architectural_patterns:
+- Recursive group-then-abstract construction of a knowledge hierarchy from execution
+  logs
+- Stage-indexed retrieval so guidance matches the phase of work
+- Retrieve-then-adapt, generating a context-specific plan rather than injecting retrieved
+  text verbatim
+- Retaining multiple granularities simultaneously rather than choosing one summarisation
+  level
+- Prompt-level augmentation that leaves the host agent's code and tools untouched,
+  enabling cross-scaffold transfer
+evaluation_methods:
+- Ablation across representation granularity to isolate what makes reuse work
+- Cross-scaffold transfer as a test of whether learned knowledge is agent-agnostic
+- Difficulty-stratified subset sampling to concentrate analytical power where design
+  choices show
+- Manual gain and regression categorisation with independent double-labelling and
+  Cohen kappa
+- Temporal restriction of the historical candidate pool to prevent leakage
+papers_to_read_next:
+- 'Yang et al. 2025, Lingxi: Repository-level issue resolution enhanced by procedural
+  knowledge guided scaling (arXiv:2510.11838)'
+- Wang et al. 2025, Agent Workflow Memory (ICML)
+- 'Hayashi et al. 2025, SAGE: Self-abstraction from grounded experience (arXiv:2511.05931)'
+- 'Chen et al. 2025, SWE-Exp: Experience-driven software issue resolution (arXiv:2507.23361)'
+- 'Gandhi et al. 2025, When agents go astray: Course-correcting SWE agents with PRMs
+  (arXiv:2509.02360)'
+wiki_concepts_to_link:
+- agent-memory
+- procedural-knowledge-reuse
+- agent-evaluation-design
+- cost-quality-frontier
+tags:
+- coding-agents
+- llm-memory
+- agent-evaluation
+- benchmark
+- cost-efficiency
+candidate_titles:
+- 'Raw Logs Are Not Memory: What Coding Agents Teach Us About Structuring Experience'
+- 'The General Principle Transferred Worst: A Counterintuitive Result in Agent Memory'
+- Agents Forget Everything They Learn. Structuring It Is Worth 22 Points.
+keep: false
+knowledge_base_priority: Low
+executive_relevance: 2
+technical_novelty: 4
+practical_applicability: 3
+thought_leadership_potential: 2
+recommended_next_action: Monitor

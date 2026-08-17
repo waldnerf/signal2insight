@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2607.29659",
+  "title": "GQ-FSL: Green Quantized Federated Split Learning",
+  "authors": [
+    "Idan Roth",
+    "Lutz Lampe"
+  ],
+  "abstract": "Deploying state-of-the-art deep neural networks (DNNs) at the wireless edge is severely bottlenecked by the strict energy and resource constraints of mobile devices. While federated split learning (FSL) mitigates on-device computation by offloading workloads to an edge server, this may introduce systemic overheads, while the continuous exchange of cut-layer data, and submodels still incurs significant energy consumption (EC). To address this, we propose a green quantized FSL (GQ-FSL) framework that incorporates stochastic quantization for both local collaborative training and wireless transmissions. Notably, GQ-FSL supports asymmetric precision levels for the client- and server-side submodels, effectively decoupling device energy constraints from global convergence degradation. To quantify these tradeoffs, we develop parameterized energy models for the split architecture and derive a theoretical convergence bound under statistically heterogeneous data. Building on that, we formulate a joint optimization problem to configure the DNN split point and precision levels, minimizing the total system EC while satisfying a strict target accuracy constraint. Ultimately, we demonstrate that GQ-FSL enables large-scale DNN deployment on resource-constrained devices, achieving superior energy efficiency compared to quantized federated learning and full-precision FSL.",
+  "categories": [
+    "cs.LG",
+    "cs.DC",
+    "eess.SP"
+  ],
+  "published": "2026-07-31T17:40:27Z",
+  "updated": "2026-07-31T17:40:27Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29659v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:21:22.554037+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 9,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:25:16.111090+00:00"
+}

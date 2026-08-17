@@ -1,0 +1,35 @@
+enterprise_problem: Organisations are writing AI-use policies and buying AI-text detectors
+  on the assumption those detectors work, without evidence that benchmark performance
+  transfers to the way people actually use LLMs -- editing their own writing.
+headline: AI-text detectors catch over 90% of text a model wrote from scratch, and
+  under 31% of your own writing after a model tidied it up.
+recommendation_reasoning: 'A control many organisations already rely on, measured
+  against the way people actually work. Detectors scoring 91.2% and 93.5% on directly
+  generated text fall to 30.8% and 15.1% when the same models rewrite human-authored
+  source -- a 60 to 78 point collapse -- while holding up under LLM-on-LLM rewriting
+  (only 10 to 13 points lost). That asymmetry is the finding: the standard benchmark
+  measures the case that almost never happens. Method is sound for the claim: 1,800
+  matched source texts, four open-weight generators, four variants per item, evaluated
+  at a strict 1% false-positive point rather than a flattering threshold. States in
+  one sentence without ML vocabulary and directly invalidates a policy assumption.
+  Held at Review fully rather than Priority: detection tooling is a narrower enterprise
+  concern than the pipeline''s core design-and-deploy mission.'
+business_functions:
+- Compliance
+- CIO/CTO
+- Chief AI Officer
+- Operations
+enterprise_ai_themes:
+- Evaluation
+- Governance
+- Reliability
+primary_type: Benchmark
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 5
+overall_score: 20
+recommendation: Review fully
+fulltext_reassessed: false

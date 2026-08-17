@@ -1,0 +1,32 @@
+{
+  "arxiv_id": "2607.29510",
+  "title": "Ordered-to-disordered transfer learning with graph neural networks for formation-energy and HOMO-LUMO gap prediction in high-entropy perovskite oxides",
+  "authors": [
+    "Panupol Untarabut",
+    "Narjes Jomaa",
+    "Sylvian Cadars",
+    "Olivier Masson",
+    "Samuel Bernard",
+    "Assil Bouzid",
+    "Santanu Saha"
+  ],
+  "abstract": "High-entropy perovskite oxides (HEPOs) represent a chemically complex class of materials with promising functional properties, yet their vast compositional space and, chemical/structural disorder pose significant challenge for accurate property prediction. Graph neural networks (GNNs) enable rapid exploration of materials space but are often limited by the availability of representative training data. Here, we investigate ordered-to-disordered transfer learning using GNNs for formation-energy and HOMO-LUMO gap prediction in HEPOs by transferring knowledge learned from chemically ordered perovskites. Four representative GNN models, including CGCNN, GATGNN, ALIGNN and M3GNet are evaluated to understand the role of structural representations, spanning pairwise two-body and angular three-body interactions in transfer performance. We find strong property-dependent transfer behavior: formation-energy prediction transfers effectively to disordered HEPOs, whereas HOMO-LUMO gap prediction shows limited transferability due to its sensitivity to local chemical environments. Incorporating a small HEPO-specific training dataset substantially improves HOMO-LUMO gap prediction. Representation-level analysis using UMAP further highlights the importance of encoding three-body geometric information such as in ALIGNN for capturing complex structure-property relationships and improving transferability.",
+  "categories": [
+    "cond-mat.mtrl-sci",
+    "cond-mat.other",
+    "cs.LG"
+  ],
+  "published": "2026-07-31T15:13:32Z",
+  "updated": "2026-07-31T15:13:32Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29510v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:31:17.277647+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 8,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:34:17.933052+00:00"
+}

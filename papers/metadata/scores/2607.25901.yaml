@@ -1,0 +1,25 @@
+enterprise_problem: Generating item descriptions that actually improve recommendation
+  performance, without needing user data at serving time.
+headline: Item descriptions written for the recommender rather than for the page.
+recommendation_reasoning: 'Backed by an online A/B test with reported gains, which
+  is rarer than it should be, and the design choice is commercially sensible: train
+  against behavioural reward signals but keep inference content-only, so no user data
+  is needed at serving time and one description serves everyone. Held at Read later
+  because it is specific to live-stream recommendation and the argument needs reinforcement-learning
+  framing to make sense.'
+business_functions:
+- Product
+- Data Science
+- Operations
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 2
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

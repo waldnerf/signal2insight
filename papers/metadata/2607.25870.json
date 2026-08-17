@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2607.25870",
+  "title": "VAD to the Bone: Ultra-Tiny Speech Activity Detection for Edge Deployment",
+  "authors": [
+    "Stephen Bauer",
+    "Sheila Seidel",
+    "Shanza Iftikhar",
+    "Scott Veidenheimer",
+    "Gorkem Ulkar"
+  ],
+  "abstract": "Voice activity detection (VAD) triggers downstream speech processing in always-on systems under strict memory, latency, and compute constraints. Recent compact models report strong accuracy but rely on components that are not widely supported: learnable filterbanks, recurrent layers, or non-causal post-processing. We propose kiloVAD, designed for embedded inference using standard Mel features, CNN-only layers, and tunable context/spectral parameters. We introduce per-layer structured pruning with self-distillation and angle-based quantization-aware training (QAT) that outperforms standard QAT by 1-4%. Evaluated per-frame under causal conditions, kiloVAD achieves 0.850 AUC on AVA-Speech with 2.1 k parameters and 200 ms context, establishing a new state of the art for causal, deployment-ready VAD.",
+  "categories": [
+    "eess.AS",
+    "cs.LG"
+  ],
+  "published": "2026-07-28T15:37:44Z",
+  "updated": "2026-07-28T15:37:44Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25870v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-07-29T22:01:10.362515+00:00",
+  "discovery_date": "2026-W31",
+  "overall_score": 11,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-07-29T22:03:50.651651+00:00"
+}

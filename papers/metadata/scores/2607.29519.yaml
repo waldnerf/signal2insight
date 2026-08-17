@@ -1,0 +1,33 @@
+enterprise_problem: People are delegating the cognitive work through which expertise
+  is actually acquired, and ending up with neither the output they wanted nor the
+  skill.
+headline: You can't outsource the struggle and still get the skill.
+recommendation_reasoning: 'The title is the most quotable line in either batch this
+  week, and the underlying worry -- that delegating the effortful part of work prevents
+  the competence from ever forming -- is a real workforce question for any organisation
+  deploying AI assistance broadly. Related to 2607.26034, which the reviewer approved
+  for changing management practice. But the population is graduate students in software
+  engineering research, the evidence is a thematic reading of 1,383 Reddit posts with
+  no measurement of actual skill outcomes, and the framing is curriculum design. That
+  is the academic scope the reviewer ruled out on 2607.25881, and the evidence would
+  not survive scrutiny if the line were quoted in a business context. Keep the sentence,
+  not the paper. || Recalibrated 2026-08-03 on the same correction: a quotable title
+  is not story_potential 4 when the evidence behind it is a thematic reading of Reddit
+  posts with no skill-outcome measurement.'
+business_functions:
+- CIO/CTO
+- Operations
+- Chief AI Officer
+enterprise_ai_themes:
+- Other
+- Governance
+primary_type: Scientific research
+adoption_horizon: 1-3 years
+novelty: 2
+evidence_quality: 2
+enterprise_readiness: 2
+business_translatability: 3
+story_potential: 3
+overall_score: 12
+recommendation: Read later
+fulltext_reassessed: false

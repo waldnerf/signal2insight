@@ -1,0 +1,20 @@
+enterprise_problem: None identified -- adapting traffic forecasting models as sensor
+  networks physically change.
+headline: Keeping traffic forecasts accurate as roads and sensors are added.
+recommendation_reasoning: Smart-city traffic forecasting. The underlying problem --
+  a model whose input topology keeps changing after deployment -- has a faint general
+  echo, but the work is specific to traffic sensor graphs and outside the topic lists.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 11
+recommendation: Ignore
+fulltext_reassessed: false

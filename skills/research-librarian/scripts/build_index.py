@@ -24,6 +24,15 @@ try:
 except ImportError:
     sys.exit("PyYAML is required: pip install pyyaml")
 
+# Paper titles, tags and concepts routinely contain non-Latin-1 characters, which
+# raise UnicodeEncodeError on a cp1252 Windows console and abort the run mid-write.
+# Degrade unprintable characters instead of failing; generated files stay UTF-8.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 ROOT = Path(__file__).resolve().parents[3]  # repo root/
 DEFAULT_CONFIG = ROOT / "config" / "editorial-profile.yaml"
 METADATA_DIR = ROOT / "papers" / "metadata"
@@ -238,6 +247,8 @@ def build_index_md(metadata, entries, config, log):
     lines.append("")
     lines.append("- [Tags](tags/)")
     lines.append("- [Concepts](concepts/)")
+    if (WIKI_DIR / "dashboard.html").exists():
+        lines.append("- [Knowledge Dashboard](dashboard.html) — concept/tag frequency view, built by [[theme-dashboard]]")
     lines.append("")
     INDEX_PATH.write_text("\n".join(lines), encoding="utf-8")
     log(f"index.md: {len(entries)} entries across {len(by_tier)} tiers")

@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2607.29614",
+  "title": "A Human-Centered Validation of the Explainability-Performance Coefficient",
+  "authors": [
+    "Christian Oliva",
+    "Luis F. Lago-Fernández"
+  ],
+  "abstract": "The rapid adoption of deep learning models in high-risk domains has intensified the need for trustworthy Explainable Artificial Intelligence (XAI). However, objectively evaluating explanation fidelity and aligning XAI metrics with human-centered understanding remain critical open challenges. In this work, we propose a model-agnostic metric, the EPC score, which is an extension of the Explainability-Performance Coefficient (EPC), that quantifies explanation quality by explicitly balancing the trade-off between feature selection sparsity and preserved model performance. Through an empirical validation across tabular, text, and image modalities, we show that the EPC score effectively uncovers operational dependencies among network activations, data dimensionality, and explainer performance. Furthermore, we validate the EPC score against independent human-based explanations, proving that higher EPC scores strongly align with human lexical sentiment judgments and spatial visual annotations.",
+  "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "published": "2026-07-31T16:50:51Z",
+  "updated": "2026-07-31T16:50:51Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29614v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:21:22.559210+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 12,
+  "recommendation": "Archive",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:25:16.099068+00:00"
+}

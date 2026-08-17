@@ -1,0 +1,42 @@
+enterprise_problem: Labelling large volumes of subjective, context-dependent content
+  is unreliable when done by an LLM alone and unaffordable when done by humans alone.
+headline: Stop reviewing every AI label -- review only the ones a cheap model probably
+  got wrong.
+recommendation_reasoning: The toxicity finding is incidental; the reusable asset is
+  the labelling architecture -- one call to a small local model producing both a label
+  and interpretable category scores, then a lightweight validator that routes only
+  likely-mislabelled cases to human review. It beats confidence-based and multi-LLM-ensemble
+  baselines at low added cost, which is a direct answer to the LLM-as-judge reliability
+  problem every enterprise evaluation pipeline hits. Demonstrated at real scale (124,000
+  conversations) and it re-tests prior small-scale claims rather than only asserting
+  new ones. Deployable now with a small local model. || Recalibrated 2026-07-29. Survives
+  as viable because the claim -- stop paying people to re-check every AI label, check
+  only the ones likely wrong -- is a cost and staffing decision that needs no ML background.
+  Scores trimmed to reflect that the mechanism is still a data-pipeline concern.
+business_functions:
+- Data Science
+- Operations
+- Engineering
+- Compliance
+enterprise_ai_themes:
+- Evaluation
+- LLMOps
+- Cost Optimization
+- Governance
+primary_type: Engineering technique
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 4
+overall_score: 19
+recommendation: Review fully
+fulltext_reassessed: false
+human_score_adjustments:
+  business_translatability:
+    from: 3
+    to: 4
+  story_potential:
+    from: 3
+    to: 4

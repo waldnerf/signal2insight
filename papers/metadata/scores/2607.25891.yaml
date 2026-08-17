@@ -1,0 +1,33 @@
+enterprise_problem: Agent benchmark results are not comparable across scaffolds, verifiers
+  and scoring rules, so there is no reliable basis for deciding where agents are actually
+  ready to deploy.
+headline: Function calling is solved, coding is improving fastest, and enterprise
+  workflows are still the hardest thing agents do.
+recommendation_reasoning: 'Consolidates 957,253 records over 30 benchmarks and 714
+  agents into something comparable, and the derived findings are portfolio decisions
+  rather than research results: capability is uneven by task type, with enterprise
+  workflows the least mature -- which is exactly where most deployment budget goes.
+  The second finding is a procurement warning: strict all-pass scoring in multi-verifier
+  tasks can hide progress and reorder agent rankings, so a vendor''s position may
+  be an artifact of the aggregation rule. Occupational and industry classification
+  on every record also makes it usable for workforce analysis, not just model selection.'
+business_functions:
+- Chief AI Officer
+- CIO/CTO
+- Product
+- Data Science
+enterprise_ai_themes:
+- Evaluation
+- Agentic AI
+- Governance
+- Reliability
+primary_type: Benchmark
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 4
+overall_score: 20
+recommendation: Review fully
+fulltext_reassessed: false

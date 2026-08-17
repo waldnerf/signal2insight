@@ -1,0 +1,38 @@
+enterprise_problem: Agents that talk to each other tend to agree rather than surface
+  the conflict, so a multi-agent system can converge confidently on a wrong answer
+  that one agent had the evidence to prevent.
+headline: Put two agents in a room and they will agree with each other rather than
+  with the evidence in front of them.
+recommendation_reasoning: 'The mechanism is genuinely important for anyone orchestrating
+  multiple agents: sycophancy shows up in agent-to-agent cooperation as over-accommodation
+  and weak evidential grounding, so models abandon what they privately observed in
+  order to agree with a partner. If that holds, every multi-agent review or verification
+  pattern that assumes independent judgement is weaker than it looks. Two things keep
+  it below the line for now. The demonstration is a two-model spot-the-difference
+  task on images, which is thin evidence for a claim that broad and brushes the profile''s
+  vision ignore_topic. And the mitigation -- steering with a task-agnostic sycophancy
+  vector -- requires model-level access most enterprises do not have. Worth promoting
+  if a stronger multi-agent version of this result appears; the general finding is
+  more valuable than this instance of it. || Recalibrated 2026-08-03 after the reviewer
+  archived 2607.29557 and cut all five of its dimensions: a translatable headline
+  on thin, narrow evidence must pull business-fit scores down too, not only evidence_quality.
+  A two-model spot-the-difference task is not a basis for translatability 4.'
+business_functions:
+- Chief AI Officer
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- Agentic AI
+- Reliability
+- Orchestration
+- Other
+primary_type: Scientific research
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

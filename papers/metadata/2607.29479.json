@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2607.29479",
+  "title": "MolGVR: A Chemistry-Grounded Framework for Text-to-Molecule Generation",
+  "authors": [
+    "Qian Tan",
+    "Xuanyu Zhu",
+    "Lei Jiang",
+    "Zhonghang Yuan",
+    "Chen Zhang",
+    "Yuqiang Li"
+  ],
+  "abstract": "Text-to-molecule generation is typically formulated as a one-shot sequence generation problem, where a model directly maps target descriptions to molecular representations. However, molecular descriptions often contain informative structural constraints, and violating such constraints can change the molecular identity. This makes chemical verification and error correction important but underexplored. To fill this gap, we propose MolGVR, a chemistry-grounded Generator--Verifier--Refiner framework. The Generator infers structural evidence and generates candidate molecules. The Verifier addresses the lack of chemical validation by converting descriptions into chemical constraints and checking candidates against them. The Refiner addresses generation failures by revising candidates rejected by the Verifier. Experiments on ChEBI-20 and PCDes show that MolGVR improves exact-match performance. These results suggest that coupling generation with executable verification and feedback-guided refinement is an effective way to improve text-to-molecule generation.",
+  "categories": [
+    "cs.LG"
+  ],
+  "published": "2026-07-31T14:43:52Z",
+  "updated": "2026-07-31T14:43:52Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29479v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:43:02.282371+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 8,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:45:41.382337+00:00"
+}

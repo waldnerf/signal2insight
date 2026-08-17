@@ -1,0 +1,22 @@
+enterprise_problem: Conceptual models become hard to read when domain concepts must
+  be expressed through low-level modelling constructs.
+headline: Replace recurring construct patterns with one higher-level symbol.
+recommendation_reasoning: Modelling-notation research instantiated on Dynamic Condition
+  Response graphs. There is empirical validation of the readability improvement, which
+  is more than most notation papers offer, but DCR graphs are a niche formalism and
+  nothing here involves AI systems at all. Outside the mission on subject, not just
+  on framing.
+business_functions:
+- Engineering
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 8
+recommendation: Ignore
+fulltext_reassessed: false

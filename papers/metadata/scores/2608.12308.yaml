@@ -1,0 +1,17 @@
+enterprise_problem: Enabling aerial agents to navigate using vision and language under
+  partial observability
+headline: Aerial vision-language navigation with causal memory
+recommendation_reasoning: Robotics-focused research; explicitly out of scope per ignore_topics.
+  No enterprise AI application.
+business_functions: []
+enterprise_ai_themes: []
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

@@ -1,0 +1,39 @@
+{
+  "arxiv_id": "nature-2026-agentic-profiles",
+  "title": "Agentic profiles for effective AI governance",
+  "authors": [
+    "Atoosa Kasirzadeh",
+    "Iason Gabriel"
+  ],
+  "abstract": "The creation of effective governance mechanisms for artificial intelligence (AI) agents requires a deeper understanding of their core properties and the implications they have for deployment. This paper provides a characterization of AI agents that focuses on four dimensions: autonomy, efficacy, goal complexity and generality. We propose different gradations for each dimension and argue that each dimension raises unique questions about the design, operation and governance of these systems. Moreover, we draw on this framework to construct 'agentic profiles' for different kinds of AI agent. These profiles help to illuminate cross-cutting technical and non-technical governance challenges posed by different classes of AI agents, ranging from narrow task-specific assistants to highly autonomous general-purpose systems. By mapping out key axes of variation and continuity across four dimensions, agentic profiles provide developers, policymakers and members of the public with guidance for effective AI governance.",
+  "categories": [
+    "AI governance",
+    "agent policy"
+  ],
+  "published": "2026-08-12T00:00:00Z",
+  "updated": "2026-08-12T00:00:00Z",
+  "source": "Nature",
+  "journal": "Nature, Vol 656, 13 August 2026, p.320",
+  "doi": "10.1038/s41586-026-10805-z",
+  "pdf_url": null,
+  "downloaded": true,
+  "downloaded_at": "2026-08-14T15:08:08.680221+00:00",
+  "reviewed": true,
+  "status": "extracted",
+  "discovered_at": "2026-08-14T15:08:08.680221+00:00",
+  "discovery_date": "2026-W33",
+  "note": "Not discovered via fetch.py -- supplied directly by Franz and approved for inclusion outside the normal triage queue. Still run through the editorial-triage worksheet for scoring consistency with papers.csv.",
+  "overall_score": 19,
+  "recommendation": "Priority review",
+  "download_eligible": true,
+  "extract_eligible": true,
+  "reviewed_at": "2026-08-14T15:30:54.634268+00:00",
+  "knowledge_base_priority": "High",
+  "recommended_next_action": "Write LinkedIn Post",
+  "executive_relevance": 5,
+  "technical_novelty": 4,
+  "practical_applicability": 2,
+  "thought_leadership_potential": 5,
+  "keep": true,
+  "extracted_at": "2026-08-14T15:46:02.998415+00:00"
+}

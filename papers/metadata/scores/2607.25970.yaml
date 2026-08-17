@@ -1,0 +1,35 @@
+enterprise_problem: Reinforcement learning can teach models to write correct code,
+  but rewarding execution speed collapses under measurement noise and reward sparsity.
+headline: Teaching AI to write faster code, not just working code -- and it reaches
+  half the human rate of real speedups.
+recommendation_reasoning: Moves the coding-agent conversation from correctness to
+  performance, which is where the infrastructure-cost argument lives. Substantial
+  and well-reported gains (strict top-50% pass@1 from 18.0% to 31.3% and 30.7% to
+  50.4%; up to 200% over standard RLVR when the timing sandbox is deliberately degraded)
+  plus a human reference point that is honest about the remaining gap -- about half
+  the human rate of complexity-class improvements. The engineering lesson that a noisy
+  reward channel needs a calibrated measurement harness before it can be learned from
+  generalises past code. Requires an RL training capability, so not near-term for
+  most. || Recalibrated 2026-07-29. Compute spend is an executive concern, but reaching
+  it requires explaining reinforcement learning, reward sparsity and timing sandboxes,
+  so the earlier 4/4 on translatability and story overstated the audience. Demoted
+  to Read later -- strong work, IT readership.
+business_functions:
+- Engineering
+- CIO/CTO
+- Data Science
+enterprise_ai_themes:
+- Cost Optimization
+- Reliability
+- Evaluation
+- Fine-tuning
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

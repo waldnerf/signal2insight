@@ -1,0 +1,345 @@
+summary_five_sentences: 'PepsiCo built and deployed two large-scale optimisation systems
+  for revenue growth management: PromoAI for promotional calendars and PricingAI for
+  base pricing. PromoAI couples a LightGBM demand forecast with a mixed-integer linear
+  program, navigating millions of product-promotion-timing combinations under slotting,
+  exclusivity, spacing and margin constraints, and now runs across seven-plus countries
+  supporting 16 calendar refreshes a year. PricingAI estimates own and cross-price
+  elasticities with a Bayesian hierarchical model decomposed across brand, size, flavour
+  and retailer, then feeds them into a differential-evolution optimiser handling price
+  ladders and psychological thresholds, deployed in the US and Mexico. About 85% of
+  PromoAI recommendations were accepted and executed by the business, and planning
+  cycles for specific tasks compressed from weeks to minutes. The authors are explicit
+  that the decisive factor was not algorithmic: giving planners the ability to override
+  a recommendation and immediately see the quantified consequence is what built organisational
+  trust, and they state that this organisational challenge was at least as hard as
+  the modelling one.'
+executive_explanation: 'This is what a genuinely deployed enterprise AI system looks
+  like once the pilot phase is over, published with numbers rather than claims. Two
+  systems, running in production across continents, doing decisions that used to be
+  made in spreadsheets by experienced people. The headline result is not the optimiser:
+  it is that 85% of the machine''s recommendations were actually executed, which is
+  the only number that matters because value is realised on implementation, not on
+  generation. Equally important is how they got there. The system was designed so
+  planners could change any recommendation and instantly see what it cost them, which
+  turned it from a black box into a negotiating instrument they took into meetings
+  with retailers. The paper says plainly that winning that trust was as hard as building
+  the models, which is the part most AI programmes underestimate.'
+architect_explanation: 'Two decoupled stacks on shared Azure infrastructure: a web
+  UI submits JSON scenario configurations through Azure Data Factory to Databricks
+  notebooks that execute the optimisation. PromoAI is a MILP solved with Gurobi 12,
+  using a piecewise linear approximation of the LightGBM demand forecast to convert
+  a non-convex problem into a solvable one, with SKUs aggregated into Product Promotion
+  Groups for dimensionality reduction, callback-based early termination on MILP gap
+  stagnation, and market-specific target gaps of 1-5%. Runtimes range from minutes
+  to 7-9 hours at 90-plus PPGs over 52 weeks. PricingAI estimates elasticities in
+  STAN via ADVI with additive decomposition for own-price and multiplicative for cross-price,
+  then runs up to 10 seeded differential-evolution instances in parallel to mitigate
+  local optima, typically converging in under 30 minutes. The architectural point
+  worth stealing is the decoupling discipline: ML models versioned separately from
+  optimisers, and all business rules externalised into JSON configuration so a new
+  market is onboarded by writing a config file rather than by touching code.'
+central_contribution: A documented, at-scale enterprise deployment of ML-plus-mathematical-optimisation
+  for pricing and promotion across multiple markets, with adoption and impact numbers,
+  and an explicit account of the human-in-the-loop design and organisational trust
+  work that made the adoption happen.
+industry_problem: Pricing and promotion planning in consumer packaged goods requires
+  simultaneously reasoning about demand elasticity, competitor actions, retailer constraints,
+  cannibalisation across a portfolio, price ladders and psychological thresholds.
+  Manual and heuristic approaches, however experienced, cannot navigate a solution
+  space of millions of product-promotion-timing combinations, and every market historically
+  used its own methodology, blocking any centralised or comparable approach.
+problem_importance: 'For a company with revenue above $90 billion, pricing and promotion
+  is the primary revenue lever, and the interdependency structure makes it exactly
+  the class of problem humans reason about badly: a fractional price change on one
+  product ripples through substitution and complementarity across the whole assortment
+  simultaneously. The generic importance is broader than CPG: this is the archetype
+  of a high-stakes recurring commercial decision where the analytics were already
+  good and the bottleneck was turning prediction into prescription and getting people
+  to act on it.'
+assumptions_challenged: That better forecasting is what unlocks value, when the paper
+  argues forecasting without optimisation leaves planners with better information
+  and no mechanism to act on it at scale. That deployment is an engineering project
+  with an end date, when heterogeneous retailer data made it an ongoing per-market
+  adaptation. That model accuracy drives adoption, when the decisive factor was override
+  transparency. And that optimisation output should be presented as a recommendation
+  to accept or reject, when presenting a menu of scenarios for commercial negotiation
+  is what made it usable.
+gaps_identified: The absence of a unified methodological framework across global markets,
+  which blocked consistency and centralised optimisation. The gap between descriptive
+  elasticity analytics and prescriptive pricing decisions. And the gap between commercially
+  sound recommendations and operationally feasible ones, since retailers have planning
+  cycles, shelf constraints and vendor commitments the model does not encode.
+proposed_architecture: 'PromoAI: LightGBM lift forecasting, piecewise-linearised into
+  a MILP over binary promotion decisions with hundreds of thousands of variables and
+  constraints, solved by Gurobi with market-specific gap targets and stagnation callbacks.
+  PricingAI: Bayesian hierarchical elasticity estimation in STAN via ADVI, with own-price
+  elasticity decomposed additively across grand, brand, size, taste and banner components
+  and cross-price decomposed multiplicatively, conjoint survey data supplying informative
+  priors where available and a softmax penalty enforcing sign consistency, feeding
+  a differential-evolution optimiser run as up to 10 seeded parallel instances. Both
+  share a decoupled Azure and Databricks architecture with JSON-externalised business
+  rules and interactive scenario UIs.'
+differentiation: 'Against typical published optimisation work, the differentiator
+  is that this ran in production across continents rather than in a case study, and
+  reports adoption rather than only solution quality. Against typical enterprise AI
+  reporting, the differentiator is candour: it names the approximations that made
+  the problem tractable and the limitations they introduce, and it reports the organisational
+  failure modes rather than only the wins. The elasticity decomposition into shared
+  attribute components is a genuinely useful modelling answer to sparse SKU-level
+  data.'
+novel_concepts: Hierarchical attribute-based elasticity decomposition as an identification
+  strategy under sparsity; JSON-externalised constraint modules as the unit of market
+  onboarding; the adjusted-scenario pattern where an override displays its full portfolio-wide
+  financial consequence rather than simply replacing the recommendation; and sequential
+  prior updating across planning cycles to prevent destabilising swings in elasticity
+  estimates between refreshes.
+improves_upon: Manual, spreadsheet-driven planning based on domain expertise and historical
+  heuristics, and market-by-market bespoke methodologies. It positions itself as an
+  extension to those methods rather than a replacement, which is consistent with how
+  it was actually adopted.
+tradeoffs: Every tractability decision costs something and the authors say so. The
+  piecewise linear approximation of the LightGBM forecast turns days into hours but
+  means the MILP cannot express certain nonlinear business behaviours without workarounds.
+  Aggregating SKUs into PPGs reduces dimensionality but loses SKU-level resolution.
+  Differential evolution handles the non-convex pricing landscape but gives no bounded
+  optimality gap, unlike the MILP. Using posterior mean elasticities rather than full
+  distributions keeps optimisation tractable but discards uncertainty. And the human-in-the-loop
+  workflow that drove adoption is also slower than autonomous execution.
+evaluation_method: 'Production deployment rather than controlled experiment. Forecasting
+  evaluated by rolling-origin backtesting with MAPE at SKU-retailer-week level against
+  legacy benchmarks. Elasticities validated in three stages: in-sample fit thresholds
+  (R-squared above 0.6, wMAPE below 0.4, absolute bias under 10%), business validation
+  of magnitudes at brand-unit aggregation with own-price elasticities expected in
+  the -2.5 to 0 range, and end-to-end pipeline testing on the validated matrix. Optimisation
+  verified by confirming constraint satisfaction on historical and simulated scenarios
+  plus sensitivity analysis. Impact reported as adoption metrics from live use.'
+statistically_convincing: 'Partly, and the paper is honest about which part. The technical
+  validation protocol is solid and specific, with pre-declared acceptance thresholds
+  and economic-consistency checks on elasticity signs and magnitudes. The impact claims
+  are a different matter: 85% recommendation acceptance and weeks-to-minutes cycle
+  compression are adoption and efficiency metrics, not causal revenue attribution,
+  and there is no control market or holdout showing what revenue would have been without
+  the systems. That is a normal limitation of published industrial deployments and
+  it does not undermine the operational claims, but it means this evidences feasibility
+  and adoption rather than quantified financial uplift.'
+evaluation_weaknesses: 'No counterfactual for business impact: nothing establishes
+  what would have happened without the systems. Deployment breadth differs sharply
+  between the two systems (PromoAI in 7-plus countries, PricingAI in 2), so PricingAI''s
+  evidence base is thinner than the paper''s joint framing suggests. Differential
+  evolution offers no bounded optimality gap, so PricingAI''s solution quality is
+  not formally characterised. Adoption metrics are reported without denominators in
+  places. And the whole account is single-company, with data that cannot be independently
+  examined.'
+open_questions: Whether the 85% acceptance rate holds as the systems expand into markets
+  with poorer data. Whether the elasticity decomposition generalises to portfolios
+  with different attribute structures. What the actual revenue and margin effect is,
+  as distinct from the planning efficiency effect. And whether the human-in-the-loop
+  workflow is a permanent design requirement or a transitional trust mechanism.
+enterprise_meaning: 'This is a reference implementation for the class of AI investment
+  that most reliably returns: not autonomous decision-making but constraint-respecting
+  decision support on a recurring, high-value commercial process. Three things transfer
+  directly. First, the value came from the optimisation layer, not the prediction
+  layer, which reverses where most enterprise AI budget currently goes. Second, externalising
+  business rules into configuration turned market expansion from an engineering project
+  into a configuration exercise, which is the difference between a system deployed
+  in one place and one deployed in seven. Third, and most quotable, the paper states
+  that gaining organisational trust and changing established workflows was at least
+  as difficult as building the models, and that deployment strategies which underestimate
+  this fail regardless of algorithmic quality.'
+enterprise_patterns_affected: 'Decision-support architecture generally: the separation
+  of forecasting from optimisation, versioned independently. Configuration-driven
+  multi-market rollout. Human-in-the-loop override design where the override displays
+  its own cost. And the operating-model question of whether AI systems are positioned
+  as autonomous decision-makers or as instruments people carry into negotiations.'
+reduces_cost: Indirectly but materially. Planning and execution cycles for specific
+  pricing and promotional tasks compressed from weeks to minutes, and markets scaled
+  usage across more retailers and categories without proportional increases in planning
+  effort or headcount. The paper frames this as lowering the barrier to adoption in
+  new geographies rather than as headcount reduction, which is the more honest framing.
+improves_reliability: Yes, in the operational sense. The optimiser guarantees constraint
+  satisfaction across hundreds of thousands of business rules that manual planning
+  could only approximate, with bounded optimality gaps of 1-5% on the MILP side. Seeded
+  runs make PricingAI reproducible, which the authors note matters for business coherence
+  as much as for debugging. Sequential prior updating prevents destabilising elasticity
+  swings between planning cycles.
+improves_governance: 'Yes, in a specific and underrated way: encoding business rules
+  as externalised JSON configuration makes commercial policy explicit, inspectable
+  and versioned rather than resident in individual planners'' judgement. It also creates
+  a consistent methodological framework across markets that previously each used their
+  own approach, which is a comparability and control benefit before it is an optimisation
+  one.'
+improves_developer_productivity: 'Not the paper''s focus, but the decoupling discipline
+  is the relevant lesson: separating ML model training and versioning from the optimisation
+  engine let data science iterate on predictions without destabilising the optimiser,
+  and JSON-externalised rules let business users change constraints without developer
+  involvement. That last point removes a standing queue of small change requests from
+  the engineering team.'
+cio_action: 'Ask where your analytics investment actually sits on the predict-versus-prescribe
+  line. This paper argues, with a deployed system behind it, that forecasting without
+  an optimisation layer leaves people better informed and no more able to act at scale.
+  Then look at your deployed AI systems and ask whether a user can override a recommendation
+  and immediately see the quantified consequence: that specific capability, not model
+  accuracy, is what this team credits for adoption. Finally, budget deployment as
+  continuous per-market adaptation rather than as a project with a completion date.'
+ai_team_action: Decouple prediction from optimisation and version them separately.
+  Externalise business rules into configuration rather than embedding them in code,
+  and treat a new market or business unit as a config file. Where per-entity data
+  is too sparse for per-entity parameters, decompose into shared attribute components
+  rather than accepting noisy individual estimates. Build the override-with-consequences
+  view before building the recommendation view. And be explicit internally about which
+  approximations were made for tractability and what they cost.
+surprising_claim: That the organisational challenge of gaining trust and changing
+  established workflows was at least as difficult as the technical challenge of building
+  the models, and that deployment strategies underestimating this tend to fail regardless
+  of algorithmic quality. Stated plainly, in a paper from a team that clearly could
+  have chosen to talk about their solver instead.
+misconceptions_challenged: That the hard part of enterprise AI is the model. That
+  better forecasts automatically produce better decisions. That deployment is a finite
+  engineering project rather than continuous per-market adaptation. That autonomy
+  is the goal, when the systems that got adopted were explicitly positioned as augmenting
+  rather than replacing judgement. And that approximations made for tractability are
+  embarrassing details rather than the engineering content.
+business_implications: 'For any organisation with a recurring, constraint-heavy commercial
+  decision, this establishes that the prescriptive layer is where the return is and
+  that it is achievable at global scale with existing tooling. It also reframes the
+  adoption problem: the deliverable is not a recommendation, it is a negotiating instrument
+  that shows the cost of departing from it. Commercially, the compression of planning
+  cycles from weeks to minutes changes what a planning function can attempt, allowing
+  scenario exploration inside a single working session rather than across iterations,
+  which is a capability change rather than an efficiency gain.'
+future_trends: Optimisation returning to prominence as the layer that makes machine
+  learning actionable, particularly as LLM interfaces make constraint specification
+  accessible to non-technical users. Configuration-driven multi-market deployment
+  becoming the standard pattern for global rollouts of decision systems. And a shift
+  in how enterprise AI success is reported, from model metrics toward recommendation
+  acceptance rates, which is the metric that actually tracks realised value.
+future_research_to_monitor: Work bridging LLM interfaces with classical optimisation
+  solvers, which is the natural next step for constraint specification. Uncertainty-aware
+  optimisation that carries full posterior distributions rather than posterior means
+  without losing tractability. And research on the determinants of recommendation
+  acceptance in decision-support systems, which this paper identifies as decisive
+  but only characterises anecdotally.
+worth_linkedin_post: 'Yes. The angle is the sentence most AI programmes need to read:
+  the team says gaining organisational trust was at least as hard as building the
+  models, and that deployment strategies underestimating this fail regardless of algorithmic
+  quality. Pair it with the 85% acceptance figure and the override-with-consequences
+  design that produced it.'
+worth_long_article: Possible but second in line. There is a solid piece on why the
+  optimisation layer, not the prediction layer, is where enterprise analytics returns
+  sit, using this as the worked example. The constraint is that the detail is CPG-specific
+  enough that a long article would need to do real work translating it, and the impact
+  evidence is adoption rather than attributed financial uplift.
+strongest_narrative: 'PepsiCo deployed AI pricing and promotion optimisation across
+  seven countries, and about 85% of what it recommended actually got executed. The
+  team says the reason was not the models. It was that a planner could override any
+  recommendation and instantly see what the override cost across the whole portfolio,
+  which turned the system from something to accept or reject into something they took
+  into the room with retailers. Their own conclusion: winning that trust was at least
+  as hard as the modelling, and programmes that underestimate it fail no matter how
+  good the algorithm is.'
+key_takeaway: Prediction tells you what will happen; only the optimisation layer turns
+  that into a decision at portfolio scale. And the decisive adoption mechanism is
+  not accuracy but the ability to override a recommendation and immediately see what
+  the override costs.
+datasets_used:
+- PepsiCo internal historical sales, pricing and promotional data across markets
+- Retailer point-of-sale and syndicated CPG retail data
+- Conjoint survey data used as informative priors for elasticity components
+benchmarks_used:
+- Legacy internal forecasting benchmarks (MAPE at SKU-retailer-week level)
+- Historical planner decisions used as a comparison baseline in scenario review
+industries_benefiting:
+- Consumer packaged goods
+- Retail and grocery
+- Manufacturing and distribution
+- Airlines, hospitality and any revenue-management-driven business
+- Telecommunications and subscription pricing
+- Energy and commodity trading
+influences:
+- Governance
+- Infrastructure
+- LLMOps
+top_three_insights:
+- 'The value came from the optimisation layer, not the forecasting layer. The authors
+  state it directly: forecasting without optimisation leaves planners with better
+  information but no mechanism to translate it into decisions at scale, and it is
+  the optimiser that converts predictive analytics into prescriptive value.'
+- About 85% of the system's recommendations were accepted and executed, and the team
+  attributes that to override transparency rather than model accuracy. Planners could
+  change any recommendation and immediately see the portfolio-wide financial consequence,
+  which turned the system from a black box into an instrument they used in retailer
+  negotiations.
+- Externalising all business rules into JSON configuration rather than code made market
+  expansion a configuration exercise instead of an engineering project, which is the
+  concrete mechanism behind deployment across seven-plus countries with widely varying
+  market structures.
+new_concepts:
+- Hierarchical attribute-decomposed elasticity estimation under SKU sparsity
+- Adjusted-scenario override showing full portfolio-wide consequences
+- JSON-externalised constraint modules as the unit of market onboarding
+- Sequential prior updating across planning cycles for estimate stability
+- Product Promotion Group (PPG) aggregation as a dimensionality strategy aligned to
+  how planners think
+terminology:
+- Revenue Growth Management (RGM)
+- Product Promotion Group (PPG)
+- Price ladder
+- Pantry loading
+- Slotting capacity
+- Own-price and cross-price elasticity
+- Piecewise linear approximation
+- MILP gap
+- Differential Evolution (DE)
+- Automatic Differentiation Variational Inference (ADVI)
+architectural_patterns:
+- Decoupled UI, optimisation engine and data layers allowing independent scaling and
+  upgrade
+- ML models trained and versioned separately from the optimisation engine
+- Business rules externalised as configuration rather than embedded in code
+- Piecewise linearisation of a nonlinear learned model to make it solvable inside
+  a MILP
+- Parallel seeded metaheuristic runs with varied hyperparameters to mitigate local
+  optima
+- Human-in-the-loop scenario interface where manual overrides display their quantified
+  cost
+evaluation_methods:
+- Rolling-origin backtesting for time-series forecast validation
+- Three-stage validation combining statistical fit thresholds, business plausibility
+  of parameter magnitudes, and end-to-end pipeline testing
+- Economic consistency checks on learned parameters (sign and magnitude bounds)
+- Constraint-satisfaction verification against historical and simulated scenarios
+- Recommendation acceptance rate as the primary adoption metric
+- Monitoring user override behaviour during pilot to identify model adjustments
+papers_to_read_next:
+- Bertsimas and Kallus 2020, From predictive to prescriptive analytics
+- Ma et al. 2021 and Dimitrov and Durai 2023 on traditional CPG pricing and promotion
+  practice
+- 'Carpenter et al. 2017, STAN: A probabilistic programming language'
+- Kucukelbir et al. 2017, Automatic Differentiation Variational Inference
+- Storn and Price 1997, Differential Evolution
+wiki_concepts_to_link:
+- prescriptive-optimization
+- organizational-trust-in-ai
+- human-in-the-loop-review
+- deployment-at-scale
+- configuration-driven-rollout
+- cost-quality-frontier
+tags:
+- enterprise-deployment
+- optimization
+- human-in-the-loop
+- cost-efficiency
+- revenue-management
+candidate_titles:
+- PepsiCo Deployed AI Pricing in Seven Countries. 85% of Its Recommendations Were
+  Actually Executed.
+- 'The Hard Part Was Never the Model: What a Global CPG Deployment Says About Enterprise
+  AI'
+- Better Forecasts Do Not Make Better Decisions. The Optimisation Layer Does.
+keep: true
+knowledge_base_priority: High
+executive_relevance: 5
+technical_novelty: 3
+practical_applicability: 4
+thought_leadership_potential: 4
+recommended_next_action: Write LinkedIn Post

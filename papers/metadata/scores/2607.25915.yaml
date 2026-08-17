@@ -1,0 +1,26 @@
+enterprise_problem: Extra reasoning capacity currently costs either a bigger model
+  or a longer visible chain of thought, both of which raise serving cost and latency.
+headline: Buying reasoning depth without paying for reasoning tokens.
+recommendation_reasoning: The cost framing is real -- decoupling how much a model
+  thinks from how many tokens it emits would change inference economics -- and localising
+  the recurrence to a narrow decoder interval is a sensible efficiency idea. But the
+  results are hedged ('competitive accuracy at validation-selected latent budgets'),
+  which usually means matching rather than beating, and the value cannot be explained
+  without latent-reasoning and decoder-internals vocabulary, which caps its business
+  translatability under this rubric.
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- Cost Optimization
+- Infrastructure
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Read later
+fulltext_reassessed: false

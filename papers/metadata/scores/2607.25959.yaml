@@ -1,0 +1,36 @@
+enterprise_problem: Enterprise knowledge lives in text, tables and knowledge graphs
+  that quietly contradict each other, and nothing systematically detects or explains
+  the conflicts before an LLM retrieves them.
+headline: Before you blame the model, check that your own knowledge sources agree
+  with each other.
+recommendation_reasoning: 'RAG and governance are both priority topics and this attacks
+  a failure that enterprises usually misdiagnose as model hallucination: the retrieved
+  sources genuinely disagree. The taxonomy is the useful part -- granularity differences,
+  direct conflicts, temporal change, and graph incompleteness are distinct problems
+  needing distinct fixes, and temporal mismatch in particular is chronically under-managed.
+  Evidence is moderate and honestly bounded (the authors report being limited by Text-to-SPARQL
+  errors and noise), and the setting is Wikipedia/Wikidata rather than a corporate
+  knowledge base, so transfer needs judgement. || Recalibrated 2026-07-29. The framing
+  -- your own sources contradict each other, it is not always the model hallucinating
+  -- is explainable to a data owner, but the instrument is Text-to-SPARQL over Wikidata
+  and the audience is a knowledge-engineering team. Demoted to Read later.'
+business_functions:
+- Data Science
+- Compliance
+- Engineering
+- Operations
+enterprise_ai_themes:
+- RAG
+- Governance
+- Evaluation
+- Reliability
+primary_type: Framework
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

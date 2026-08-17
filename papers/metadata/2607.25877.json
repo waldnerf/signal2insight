@@ -1,0 +1,25 @@
+{
+  "arxiv_id": "2607.25877",
+  "title": "Runtime Uncertainty Monitoring for LLM-Based Multi-Agent Systems Using Bayesian Networks",
+  "authors": [
+    "Bart Custers",
+    "Koorosh Aslansefat"
+  ],
+  "abstract": "This paper investigates how multi-agent systems (MAS)-based on large language models (LLMs) can support actuarial risk modelling, with a particular focus on uncertainty quantification. Actuarial workflows represent a high-stakes decision-support setting where unreliable outputs may lead to incorrect risk assessment, unfair pricing, and regulatory non-compliance. To address uncertainty introduced by the probabilistic nature of LLMs and dependencies between agents, a multi-agent framework is proposed in which specialised agents perform data preparation, modelling, review, and explanation tasks under a central hub. The main contribution is a novel approach to uncertainty propagation using token-level log-probabilities and a Bayesian Network. Importantly, log probabilities are not treated as direct probabilities of correctness or task success. Instead, length-normalised log-probability summaries are transformed into calibrated task-level confidence estimates before incorporation into the Bayesian Network. Results show that the framework reproduces baseline actuarial performance while providing additional insight into workflow stability and runtime uncertainty propagation.",
+  "categories": [
+    "cs.AI"
+  ],
+  "published": "2026-07-28T15:39:43Z",
+  "updated": "2026-07-28T15:39:43Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25877v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-07-29T22:01:10.357684+00:00",
+  "discovery_date": "2026-W31",
+  "overall_score": 14,
+  "recommendation": "Read later",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-07-29T22:03:50.613037+00:00"
+}

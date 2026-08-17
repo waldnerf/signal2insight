@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2607.29592",
+  "title": "TOOD: Task-Aware Out-of-Distribution Score Calibration for Continual Learners",
+  "authors": [
+    "Mostafa ElAraby",
+    "Samer B. Nashed",
+    "Liam Paull"
+  ],
+  "abstract": "The primary challenge of continual learning (CL) systems is to learn new tasks while remaining performant on previously learned tasks. A similarly important though less well-studied aspect of CL systems is their ability to distinguish inputs that are unlikely to come from within the set of tasks the system has already encountered, often called out-of-distribution (OOD) detection. This paper presents several findings related to the dynamics of OOD detection in CL systems, causes of performance degradation over time which we call OOD forgetting (OODF), and proposed mitigation strategies for this degradation. Chiefly, we find the unintuitive result that OODF is only weakly anti-correlated with classification performance on previous tasks, suggesting that the underlying mechanisms producing OODF are distinct. Moreover, this effect is observed for both energy-based and feature-based OOD detection methods. Energy-based detectors suffer a drop in logit scale as additional tasks are learned, which we term the Confidence Gap, while feature-based detectors also degrade under a complementary effect we call Manifold Crowding. Motivated by these observations, we propose TOOD, a training-free post-hoc method that decomposes logits into per-task energy scores and re-calibrates them using replay-buffer statistics. Experiments on CIFAR-10, CIFAR-100, and a 100-task ImageNet-1K stream show that TOOD improves OOD detection performance over uncalibrated energy in most settings and ranks first or second in nine of ten CIFAR configurations, with the largest gains when the confidence gap is most severe. These results suggest that a substantial portion of OOD deterioration in continual learning arises from score miscalibration rather than from a complete loss of discriminative structure.",
+  "categories": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "published": "2026-07-31T16:18:30Z",
+  "updated": "2026-07-31T16:18:30Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29592v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:31:17.269916+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 12,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:34:17.931771+00:00"
+}

@@ -19,27 +19,19 @@ scores_batch.json: a JSON array of, per paper:
       "business_functions": ["Engineering", "Security"], # Q2, from config screening.business_functions
       "enterprise_ai_themes": ["Agentic AI", "RAG"],      # Q3, from config screening.enterprise_ai_themes
       "primary_type": "Engineering technique",            # Q4, from config screening.primary_types
-      # Section B -- Strategic Importance (1-5 each)
-      "architectural_influence": 4, "challenges_best_practice": 2, "novelty": 4,
-      "enterprise_improvement": 5, "innovation_scale": 3,
-      # Section C -- Practicality
-      "implementable_today": 3,                           # Q10, 1-5
-      "adoption_horizon": "<12 months",                    # Q11, from config screening.adoption_horizons
-      "implementation_barriers": 2, "deployment_evidence": 2,  # Q12/13, 1-5
-      # Section D -- Evidence (1-5 each)
-      "validation_strength": 4, "evaluation_clarity": 4,
-      "limitations_acknowledged": 3, "rigor": 4,
-      # Section E -- Editorial Value (1-5 each, headline is free text)
-      "executive_interest": 3, "platform_team_interest": 5, "business_implication": 4,
-      "surprise_factor": 3, "linkedin_potential": 4,
-      "headline": "...",                                   # Q23, free text
-      # Section F -- Decision
-      "recommendation": "Review fully",                    # Q24, from config screening.recommendation_order
-      "recommendation_reasoning": "..."                     # Q25, free text, <=150 words
+      # Section B -- Substance (1-5 each)
+      "novelty": 4, "evidence_quality": 4,
+      # Section C -- Business Fit
+      "enterprise_readiness": 3, "business_translatability": 4, "story_potential": 3,  # Q7-9, 1-5
+      "adoption_horizon": "<12 months",                    # Q10, from config screening.adoption_horizons
+      # Section D -- Decision
+      "headline": "...",                                   # Q11, free text
+      "recommendation": "Review fully",                    # Q12, from config screening.recommendation_order
+      "recommendation_reasoning": "..."                     # Q13, free text, <=150 words
     }
 
 overall_score is computed here as the sum of the quantitative_dimensions
-listed in config/editorial-profile.yaml (currently 17 dimensions, max 85) --
+listed in config/editorial-profile.yaml (currently 5 dimensions, max 25) --
 never trust a precomputed sum in the input. It is a sortable/legacy-compatible
 number, not the gate: status and download/extract eligibility come from the
 recommendation's entry in config screening.recommendations.

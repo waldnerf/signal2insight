@@ -1,0 +1,17 @@
+enterprise_problem: Regime-gated MoE architecture for financial volatility forecasting
+  under market regime changes
+headline: Regime-gated MoE for volatility forecasting
+recommendation_reasoning: Finance vertical. Financial time-series validation issues
+  same as 2608.12259. Out of scope.
+business_functions: []
+enterprise_ai_themes: []
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 2
+evidence_quality: 2
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 7
+recommendation: Ignore
+fulltext_reassessed: false

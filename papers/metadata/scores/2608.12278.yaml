@@ -1,0 +1,25 @@
+enterprise_problem: AI language tools systematically fail speakers of underrepresented
+  languages, limiting educational access and limiting enterprise reach
+headline: 'AI''s infrastructure gap: Language tools systematically fail speakers of
+  underrepresented languages'
+recommendation_reasoning: 'High governance/compliance angle. For enterprises serving
+  diverse populations, this is a board-level risk issue: ''does our AI product work
+  for this audience?'' Strong empirical evidence. Executive relevance depends on company''s
+  geographic/population scope, but cross-industry for those who care.'
+business_functions:
+- Product
+- Compliance
+- Chief AI Officer
+enterprise_ai_themes:
+- Governance
+- Security
+primary_type: Evaluation methodology
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 4
+story_potential: 4
+overall_score: 19
+recommendation: Priority review
+fulltext_reassessed: false

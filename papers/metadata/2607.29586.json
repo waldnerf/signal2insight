@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2607.29586",
+  "title": "TraceViT: Grounded Trace Supervision for Visual Abstract Reasoning",
+  "authors": [
+    "Binnan Liu",
+    "Yechi Ma",
+    "Tian Xie",
+    "Wei Hua"
+  ],
+  "abstract": "The Abstraction and Reasoning Corpus (ARC) tests whether a model can infer an unseen transformation from a few input-output examples and apply it to a new grid. Looped visual reasoners refine predictions over multiple iterations, but conventional training constrains only the final output, leaving intermediate refinements unconstrained. We propose that these refinements should instead follow the transformation step by step. We introduce TraceViT, a looped visual reasoner trained with semantically monotonic transformation chains. We obtain these chains by rewriting and verifying programmatic task implementations, decomposing each solution into intermediate grid states. Each iteration is grounded by a task reference derived from the few-shot demonstrations and an object workspace representing the current grid state. Because these chains may differ in length from the loop, soft trace alignment enforces only their ordering, letting the model allocate iterations freely. TraceViT achieves 67.8% pass@2 on ARC-AGI-1 and 24.3% on ARC-AGI-2. Controlled ablations on ARC-AGI-1 show that trace supervision becomes beneficial only when paired with grounding. Code and data will be available at https://github.com/LiuBinnan/TraceViT.",
+  "categories": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "published": "2026-07-31T16:09:44Z",
+  "updated": "2026-07-31T16:09:44Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29586v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:31:17.270962+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 10,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:34:17.942430+00:00"
+}

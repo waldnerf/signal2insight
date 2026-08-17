@@ -1,0 +1,21 @@
+enterprise_problem: Creative agents need to learn video representation from high-quality
+  films, not just generic datasets
+headline: Teaching AI agents to learn from cinematic film, not generic video datasets
+recommendation_reasoning: In-scope for agentic AI but remains research-focused. Video
+  encoding techniques are still not mature enough for enterprise production deployment;
+  also, the audience is video/ML engineers, not business leaders making an adoption
+  decision.
+business_functions:
+- Engineering
+enterprise_ai_themes:
+- Agentic AI
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Read later
+fulltext_reassessed: false

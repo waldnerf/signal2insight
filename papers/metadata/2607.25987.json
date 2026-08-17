@@ -1,0 +1,32 @@
+{
+  "arxiv_id": "2607.25987",
+  "title": "\\textsc{IH-Benchmark}: A Conflict-Centered Benchmark for Instruction-Hierarchy Robustness in LLM Applications",
+  "authors": [
+    "Conor McCauley",
+    "Zeliang Kan",
+    "Jason Martin"
+  ],
+  "abstract": "When a language model receives conflicting instructions from different priority levels, which one does it actually follow? This question lies at the heart of reliable LLM deployment. Existing benchmarks answer this only partially, often focusing on a single hierarchy edge or adapting public datasets with limited tool-use coverage. We present IH-Benchmark, a conflict-centered benchmark for instruction-hierarchy robustness across direct system-user conflicts (S>U) and tool-mediated user-tool (U>T) conflicts. IH-Benchmark is built from a human-authored taxonomy of 44 constraint families across generic, health, finance, retail, and coding settings, and evaluates scenarios with a uniform binary pass/fail protocol combining a predicate DSL with category-scoped LLM judges. Across 37 evaluated models, hierarchy compliance ranges from 98.2% to 20.5%. We find that strong S>U compliance is not a reliable proxy for U>T robustness: several models preserve system constraints under direct user conflict but degrade sharply when conflicting instructions appear in tool outputs. Constraint hardening also reveals a split between models: some failures are largely fixed by stronger warnings, while others persist across all strictness levels. Finally, the most revealing failures are often subtle rather than overtly dangerous; models resist unauthorized purchases or bulk ticket closure more reliably than injected disclaimers or small factual distortions. These results suggest that instruction-hierarchy robustness is not a single capability, but a set of behaviors that must be evaluated across conflict surfaces, constraint types, and attack presentations.",
+  "categories": [
+    "cs.CR",
+    "cs.SE"
+  ],
+  "published": "2026-07-28T17:06:13Z",
+  "updated": "2026-07-28T17:06:13Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25987v1",
+  "downloaded": true,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-07-29T21:20:49.539293+00:00",
+  "discovery_date": "2026-W31",
+  "overall_score": 15,
+  "recommendation": "Archive",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-07-29T21:23:33.952621+00:00",
+  "downloaded_at": "2026-07-29T21:24:06.989499+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "archive",
+  "human_reviewed_at": "2026-07-29T21:46:14.558249+00:00",
+  "archived": true
+}

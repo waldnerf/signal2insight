@@ -1,0 +1,30 @@
+enterprise_problem: Explainable representations of automated decision policies become
+  too large to actually read once the system has many corner cases.
+headline: Trade a measured amount of optimality for an explanation a human can actually
+  finish reading.
+recommendation_reasoning: The idea that explainability has a tunable price -- accept
+  a bounded imprecision and get a decision tree orders of magnitude smaller, with
+  the guarantee retained -- is a clean and genuinely useful governance framing, and
+  'explanations too big to read are not explanations' is a good line. But it lands
+  in formal verification of Markov decision processes, which needs setup before an
+  enterprise audience sees the point, and the tool applies to controller synthesis
+  rather than to LLM systems. Reference material on the explainability/optimality
+  tradeoff.
+business_functions:
+- Compliance
+- Engineering
+- Operations
+enterprise_ai_themes:
+- Governance
+- Reliability
+- Other
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 3
+overall_score: 13
+recommendation: Read later
+fulltext_reassessed: false

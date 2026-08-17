@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.29516",
+  "title": "From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale",
+  "authors": [
+    "Chandra Maddila",
+    "Mashrur Rashik",
+    "Euna Mehnaz Khan",
+    "Smriti Jha",
+    "James Saindon",
+    "Nachi Nagappan",
+    "Peter C. Rigby"
+  ],
+  "abstract": "AI coding agents are generating code at volumes that exceed the capacity of traditional peer review. At the same time, existing AI code review tools over-index on low-value suggestions such as style and best practices while under-indexing on the concerns human reviewers prioritize most: correctness, security, and performance. We present ARCTIC, an AI-powered Code Critique system that reframes code review around three capabilities: intent prediction, which infers why a change was made from conversation logs and metadata; drift detection, which measures divergence between the developer's intent and the agent's output via backtranslation; and code spotlight, which ranks the regions of a diff most warranting human scrutiny. We ground these capabilities in a six-theme taxonomy derived from 18,000 code reviews. Offline evaluation shows that intent prediction achieves 0.86 F1, drift detection reaches near-perfect ordinal agreement with human annotators (QWK = 0.907), and spotlight outperforms the baseline AI reviewer by 2.4x on quality estimation at 5x fewer tokens. In the experimental rollout, the drift scores reduces code misalignment by an additional 5.76 points (p = 0.026), intent prediction receives 90.2% approval, and zero defects have been attributed to self-reviewed diffs since launch.",
+  "categories": [
+    "cs.SE",
+    "cs.AI"
+  ],
+  "published": "2026-07-31T15:17:25Z",
+  "updated": "2026-07-31T15:17:25Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29516v1",
+  "downloaded": true,
+  "reviewed": true,
+  "status": "extracted",
+  "discovered_at": "2026-08-03T21:31:17.277266+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 22,
+  "recommendation": "Priority review",
+  "download_eligible": true,
+  "extract_eligible": true,
+  "reviewed_at": "2026-08-03T21:34:17.913516+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "approve",
+  "human_reviewed_at": "2026-08-03T21:42:30.465739+00:00",
+  "downloaded_at": "2026-08-04T05:21:04.119223+00:00",
+  "knowledge_base_priority": "Essential",
+  "recommended_next_action": "Write Long-form Article",
+  "executive_relevance": 4,
+  "technical_novelty": 5,
+  "practical_applicability": 4,
+  "thought_leadership_potential": 5,
+  "keep": true,
+  "extracted_at": "2026-08-04T07:53:25.256900+00:00"
+}

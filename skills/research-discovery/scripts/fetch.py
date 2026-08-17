@@ -10,9 +10,14 @@ abstract first (editorial-triage); only the top-scoring papers each week
 get their PDF downloaded, by download_top.py. Pass --download to fetch
 PDFs immediately instead, bypassing that gate.
 
+Pass --batch-size N to stop after N *new* records are written, so triage can
+score each batch's abstracts before the next batch is pulled. Re-running with
+the same flag resumes where the previous call left off — already_known() skips
+records already on disk, so no cursor state is kept between calls.
+
 Usage:
     python fetch.py [--config PATH] [--categories cs.AI,cs.CL] [--lookback-days 7]
-                     [--max-results 100] [--download] [--dry-run]
+                     [--max-results 100] [--batch-size 20] [--download] [--dry-run]
 """
 import argparse
 import json
@@ -30,6 +35,16 @@ try:
     import yaml
 except ImportError:
     sys.exit("PyYAML is required: pip install pyyaml")
+
+# Paper titles routinely contain non-Latin-1 characters (Greek letters, em-dashes,
+# CJK). On a Windows console defaulting to cp1252, printing one raises
+# UnicodeEncodeError mid-run and aborts the fetch. Degrade unprintable characters
+# instead of failing — the metadata files themselves are always written as UTF-8.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):  # not a reconfigurable TextIO (e.g. piped/wrapped)
+        pass
 
 ROOT = Path(__file__).resolve().parents[3]  # repo root/ (.../repo root/skills/research-discovery/scripts/fetch.py)
 DEFAULT_CONFIG = ROOT / "config" / "editorial-profile.yaml"
@@ -183,6 +198,13 @@ def main():
     parser.add_argument("--lookback-days", type=int)
     parser.add_argument("--max-results", type=int)
     parser.add_argument(
+        "--batch-size",
+        type=int,
+        help="Stop after writing this many NEW records, leaving the rest of the result set "
+        "for a later call (resumable — re-run to continue). Default: no batch limit, write "
+        "everything within max_results.",
+    )
+    parser.add_argument(
         "--download",
         action="store_true",
         help="Also download PDFs immediately (default: metadata only — PDFs are downloaded later, "
@@ -220,9 +242,10 @@ def main():
     fatal_error = None
     start = 0
     stop = False
+    batch_full = False
 
     try:
-        while seen < max_results and not stop:
+        while seen < max_results and not stop and not batch_full:
             page_size = min(BATCH_SIZE, max_results - seen)
             try:
                 xml_bytes = fetch_page(search_query, start, page_size, log)
@@ -245,24 +268,31 @@ def main():
                 if args.dry_run:
                     log(f"NEW (dry-run) {entry['arxiv_id']}: {entry['title']}")
                     new_count += 1
-                    continue
-                downloaded = False
-                if args.download:
-                    downloaded = download_pdf(entry["pdf_url"], pdf_path(entry["arxiv_id"]), log)
-                    if not downloaded:
-                        download_failures += 1
-                write_metadata(entry, downloaded)
-                log(f"NEW {entry['arxiv_id']}: {entry['title']} (downloaded={downloaded})")
-                new_count += 1
+                else:
+                    downloaded = False
+                    if args.download:
+                        downloaded = download_pdf(entry["pdf_url"], pdf_path(entry["arxiv_id"]), log)
+                        if not downloaded:
+                            download_failures += 1
+                    write_metadata(entry, downloaded)
+                    log(f"NEW {entry['arxiv_id']}: {entry['title']} (downloaded={downloaded})")
+                    new_count += 1
+                if args.batch_size and new_count >= args.batch_size:
+                    # Batch quota met. The rest of the result set is left for a later
+                    # call, which resumes via already_known() rather than a saved cursor.
+                    batch_full = True
+                    log(f"Batch size {args.batch_size} reached — stopping, re-run to continue.")
+                    break
             start += len(entries)
             if len(entries) < page_size:
                 break
-            if not stop:
+            if not stop and not batch_full:
                 time.sleep(3)  # be polite to the arXiv API between pages
     finally:
         log(
             f"Done. seen={seen} new={new_count} duplicates={skipped_duplicate} "
-            f"out_of_lookback={skipped_old} download_failures={download_failures}"
+            f"out_of_lookback={skipped_old} download_failures={download_failures} "
+            f"batch_full={batch_full}"
         )
         if not args.dry_run:
             log_file = LOG_DIR / f"fetch-{datetime.now().strftime('%Y%m%d-%H%M%S')}.log"

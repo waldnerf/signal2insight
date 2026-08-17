@@ -1,0 +1,30 @@
+{
+  "arxiv_id": "2608.12269",
+  "title": "A Cascaded Unsupervised-Supervised NLP Pipeline for Detecting Accusatory Language in Public Procurement",
+  "authors": [
+    "Bryan Torres",
+    "Daniel Riofrío",
+    "José Vega-Sánchez",
+    "Nathaly Orozco",
+    "Carla Parra",
+    "Karen Rosero",
+    "Felipe Grijalva"
+  ],
+  "abstract": "Public procurement involves the allocation of substantial financial resources; therefore, continuous oversight through audits, controls, and monitoring mechanisms is essential. However, stakeholder comments and publicly available government data are often underutilized, despite their potential to reveal procedural irregularities. To address this gap, this paper analyzes metadata from Ecuador's Sistema Oficial de Contratación Pública (SOCE, Official Public Procurement System), with particular emphasis on participant comments generated during the pre-contractual phase. We propose a hybrid modeling framework that integrates unsupervised clustering and supervised classification within a natural language processing (NLP) pipeline to uncover latent patterns and detect potentially irregular procurement processes. Semantic embeddings are generated using Word2Vec, LLaMA, and RoBERTa, followed by Gaussian Mixture Models (GMMs) for unsupervised clustering. A supervised classification stage is then applied to identify accusatory or whistleblowing-style comments. Experimental results show that the combination of domain-trained Word2Vec embeddings, GMM-based clustering, and a Random Forest classifier achieves high precision and recall, even under severe class imbalance. These findings demonstrate that lightweight, domain-adapted NLP architectures can effectively support risk identification and enhance transparency in public procurement systems without requiring large-scale computational infrastructure.",
+  "categories": [
+    "cs.CL"
+  ],
+  "published": "2026-08-12T17:09:14Z",
+  "updated": "2026-08-12T17:09:14Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.12269v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-08-13T18:35:09.618211+00:00",
+  "discovery_date": "2026-W33",
+  "overall_score": 14,
+  "recommendation": "Read later",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-13T19:49:41.932939+00:00"
+}

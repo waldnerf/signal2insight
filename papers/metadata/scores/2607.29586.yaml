@@ -1,0 +1,23 @@
+enterprise_problem: None -- inferring abstract grid transformations from few examples
+  on the ARC benchmark.
+headline: Supervise the intermediate steps, not just the final grid.
+recommendation_reasoning: ARC-AGI reasoning research. The ablation finding is the
+  interesting part -- step-by-step trace supervision only helps when paired with grounding,
+  neither alone is enough -- which rhymes with practical experience of chain-of-thought
+  supervision. But the task is abstract visual grid puzzles, the contribution is a
+  vision transformer training scheme, and there is no path from 67.8% pass@2 on ARC-AGI-1
+  to any enterprise decision.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

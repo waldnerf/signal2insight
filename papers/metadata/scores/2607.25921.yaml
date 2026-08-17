@@ -1,0 +1,29 @@
+enterprise_problem: Whether a vision-language model can be trusted to detect defects
+  autonomously, or only to shortlist candidates for a later stage.
+headline: Vision-language models belong at the top of an inspection funnel, not at
+  the end of it.
+recommendation_reasoning: 'The conclusion is the transferable part and it is a useful
+  piece of deployment discipline: six models all produced substantial false positives
+  on ambiguous frames, so they are high-recall candidate filters inside a multi-stage
+  pipeline rather than standalone detectors, and open-source models swung wildly with
+  prompt design while the strongest was prompt-robust. Narrow as research -- zero-shot
+  prompting on geometry clipping in video game QA, a computer-vision task in a non-priority
+  domain. Kept as reference for the funnel pattern and the prompt-sensitivity finding.'
+business_functions:
+- Engineering
+- Operations
+- Product
+enterprise_ai_themes:
+- Evaluation
+- Reliability
+- Agentic AI
+primary_type: Evaluation methodology
+adoption_horizon: <12 months
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Read later
+fulltext_reassessed: false

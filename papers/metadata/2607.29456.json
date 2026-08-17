@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2607.29456",
+  "title": "Analytical and Bootstrap Confidence Intervals of Double Machine Learning: Simulation studies and an application to rural-urban difference in obesity prevalence",
+  "authors": [
+    "Haozheng Xu",
+    "Siyuan Ma",
+    "Qingyan Xiang"
+  ],
+  "abstract": "Double Machine Learning (DML) is a popular approach for treatment effect estimation in various settings, which allows a wide range of flexible machine learning methods to be used for nuisance parameter estimation while preserving valid inference. In practice, however, applied researchers must choose among many machine learning algorithms for nuisance models, and the impact of this choice on the variance estimation of DML is not well characterized. We conduct a comprehensive simulation study to compare the coverage probability of DML confidence intervals across different machine learning algorithms. In this study, we compare (1) analytical confidence intervals derived by DML theory versus (2) bootstrap confidence interval. We use a set of learners including ordinary least squares, LASSO, Random Forest, LightGBM, and Neural Networks under different data generation settings. We evaluate the performance across difference settings by bias, confidence interval width, and most importantly, coverage probability. Our results show substantial variability in coverage performance across analytical and bootstrap confidence intervals, highlighting that learner choice plays a critical role in reliable DML inference. Surprisingly, we find that in many settings, when sample size increases, the coverage probability of both DML analytical and bootstrap confidence interval decreases. We further investigate coverage probabilities using a real dataset on rural urban differences among U.S. counties. The real data analysis discovers that (1) the model performance still varies by the learner choices and (2) greater rurality has a statistically significant increasing effect on county level obesity prevalence.",
+  "categories": [
+    "stat.ML",
+    "cs.LG",
+    "stat.AP"
+  ],
+  "published": "2026-07-31T14:22:33Z",
+  "updated": "2026-07-31T14:22:33Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29456v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:43:02.288319+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 9,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:45:41.379765+00:00"
+}

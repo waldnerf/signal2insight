@@ -1,0 +1,33 @@
+enterprise_problem: Code-reasoning benchmarks measure function-level tasks, so buyers
+  of AI coding tools have no evidence about performance on real multi-file repositories
+  with complex dependencies.
+headline: Coding assistants look strong on single functions and fall apart across
+  your repository.
+recommendation_reasoning: 'Targets the exact gap between coding-assistant demos and
+  enterprise codebases, with a defensible construction (dynamic pytest tracing for
+  ground-truth call chains, LLM rewriting to suppress memorization). Three findings
+  an engineering leader can use directly: 69.1% Pass@1 even with oracle context, high
+  precision but low recall on call chains, and longer context not helping due to noise.
+  Not transformational and confined to evaluation rather than a fix, so worth a full
+  read rather than priority. || Recalibrated 2026-07-29. ''Coding assistants fail
+  across a real repository'' is a question a CTO asks, but the paper is a benchmark
+  construction for engineers and offers no business decision beyond tool selection.
+  Demoted to Read later.'
+business_functions:
+- Engineering
+- CIO/CTO
+- Product
+enterprise_ai_themes:
+- Evaluation
+- Reliability
+- Agentic AI
+primary_type: Benchmark
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 2
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

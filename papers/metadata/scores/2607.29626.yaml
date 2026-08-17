@@ -1,0 +1,33 @@
+enterprise_problem: Nobody knows whether an LLM agent can actually read the results
+  of its own experiments and make better decisions on the next iteration, as opposed
+  to producing plausible one-shot answers.
+headline: Agents can propose a better experiment once, but they stall when they have
+  to keep improving from their own logs.
+recommendation_reasoning: 'The general finding is more interesting than the benchmark''s
+  domain: across 12 agents, sustained iterative refinement and log diagnosis are where
+  agents break down, not the individual decision. That limitation is not specific
+  to hyperparameter tuning and matters to anyone deploying an agent expected to improve
+  over a long-running task. Held below the eligibility line on scope: 30 tasks, all
+  ML research workflows, so the audience that reads it directly is data science rather
+  than business leadership, and the generalisation to other agentic workloads is my
+  inference, not something the paper evidences. Per the standing rule I would rather
+  pull another batch than promote a narrow benchmark on an extrapolated reading. Revisit
+  if agent-reliability-over-time becomes a theme with more support behind it.'
+business_functions:
+- Data Science
+- Engineering
+- Chief AI Officer
+enterprise_ai_themes:
+- Agentic AI
+- Evaluation
+- Reliability
+primary_type: Benchmark
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 16
+recommendation: Read later
+fulltext_reassessed: false

@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2607.29557",
+  "title": "Alteron: A Tool for Behavioral Regression Testing Across NLP Classifier Versions",
+  "authors": [
+    "Shazzad Hossain",
+    "Proma Chowdhury",
+    "Mridha Md. Nafis Fuad"
+  ],
+  "abstract": "Evaluating evolving Natural Language Processing (NLP) models is important for ensuring reliable behavior across updates, but standard benchmark metrics do not fully capture how model behavior changes across versions. Existing work has focused mainly on testing models in isolation rather than comparing successive versions in continuous integration workflows. We present Alteron, a tool for detecting behavioral regressions across NLP model versions with metamorphic testing. Alteron constructs a test corpus from labeled source examples and compares model versions on metamorphically transformed inputs. In an evaluation spanning 10 metamorphic relations (MRs), 4 model versions, and 3 model-update transitions, Alteron identified 16 behavioral regressions, 11 of which were release-blocking. The results show that common model updates can preserve overall task performance while still introducing undesirable behavior changes, and that behavioral checks across model versions can reveal failures that aggregate benchmark metrics alone do not capture. The tool is open-source and available at https://github.com/shazzad5709/alteron. A screencast demonstration is available at https://youtu.be/szwiWW5O4do.",
+  "categories": [
+    "cs.SE"
+  ],
+  "published": "2026-07-31T15:48:31Z",
+  "updated": "2026-07-31T15:48:31Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29557v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:31:17.273405+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 11,
+  "recommendation": "Archive",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:34:17.917265+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "archive",
+  "human_reviewed_at": "2026-08-03T21:42:30.470358+00:00"
+}

@@ -1,0 +1,22 @@
+enterprise_problem: None identified -- inference acceleration for image and video
+  generative models.
+headline: Trajectory-based distillation speeds up video generation without mode collapse.
+recommendation_reasoning: Competent work on diffusion and flow-model sampling cost,
+  but generative media production sits outside this profile -- the mission is how
+  enterprise AI systems are designed, evaluated and deployed, and creative-content
+  generation is not in the topic lists.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Cost Optimization
+- Other
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 11
+recommendation: Ignore
+fulltext_reassessed: false

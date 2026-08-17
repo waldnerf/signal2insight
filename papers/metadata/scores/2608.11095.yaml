@@ -1,0 +1,32 @@
+enterprise_problem: 'Agentic coding instruction files (CLAUDE.md, cursorrules, and
+  similar) grow without bound because deleting an instruction whose rationale has
+  been lost risks a correctness regression, so engineering teams only ever append.
+  The paper names and quantifies this failure mode and shows a low-cost fix: writing
+  the rationale as a comment instead of leaving it implicit.'
+headline: AI coding agents don't forget instructions, they hoard them -- and the fix
+  is writing down why, not curating what.
+recommendation_reasoning: 'Large-scale empirical characterization (247,694 instruction
+  lifetimes across 1,867 repositories) names and quantifies a real, underappreciated
+  failure mode in agentic coding practice: instruction files that only ever grow because
+  deleting undocumented rationale is too risky. The proposed fix -- embedding rationale
+  as comments -- is validated two ways: a controlled synthetic setting (99.3% reduction
+  in excess instructions) and a real-world benchmark (+23.1% instruction-following).
+  Directly actionable for any engineering org running Claude Code, Cursor, or similar
+  agents today, with a strong, quotable ''catastrophic remembering'' framing that
+  gives this a clean governance/AI-tooling-debt narrative.'
+business_functions:
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- Agentic AI
+- LLMOps
+primary_type: Engineering technique
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 5
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 5
+overall_score: 22
+recommendation: Priority review
+fulltext_reassessed: false

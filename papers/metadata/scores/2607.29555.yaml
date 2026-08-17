@@ -1,0 +1,21 @@
+enterprise_problem: None -- a counterexample to a 2015 conjecture in convex geometry.
+headline: Adding a vertex can make the polytope harder, not easier.
+recommendation_reasoning: 'Pure mathematics: an exact six-point counterexample refuting
+  the Lacoste-Julien and Jaggi pyramidal width conjecture, with a dependency-free
+  exact verifier. Evidence quality is a 5 in the literal sense that the result is
+  certified rather than merely tested, which says more about the rubric meeting a
+  proof than about the paper''s fit. No enterprise relevance of any kind.'
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 5
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 11
+recommendation: Ignore
+fulltext_reassessed: false

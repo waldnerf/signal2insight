@@ -1,0 +1,31 @@
+enterprise_problem: Feeding source code to multimodal models is expensive in tokens,
+  and fixed compression settings waste budget on blank layout regions and code irrelevant
+  to the current request.
+headline: A picture of your code can cost less than the code itself -- 71% fewer tokens
+  without losing accuracy.
+recommendation_reasoning: 'There is a genuinely counterintuitive hook here -- rendering
+  code as an image and pruning it visually beats sending the text, cutting visual
+  tokens up to 71.2% while matching or exceeding uncompressed text-only input. That
+  is the rare technical result with a quotable shape. But the audience that can act
+  on it is a team building its own multimodal code pipeline, which is a narrow slice
+  even within engineering, and the three-component architecture (blank-free rendering,
+  RL-trained configuration agent, instruction-aware token pruning) needs explaining
+  before the saving means anything. Evidence is adequate but confined to three code
+  tasks. Story potential 3 rather than 4: surprising to an engineer, and per C9 that
+  is not the same as surprising to an executive.'
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- Cost Optimization
+- Infrastructure
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 3
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

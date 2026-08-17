@@ -1,0 +1,32 @@
+enterprise_problem: Agentic LLM serving re-tokenizes an entire long transcript on
+  every tool call, so tokenization becomes the dominant latency cost once prompt caching
+  has removed everything else.
+headline: 'Once caching works, tokenization becomes the bottleneck: up to 64% of time-to-first-token
+  in agent serving.'
+recommendation_reasoning: 'Technically excellent and unusually well evidenced -- 153,951
+  real agent calls, 17 tokenizer families, 1.5x10^10 differential split checks with
+  zero divergence, and honest end-to-end numbers (16-34% median TTFT reduction, 1,821
+  req/s versus 40 for a stateless front end). But this is the pattern the reviewer
+  has rejected twice: it serves platform and inference-infrastructure teams and nobody
+  above them. Explaining why it matters requires token boundaries, BPE pre-tokenization
+  and prefix-cache behaviour first, which per C8 means translatability is low, not
+  that the explanation is still owed. Also inaccessible to almost every enterprise
+  in practice -- it is a serving-stack change, relevant only if you run your own inference.
+  C8/C9 held at 2 for consistency with 2607.25987. Genuinely good work, wrong audience.'
+business_functions:
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- Infrastructure
+- Cost Optimization
+- Agentic AI
+primary_type: System architecture
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 5
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 16
+recommendation: Read later
+fulltext_reassessed: false

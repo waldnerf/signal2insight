@@ -1,0 +1,25 @@
+enterprise_problem: 'Non-experts designing human-aligned reward functions: making
+  AI objectives explicit, testable, and values-coherent'
+headline: 'Reward function engineering for non-experts: Making AI objectives explicit
+  and testable'
+recommendation_reasoning: 'High cross-industry relevance. Enterprises deploying AI
+  systems today face exactly this problem: how do we encode our values into objectives?
+  Direct exec/product decision hook: ''what should this AI optimize for?'' Also, cross-industry
+  and cross-vertical — applicable to any org using optimization.'
+business_functions:
+- Product
+- Operations
+- Chief AI Officer
+enterprise_ai_themes:
+- Governance
+- Evaluation
+primary_type: Framework
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 4
+overall_score: 20
+recommendation: Priority review
+fulltext_reassessed: false

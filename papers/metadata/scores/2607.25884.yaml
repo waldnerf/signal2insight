@@ -1,0 +1,26 @@
+enterprise_problem: Inference cost and latency on constrained hardware, where quantisation
+  choices are made without knowledge of the target machine.
+headline: Optimal quantisation settings depend on the hardware, so choosing them before
+  the compiler is wasted effort.
+recommendation_reasoning: Up to 12.19x faster inference within 1.44% of baseline accuracy
+  is a real cost result, and the finding that optimal policies are hardware-dependent
+  is the kind of thing that invalidates a common practice. But the argument lives
+  entirely in compiler passes, TOSA lowering and evolutionary search over bit-widths,
+  with no reader outside a systems team. On-topic for infrastructure cost, not worth
+  acting on now.
+business_functions:
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- Cost Optimization
+- Infrastructure
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 1
+overall_score: 12
+recommendation: Archive
+fulltext_reassessed: false

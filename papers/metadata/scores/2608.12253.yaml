@@ -1,0 +1,20 @@
+enterprise_problem: Multi-agent RL for human-AI interaction fails to generalize when
+  using a single LLM to simulate human behavior
+headline: 'Simulator collapse: Multi-agent RL with single LLM simulation fails'
+recommendation_reasoning: Important research finding for RL practitioners, but multi-agent
+  RL with LLM simulation is a niche practice. This is a research finding, not enterprise-actionable
+  guidance.
+business_functions:
+- Engineering
+enterprise_ai_themes:
+- Agentic AI
+primary_type: Research
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 12
+recommendation: Ignore
+fulltext_reassessed: false

@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2607.26001",
+  "title": "Sharpness-Aware Minimization and Muon: Robustness under the Spectral Norm",
+  "authors": [
+    "Wenzhi Zhong",
+    "Edward Milsom",
+    "Michael Murray"
+  ],
+  "abstract": "Sharpness-Aware Minimization (SAM) aims to improve generalization by encouraging insensitivity to small, worst-case parameter perturbations. However, the notion of a \"small\" perturbation is inherently geometry-dependent: while existing SAM variants have explored a wide range of choices, a clear perspective on which geometries are most effective in practice remains elusive. Recent work on matrix-aware optimization, particularly the Muon optimizer, suggests that respecting the matrix structure of hidden-layer weights can lead to strong empirical performance. Motivated by this, we study matrix-aware geometry in both stages of SAM: we introduce a layerwise spectral inner perturbation for matrix-valued hidden-layer parameters and combine it with either AdamW/SGDW or Muon in the outer update. Across ImageNet-1K experiments on ViT-Small/16 and ResNet-50, we find that the combination of a spectral inner step with a Muon outer step performs consistently strongly, achieving the best validation accuracy on both models among the evaluated methods.",
+  "categories": [
+    "cs.LG",
+    "stat.ML"
+  ],
+  "published": "2026-07-28T17:18:11Z",
+  "updated": "2026-07-28T17:18:11Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.26001v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-07-29T21:17:23.472500+00:00",
+  "discovery_date": "2026-W31",
+  "overall_score": 9,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-07-29T21:20:44.984972+00:00"
+}

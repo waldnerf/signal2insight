@@ -1,0 +1,26 @@
+enterprise_problem: Transformer inference energy and cost at scale, addressed at the
+  hardware layer rather than the model layer.
+headline: Photonic accelerators chase transformer inference energy at the silicon
+  layer.
+recommendation_reasoning: 'On-topic in theme only -- inference cost and infrastructure
+  are enterprise concerns, and the reported 63.6% power and 40.6% energy savings are
+  substantial. But this is a photonic accelerator co-design evaluated on DeiT and
+  BERT: no enterprise can act on it in any planning horizon, procurement included,
+  and the argument cannot be made without optics vocabulary. Archived as on-topic
+  but not worth acting on now rather than ignored outright.'
+business_functions:
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- Infrastructure
+- Cost Optimization
+primary_type: System architecture
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Archive
+fulltext_reassessed: false

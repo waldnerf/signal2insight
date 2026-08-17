@@ -1,0 +1,29 @@
+enterprise_problem: Long-horizon forecasting over heterogeneous sensor data for scheduling
+  and predictive maintenance.
+headline: Retrieval-augmented forecasting, if you can retrieve on shape rather than
+  magnitude.
+recommendation_reasoning: 'Applying retrieval augmentation to time series rather than
+  text is a reasonable idea, and the specific obstacle named -- historical similarity
+  does not imply future consistency, so naive nearest-neighbour retrieval pulls in
+  misleading references -- is a genuine one. But evidence_quality is held at 2 for
+  a basic reason: the title names TFGformer and the abstract describes a different
+  system called CrossRAG throughout, with no reconciliation. That is a signal about
+  care taken. Combined with an IoT-sensor vertical framing and seven public benchmarks
+  with no deployment, there is nothing here for this profile.'
+business_functions:
+- Operations
+- Data Science
+enterprise_ai_themes:
+- RAG
+- Infrastructure
+- Other
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

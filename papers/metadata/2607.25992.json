@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2607.25992",
+  "title": "MemLens: A Value-Aware Memory Management System with Interactive Analytics for LLM-based Agents",
+  "authors": [
+    "Shuyue Wei",
+    "Chang Liu",
+    "Zimu Zhou",
+    "Yongxin Tong",
+    "Lizhen Cui"
+  ],
+  "abstract": "Recently, memory management has become a key infrastructure for LLM-based agents, as it directly affects long-horizon reasoning, personalized responses, and knowledge reuse. However, existing LLM memory systems typically adopt a coarse-grained (utility-agnostic) manner that treats heterogeneous user-LLM interaction records uniformly, leading to redundant and low-impact records persisting in the memory repository. To address this challenge, we present MemLens, a value-aware memory management system that takes memory records as first-class data objects. MemLens provides an end-to-end interactive analytics dashboard that exposes the complete memory lifecycle, including Shapley-style memory evaluation, value-aware storage, and memory-assisted response. Through a study-copilot application, the system enables users to inspect memory values, visualize hierarchical memory structures, and compare various memory management strategies in terms of response quality, retrieval latency, and token consumption. Therefore, our MemLens can serve as an efficient, interpretable, and personalized long-term memory management system for LLM-based agents.",
+  "categories": [
+    "cs.DB",
+    "cs.AI"
+  ],
+  "published": "2026-07-28T17:08:56Z",
+  "updated": "2026-07-28T17:08:56Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25992v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-07-29T21:17:23.473977+00:00",
+  "discovery_date": "2026-W31",
+  "overall_score": 12,
+  "recommendation": "Read later",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-07-29T21:47:43.887144+00:00"
+}

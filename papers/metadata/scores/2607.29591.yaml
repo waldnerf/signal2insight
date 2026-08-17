@@ -1,0 +1,25 @@
+enterprise_problem: Long-context inference needs KV cache compression, and existing
+  eviction methods permanently discard information that still contributed to the answer.
+headline: Reconstruct what cache eviction threw away instead of accepting the loss.
+recommendation_reasoning: 'Solid inference-internals work with broad evaluation across
+  LongBench and RULER, multiple backbones and cache budgets. It is also the exact
+  example the rubric names as a C8 trap: KV-cache eviction theory cannot be connected
+  to a business decision without teaching softmax attention normalisation first. Relevant
+  only to teams running their own serving stack, and even there it is a component-level
+  optimisation rather than a design choice anyone above the platform team would weigh
+  in on.'
+business_functions:
+- Engineering
+enterprise_ai_themes:
+- Infrastructure
+- Cost Optimization
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 11
+recommendation: Ignore
+fulltext_reassessed: false

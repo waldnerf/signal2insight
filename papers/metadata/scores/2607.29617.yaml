@@ -1,0 +1,25 @@
+enterprise_problem: None directly -- this is learning theory about when interactive
+  expert querying beats offline imitation.
+headline: Interacting with the expert lets a weaker model get away with representing
+  less.
+recommendation_reasoning: A clean theoretical result with matching upper and lower
+  bounds -- interaction relaxes representational demands from realising the expert's
+  policy to realising its value function -- and it does touch distillation, which
+  enterprises care about in the abstract. But it is stated entirely in the language
+  of realizability and policy classes, and there is no deployment, cost or reliability
+  framing anywhere. Per C8, needing to teach value-function realizability before the
+  implication lands is the signal to score this low, not to owe the explanation.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 11
+recommendation: Ignore
+fulltext_reassessed: false

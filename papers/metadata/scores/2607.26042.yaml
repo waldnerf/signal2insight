@@ -1,0 +1,28 @@
+enterprise_problem: Turning a static classification model into a workflow that gathers
+  evidence, calls tools, applies safety rules and escalates uncertain cases.
+headline: Wrapping a classifier in an agentic workflow with deterministic safety rules
+  and escalation.
+recommendation_reasoning: The separation of agent interaction from workflow orchestration,
+  with deterministic safety checks and escalation of uncertain cases, is a reusable
+  enterprise agent pattern and the reason this is not an outright ignore. But the
+  contribution is an application assembly in a veterinary imaging domain, the evaluation
+  amounts to 'image-only is limited, multimodal is better' with no numbers, and the
+  pattern itself is already well covered elsewhere in the wiki. On-topic, not worth
+  acting on.
+business_functions:
+- Engineering
+- Operations
+enterprise_ai_themes:
+- Agentic AI
+- Reliability
+- Other
+primary_type: System architecture
+adoption_horizon: <12 months
+novelty: 2
+evidence_quality: 2
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 11
+recommendation: Archive
+fulltext_reassessed: false

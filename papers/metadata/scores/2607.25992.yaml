@@ -1,0 +1,34 @@
+enterprise_problem: Agent memory stores treat every interaction record as equally
+  worth keeping, so low-value records accumulate and inflate retrieval latency and
+  token spend.
+headline: Not every memory is worth keeping -- agent memory needs a value ledger,
+  not just a store.
+recommendation_reasoning: 'Treats memory records as first-class objects with a measurable
+  value, and instruments the whole lifecycle so response quality, retrieval latency
+  and token consumption can be compared across retention strategies. That combination
+  of memory plus observability plus cost sits squarely in the profile, and the pitch
+  translates without ML vocabulary. Evidence is the weak point: a single study-copilot
+  application with no reported numbers, reading like a system demo. Full-text reading
+  is the right place to test whether the Shapley-style valuation holds up. || Recalibrated
+  2026-07-29. Memory retention cost is framed in retrieval latency and token consumption,
+  which are platform metrics; combined with demo-grade evidence there is no business
+  reader here. Demoted to Read later.'
+business_functions:
+- Engineering
+- Data Science
+- Operations
+enterprise_ai_themes:
+- Memory
+- Agentic AI
+- Observability
+- Cost Optimization
+primary_type: System architecture
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Read later
+fulltext_reassessed: false

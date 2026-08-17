@@ -1,0 +1,26 @@
+enterprise_problem: Summarising where the dense regions of a dataset are, without
+  leaking information about any individual record.
+headline: Private mode estimation, at near-optimal error rates.
+recommendation_reasoning: Differential privacy touches governance, which is a priority
+  topic, so this is not off-mission by subject. But it is a statistics paper -- minimax
+  lower bounds, Holder smoothness classes, asymptotic rates -- and the contribution
+  is theoretical optimality for modal estimation, regression and clustering. Nothing
+  here changes how an enterprise designs, evaluates or deploys an AI system, and no
+  business function could act on it without a statistics background. Ignore on execution
+  and audience, not on topic.
+business_functions:
+- Data Science
+- Compliance
+enterprise_ai_themes:
+- Governance
+- Security
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

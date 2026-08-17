@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2607.25887",
+  "title": "Device Invariance using Domain Adaptation on Acoustic Scene Classification",
+  "authors": [
+    "Abhishek dileep",
+    "Shubham Sharma",
+    "Padmanabhan Rajan"
+  ],
+  "abstract": "This paper explores the effectiveness of domain adaptation techniques when using convolutional neural network (CNN)-based and transformer-based feature representations for acoustic scene classification. Two well-known domain adaptation techniques, namely domain adversarial neural network (also called DANN) and conditional domain adversarial network (also called CDAN) are evaluated under various domain shifts. Our study indicates that DANN provides effective domain adaptation fairly consistently for both feature extractors. On the other hand, CDAN provides effective domain adaptation only for CNN-based feature extractors. The study gives insights into how domain adaptation methods may need to be tailored to the underlying feature representation. Experimental evaluation with multiple devices on the DCASE 2020 dataset supports the observations.",
+  "categories": [
+    "eess.AS",
+    "cs.AI",
+    "cs.SD"
+  ],
+  "published": "2026-07-28T15:47:37Z",
+  "updated": "2026-07-28T15:47:37Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25887v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-07-29T22:01:10.345427+00:00",
+  "discovery_date": "2026-W31",
+  "overall_score": 8,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-07-29T22:03:50.655007+00:00"
+}

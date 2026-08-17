@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2607.25925",
+  "title": "dtControl2+$\\varepsilon$: Trading Optimality for Explainability in MDPs via Decision Trees",
+  "authors": [
+    "Tereza Kinská",
+    "Jan Křetínský",
+    "Tobias Meggendorfer",
+    "Sabine Rieder",
+    "Maximilian Weininger"
+  ],
+  "abstract": "Over the past decade, decision trees have been used to represent controllers (a.k.a. policies) in an explainable way, with dtControl2 as a current state-of-the-art tool. However, for systems that are large or have many corner cases, even such representations tend to be too complex and not human-comprehensible. Unfortunately, reducing the size of the decision tree is not straightforward, as missing just a single crucial case might result in an incorrect controller. We tackle this issue in the setting of Markov decision processes, extending dtControl2 by \"$\\varepsilon$\" functionality: Given an allowed imprecision $\\varepsilon \\geq 0$, we construct a smaller decision tree, distilling the essence of the controller, while still guaranteeing its $\\varepsilon$-optimality. This enables us to provide tunably simpler explanations, omitting a controllable amount of detail. Our tool constructs decision trees that are orders of magnitude smaller than the state of the art.",
+  "categories": [
+    "cs.AI"
+  ],
+  "published": "2026-07-28T16:15:11Z",
+  "updated": "2026-07-28T16:15:11Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25925v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-07-29T21:20:49.545212+00:00",
+  "discovery_date": "2026-W31",
+  "overall_score": 13,
+  "recommendation": "Read later",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-07-29T21:23:33.974392+00:00"
+}

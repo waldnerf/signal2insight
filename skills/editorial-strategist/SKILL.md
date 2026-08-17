@@ -30,7 +30,7 @@ If the user gives feedback without naming a paper explicitly, ask which one rath
 When asked to review the model, or periodically (e.g. monthly), cross-reference:
 
 - `../../logs/feedback.jsonl` ratings against each paper's tags/concepts (from `../../ArxivWiki/papers/**/*.md` front matter) and original triage scores (`../../papers/metadata/scores/*.yaml`) — which topics correlate with `Excellent`/`Good` feedback versus `Average`/`Ignore`?
-- `../../papers/papers.csv`'s `LinkedIn written` column against tags/scores — what do papers that actually became content have in common? High `linkedin_potential` or `business_implication` alone, or a specific topic cluster?
+- `../../papers/papers.csv`'s `LinkedIn written` column against tags/scores — what do papers that actually became content have in common? High `story_potential` or `business_translatability` alone, or a specific topic cluster?
 - Papers `status: "ignored"` at triage — do enough of them share a topic that keeps recurring in feedback as something the user wishes they'd seen, suggesting a `priority_topics` gap rather than a correct exclusion?
 - Author and venue patterns across `Excellent`-rated papers — is there a small set of labs/authors worth tracking explicitly, even though the config doesn't currently have an `authors_to_watch` list?
 

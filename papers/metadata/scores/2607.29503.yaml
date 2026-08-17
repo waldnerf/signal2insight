@@ -1,0 +1,27 @@
+enterprise_problem: A model that generalises perfectly on its test set can still be
+  fragile -- it may lose what it knew as soon as it is trained on anything new.
+headline: Perfect generalisation does not imply robustness -- and the test set cannot
+  tell the difference.
+recommendation_reasoning: 'The headline finding is real and would matter to anyone
+  running continuous fine-tuning: two models with identical saturated performance
+  diverge sharply under new training, one dropping from 100% to below 75% while the
+  other holds around 95%. The effective-rank explanation is a satisfying mechanism.
+  But the setting is grokking on modular arithmetic, the alternative model is sampled
+  by Wang-Landau molecular dynamics rather than trained by anything an enterprise
+  would run, and stating the implication requires Boltzmann entropy over parameter
+  space as a prior concept. Good science, no enterprise reader.'
+business_functions:
+- Data Science
+enterprise_ai_themes:
+- Reliability
+- Fine-tuning
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 2
+story_potential: 3
+overall_score: 13
+recommendation: Ignore
+fulltext_reassessed: false

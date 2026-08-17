@@ -1,0 +1,31 @@
+enterprise_problem: Deep learning is being deployed in high-risk domains faster than
+  anyone can objectively check whether its explanations are faithful, leaving explainability
+  claims unverifiable.
+headline: A single score for whether an AI explanation is honest -- validated against
+  what humans actually saw.
+recommendation_reasoning: 'On-topic for governance and the human-validation step is
+  the right instinct: the EPC score is checked against human lexical sentiment judgments
+  and spatial annotations rather than only against other metrics. But it is a metric-about-metrics,
+  and using it requires already running XAI tooling and caring about sparsity-versus-performance
+  trade-offs -- several inferential steps from any decision a compliance officer is
+  currently making. Validation spans tabular, text and image but with no indication
+  of scale or of a regulated deployment actually using it. Archive rather than Ignore:
+  explainability assurance is squarely in the mission and a stronger paper on it should
+  be picked up, but there is nothing to act on here now.'
+business_functions:
+- Compliance
+- Data Science
+- Security
+enterprise_ai_themes:
+- Governance
+- Evaluation
+primary_type: Evaluation methodology
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Archive
+fulltext_reassessed: false

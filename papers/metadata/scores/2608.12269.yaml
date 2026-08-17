@@ -1,0 +1,22 @@
+enterprise_problem: Detecting accusatory language in public procurement documents
+  for audit oversight and compliance
+headline: 'Automating audit oversight: NLP detection of accusatory language in procurement'
+recommendation_reasoning: Relevant to procurement/audit compliance, but vertical-specific
+  to public sector and large organizations with formal procurement. Not cross-industry.
+  Also, the audience is compliance/audit, not an exec making a strategic decision.
+business_functions:
+- Compliance
+- Operations
+enterprise_ai_themes:
+- Governance
+- Observability
+primary_type: Operational guidance
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 2
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

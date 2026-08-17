@@ -1,0 +1,17 @@
+enterprise_problem: Improved 3D medical image segmentation for cardiac radiotherapy
+  planning
+headline: 3D medical image segmentation for cardiac planning
+recommendation_reasoning: Medical imaging vertical. Not general enterprise AI. Out
+  of scope.
+business_functions: []
+enterprise_ai_themes: []
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

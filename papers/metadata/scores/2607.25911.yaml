@@ -1,0 +1,23 @@
+enterprise_problem: Automating chart annotation, which requires satisfying visual,
+  semantic and stylistic constraints at once.
+headline: A first benchmark for whether models can annotate a chart usefully.
+recommendation_reasoning: Automated reporting and chart narration is a plausible enterprise
+  interest, and nobody had built an evaluation for the annotation step, so the gap
+  is real. But this is a narrow visualization-tooling benchmark judged by a VLM, with
+  no business decision attached. Archived as adjacent.
+business_functions:
+- Product
+- Other
+enterprise_ai_themes:
+- Evaluation
+- Other
+primary_type: Benchmark
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Archive
+fulltext_reassessed: false

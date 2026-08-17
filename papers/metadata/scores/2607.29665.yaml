@@ -1,0 +1,21 @@
+enterprise_problem: None -- this recovers governing partial differential equations
+  from sparse scientific observations.
+headline: Freeze the reconstructed field first, then pick the equation.
+recommendation_reasoning: Scientific machine learning for PDE discovery, evaluated
+  on MDBench regimes including Kuramoto-Sivashinsky dynamics. Methodologically careful
+  -- decoupling field reconstruction from term selection is a real contribution --
+  and completely outside enterprise AI. No enterprise reader of any function.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

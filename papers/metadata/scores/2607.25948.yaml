@@ -1,0 +1,29 @@
+enterprise_problem: Multimodal systems are typically assembled from modality-specific
+  heads and task pipelines, which blocks reuse of strong pre-trained decoder-only
+  models.
+headline: One symmetric model for every modality, able to check its own output against
+  another.
+recommendation_reasoning: 'Treating every modality as both input and output enables
+  cross-modal self-verification -- scoring the model''s own output against another
+  modality it generated -- which is a genuinely interesting reliability primitive
+  and the reason this is not archived. Multimodal is a secondary topic, and the evidence
+  is soft: ''competitive with specialist and multitask baselines'' and ''strong out-of-the-box
+  performance'' without the numbers to judge. Open-sourced, so verifiable later if
+  the self-verification angle becomes relevant.'
+business_functions:
+- Data Science
+- Engineering
+enterprise_ai_themes:
+- Infrastructure
+- Reliability
+- Other
+primary_type: System architecture
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 3
+overall_score: 13
+recommendation: Read later
+fulltext_reassessed: false

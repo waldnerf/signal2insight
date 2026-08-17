@@ -1,0 +1,33 @@
+enterprise_problem: When generated code fails, there is no record connecting the failure
+  back to the decision that produced it, so nobody can scope a justified repair or
+  answer who was responsible for what.
+headline: Treat the audit trail as an output of code generation, not something reconstructed
+  afterwards.
+recommendation_reasoning: 'The premise is right and will matter more as generated
+  code enters regulated systems: emit the construction record as a joint output so
+  a failure can be traced to the decision that caused it and a repair can be bounded
+  rather than regenerating everything. Trace coverage of 0.9725 shows the auditability
+  part works. But the results are honestly weak where it counts -- it trails AgentCoder
+  by 7.5 to 8.5 points on APPS, and the failure locator identifies a node for only
+  26 of 60 failures with 17 of those repairs passing. Paying an 8-point capability
+  penalty for auditability is a trade few teams will take today. The honesty is a
+  point in its favour and the direction is worth tracking; there is nothing to act
+  on yet.'
+business_functions:
+- Engineering
+- Compliance
+- CIO/CTO
+enterprise_ai_themes:
+- Governance
+- Agentic AI
+- Reliability
+primary_type: System architecture
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 3
+story_potential: 3
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

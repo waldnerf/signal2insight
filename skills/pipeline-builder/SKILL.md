@@ -7,7 +7,7 @@ description: Build, repair, and schedule the research pipeline's automation — 
 
 ## Purpose
 
-Build and maintain the automation that the other 5 skills run on top of. This skill never judges a paper — it only makes sure folders, scripts, and schedules exist, run cleanly, and leave a trail.
+Build and maintain the automation that the other 6 skills run on top of. This skill never judges a paper — it only makes sure folders, scripts, and schedules exist, run cleanly, and leave a trail.
 
 ## Responsibilities
 
@@ -28,8 +28,11 @@ skills/research-discovery/scripts/fetch.py
 skills/research-discovery/scripts/download_top.py
 skills/editorial-triage/scripts/apply_scores.py
 skills/editorial-triage/scripts/reassess_fulltext.py
+skills/editorial-review/scripts/build_summary.py
+skills/editorial-review/scripts/apply_human_review.py
 skills/knowledge-extraction/scripts/apply_extraction.py
 skills/research-librarian/scripts/build_index.py
+skills/theme-dashboard/scripts/build_dashboard.py
 ```
 
 If any of these are missing (fresh clone, accidental deletion), recreate them — this is idempotent, safe to run any time:
@@ -50,47 +53,71 @@ python -c "import ast; ast.parse(open('skills/research-discovery/scripts/downloa
 python -c "import ast; ast.parse(open('skills/editorial-triage/scripts/apply_scores.py', encoding='utf-8').read())"
 python -c "import ast; ast.parse(open('skills/editorial-triage/scripts/reassess_fulltext.py', encoding='utf-8').read())"
 python -c "import ast; ast.parse(open('skills/knowledge-extraction/scripts/apply_extraction.py', encoding='utf-8').read())"
+python -c "import ast; ast.parse(open('skills/editorial-review/scripts/build_summary.py', encoding='utf-8').read())"
+python -c "import ast; ast.parse(open('skills/editorial-review/scripts/apply_human_review.py', encoding='utf-8').read())"
 python -c "import ast; ast.parse(open('skills/research-librarian/scripts/build_index.py', encoding='utf-8').read())"
+python -c "import ast; ast.parse(open('skills/theme-dashboard/scripts/build_dashboard.py', encoding='utf-8').read())"
 python -c "import yaml" || echo "PyYAML missing: pip install pyyaml"
 ```
+
+On Windows, a bare `python` may resolve to the Microsoft Store alias stub rather than a real interpreter (it errors instead of running anything) — if so, use a conda installation's interpreter instead, either via `conda activate <env>` first or by invoking `<conda-env-path>\python.exe` directly for every command above and in the full pipeline run below.
+
+**Turn off Avast's HTTPS/TLS scanning before starting a run.** Avast's Web/Mail Shield intercepts every outbound TLS connection and re-signs it with `CN=Avast Web/Mail Shield Root`. That root is trusted by the Windows certificate store, but OpenSSL 3.5+ (which anaconda's Python links against) rejects it outright — its Basic Constraints extension isn't marked critical, which RFC 5280 requires of a CA certificate. Both network scripts then die after their 3 retries with:
+
+```
+[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical
+```
+
+This is not a pipeline fault and no code change fixes it — adding the Avast root to `certifi`'s bundle doesn't help either, because OpenSSL rejects the certificate's *structure*, not its trust status. Disable HTTPS scanning in Avast (Menu → Settings → Protection → Core Shields → Web Shield → uncheck "Enable HTTPS scanning"), or add `arxiv.org` to its exclusions, before step 1. Verify in one call:
+
+```bash
+<conda-env-path>\python.exe -c "import urllib.request; print(urllib.request.urlopen('https://export.arxiv.org/api/query?search_query=cat:cs.AI&max_results=1', timeout=30).status)"
+```
+
+`200` means the run can proceed. It affects `fetch.py` and `download_top.py` only — the judgment, write-out, and index steps touch no network.
 
 ### 3. Full pipeline run
 
 The end-to-end sequence, in order (each step depends on the previous one's output):
 
-1. `python skills/research-discovery/scripts/fetch.py` — [[research-discovery]] phase 1, metadata only, no PDFs yet
-2. Screen everything newly queued, then `python skills/editorial-triage/scripts/apply_scores.py <batch.json>` — [[editorial-triage]] (the judgment is reasoning, the write-out is scripted)
+1. **Loop, until `download_top_n` papers have been human-approved (default 5) or arXiv results run out:**
+   a. `python skills/research-discovery/scripts/fetch.py --batch-size 20` — [[research-discovery]] phase 1, metadata only, no PDFs yet. Resumable: the same command re-run continues into the next batch.
+   b. **Read `logs/feedback.jsonl` first**, then screen every paper that batch queued, then `python skills/editorial-triage/scripts/apply_scores.py <batch.json>` — [[editorial-triage]] (the judgment is reasoning, the write-out is scripted).
+   c. Put this batch's viable candidates in front of the user via [[editorial-review]] — **mandatory, see step 2**.
+   d. **Recalibrate before the next batch.** Fold the decisions and score corrections from (c) into the standard applied in (b), and re-score any already-screened paper the new standard would move. Never carry a known-miscalibrated score into another batch.
+   e. Count approved papers. Below `download_top_n` → back to (a). At or above → leave the loop; unscreened papers stay `status: "queued"` by design.
+2. **Human review — mandatory, and it gates step 3.** Run [[editorial-review]] over this batch's viable candidates: `python skills/editorial-review/scripts/build_summary.py --narrative <narrative.json>`, then one interactive widget per paper, then `python skills/editorial-review/scripts/apply_human_review.py <batch.json>`. **Never run `download_top.py` on un-reviewed papers.** Downloading on triage's judgment alone spends network and attention on papers the user would have rejected, and it denies the pipeline the feedback that keeps the rubric calibrated — the whole reason `logs/feedback.jsonl` exists. If fewer than `download_top_n` papers are approved, go back to step 1a for another batch rather than downloading a short list.
 3. `python skills/research-discovery/scripts/download_top.py` — [[research-discovery]] phase 2, downloads PDFs only for the top `download_top_n` scoring papers this week
 4. Extract what's downloaded and `extract_eligible` (Review fully or Priority review), respecting the weekly extraction limit, then `python skills/knowledge-extraction/scripts/apply_extraction.py <batch.json>` — [[knowledge-extraction]] (same split: judgment reasoned, write-out scripted; also decides `keep`)
 5. `python skills/research-librarian/scripts/build_index.py` — [[research-librarian]]
+6. `python skills/theme-dashboard/scripts/build_dashboard.py`, then publish `ArxivWiki/dashboard.html` via the Artifact tool — [[theme-dashboard]]
 
-Steps 2 and 4's *judgment* is LLM reasoning and must happen in the skill itself, never scripted — that split is intentional, see the decision behind this system's design. Their write-out scripts (`apply_scores.py`, `apply_extraction.py`) are mechanical fan-out only, given the judgment as input; they never decide anything. Step 3 depends on step 2's scores existing; running it before triage finds nothing eligible.
+Step 2 needs a human in the loop for every paper it touches (it's an interactive widget, not a batch reasoning pass), so it cannot be scheduled unattended even in principle — an unattended run must stop after step 1b with papers screened but undownloaded, and wait for an interactive session. Steps 1b and 4's *judgment* is LLM reasoning and must happen in the skill itself, never scripted — that split is intentional, see the decision behind this system's design. Their write-out scripts (`apply_scores.py`, `apply_extraction.py`) are mechanical fan-out only, given the judgment as input; they never decide anything. This is also why step 1 is a loop the skill drives by hand rather than a flag on `fetch.py`: nothing in a script can decide whether a paper is a viable candidate, so the fetch/score interleaving has to be sequenced from outside both scripts. Step 3 depends on step 1b's scores existing *and* on step 2's approvals; running it before either finds nothing it should act on. Step 6 depends on step 4 having kept at least one new paper to be worth republishing, but it's safe to run every time regardless — an unchanged dashboard just redeploys the same content.
 
 ### 4. Scheduling
 
 This system runs inside Claude Code, which has its own scheduling mechanism (the `schedule` skill / scheduled cloud agents) — prefer that over hand-rolling cron or GitHub Actions YAML, since it already handles retries and notifies on completion. Set up a recurring run (weekly matches `lookback_days: 7` in the config) that invokes the full pipeline sequence above as one prompt: "run the research pipeline end to end."
 
-If the user specifically wants GitHub Actions instead (e.g. to run outside any Claude Code session), scaffold a workflow that runs `fetch.py` and `build_index.py` on a cron trigger, but note that it cannot perform the triage/extraction steps unattended — those need an LLM in the loop. A GitHub Actions run without a human/Claude session available can only do discovery and index maintenance, then leave papers queued for triage on the next interactive session.
+If the user specifically wants GitHub Actions instead (e.g. to run outside any Claude Code session), scaffold a workflow that runs `fetch.py` and `build_index.py` on a cron trigger, but note that it cannot perform the triage/extraction steps unattended — those need an LLM in the loop, and neither can the dashboard's Artifact-publish step (running `build_dashboard.py` is fine unattended, but only Claude can call the Artifact tool). A GitHub Actions run without a human/Claude session available can only do discovery and index maintenance, then leave papers queued for triage and the dashboard unpublished until the next interactive session.
 
 ### 5. Logging and retries
 
-- `fetch.py`, `download_top.py`, and `build_index.py` write a timestamped log to `logs/` on every run — never overwritten, so history accumulates. If `logs/` grows large, it's safe to archive (not delete) old logs older than a few months into `archive/`. `apply_scores.py`, `reassess_fulltext.py`, and `apply_extraction.py` print a summary to stdout but don't log to file — capture their output in the conversation if it's worth keeping.
+- `fetch.py`, `download_top.py`, `build_index.py`, and `build_dashboard.py` write a timestamped log to `logs/` on every run — never overwritten, so history accumulates. If `logs/` grows large, it's safe to archive (not delete) old logs older than a few months into `archive/`. `apply_scores.py`, `reassess_fulltext.py`, and `apply_extraction.py` print a summary to stdout but don't log to file — capture their output in the conversation if it's worth keeping.
 - `fetch.py` and `download_top.py` both retry failed network calls 3x with backoff internally — a nonzero exit code means a fetch or download genuinely failed after retries. Re-running either is always safe (idempotent) and retries only what's still missing.
 - `download_top.py` never drops an eligible paper on a failed or capped run — deferred/failed candidates simply reappear as candidates next run, still ranked by score.
-- `build_index.py` is fully rebuild-from-scratch each run — there's no partial-failure state to recover, just re-run it.
+- `build_index.py` and `build_dashboard.py` are both fully rebuild-from-scratch each run — there's no partial-failure state to recover, just re-run them. `build_dashboard.py`'s output is idempotent to regenerate, but the Artifact publish step relies on `ArxivWiki/.dashboard-artifact.json` to keep updating the same link — don't delete that file casually, or the next publish will mint a new URL instead of refreshing the existing one.
 
 ### 6. Execution reports
 
-After a full pipeline run, summarize across all five steps into one report rather than making the user piece it together from separate logs:
+After a full pipeline run, summarize across all six steps into one report rather than making the user piece it together from separate logs:
 
 ```markdown
 # Pipeline run — <date>
 
-## Discovery (fetch)
-<fetch.py summary line: seen/new/duplicates/failures>
-
-## Triage
+## Discovery + triage loop
+<N batches pulled; per-batch fetch.py summary lines: seen/new/duplicates/failures/batch_full>
 <N papers scored, breakdown by recommendation>
+<viable candidates reached vs. screening.viable_target; N left status: queued, unscreened>
 
 ## Discovery (download_top)
 <N downloaded this week, N deferred, weekly budget remaining>
@@ -100,6 +127,9 @@ After a full pipeline run, summarize across all five steps into one report rathe
 
 ## Librarian
 <papers/papers.csv row count, tags/concepts touched, duplicate flags raised>
+
+## Dashboard
+<N concepts, N tags, top few by frequency, artifact link>
 ```
 
 Keep this conversational when reporting back to the user — the structure above is for a saved report file (`logs/report-<timestamp>.md`) if they want one kept, not mandatory for every run.

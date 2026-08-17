@@ -1,0 +1,55 @@
+enterprise_problem: When an agent receives conflicting instructions from its system
+  prompt, its user, and its tool outputs, there is no reliable way to know which one
+  it will actually obey.
+headline: A model that obeys your system prompt will still take orders from a tool's
+  output.
+recommendation_reasoning: 'The single most decision-relevant paper of the batch for
+  anyone deploying tool-using agents. It shows that instruction-hierarchy robustness
+  is not one capability: strong system-over-user compliance does not predict resistance
+  when the conflicting instruction arrives through a tool result, which is precisely
+  the enterprise prompt-injection surface. Evidence is broad and specific -- 37 models,
+  compliance spanning 98.2% to 20.5%, 44 constraint families across finance, health,
+  retail and coding. The finding that subtle failures (injected disclaimers, small
+  factual distortions) survive where dramatic ones are refused is both counterintuitive
+  and immediately quotable to a risk owner.'
+business_functions:
+- Security
+- Engineering
+- CIO/CTO
+- Compliance
+- Product
+enterprise_ai_themes:
+- Security
+- Agentic AI
+- Reliability
+- Evaluation
+- Governance
+primary_type: Benchmark
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 5
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 15
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Priority review
+human_override: true
+human_override_reason: Way too technical - there is no real audience beyond IT.
+human_score_adjustments:
+  novelty:
+    from: 4
+    to: 3
+  evidence_quality:
+    from: 5
+    to: 5
+  enterprise_readiness:
+    from: 4
+    to: 3
+  business_translatability:
+    from: 5
+    to: 2
+  story_potential:
+    from: 5
+    to: 2

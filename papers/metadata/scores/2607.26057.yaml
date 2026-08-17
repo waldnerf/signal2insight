@@ -1,0 +1,28 @@
+enterprise_problem: Distilling a large model into a small deployable one wastes compute
+  when the student commits early to a wrong reasoning path and every later token builds
+  on that mistake.
+headline: 'Let the teacher take the wheel at the wrong turn: cheaper distillation
+  of small deployable models.'
+recommendation_reasoning: Solid, well-evidenced work on small-model distillation --
+  best or second-best on all eight benchmarks and over 50% shorter training trajectories,
+  which is a real cost argument for teams standing up on-prem small models. But it
+  is an incremental refinement of on-policy distillation evaluated only on mathematical
+  reasoning, and the mechanism (prefix failure, teacher-student continuation asymmetry)
+  needs explaining before an executive can see why it matters. Useful reference material
+  rather than a full read.
+business_functions:
+- Data Science
+- Engineering
+enterprise_ai_themes:
+- Fine-tuning
+- Cost Optimization
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 16
+recommendation: Read later
+fulltext_reassessed: false
