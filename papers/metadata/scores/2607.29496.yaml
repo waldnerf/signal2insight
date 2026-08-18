@@ -1,0 +1,24 @@
+enterprise_problem: None -- formal characterisation of what fixed-precision transformers
+  can compute when allowed to delete from their own transcript.
+headline: Two erasable transcripts are enough for universality; append-only is not.
+recommendation_reasoning: 'Formal language theory applied to multi-agent transformer
+  systems, with a clean result: append-only transcripts realise only finite-state
+  transductions no matter how many agents you add, while allowing deletion recovers
+  the full classical hierarchy at two channels. There is a distant echo of a practical
+  point about context management in agent systems, but it is stated in deterministic
+  context-free languages and Hopcroft-Ullman presentations. No enterprise reader of
+  any function.'
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 12
+recommendation: Ignore
+fulltext_reassessed: false

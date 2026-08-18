@@ -1,0 +1,32 @@
+enterprise_problem: Security concerns block organisations from scaling AI coding agents,
+  and existing controls are not distributed to engineering teams in any systematic
+  way.
+headline: Shipping coding-agent security controls to every engineer through one install
+  command.
+recommendation_reasoning: 'The distribution problem it names is real and organisational
+  -- controls that exist but never reach engineering teams protect nothing -- and
+  packaging sandboxing, skill scanning and tool restriction into an installable harness
+  is a sensible answer that avoids vendor lock-in. Two findings worth keeping: model
+  non-determinism produces inconsistent security outcomes run to run, and autonomous
+  agents cross system boundaries in ways OS sandboxing catches. Demoted because the
+  reader is a security or platform engineer and the substance is harness plumbing,
+  plus a 23-test suite across four configurations is a thin evidence base.'
+business_functions:
+- Security
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- Security
+- Agentic AI
+- Governance
+- Infrastructure
+primary_type: System architecture
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 4
+business_translatability: 3
+story_potential: 2
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

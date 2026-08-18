@@ -1,0 +1,21 @@
+enterprise_problem: None identified -- a representation-learning design principle
+  for exposing transformation generators to generic backbones.
+headline: A representation-level alternative to hard-equivariant architectures.
+recommendation_reasoning: Deep-learning architecture research on equivariance, evaluated
+  on genomics, images and point clouds. No enterprise decision depends on it and no
+  path to one exists without several inferential steps through group-theoretic vocabulary.
+  Outside the profile.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

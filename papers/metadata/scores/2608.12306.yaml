@@ -1,0 +1,17 @@
+enterprise_problem: Safe offline RL with sparse trajectory-level feedback instead
+  of dense per-step labels
+headline: Offline RL methodology with trajectory-level feedback
+recommendation_reasoning: Niche RL methodology. Real enterprise use cases for offline
+  RL are limited; this is a research technique without clear business application.
+business_functions: []
+enterprise_ai_themes: []
+primary_type: Evaluation methodology
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

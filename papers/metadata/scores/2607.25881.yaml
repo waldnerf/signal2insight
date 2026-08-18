@@ -1,0 +1,39 @@
+enterprise_problem: Whether AI can be trusted to write and, more importantly, to screen
+  written submissions such as proposals, bids or applications.
+headline: AI reviewers systematically prefer AI-written submissions -- so never let
+  AI screen them unsupervised.
+recommendation_reasoning: 'The finding is an immediate policy decision rather than
+  a technique: human reviewers rated AI-written and human-written proposals about
+  equally, but both AI reviewers scored AI-written proposals a full point higher on
+  a five-point scale and identified authorship perfectly. Anyone using a model to
+  shortlist proposals, bids, tenders, grant applications or CVs has installed a bias
+  toward AI-drafted submissions and cannot see it. Requires no technical vocabulary
+  to state and lands with HR, procurement and executive readers, not a platform team.
+  Evidence is capped at 3 by the small sample (32 proposals, four human and two AI
+  reviewers), though the effect size is large and the authors are appropriately cautious.'
+business_functions:
+- Chief AI Officer
+- Compliance
+- Operations
+- CIO/CTO
+enterprise_ai_themes:
+- Governance
+- Evaluation
+- Reliability
+- Other
+primary_type: Scientific research
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 4
+business_translatability: 5
+story_potential: 5
+overall_score: 21
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Priority review
+human_override: true
+human_override_reason: 'interesting but I do not want to focus on research as a publication
+  topic. Topic-scope rejection, not a scoring correction: reviewer confirmed all five
+  dimensions unchanged at 21/25. Candidate ignore_topics addition for editorial-strategist:
+  research-about-research / academic publishing / proposal writing.'

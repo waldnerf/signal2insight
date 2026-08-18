@@ -1,0 +1,28 @@
+enterprise_problem: Reasoning over real operational time-series data that is sparse,
+  asynchronous and irregularly sampled rather than neatly regular.
+headline: Compressing messy sensor histories into a handful of tokens a small model
+  can reason over.
+recommendation_reasoning: The efficiency result is the interesting part for enterprise
+  purposes -- state of the art on its benchmark using a 4B backbone, 16 time-series
+  tokens and 0.15s per question -- and irregular, asynchronously sampled series describe
+  most real operational telemetry, not just clinical data. But the work is built and
+  evaluated entirely for clinical QA, the training data is purpose-constructed by
+  the authors, and nothing tests transfer to another domain. Reference material for
+  the token-compression approach.
+business_functions:
+- Data Science
+- Operations
+enterprise_ai_themes:
+- Cost Optimization
+- Infrastructure
+- Other
+primary_type: System architecture
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Read later
+fulltext_reassessed: false

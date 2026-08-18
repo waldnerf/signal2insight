@@ -1,0 +1,118 @@
+<style>
+  .s2i-dash {
+    --paper: #F3F4F2; --ink: #1B2321; --muted: #6B6F76; --border: #D8DAD5;
+    --signal: #0E7C86; --signal-ink: #ffffff; --surface: #ffffff;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ink); background: var(--paper);
+    max-width: 100%; box-sizing: border-box; line-height: 1.45;
+  }
+  @media (prefers-color-scheme: dark) {
+    .s2i-dash { --paper: #12151A; --ink: #E7EAE7; --muted: #9AA09B; --border: #2A2F2C;
+      --signal: #2FB8C4; --signal-ink: #06141a; --surface: #181C1F; }
+  }
+  :root[data-theme="dark"] .s2i-dash { --paper: #12151A; --ink: #E7EAE7; --muted: #9AA09B; --border: #2A2F2C;
+    --signal: #2FB8C4; --signal-ink: #06141a; --surface: #181C1F; }
+  :root[data-theme="light"] .s2i-dash { --paper: #F3F4F2; --ink: #1B2321; --muted: #6B6F76; --border: #D8DAD5;
+    --signal: #0E7C86; --signal-ink: #ffffff; --surface: #ffffff; }
+  .s2i-dash * { box-sizing: border-box; }
+  .s2i-mast {
+    background: var(--ink); color: var(--paper); padding: 1.5rem 1.75rem;
+    border-radius: 10px 10px 0 0;
+  }
+  @media (prefers-color-scheme: dark) { .s2i-mast { background: #06090c; } }
+  :root[data-theme="dark"] .s2i-mast { background: #06090c; }
+  :root[data-theme="light"] .s2i-mast { background: var(--ink); }
+  .s2i-eyebrow {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7;
+  }
+  .s2i-title {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 1.4rem; font-weight: 700; letter-spacing: 0.01em; margin: 0.35rem 0 1rem;
+    text-wrap: balance;
+  }
+  .s2i-stats { display: flex; flex-wrap: wrap; gap: 1.75rem; }
+  .s2i-stat { font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace; }
+  .s2i-stat .num { font-size: 1.5rem; font-variant-numeric: tabular-nums; display: block; }
+  .s2i-stat .lbl { font-size: 0.7rem; opacity: 0.65; letter-spacing: 0.06em; text-transform: uppercase; }
+  .s2i-body { background: var(--surface); border: 1px solid var(--border); border-top: none;
+    border-radius: 0 0 10px 10px; padding: 1.75rem; }
+  .s2i-section { margin-bottom: 2rem; }
+  .s2i-section h2 {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    margin: 0 0 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  .cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  .chip {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: var(--size); line-height: 1; padding: 0.42em 0.7em; border-radius: 999px;
+    background: color-mix(in srgb, var(--signal) calc(var(--tint) * 100%), var(--surface));
+    color: color-mix(in srgb, var(--signal-ink) calc(var(--tint) * 100%), var(--ink));
+    border: 1px solid color-mix(in srgb, var(--signal) 40%, var(--border));
+    display: inline-flex; align-items: baseline; gap: 0.45em; cursor: default;
+    transition: transform 0.12s ease;
+  }
+  .chip:hover { transform: translateY(-1px); }
+  .chip .count {
+    font-size: 0.62em; opacity: 0.75; background: color-mix(in srgb, currentColor 18%, transparent);
+    border-radius: 999px; padding: 0.15em 0.5em;
+  }
+  .empty { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+  .s2i-table-wrap { overflow-x: auto; }
+  table.s2i-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  table.s2i-table th {
+    text-align: left; font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+    padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border);
+  }
+  table.s2i-table td { padding: 0.65rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.s2i-table td.num { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--muted); }
+  table.s2i-table a { color: var(--signal); text-decoration: none; font-weight: 600; }
+  table.s2i-table a:hover { text-decoration: underline; }
+  .headline { color: var(--muted); font-size: 0.82rem; margin-top: 0.2rem; }
+  .pill {
+    display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 0.2em 0.6em;
+    border-radius: 999px; border: 1px solid var(--border); white-space: nowrap;
+  }
+  .pill-essential { background: color-mix(in srgb, var(--signal) 22%, var(--surface)); color: var(--signal); border-color: var(--signal); }
+  .pill-high { background: color-mix(in srgb, var(--signal) 10%, var(--surface)); color: var(--ink); }
+  .s2i-footer { margin-top: 1.25rem; font-size: 0.75rem; color: var(--muted); }
+</style>
+<div class="s2i-dash">
+  <div class="s2i-mast">
+    <div class="s2i-eyebrow">signal2insights &middot; knowledge dashboard</div>
+    <div class="s2i-title">Dominant Concepts &amp; Tags in the ArxivWiki</div>
+    <div class="s2i-stats">
+      <div class="s2i-stat"><span class="num">123</span><span class="lbl">Papers Tracked</span></div>
+      <div class="s2i-stat"><span class="num">4</span><span class="lbl">Kept (Essential)</span></div>
+      <div class="s2i-stat"><span class="num">16</span><span class="lbl">Distinct Concepts</span></div>
+      <div class="s2i-stat"><span class="num">13</span><span class="lbl">Distinct Tags</span></div>
+    </div>
+  </div>
+  <div class="s2i-body">
+    <div class="s2i-section">
+      <h2>Concepts</h2>
+      <div class="cloud"><span class="chip" style="--size:1.8rem;--tint:0.8" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale | ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">agent-evaluation-design<span class="count">3</span></span><span class="chip" style="--size:1.8rem;--tint:0.8" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale | ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">cost-quality-frontier<span class="count">3</span></span><span class="chip" style="--size:1.8rem;--tint:0.8" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale | ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">human-in-the-loop-review<span class="count">3</span></span><span class="chip" style="--size:1.48rem;--tint:0.62" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale">deployment-at-scale<span class="count">2</span></span><span class="chip" style="--size:1.48rem;--tint:0.62" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale">organizational-trust-in-ai<span class="count">2</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization">agent-memory<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale">agentic-drift<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale">configuration-driven-rollout<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">grounding-and-traceability<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale">intent-alignment<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization">knowledge-utilization-gap<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization">personalization-safety<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale">prescriptive-optimization<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization">retrieval-vs-comprehension<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">schema-guided-extraction<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">vendor-benchmark-caution<span class="count">1</span></span></div>
+    </div>
+    <div class="s2i-section">
+      <h2>Themes / Tags</h2>
+      <div class="cloud"><span class="chip" style="--size:1.8rem;--tint:0.8" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale | ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">agent-evaluation<span class="count">3</span></span><span class="chip" style="--size:1.8rem;--tint:0.8" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale | ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">cost-efficiency<span class="count">3</span></span><span class="chip" style="--size:1.8rem;--tint:0.8" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale | ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">human-in-the-loop<span class="count">3</span></span><span class="chip" style="--size:1.48rem;--tint:0.62" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization | ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">benchmark<span class="count">2</span></span><span class="chip" style="--size:1.48rem;--tint:0.62" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale">enterprise-deployment<span class="count">2</span></span><span class="chip" style="--size:1.48rem;--tint:0.62" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization | From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale">governance<span class="count">2</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale">ai-code-review<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale">coding-agents<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction">document-ai<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization">llm-memory<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale">optimization<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="Know It, Act on It: Investigating Memory Utilization in LLM Personalization">personalization<span class="count">1</span></span><span class="chip" style="--size:1.17rem;--tint:0.43" title="PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale">revenue-management<span class="count">1</span></span></div>
+    </div>
+    <div class="s2i-section">
+      <h2>Source Papers</h2>
+      <div class="s2i-table-wrap">
+        <table class="s2i-table">
+          <thead><tr><th>Paper</th><th>Priority</th><th>Tags</th><th>Published</th></tr></thead>
+          <tbody>
+<tr><td><a href="papers/2026/2607.29677.md">ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction</a><div class="headline">A challenge-tagged benchmark that measures value accuracy, long-record completeness, source grounding and per-page cost together for schema-guided extraction, exposing a severe document-length cliff in commercial VLMs and a near-universal weakness in source traceability.</div></td><td><span class="pill pill-high">High</span></td><td>document-ai, agent-evaluation, benchmark, cost-efficiency, human-in-the-loop</td><td class="num">2026-07-31</td></tr>
+<tr><td><a href="papers/2026/2607.29516.md">From Code Review to Code Critique: Intent, Drift, and Spotlight for AI-Generated Diffs at Scale</a><div class="headline">A measured taxonomy of what human reviewers actually act on, the demonstration that current AI code review is misaligned with it by large margins, and a three-signal system (intent, drift, spotlight) that reframes review around agent-intent alignment rather than line-by-line commentary, validated in production at Meta.</div></td><td><span class="pill pill-essential">Essential</span></td><td>ai-code-review, coding-agents, agent-evaluation, governance, enterprise-deployment, human-in-the-loop, cost-efficiency</td><td class="num">2026-07-31</td></tr>
+<tr><td><a href="papers/2026/2607.29433.md">Know It, Act on It: Investigating Memory Utilization in LLM Personalization</a><div class="headline">A decoupled Know/Act evaluation paradigm that separates memory failure from utilisation failure, the finding that the utilisation gap is large and pervasive across all memory architectures, and a three-layer oracle attribution showing comprehension rather than retrieval is the dominant cause.</div></td><td><span class="pill pill-high">High</span></td><td>llm-memory, personalization, agent-evaluation, benchmark, governance</td><td class="num">2026-07-31</td></tr>
+<tr><td><a href="papers/2026/2606.17941.md">PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale</a><div class="headline">A documented, at-scale enterprise deployment of ML-plus-mathematical-optimisation for pricing and promotion across multiple markets, with adoption and impact numbers, and an explicit account of the human-in-the-loop design and organisational trust work that made the adoption happen.</div></td><td><span class="pill pill-high">High</span></td><td>enterprise-deployment, optimization, human-in-the-loop, cost-efficiency, revenue-management</td><td class="num">2026-06-16</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="s2i-footer">Regenerated 2026-08-04 09:58 from 4 kept extraction record(s). Chip size and tint scale with frequency.</div>
+  </div>
+</div>

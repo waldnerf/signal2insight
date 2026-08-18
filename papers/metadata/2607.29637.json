@@ -1,0 +1,33 @@
+{
+  "arxiv_id": "2607.29637",
+  "title": "CodeShrink: Adaptive Visual Compression for Efficient Multimodal Code Understanding",
+  "authors": [
+    "Wenxin Tang",
+    "Jingyu Xiao",
+    "Zhenyu Liu",
+    "Zipeng Xie",
+    "Junliang Liu",
+    "Wang Luo",
+    "Yuan Jiang",
+    "Yintong Huo",
+    "Michael Lyu"
+  ],
+  "abstract": "Rendering source code as images offers a promising way to reduce the input costs of Multimodal Large Language Models (MLLMs). Adjusting image resolution can trade visual token cost against content fidelity. However, resolution scaling alone overlooks two sources of inefficiency: blank regions created by line breaks and indentation, and code regions irrelevant to the current instruction. Moreover, the best compression setting varies across inputs, tasks, and models, limiting fixed-ratio strategies. We propose CodeShrink, an adaptive visual compression framework with three components. Blank-Free Rendering replaces whitespace-dependent layouts with compact layouts and explicit structural markers, removing layout-induced tokens. Adaptive Compression Configuration uses a lightweight agent trained with reinforcement learning to predict a per-input setting that balances token efficiency and readability. Dominant Token Selection jointly analyzes the instruction and code image to prune task-irrelevant visual tokens during inference. We evaluate CodeShrink on code question answering, clone detection, and code completion. CodeShrink reduces visual token use by up to 71.2\\% while matching or exceeding uncompressed text-only inputs, and consistently outperforms text-based and visual compression baselines across all three tasks. These results show that combining layout compaction, adaptive configuration, and instruction-aware pruning can make multimodal code understanding more efficient. Our code is available at https://github.com/vinsontang1/CodeShrink.",
+  "categories": [
+    "cs.CV",
+    "cs.SE"
+  ],
+  "published": "2026-07-31T17:15:51Z",
+  "updated": "2026-07-31T17:15:51Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29637v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-08-03T21:21:22.556392+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 14,
+  "recommendation": "Read later",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:25:16.094185+00:00"
+}

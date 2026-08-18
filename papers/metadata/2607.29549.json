@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2607.29549",
+  "title": "AMTFV: Agentic Mathematical Tool-Flow Verification for LLM Self-Correction",
+  "authors": [
+    "Rui Zou",
+    "Yutao Zhu",
+    "Mengqi Wei",
+    "Ji-Rong Wen"
+  ],
+  "abstract": "Large language models have demonstrated strong mathematical problem-solving capabilities, yet reliably verifying their candidate answers remains challenging. Existing representative methods mainly revise outputs through natural-language reflection or assist verification by directly generating verification programs; the former may not reliably support exact computation, whereas the latter prematurely couples mathematical modeling with low-level implementation. We propose AMTFV (Agentic Mathematical Tool-Flow Verification). By introducing Mathematical Tool Flow (MTF) as an interrupt--execute--resume interface, AMTFV decouples verification modeling from concrete execution and supports exact computation through a mathematical toolbox. Specifically, the verification agent first constructs a verification workflow, encodes the mathematical objects and computational intent requiring reliable execution in an MTF request, and sends it to the mathematical toolbox agent. The latter parses the request, generates executable calls, and dispatches them to the backend for exact computation. Tool outputs then support candidate-answer adjudication, answer revision, and verification-workflow revision. We evaluate AMTFV on five challenging mathematical reasoning datasets with seven model configurations from DeepSeek, GPT, and Gemini. Experimental results show that AMTFV outperforms the representative baselines evaluated in this study overall; under an individual model configuration, it improves average accuracy over the strongest baseline by up to 8.3 percentage points, with larger gains on samples of medium and high verification complexity.",
+  "categories": [
+    "cs.AI"
+  ],
+  "published": "2026-07-31T15:42:00Z",
+  "updated": "2026-07-31T15:42:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29549v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:31:17.274977+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 12,
+  "recommendation": "Archive",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:34:17.923461+00:00"
+}

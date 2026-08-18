@@ -1,0 +1,31 @@
+enterprise_problem: Fairness is usually enforced on a model's predictions, while the
+  decision made from those predictions -- who actually receives the resource -- can
+  still be inequitable.
+headline: A fair model can still produce an unfair allocation.
+recommendation_reasoning: 'The framing question is a legitimate governance point and
+  one most fairness tooling misses -- auditing the predictor is not the same as auditing
+  the allocation it drives, and an organisation can pass the first while failing the
+  second. Governance is a priority topic, so this is on-mission by subject. But the
+  delivery is optimization research: decision Jacobians with respect to predictor
+  parameters, differentiable optimization layers, a finite-sample generalization bound,
+  and experiments on one healthcare allocation plus a synthetic multi-resource case.
+  Nothing here is usable by a compliance function, and the business implication cannot
+  be stated without alpha-fairness and decision regret first. On-topic, not actionable
+  now.'
+business_functions:
+- Compliance
+- Data Science
+- Operations
+enterprise_ai_themes:
+- Governance
+- Other
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Archive
+fulltext_reassessed: false

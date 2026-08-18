@@ -1,0 +1,33 @@
+enterprise_problem: Whether tabular foundation models are a safe replacement for tree
+  ensembles on enterprise tabular data, where distribution shift is the norm rather
+  than the exception.
+headline: Tabular foundation models all degrade when the data shifts -- and the best
+  ones will not fit your infrastructure.
+recommendation_reasoning: 'Addresses a live enterprise data-science procurement decision
+  on the most common enterprise data type, and the two findings map cleanly to executive
+  concerns: every one of nine models degrades under shift regardless of pre-training
+  strategy, and the strongest models exceed what standard deployment infrastructure
+  supports. Novelty is low by design (an empirical evaluation, not a new method) and
+  three datasets is a thin base for a claim about all TFMs, which caps evidence at
+  moderate. Still the most decision-relevant paper of the batch for a data platform
+  owner. || Recalibrated 2026-07-29. Whether to adopt tabular foundation models is
+  a data-leadership decision, which keeps translatability moderate, but the audience
+  is a data science function rather than the business. Demoted to Read later.'
+business_functions:
+- Data Science
+- CIO/CTO
+- Compliance
+enterprise_ai_themes:
+- Evaluation
+- Reliability
+- Infrastructure
+primary_type: Evaluation methodology
+adoption_horizon: Immediate
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 2
+overall_score: 13
+recommendation: Read later
+fulltext_reassessed: false

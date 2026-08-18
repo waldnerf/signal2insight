@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Reassess a paper's screening record after a full-text read.
 
-editorial-triage's screening (Sections A-F, see SKILL.md) is normally
+editorial-triage's screening (Sections A-D, see SKILL.md) is normally
 answered abstract-only. Once a paper is downloaded and Claude has read the
 full PDF, abstracts routinely turn out to have omitted qualifying results,
 ablations, or scope limits that change several answers -- most often the
-Section B/D/E quantitative dimensions and the Section F recommendation
+Section B/C quantitative dimensions and the Section D recommendation
 itself. This script is the write-out half of that reassessment: it takes
 the new full-record judgment, diffs it against whatever screening record
 already exists, logs the delta, and persists the update.

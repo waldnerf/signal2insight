@@ -1,0 +1,40 @@
+enterprise_problem: AI coding agents now produce diffs faster than human peer review
+  can absorb them, and existing AI review tools spend that scarce attention on style
+  nits rather than on correctness, security and performance.
+headline: Agents now write code faster than anyone can review it -- so the scarce
+  resource is no longer engineering time, it is attention on the right twenty lines.
+recommendation_reasoning: 'The clearest executive-facing paper of the week, and it
+  is deployed rather than proposed. ARCTIC reframes review around three things a business
+  leader understands without any ML vocabulary: what was this change meant to do,
+  did the agent actually do that (drift), and which part of the diff deserves a human.
+  Numbers come from a real rollout, not just an offline split -- intent prediction
+  0.86 F1 and 90.2% developer approval, drift detection at QWK 0.907 against human
+  annotators, misalignment down 5.76 points with a reported p-value, spotlight 2.4x
+  better on quality estimation at 5x fewer tokens, and zero defects attributed to
+  self-reviewed diffs since launch. The six-theme taxonomy is grounded in 18,000 real
+  reviews. Cost angle is explicit (5x fewer tokens), which makes it a budget conversation
+  as well as a governance one.'
+business_functions:
+- CIO/CTO
+- Engineering
+- Chief AI Officer
+- Security
+enterprise_ai_themes:
+- Agentic AI
+- Governance
+- Reliability
+- Evaluation
+primary_type: System architecture
+adoption_horizon: Immediate
+novelty: 5
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 5
+story_potential: 4
+overall_score: 22
+recommendation: Priority review
+fulltext_reassessed: false
+human_score_adjustments:
+  novelty:
+    from: 4
+    to: 5

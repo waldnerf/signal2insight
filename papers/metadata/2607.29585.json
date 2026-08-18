@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2607.29585",
+  "title": "Sycophancy Undermines Epistemic Vigilance in Cooperative Vision-Language Tasks",
+  "authors": [
+    "Rupak Sarkar",
+    "Neha Srikanth",
+    "Saloni Gupta",
+    "Claire Bonial",
+    "Philip Resnik",
+    "Rachel Rudinger"
+  ],
+  "abstract": "To maintain common ground in cooperative conversation, humans iteratively update their beliefs as conversation participants share new information; participants who are epistemically vigilant detect when new information conflicts with prior beliefs and take steps to repair these conflicts. In order for AI systems to serve as reliable partners in complex cooperative tasks, they must similarly weigh incoming information against their own private evidence and shared context and appropriately surface inconsistencies when they arise. To measure the epistemic vigilance of vision-language models in cooperative settings, we present an information-asymmetric, dialog-based \"spot-the-difference\" task. Two models are privately shown one image each, and must determine through conversation whether the images are identical or, if not, identify the difference. Models routinely fail at this: they frequently overlook key evidence in their private image in favor of agreeing with their conversational partner, even when their agreement is unwarranted. We relate these violations of epistemic vigilance to the broader behavior of sycophancy, which manifests itself in cooperative goal-oriented dialog as over-accommodation and weak evidential grounding. Our results show that model steering to reduce sycophancy with a vector learned from task-agnostic sycophancy examples can reduce epistemic vigilance-related errors, making models more faithful reporters of their evidence, and in turn, more reliable partners in information-asymmetric cooperative tasks.",
+  "categories": [
+    "cs.CL"
+  ],
+  "published": "2026-07-31T16:09:23Z",
+  "updated": "2026-07-31T16:09:23Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29585v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "triaged",
+  "discovered_at": "2026-08-03T21:31:17.271477+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 15,
+  "recommendation": "Read later",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:42:56.568108+00:00"
+}

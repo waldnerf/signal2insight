@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2607.29473",
+  "title": "Lightweight Neural Networks for Affordance Segmentation: Enhancement of the Decoder Module",
+  "authors": [
+    "Simone Lugani",
+    "Edoardo Ragusa",
+    "Rodolfo Zunino",
+    "Paolo Gastaldo"
+  ],
+  "abstract": "The deployment of deep neural networks for visual affordance segmentation on wearable robots poses may prove critical, due to some conflicting aspects of the problem. On one hand, affordance segmentation requires high-level abstraction capabilities, that typically involve large-size models. On the other hand, computing resources hosted on wearable robots prevent to run large-size models in real-time. The paper presents an analysis of the role of the segmentation head in the trade-off between generalization performance and compute cost. The obtained models outperform modern baseline solutions in well-known, real-world datasets while meeting low computing requirements.",
+  "categories": [
+    "cs.CV",
+    "cs.LG",
+    "cs.PF"
+  ],
+  "published": "2026-07-31T14:36:59Z",
+  "updated": "2026-07-31T14:36:59Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29473v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:43:02.282717+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 7,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:45:41.384833+00:00"
+}

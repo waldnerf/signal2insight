@@ -1,0 +1,36 @@
+enterprise_problem: An agent can hold a customer's stated preference in context, recall
+  it correctly when asked, and still fail to act on it in the moment it matters --
+  and nothing in a memory benchmark distinguishes those two failures.
+headline: Your agent remembers what the customer told it, repeats it back correctly,
+  and then ignores it anyway -- and the gap is worst in health and therapy.
+recommendation_reasoning: 'Memory is a priority topic and this separates two failures
+  everyone currently conflates. Paired Know and Act tests on the same preference show
+  agents routinely pass recall and fail the behavioural scenario -- so buying a better
+  memory architecture does not fix it, because the information was already there.
+  Scale supports the claim rather than gesturing at it: 16 systems, 5 memory architectures,
+  1,000 preferences at three expression strengths. The finding that utilisation is
+  weakest exactly where failure costs most (health, therapy) is the executive line,
+  and it needs no ML vocabulary at all. Enterprise readiness held at 3 -- it is a
+  measurement, not a fix -- but the measurement is directly runnable against your
+  own agents, which is more than most evaluation papers offer.'
+business_functions:
+- Chief AI Officer
+- Product
+- Operations
+- CIO/CTO
+- Compliance
+enterprise_ai_themes:
+- Memory
+- Agentic AI
+- Evaluation
+- Reliability
+primary_type: Evaluation methodology
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 4
+story_potential: 5
+overall_score: 20
+recommendation: Priority review
+fulltext_reassessed: false

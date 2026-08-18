@@ -1,0 +1,26 @@
+enterprise_problem: 'Security vulnerability in skill-based LLM agents: Natural-language
+  skill descriptions can be hijacked to redirect agent tasks'
+headline: 'Agent security: Natural-language skill descriptions create a new attack
+  surface'
+recommendation_reasoning: 'Critical security finding. Any enterprise deploying skill-based
+  agents needs this: ''can we safely use this architecture?'' Maps directly to a security/risk
+  decision. High novelty (new vulnerability class), strong evidence, and urgent applicability.
+  Cross-industry.'
+business_functions:
+- Security
+- Engineering
+- Chief AI Officer
+enterprise_ai_themes:
+- Security
+- Agentic AI
+- Governance
+primary_type: Evaluation methodology
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 5
+story_potential: 5
+overall_score: 22
+recommendation: Priority review
+fulltext_reassessed: false

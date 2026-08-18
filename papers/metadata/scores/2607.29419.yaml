@@ -1,0 +1,21 @@
+enterprise_problem: None -- exploration in reinforcement learning when rewards are
+  sparse and delayed.
+headline: Reward the agent for reaching the edge of what it has seen.
+recommendation_reasoning: Intrinsic-motivation exploration for sparse-reward RL. The
+  abstract claims consistent improvement and outperformance of existing methods without
+  naming a single benchmark, baseline or number, which is thin even for this stage.
+  Core RL research with no enterprise AI connection.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 8
+recommendation: Ignore
+fulltext_reassessed: false

@@ -1,0 +1,26 @@
+enterprise_problem: Aligning a system to several competing objectives when no reward
+  function exists for any of them.
+headline: Learn several reward models from several people, instead of collapsing them
+  into one.
+recommendation_reasoning: The premise gestures at something enterprises genuinely
+  face -- real objectives compete (quality against cost, speed against safety) and
+  collapsing them into one score hides the trade-off. But the contribution is an RL
+  training framework evaluated on benchmark multi-objective control tasks, requiring
+  interactive preference collection from multiple humans during training. That is
+  a research capability, not an enterprise one, and the abstract's own framing ('promising
+  direction') matches how far it is from deployment.
+business_functions:
+- Data Science
+enterprise_ai_themes:
+- Fine-tuning
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 2
+story_potential: 2
+overall_score: 11
+recommendation: Ignore
+fulltext_reassessed: false

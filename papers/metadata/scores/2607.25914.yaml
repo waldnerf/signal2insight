@@ -1,0 +1,36 @@
+enterprise_problem: When a tool an agent depends on is compromised, nothing tells
+  the agent to stop calling it, so agents from other vendors keep invoking a degraded
+  tool and the impact cascades.
+headline: Your agents keep calling a compromised tool because nothing revokes its
+  trust.
+recommendation_reasoning: 'Names a gap that any organisation running agents over third-party
+  tools has and mostly has not noticed: trust in a tool is established once and never
+  propagated when it degrades. The mechanism design is interesting on its own terms
+  -- a graduated-enforcement trust state machine with damped cascade propagation and
+  retroactive impact assessment over a dependency graph. Two real limits: the evidence
+  is simulation-only, and it is framed as a 3GPP telecom standards proposal, so the
+  enterprise reader has to lift the model out of that context and the standardisation
+  horizon is years. Worth a full read for the trust-revocation framing. || Recalibrated
+  2026-07-29. Tool trust revocation is a real gap, but it is stated as a 3GPP network-management
+  information model and cannot be discussed without that vocabulary. Demoted to Read
+  later -- security and platform readership only.'
+business_functions:
+- Security
+- Engineering
+- Compliance
+- CIO/CTO
+enterprise_ai_themes:
+- Agentic AI
+- Security
+- Governance
+- Reliability
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 13
+recommendation: Read later
+fulltext_reassessed: false

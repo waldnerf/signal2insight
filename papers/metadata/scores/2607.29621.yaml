@@ -1,0 +1,26 @@
+enterprise_problem: Time-series classifiers used in critical domains are opaque about
+  which temporal and spectral patterns drive their predictions.
+headline: Explaining a time-series model in the frequency domain shows the bands engineers
+  already inspect.
+recommendation_reasoning: 'Doubly narrow: specific to CNN time-series classification,
+  and validated on bearing-fault diagnosis. That is the industry-vertical lock the
+  reviewer flagged on 2607.25885, where deployment in one industrial setting was explicitly
+  ruled not to be enterprise readiness. The frequency-domain extension is a sensible
+  contribution within its field, but nothing here generalises to how enterprise AI
+  systems are designed or governed.'
+business_functions:
+- Data Science
+- Operations
+enterprise_ai_themes:
+- Governance
+- Other
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

@@ -1,0 +1,21 @@
+enterprise_problem: Improving reliability and controllability of black-box image-to-video
+  models through agentic optimization
+headline: 'Agentic optimization: Improving I2V model reliability without model access'
+recommendation_reasoning: Narrow vertical (content creation/I2V tools). Most enterprises
+  buy I2V as a cloud service rather than deploying their own, limiting applicability.
+  Also tool-vendor interest, not a business-leader decision.
+business_functions:
+- Engineering
+- Product
+enterprise_ai_themes:
+- Agentic AI
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 13
+recommendation: Read later
+fulltext_reassessed: false

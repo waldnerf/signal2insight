@@ -1,0 +1,32 @@
+enterprise_problem: Vector search with fixed parameters produces wildly inconsistent
+  recall per query, and average-recall reporting hides the failures -- so RAG retrieval
+  quality varies invisibly per user question.
+headline: Average recall hides the queries your RAG system quietly fails on.
+recommendation_reasoning: 'The underlying observation is real and RAG is a priority
+  topic: reporting average recall masks per-query disparities, so some questions get
+  badly served with no signal that it happened. QASP predicts a per-query recall curve
+  up front and derives a search policy from it, hitting 99% recall with 80% less data
+  access, with theoretical backing on sample complexity and regret. But acting on
+  it means owning and tuning your vector index, which puts the audience squarely in
+  platform engineering, and stating the business implication requires recall targets
+  and probing depth as prior concepts. C8/C9 at 2 on the standing IT-only-audience
+  correction. Worth revisiting if retrieval-quality variance becomes a topic in its
+  own right.'
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- RAG
+- Infrastructure
+- Cost Optimization
+- Reliability
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

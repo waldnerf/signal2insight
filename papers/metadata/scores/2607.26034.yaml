@@ -1,0 +1,39 @@
+enterprise_problem: Whether competitive pressure actually causes organisations to
+  ship AI less safely, and if so what specifically triggers the unsafe choice.
+headline: Fear of falling behind -- not risk appetite -- is what makes teams ship
+  AI unsafely.
+recommendation_reasoning: 'Governance is a priority topic and this reframes AI-safety
+  pressure as a competitive-dynamics problem rather than an individual risk-tolerance
+  one, which is a genuinely new angle for a board-level conversation and highly quotable.
+  Evidence is mixed and the paper says so plainly: the pre-registered comparison across
+  risk levels was not supported, and the interesting results (unsafe choices follow
+  the opponent''s, and rise when behind) are exploratory plus a model. That honesty
+  earns a moderate evidence score rather than a low one, but it is a framing contribution,
+  not an implementable practice. || Recalibrated 2026-07-29. Retained as viable: unlike
+  the rest of the batch this has a genuinely non-IT audience, since competitive pressure
+  driving unsafe shipping is a board and executive-committee conversation requiring
+  no technical vocabulary. Story potential trimmed from 5 to 4 given the unsupported
+  pre-registered hypothesis.'
+business_functions:
+- Chief AI Officer
+- CIO/CTO
+- Compliance
+- Operations
+enterprise_ai_themes:
+- Governance
+- Reliability
+- Other
+primary_type: Scientific research
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 4
+overall_score: 18
+recommendation: Review fully
+fulltext_reassessed: false
+human_score_adjustments:
+  enterprise_readiness:
+    from: 2
+    to: 4

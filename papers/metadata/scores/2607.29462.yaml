@@ -1,0 +1,22 @@
+enterprise_problem: None for this profile -- consolidating separate medical imaging
+  classifiers into one network without negative transfer.
+headline: One routed network beats four separate adapters.
+recommendation_reasoning: Medical image classification, which combines two of the
+  profile's exclusions. The consolidation finding is mildly interesting as an organisational
+  point -- one routed model outperformed four isolated task-specific adapters, and
+  auxiliary data helped the data-starved target -- but it is demonstrated on MedMNIST
+  at small scale and framed entirely for clinical imaging.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Fine-tuning
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

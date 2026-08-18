@@ -1,0 +1,28 @@
+enterprise_problem: Whether agents can run their own improvement loop -- diagnosing
+  a capability gap, changing the training data, and learning from the result.
+headline: Agents doing their own research improve, then talk themselves out of their
+  best result.
+recommendation_reasoning: 'One finding is worth remembering and generalises past this
+  setting: agents improved on their first valid attempt 58.33% of the time, but among
+  runs that continued past their best score, 78.26% ended worse -- so an autonomous
+  optimisation loop needs checkpoint preservation, not just a stopping rule, because
+  the final state is usually not the best state. Held at Read later because the audience
+  is an ML research function and the framing is recursive self-improvement, which
+  is several steps from any enterprise decision.'
+business_functions:
+- Data Science
+- Engineering
+enterprise_ai_themes:
+- Evaluation
+- Agentic AI
+- Fine-tuning
+primary_type: Benchmark
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 3
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

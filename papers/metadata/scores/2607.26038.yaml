@@ -1,0 +1,30 @@
+enterprise_problem: Failure-prediction models need sensor histories and failure records
+  that sit across separate organisations or sites and cannot be pooled for privacy
+  or commercial reasons.
+headline: Competitors can jointly predict equipment failure without ever sharing their
+  sensor data.
+recommendation_reasoning: 'Real enterprise problem (privacy-constrained predictive
+  maintenance across sites or partners) with a sensible technical contribution: a
+  client-separable discrete-time hazard objective that sidesteps the global risk sets
+  which make Cox models hard to federate. Results match centralised training and beat
+  isolated local training. Evidence is limited to C-MAPSS turbofan data under simulated
+  decentralisation, which is a benchmark rather than a real multi-party deployment,
+  and the audience is industrial operations rather than AI leadership.'
+business_functions:
+- Operations
+- Data Science
+- Compliance
+enterprise_ai_themes:
+- Governance
+- Reliability
+- Infrastructure
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

@@ -1,0 +1,19 @@
+enterprise_problem: None identified -- detecting depression from articulatory dynamics
+  in speech.
+headline: Articulatory complexity measures separate depressed from control speakers.
+recommendation_reasoning: Clinical speech biomarkers on a 118-speaker corpus. Speech
+  is an explicit ignore topic and the clinical framing puts it fully outside the profile.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

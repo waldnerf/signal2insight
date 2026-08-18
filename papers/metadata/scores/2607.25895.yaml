@@ -1,0 +1,21 @@
+enterprise_problem: None identified -- collecting robot manipulation training data
+  without a robot.
+headline: Higher-fidelity robot-free data capture removes the need for real-robot
+  fine-tuning.
+recommendation_reasoning: Robotics, an explicit ignore topic. Strong work with a real
+  result -- raising data fidelity removed the real-robot anchor entirely -- but nothing
+  transfers to enterprise AI systems.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: System architecture
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 12
+recommendation: Ignore
+fulltext_reassessed: false

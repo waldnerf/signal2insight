@@ -1,0 +1,23 @@
+enterprise_problem: None for this profile -- adversarial attacks that steer infrared
+  vision-language models toward attacker-chosen concepts.
+headline: A thermal pattern that makes an infrared model see what the attacker chose.
+recommendation_reasoning: Security is a priority theme, and the transferable observation
+  -- that a perturbation optimised against classification also degrades captioning
+  and question answering on the same model, so single-task robustness testing understates
+  exposure -- is a fair general point. But the attack surface is infrared thermal
+  imaging, which sits in the profile's computer vision ignore_topic and applies to
+  defence and surveillance rather than enterprise AI deployments.
+business_functions:
+- Security
+enterprise_ai_themes:
+- Security
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

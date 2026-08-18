@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2607.29527",
+  "title": "TerraNova: A Foundation Model for the Anthropocene",
+  "authors": [
+    "Carlos Rodriguez-Pardo",
+    "Massimo Tavoni"
+  ],
+  "abstract": "A defining problem of the Anthropocene is to model the physical Earth and human societies as one coupled system, yet no learned representation spans their observational breadth. We argue the obstacle is geometric: the physical Earth is measured as continuous fields that ignore political borders, whereas societies are reported for administrative units. Earth-system foundation models serve the first geometry; coupling it to the second has required lossy averaging over borders. We introduce TerraNova, a foundation model trained on 1,024 physical and societal records in their native geometries: 512 gridded Earth-system fields and 512 national indicators. Dedicated encoders represent location, country, time and task, cross-modal transformers fuse them into a shared spatiotemporal state, and a hypernetwork generates a per-query decoder whose evidential head returns a predictive distribution. Two contrastive objectives couple the representation: a population-weighted alignment between each country and coordinates in its territory, and one to pretrained geospatial embeddings carrying image-derived semantics. Read out through that decoder, the representation is competitive with purpose-built geospatial encoders while spanning axes they do not represent (time, oceans and uncertainty) and supporting country-level capabilities. The frozen backbone reconstructs dense fields from sparse observations and adapts to unseen variables in minutes on consumer hardware.",
+  "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CY",
+    "econ.EM",
+    "stat.ML"
+  ],
+  "published": "2026-07-31T15:27:26Z",
+  "updated": "2026-07-31T15:27:26Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29527v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:31:17.276481+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 11,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:34:17.934361+00:00"
+}

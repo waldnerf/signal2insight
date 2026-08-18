@@ -1,0 +1,22 @@
+enterprise_problem: None identified -- 3D spatial grounding for robot manipulation
+  policies.
+headline: Distilling 3D object priors into a vision-language-action policy at training
+  time only.
+recommendation_reasoning: Robotics and computer vision are both explicit ignore topics.
+  The train-time-only distillation trick (teacher used during training, unchanged
+  inference pipeline) is elegant but generic, and nothing here reaches an enterprise
+  AI decision.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

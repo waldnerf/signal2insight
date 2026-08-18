@@ -1,0 +1,38 @@
+{
+  "arxiv_id": "2607.29433",
+  "title": "Know It, Act on It: Investigating Memory Utilization in LLM Personalization",
+  "authors": [
+    "Zhaoxin Feng",
+    "Jianfei Ma",
+    "Emmanuele Chersoni"
+  ],
+  "abstract": "As large language model (LLM) agents evolve into personalized companions, memory has emerged as a core capability. However, LLMs face a knowledge utilization problem: they may fail to act on relevant user preferences even when they are fully present in context. When an agent fails to tailor its response in a context where previously shared user preferences should matter, it is unclear whether the model failed to remember that information or remembered it but failed to use it. To isolate this breakdown, we introduce a decoupled evaluation paradigm that administers paired Know and Act tests to the same user preference. We conduct large-scale experiments across 16 systems and five memory architectures, evaluating 1,000 preferences embedded at three levels of expression strength. Our results show a large gap between Know and Act outcomes: agents often pass the recall test for a user preference but fail to reflect that same preference in the paired behavioral scenario. While memory architectures reduce this gap, utilization remains especially weak for health and therapy-related preferences, where failures to act carry the greatest real-world stakes.",
+  "categories": [
+    "cs.CL"
+  ],
+  "published": "2026-07-31T13:57:21Z",
+  "updated": "2026-07-31T13:57:21Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29433v1",
+  "downloaded": true,
+  "reviewed": true,
+  "status": "extracted",
+  "discovered_at": "2026-08-03T21:43:02.289817+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 20,
+  "recommendation": "Priority review",
+  "download_eligible": true,
+  "extract_eligible": true,
+  "reviewed_at": "2026-08-03T21:45:41.359585+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "approve",
+  "human_reviewed_at": "2026-08-04T05:18:03.771110+00:00",
+  "downloaded_at": "2026-08-04T05:21:04.120315+00:00",
+  "knowledge_base_priority": "High",
+  "recommended_next_action": "Write LinkedIn Post",
+  "executive_relevance": 4,
+  "technical_novelty": 4,
+  "practical_applicability": 4,
+  "thought_leadership_potential": 5,
+  "keep": true,
+  "extracted_at": "2026-08-04T07:53:25.282852+00:00"
+}

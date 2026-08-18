@@ -1,0 +1,31 @@
+enterprise_problem: Whether a model reasons about cause or just copies correlation
+  appears to depend on what evidence is in the prompt, not on what it was trained
+  on.
+headline: The capability lives in the weights; the switch lives in the context.
+recommendation_reasoning: 'A carefully built result with a striking one-line summary
+  and real methodological care -- multiple seeds, an external audit on CLadder, activation
+  patching to localise the effect, and an explicit quantification of the noise floor
+  in probe-based causal evaluation, which most papers in this area skip. The implication
+  is real: adding more of the right training data does not fix causal reasoning if
+  the prompt contains correlational evidence that overrides it. But the setting is
+  synthetic Simpson''s-paradox worlds, and reaching the business implication requires
+  interventional versus observational data, do-notation and sign reversal as prior
+  concepts -- exactly the C8 signal to score translatability low rather than owe the
+  explanation.'
+business_functions:
+- Data Science
+- Chief AI Officer
+enterprise_ai_themes:
+- Reliability
+- Evaluation
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 2
+story_potential: 3
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

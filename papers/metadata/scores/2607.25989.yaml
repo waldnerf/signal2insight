@@ -1,0 +1,30 @@
+enterprise_problem: In autonomous network operations, one fault cascades across coupled
+  monitoring, analytics and actuation functions, so operators cannot tell the true
+  root cause from symptomatic victims in time to act.
+headline: In a self-healing system, telling the root cause from its victims is the
+  whole problem.
+recommendation_reasoning: 'The co-drift framing -- coupled control-loop functions
+  producing cascading symptoms that defeat reactive threshold detection -- generalises
+  beyond networking to any closed-loop AI operations stack, and the evaluation is
+  honest and progressively realistic across three environments up to an SDN edge-to-cloud
+  testbed. Held back for this profile by domain: it is framed for telco and self-driving
+  networks rather than enterprise AI platforms, so the translation costs a step. Worth
+  keeping for the root-cause-disambiguation framing.'
+business_functions:
+- Operations
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- Observability
+- Reliability
+- Other
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 16
+recommendation: Read later
+fulltext_reassessed: false

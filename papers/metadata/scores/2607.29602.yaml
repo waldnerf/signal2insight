@@ -1,0 +1,26 @@
+enterprise_problem: None -- this measures whether models can tell if two people in
+  a video already know each other.
+headline: Models match human accuracy at reading social familiarity, but get there
+  by guessing 'stranger'.
+recommendation_reasoning: Careful work with a nice methodological point -- equal accuracy
+  reached through a different prior rather than better discrimination, which is a
+  real caution about reading parity from headline accuracy. But the task is social-signal
+  inference from video, sitting in the profile's ignore_topics (computer vision, speech),
+  with no enterprise application and 96 dyads. The transferable lesson about accuracy
+  parity hiding different decision behaviour is available from papers that are already
+  on-topic.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Evaluation
+- Other
+primary_type: Benchmark
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 11
+recommendation: Ignore
+fulltext_reassessed: false

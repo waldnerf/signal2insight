@@ -1,0 +1,37 @@
+enterprise_problem: Agentic AI shifts the engineer's job from authoring artifacts
+  to directing and verifying autonomous systems, and organisations have no competency
+  model for the people they now need.
+headline: The engineer's enduring value moves from writing the work to judging it
+  -- and the named risks are deskilling and diffuse accountability.
+recommendation_reasoning: 'The subject is one executives are actively asking about,
+  and it needs no ML vocabulary: what is an engineer for once agents write the code,
+  and what breaks if we get the answer wrong. It names risks with real operational
+  teeth -- automation bias, deskilling, superficial engagement, diffuse accountability
+  -- which is the governance angle. Two things hold it back. It is a conceptual synthesis
+  with no empirical validation of its own, so evidence_quality is 2; and it is framed
+  for university curriculum design (curricular guidelines, assessment redesign, pedagogy)
+  rather than enterprise workforce planning, which is close to the academic-scope
+  rejection on 2607.25881. The useful content would have to be lifted out of an education-sector
+  frame. Related to 2607.26034, which the reviewer approved for changing management
+  practice. || Recalibrated 2026-08-03 on the same correction: a conceptual synthesis
+  with no empirical validation of its own does not support business_translatability
+  4, however clean the framing reads.'
+business_functions:
+- CIO/CTO
+- Chief AI Officer
+- Engineering
+- Operations
+enterprise_ai_themes:
+- Agentic AI
+- Governance
+- Other
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 2
+evidence_quality: 2
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 13
+recommendation: Read later
+fulltext_reassessed: false

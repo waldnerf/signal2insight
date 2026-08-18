@@ -1,0 +1,23 @@
+enterprise_problem: None -- generating molecules from text descriptions while respecting
+  chemical constraints.
+headline: Generate, verify against real constraints, then repair.
+recommendation_reasoning: The generator-verifier-refiner loop is a recognisable and
+  sound agent pattern, and grounding the verifier in executable domain constraints
+  rather than a model's opinion is the right instinct. But the domain is computational
+  chemistry, results are reported only as improved exact-match on two chemistry benchmarks
+  without figures in the abstract, and nothing transfers to enterprise AI beyond a
+  pattern already better demonstrated elsewhere.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Framework
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 8
+recommendation: Ignore
+fulltext_reassessed: false

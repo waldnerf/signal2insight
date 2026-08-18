@@ -1,0 +1,25 @@
+enterprise_problem: 'Agent reliability across enterprise APIs and document collections:
+  How to evaluate whether agents can reason reliably with structured and unstructured
+  data'
+headline: 'VAKRA benchmark: Measuring agent reliability across enterprise APIs and
+  documents'
+recommendation_reasoning: 'Addresses a real gap: agent evaluation across APIs/docs
+  is understudied, yet enterprises are deploying agents now. Strong benchmark construction
+  with multiple baselines. Maps directly to procurement/selection decision: ''which
+  agents can we safely deploy?'' Cross-industry relevance.'
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- Evaluation
+- Agentic AI
+primary_type: Benchmark
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 3
+overall_score: 19
+recommendation: Priority review
+fulltext_reassessed: false

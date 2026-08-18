@@ -1,0 +1,25 @@
+enterprise_problem: Distilling a large model into a smaller one is slow because a
+  few long generated responses hold up every training batch.
+headline: Expand the rollout horizon when learning plateaus, not on a fixed schedule.
+recommendation_reasoning: A 49.1 to 71.2% training-time reduction is a real cost number,
+  and the progress-aware idea -- expand only when learning near the current boundary
+  has stalled, rather than on a preset interval -- is sensible. But this is entirely
+  internal to a distillation training loop, relevant only to organisations training
+  their own student models, and the saving is on a cost line most enterprises do not
+  have. No audience above an ML engineering team.
+business_functions:
+- Data Science
+- Engineering
+enterprise_ai_themes:
+- Cost Optimization
+- Fine-tuning
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

@@ -1,0 +1,21 @@
+enterprise_problem: None for enterprise AI -- this concerns academic examination design.
+headline: An AI examiner that maps where a student's understanding stops.
+recommendation_reasoning: Purely a theoretical foundation for academic assessment
+  -- Zone of Proximal Development, Bloom's and SOLO taxonomies, additive grading architecture
+  -- with no implementation and no validation. This is the education and research-about-education
+  scope the reviewer ruled out on 2607.29610's neighbour 2607.25881. Claims of 'unprecedented
+  measurement reliability' with nothing built are a further mark against it.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 2
+evidence_quality: 2
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 8
+recommendation: Ignore
+fulltext_reassessed: false

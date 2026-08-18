@@ -1,0 +1,19 @@
+enterprise_problem: Post-training quantization for financial time-series forecasting
+  model compression and inference optimization
+headline: Post-training quantization for financial forecasting
+recommendation_reasoning: Finance vertical. Financial time-series validation is notoriously
+  noisy (easy to backtest well, hard to generalize forward). Also, financial forecasting
+  is niche. Out of scope.
+business_functions: []
+enterprise_ai_themes:
+- LLMOps
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

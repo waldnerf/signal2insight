@@ -1,0 +1,27 @@
+enterprise_problem: Systems that learn continuously get worse at recognising inputs
+  they should refuse, independently of whether they still perform well on their existing
+  tasks.
+headline: Knowing what it doesn't know decays separately from knowing what it does.
+recommendation_reasoning: The core observation is interesting and is nearly a governance
+  point -- out-of-distribution forgetting is only weakly anti-correlated with task
+  performance, so a continually updated model can keep its accuracy while quietly
+  losing the ability to flag inputs it should not answer. But it is demonstrated on
+  CIFAR and ImageNet image streams, the mechanisms are stated as logit-scale drift
+  and manifold crowding, and continual learning is not a deployment pattern most enterprises
+  run. Reaching the business implication requires energy-based OOD scoring as a prior
+  concept.
+business_functions:
+- Data Science
+enterprise_ai_themes:
+- Reliability
+- Observability
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Ignore
+fulltext_reassessed: false

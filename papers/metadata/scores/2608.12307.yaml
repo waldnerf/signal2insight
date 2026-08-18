@@ -1,0 +1,24 @@
+enterprise_problem: 'Inference-time capability transfer without retraining: reducing
+  cost of large model serving'
+headline: 'Inference-time model distillation: Large-model capability with small-model
+  cost'
+recommendation_reasoning: Solid technical contribution to a real enterprise pain point
+  (model serving cost/performance). Evidence is strong. Business translatability is
+  C8 (cost optimization is on exec dashboards) but story_potential is lower because
+  the mechanism remains technical; still, this is actionable for engineering teams
+  now.
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- LLMOps
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 3
+story_potential: 2
+overall_score: 17
+recommendation: Review fully
+fulltext_reassessed: false

@@ -1,0 +1,18 @@
+enterprise_problem: Financial trading using LLM-extracted signals from news sentiment
+  and technical indicators
+headline: LLM-driven small-cap trading signals
+recommendation_reasoning: Finance vertical. Small-cap trading is niche, and financial
+  validation via backtesting is notoriously noisy. Also raises compliance/risk concerns.
+  Out of scope.
+business_functions: []
+enterprise_ai_themes: []
+primary_type: System architecture
+adoption_horizon: <12 months
+novelty: 2
+evidence_quality: 2
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 7
+recommendation: Ignore
+fulltext_reassessed: false

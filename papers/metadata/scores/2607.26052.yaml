@@ -1,0 +1,27 @@
+enterprise_problem: Mixture-of-experts adapters route every token to a fixed number
+  of experts, overspending compute on easy tokens and starving hard ones.
+headline: Spend inference compute only where the model is unsure.
+recommendation_reasoning: 'Well-evidenced and genuinely practical for anyone serving
+  MoE-LoRA models -- drop-in, no extra parameters, single forward pass, with a budget
+  thermostat that hits any target expert count, plus a bonus improvement in out-of-distribution
+  detection. The problem is the audience: the value cannot be stated without first
+  explaining expert routing and router entropy, which per the rubric caps business
+  translatability and story potential regardless of technical merit. Reference material
+  for a platform team, not an executive narrative.'
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- Cost Optimization
+- Infrastructure
+- Fine-tuning
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

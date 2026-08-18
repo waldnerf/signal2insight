@@ -1,0 +1,26 @@
+{
+  "arxiv_id": "2607.29624",
+  "title": "The Theoretical Foundation of Socratic Tests: Dynamic, Multimodal, Conversational Examinations",
+  "authors": [
+    "Ilya Mikhelson"
+  ],
+  "abstract": "Traditional static assessments rely on a subtractive, deficit-based grading model that often penalizes ambition and obscures diagnostic feedback. Conversely, traditional face-to-face oral examinations introduce severe construct-irrelevant variance by exacerbating performative anxiety and the sociological power imbalances inherent to academic hierarchies. This paper presents the theoretical foundation for the \"Socratic Test,\" an automated, computer-mediated conversational assessment. By integrating Dynamic Assessment principles, multimodal workspaces, Bloom's Taxonomy for real-time proctoring, and the SOLO Taxonomy for structural evaluation, the Socratic Test actively maps a student's cognitive boundaries. This paper formalizes the use of graduated scaffolding to quantify the Zone of Proximal Development (ZPD) and details a non-compensatory, additive grading architecture that prioritizes mastery over penalty and human-AI alignment to ensure unprecedented measurement reliability.",
+  "categories": [
+    "cs.CY",
+    "cs.AI",
+    "cs.HC"
+  ],
+  "published": "2026-07-31T16:57:49Z",
+  "updated": "2026-07-31T16:57:49Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29624v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:21:22.557706+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 8,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:25:16.107235+00:00"
+}

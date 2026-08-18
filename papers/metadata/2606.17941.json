@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2606.17941",
+  "title": "PepsiCo Deploys AI-Driven Pricing and Promotion Optimization at Scale",
+  "authors": [
+    "Aleix Llenas",
+    "Eduardo Salazar-Treviño",
+    "Francisco Leskovar",
+    "Francesc Pons-Llopis",
+    "Federico Todeschini",
+    "Deepika Gowda",
+    "David Bofill",
+    "Laxmi Anish",
+    "Michael Cleavinger"
+  ],
+  "abstract": "Effective pricing and promotion planning constitutes a central pillar of strategic revenue management for firms operating in highly competitive and dynamic markets. These planning activities require the simultaneous consideration of demand elasticity, competitor actions, channel and market specific constraints, and financial objectives. As the dimensionality and interdependencies inherent in these problems increase, manual or traditional approaches become suboptimal and insufficient. In this context, Operations Research provides a robust methodological foundation for scalable, data-driven decision support systems that can optimize complex planning processes across large product and customer portfolios. This paper presents two large-scale optimization systems developed and deployed at PepsiCo to support Revenue Growth Management initiatives: PromoAI and PricingAI. PromoAI couples machine learning-based promotional forecasts with a mixed-integer linear programming model to optimize promotional calendars across trade channels, searching millions of product-promotion-timing combinations for the one that maximizes PepsiCo and retailer revenues subject to customizable business constraints. PricingAI optimizes base prices across product portfolios over multi-period horizons, using Bayesian hierarchical models to estimate own- and cross-price elasticities and competitive interactions, then feeding these into a nonlinear programming engine that recommends price changes aligned with revenue and margin targets under operational constraints. Together, these systems demonstrate the feasibility and scalability of advanced optimization in large-scale enterprise environments. They highlight the value of integrating statistical learning with mathematical programming to enable enterprise-level, automated decision-making that is both data-informed and aligned with strategic business objectives.",
+  "categories": [
+    "math.OC"
+  ],
+  "published": "2026-06-16T13:50:43Z",
+  "updated": "2026-06-16T13:50:43Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.17941v1",
+  "downloaded": true,
+  "reviewed": true,
+  "status": "extracted",
+  "discovered_at": "2026-08-03T21:15:24.951787+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 21,
+  "recommendation": "Priority review",
+  "download_eligible": true,
+  "extract_eligible": true,
+  "reviewed_at": "2026-08-03T21:21:41.992154+00:00",
+  "fulltext_reassessed": true,
+  "downloaded_at": "2026-08-03T21:30:03.043029+00:00",
+  "knowledge_base_priority": "High",
+  "recommended_next_action": "Write LinkedIn Post",
+  "executive_relevance": 5,
+  "technical_novelty": 3,
+  "practical_applicability": 4,
+  "thought_leadership_potential": 4,
+  "keep": true,
+  "extracted_at": "2026-08-04T07:53:25.269736+00:00"
+}

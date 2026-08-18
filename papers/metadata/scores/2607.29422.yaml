@@ -1,0 +1,54 @@
+enterprise_problem: Security vulnerability backlogs grow faster than engineers can
+  patch them, and generic coding agents underperform on security fixes because nobody
+  gives them the context a security engineer would assemble first.
+headline: Agents fix 73% of real security vulnerabilities once you give them the context
+  a security engineer would have gathered first.
+recommendation_reasoning: 'Patch backlog and mean-time-to-remediate are board-visible
+  numbers, so a 73% automated repair rate on real vulnerabilities is a business fact
+  before it is a technical one. Evidence is the strong part and survives the standard
+  applied to 2607.29557: 300 real-world instances on SEC-Bench with sanitizer-based
+  patch verification, not self-reported success, and 29% over the strongest baseline.
+  The transferable insight is that the win came from context engineering rather than
+  a better model -- cross-file data flows, runtime crash semantics, and the commit
+  history that introduced the fragile pattern -- with an ablation confirming the three
+  facets are complementary. That generalises to agent design well beyond security.
+  Review fully rather than Priority: the contribution is an implementation insight,
+  valuable but not a strategic reframing.'
+business_functions:
+- Security
+- Engineering
+- CIO/CTO
+- Compliance
+enterprise_ai_themes:
+- Security
+- Agentic AI
+- Reliability
+primary_type: System architecture
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 16
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: 'Archived at review with the download quota already met. Reviewer
+  cut enterprise_readiness 4->3, business_translatability 4->3 and story_potential
+  4->3, leaving evidence_quality at 4: the 300-instance sanitizer-verified result
+  stands, but a security-remediation implementation detail does not carry the same
+  business weight as the week''s approved papers. Calibration: strong verified evidence
+  justifies a high evidence_quality score on its own and must not lift the three business-fit
+  dimensions with it.'
+human_score_adjustments:
+  enterprise_readiness:
+    from: 4
+    to: 3
+  business_translatability:
+    from: 4
+    to: 3
+  story_potential:
+    from: 4
+    to: 3

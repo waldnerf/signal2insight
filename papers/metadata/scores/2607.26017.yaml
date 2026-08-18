@@ -1,0 +1,33 @@
+enterprise_problem: Agent memory must both absorb new information quickly and internalise
+  recurring procedures cheaply, but retrieval memory pays a lookup cost forever while
+  parametric memory needs explicit task boundaries.
+headline: Agents should learn their routines by heart and look up only what is genuinely
+  new.
+recommendation_reasoning: Memory is a priority topic and the routing idea -- keep
+  novel tasks in an episodic buffer, consolidate recurring patterns into parametric
+  memory, decide which without task labels -- is a real architectural distinction
+  rather than another retrieval tweak, with a clean human-memory analogy that carries
+  to a non-technical audience. Held back by modest gains (+4.0 EM average) and by
+  requiring training-time consolidation, so no enterprise implements this next quarter.
+  Worth a full read for where agent-memory design is heading. || Recalibrated 2026-07-29.
+  The episodic-versus-parametric memory distinction is architecturally interesting
+  to an engineering team and invisible to a business leader; the human-memory analogy
+  made it look more executive-ready than it is. Demoted to Read later.
+business_functions:
+- Engineering
+- Data Science
+- CIO/CTO
+enterprise_ai_themes:
+- Memory
+- Agentic AI
+- Cost Optimization
+primary_type: System architecture
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 13
+recommendation: Read later
+fulltext_reassessed: false

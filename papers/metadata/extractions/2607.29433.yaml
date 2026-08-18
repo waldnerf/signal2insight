@@ -1,0 +1,334 @@
+summary_five_sentences: 'As LLM assistants acquire persistent memory, a failure mode
+  emerges that recall benchmarks cannot see: the agent stores a user preference correctly
+  and then does not act on it. This paper isolates that failure with a decoupled evaluation
+  that administers paired Know and Act tests against the same preference, across 16
+  memory systems, five architecture families, and 1,000 preferences embedded at three
+  levels of expression strength. The gap is pervasive: even the strongest system converts
+  only about two-thirds of correctly remembered preferences into preference-aware
+  behaviour, and the weakest can articulate a preference on request while almost never
+  reflecting it in what it does. Utilisation is worst precisely where the stakes are
+  highest, with health and medical preferences scoring lowest and therapy and emotional
+  preferences second-lowest despite the latter having the highest recall. A controlled
+  oracle study localises the breakdown: 53% of failures are comprehension (the right
+  passage was in context but the constraint was not extracted), 31% retrieval, and
+  16% application, where the preference was stated outright and the model still did
+  not act on it.'
+executive_explanation: 'Memory is the feature every assistant vendor is selling right
+  now, and it is being evaluated on the wrong thing. Every benchmark asks whether
+  the system remembers. This paper asks the question that matters commercially: when
+  it matters, does it act on what it remembers? Across sixteen systems the answer
+  is often no. An assistant will correctly tell you it knows about your peanut allergy
+  and then recommend a Thai dish. The gap is widest in health and emotional contexts,
+  which is exactly where a failure to act has consequences rather than being merely
+  annoying. For anyone deploying a memory-enabled assistant to customers or employees,
+  this establishes that recall accuracy in a vendor demo tells you almost nothing
+  about behaviour in production, and gives a testing method that does.'
+architect_explanation: 'The design is the contribution: for each user preference,
+  generate a paired Know test (a direct first-person recall question) and an Act test
+  (a realistic request where the preference should shape the response but is never
+  mentioned). Act is scored by paired comparison against the same backbone with no
+  memory, judged binary by GPT-5, which controls for the model''s baseline behaviour
+  rather than measuring absolute quality. Utilisation Rate is then the fraction of
+  correctly recalled preferences the agent also acts on. Preferences are embedded
+  at three expression strengths (Explicit, Incidental, Inferential) with identical
+  non-target distractor chunks across conditions so only the target snippet varies.
+  Sixteen systems span long-context baselines, simple and embedding RAG, structure-augmented
+  RAG and agentic memory, with all non-long-context systems sharing GPT-4o-mini as
+  backbone so architecture is isolated from generation capability. The failure attribution
+  uses two oracle conditions (inject the ground-truth chunk; inject the preference
+  text itself) to partition failures into retrieval, comprehension and application.'
+central_contribution: A decoupled Know/Act evaluation paradigm that separates memory
+  failure from utilisation failure, the finding that the utilisation gap is large
+  and pervasive across all memory architectures, and a three-layer oracle attribution
+  showing comprehension rather than retrieval is the dominant cause.
+industry_problem: Memory-augmented assistants are being deployed as long-term companions
+  and enterprise agents, evaluated on benchmarks that test factual recall, multi-hop
+  reasoning and long-range understanding. None of those detect the case where the
+  system retrieves the right information and still behaves as if it had not, which
+  is the failure users actually experience and the one that carries risk.
+problem_importance: It is a measurement failure with a safety edge. When an agent
+  fails to tailor its response, the organisation cannot currently tell whether the
+  model forgot or remembered and ignored, and those have completely different fixes.
+  Worse, the gap concentrates in health, medical and emotional preferences, where
+  the paper argues failure to act carries tangible risk. Any organisation buying or
+  building on memory features is currently making that purchase against metrics that
+  do not measure the behaviour it is buying.
+assumptions_challenged: That retrieval accuracy is a proxy for personalised behaviour.
+  That better memory architectures solve personalisation, when they narrow but do
+  not close the gap. That the intuitive difficulty ordering holds, since Incidental
+  preferences buried as side details proved harder to recall than Inferential ones
+  requiring reasoning from behavioural cues. And the assumption that failures are
+  retrieval problems, when comprehension dominates at 53%.
+gaps_identified: Existing memory benchmarks conflate storage with utilisation and
+  therefore cannot localise a failure. No prior work paired a recall probe with a
+  behavioural probe on the same item. Expression strength was not treated as an experimental
+  variable, so the field could not see that explicit statement exposes utilisation
+  failure while non-explicit expression exposes storage failure. And no prior study
+  decomposed memory-pipeline failures into retrieval, comprehension and application
+  layers.
+proposed_architecture: 'An evaluation framework rather than a system. Inject-then-query
+  protocol following MemoryAgentBench: conversation chunks are fed one at a time through
+  each system''s native memorisation mechanism, then Know and Act tests are administered
+  in separate independent sessions to avoid priming. 150 chunk sequences over 50 personas
+  and three expression types, 11,955 chunks, 4.55M tokens, with dependency-aware ordering
+  and non-target distractors including ask-to-forget entries and sensitive-information
+  entries. A zero-memory baseline validates that Know questions are unanswerable without
+  memory (all models under 3%). Two oracle conditions progressively bypass retrieval
+  and then comprehension to attribute failures.'
+differentiation: 'Prior memory benchmarks (LongMemEval, MemoryAgentBench, PersonaMem)
+  measure whether information can be recovered. This measures whether recovered information
+  changes behaviour, on the same item, which is what makes the dissociation visible
+  at all. The paired-comparison Act judge against a zero-memory response from the
+  same backbone is a better control than absolute scoring. And the oracle decomposition
+  is the part most reusable elsewhere: it turns an aggregate failure rate into an
+  actionable diagnosis.'
+novel_concepts: The Know/Act dissociation; Utilisation Rate as a metric distinct from
+  recall accuracy; expression strength (Explicit, Incidental, Inferential) as a controlled
+  experimental dimension; and three-layer failure attribution via progressive oracle
+  injection.
+improves_upon: LongMemEval, MemoryAgentBench and PersonaMem-v1/v2 on the evaluation
+  side, all of which measure recall. It builds directly on PersonaMem-v2 for persona
+  and preference material while adding the behavioural probe those benchmarks lack.
+tradeoffs: 'The design buys clean attribution at the cost of realism, and the authors
+  say so: each preference maps to a single target passage with limited competing evidence,
+  which makes retrieval far easier than in production, so the observed gap is a conservative
+  lower bound. Everything rests on LLM judges, mitigated by strong agreement statistics
+  but not eliminated. Personas are synthetic. And using GPT-4o-mini as the shared
+  backbone isolates architecture cleanly but means absolute numbers for the RAG and
+  agentic systems understate what they would do on a stronger model.'
+evaluation_method: 16 memory systems across five architecture categories, 1,000 preferences
+  per system, three expression conditions, paired Know and Act tests per preference
+  in independent sessions. Know scored against structured ground truth; Act scored
+  by binary paired comparison against a zero-memory response from the same backbone,
+  judged by GPT-5. Zero-memory baseline confirms Know questions are unguessable (all
+  models below 3%, anti-stereotypical lowest at 1.2%). Judge reliability established
+  by human evaluation of 100 Know and 100 Act judgments (Fleiss kappa 0.89 and 0.82)
+  and cross-judge agreement between GPT-5 and Claude Opus 4.6 on 200 samples (Cohen
+  kappa 0.91 and 0.88). Failure attribution via oracle-chunk and oracle-preference
+  injection over all 722 Know-Pass/Act-Fail cases for Mem0.
+statistically_convincing: 'Yes, and unusually well controlled for an LLM-judged benchmark.
+  The zero-memory baseline is the right validity check and it passes decisively (under
+  3% across all four generation models), so non-trivial Know accuracy genuinely reflects
+  memorisation. Judge reliability is established two ways, with human agreement at
+  Fleiss kappa 0.89/0.82 and cross-model agreement at Cohen kappa 0.91/0.88. Holding
+  the backbone constant across all non-long-context systems isolates architecture
+  from generation capability, which most comparative memory studies fail to do. Sample
+  sizes are large (1,000 preferences, 722 attributed failure cases). The main caveat
+  is not statistical but constructional: the retrieval task is deliberately easy,
+  which the authors correctly flag as making the reported gap a lower bound.'
+evaluation_weaknesses: Synthetic personas rather than real longitudinal user histories,
+  so no natural topic drift or contradiction. Single target passage per preference
+  with limited distractors, which simplifies retrieval well below production conditions.
+  Total reliance on LLM judges for both tests, with acknowledged risks of verbosity
+  preference and insensitivity to subtle behavioural cues. Therapy and emotional preferences
+  carry the highest zero-memory pass rate at 9.0%, meaning empathetic defaults inflate
+  Act scores in exactly the category the paper highlights. And the failure attribution
+  is run on a single system (Mem0), so the 53/31/16 split may not generalise across
+  architectures.
+open_questions: How wide the gap becomes under realistic retrieval noise, contradiction
+  and topic drift. Whether the comprehension bottleneck is a backbone-capability limit
+  or a context-presentation problem, given that memory architectures improved utilisation
+  more than storage. Whether the application-failure floor (stable at roughly 14-19%
+  regardless of expression) is an irreducible property of current models. And whether
+  the health and therapy utilisation gap persists with domain-specialised models.
+enterprise_meaning: 'If you are deploying or procuring a memory-enabled assistant,
+  your acceptance criteria are almost certainly wrong. Recall accuracy is the metric
+  vendors report and it is close to uninformative about behaviour: systems here score
+  99% on recall and convert only 30-65% of that into action. The immediate practical
+  move is to build paired tests, one asking the system what it knows and one putting
+  it in a situation where knowing should change what it does, and to measure the ratio
+  between them. Second, the risk is not evenly distributed: health and emotional contexts
+  show the largest gaps, so any deployment touching wellbeing, benefits, care or HR
+  needs that category tested separately rather than trusting an aggregate. Third,
+  the finding that memory architectures improve utilisation more than storage suggests
+  that presenting information in an actionable form matters more than retrieving more
+  of it.'
+enterprise_patterns_affected: Memory and personalisation architecture directly; agent
+  evaluation practice, since the Know/Act split is a general template for any capability
+  where possession of information is distinct from acting on it; RAG design, since
+  the comprehension-dominant failure mode argues for how retrieved context is presented
+  rather than how much is retrieved; and AI governance for wellbeing-adjacent deployments,
+  where the safety argument here is concrete.
+reduces_cost: 'Not directly, and there is a counter-signal worth noting: the strongest
+  results came from 1M-token long-context models, which is the expensive path. The
+  cost-relevant finding is that Mem0 roughly tripled the Utilisation Rate of its GPT-4o-mini
+  backbone to reach parity with Gemini 3.1 Flash, meaning architecture can substitute
+  for context length and model tier on this task.'
+improves_reliability: It measures reliability rather than improving it, which is the
+  point. The Know/Act ratio is a reliability metric for personalisation that did not
+  previously exist, and the three-layer attribution turns a reliability complaint
+  into a specific engineering target.
+improves_governance: Yes, materially. It gives a defensible testing protocol for personalised
+  systems and identifies a risk concentration (health, medical, therapy) that a governance
+  framework can name and test for specifically. The finding that memory-augmented
+  systems override demographic priors while the bare backbone falls back on them is
+  also directly relevant to bias review.
+improves_developer_productivity: Indirectly. The oracle-based attribution method means
+  teams can stop guessing whether a personalisation complaint is a retrieval, comprehension
+  or application problem, which is the diagnostic step that otherwise consumes the
+  most time.
+cio_action: 'Change your acceptance criteria for anything with a memory feature. Require
+  the vendor or your own team to report a utilisation rate, not a recall rate: given
+  that the system correctly remembers something, how often does it act on it. Test
+  health, medical and emotional categories separately rather than in aggregate, because
+  that is where the gap concentrates and where the consequences are real. And treat
+  a demo in which the assistant correctly answers what do you know about me as evidence
+  of nothing.'
+ai_team_action: Build paired Know/Act evaluation sets for your own domain preferences
+  and track the ratio as a first-class metric. Adopt the oracle-injection method to
+  localise failures before optimising anything, since comprehension dominates and
+  retrieval tuning will not fix it. Focus on how retrieved context is presented to
+  the generator, not only on retrieval quality, given that memory architectures improved
+  utilisation more than storage. And test incidentally expressed preferences deliberately,
+  since those proved hardest to store despite intuition suggesting the opposite.
+surprising_claim: That in 16% of failures, the model was handed the preference as
+  an explicit statement in its context (this user has a pollen allergy) and still
+  did not act on it. No retrieval, no comprehension, no memory architecture fixes
+  that, and the proportion stays remarkably stable regardless of how the preference
+  was originally expressed.
+misconceptions_challenged: That memory benchmarks measure personalisation. That a
+  system which can tell you what it knows about you will use it. That better retrieval
+  is the lever for better personalisation, when comprehension dominates failures.
+  That subtly expressed preferences are harder than inferred ones, when Incidental
+  proved harder to store than Inferential. And that adding a memory architecture solves
+  the problem, when it narrows the gap without closing it.
+business_implications: Every organisation buying assistant memory is buying it against
+  a metric that does not measure the behaviour they want. That is a procurement and
+  acceptance-testing problem with an immediate fix. Beyond that, the concentration
+  of failures in health and emotional contexts creates a real deployment constraint
+  for any consumer or employee-facing assistant in wellbeing-adjacent domains, and
+  the paper supplies both the argument and the test. For product teams, the finding
+  that presentation of retrieved context matters more than volume of retrieval redirects
+  effort away from the most commonly optimised component.
+future_trends: Evaluation moving from possession of information to use of information
+  across agent capabilities generally, not just memory. Utilisation-style metrics
+  appearing alongside recall in vendor reporting. Memory architectures optimised for
+  actionable presentation rather than retrieval coverage. And a likely regulatory
+  or procurement interest in behavioural testing for personalised systems in health-adjacent
+  contexts.
+future_research_to_monitor: Evaluation on real longitudinal user histories with natural
+  drift and contradiction, which the authors flag as the key validity extension. Whether
+  the application-failure floor is reducible through training rather than architecture.
+  Extension of the oracle-attribution method to other agent pipelines. HaluMem and
+  LifeBench as adjacent memory-evaluation lines, and BenchPres on context-aware preference
+  selectivity.
+worth_linkedin_post: 'Yes, and it has the cleanest single image in the batch: an assistant
+  correctly stores a user''s peanut allergy from an email-editing request, then recommends
+  a Thai dish in the next session. Pair it with the 16% figure, where the preference
+  was handed to the model in plain text and it still did not act.'
+worth_long_article: Yes, though it works best as part of a broader argument about
+  evaluating agents on behaviour rather than possession of information. On its own
+  the material is somewhat narrow for long form; combined with the ARCTIC paper's
+  intent-versus-output framing it makes a strong piece on the general theme that we
+  are measuring what agents know instead of what they do.
+strongest_narrative: The assistant remembers your peanut allergy. Ask it directly
+  and it will tell you. Then ask it to recommend a restaurant and it suggests Thai.
+  Across sixteen memory systems and a thousand preferences, agents recall correctly
+  and act on it only a third to two-thirds of the time, and the gap is widest in health
+  and emotional contexts, where failing to act is the failure that matters. In one
+  case in six, the preference was written into the model's context in plain language
+  and it still did not use it.
+key_takeaway: Recall accuracy tells you almost nothing about whether an assistant
+  will act on what it remembers. Measure the ratio between the two, and test health
+  and emotional categories separately, because that is where the gap is widest and
+  the consequences are real.
+datasets_used:
+- KnowAct benchmark (1,000 preferences, 50 personas, 150 chunk sequences, 11,955 chunks,
+  4.55M tokens)
+- PersonaMem-v2 (source personas and preferences)
+benchmarks_used:
+- KnowAct (introduced here)
+- MemoryAgentBench (inject-then-query protocol)
+- PersonaMem-v2
+industries_benefiting:
+- Healthcare and digital health
+- Financial services and wealth advisory
+- Retail and e-commerce personalisation
+- Human resources and employee experience
+- Education and training
+- Customer service across all sectors
+- Insurance
+influences:
+- Memory
+- RAG
+- Agent design
+- Evaluation
+- Governance
+top_three_insights:
+- 'Remembering and acting are different capabilities and the gap between them is large:
+  systems reach 99% recall accuracy while converting only 30-65% of correctly remembered
+  preferences into preference-aware behaviour, and the best system converts only about
+  two-thirds.'
+- The dominant cause is comprehension, not retrieval. In a controlled oracle study,
+  53% of failures occurred with the correct passage already in context, 31% were retrieval,
+  and 16% persisted even when the preference was injected as plain text, revealing
+  a floor in the model's ability to act on information it has been handed outright.
+- 'The utilisation gap is largest exactly where the stakes are highest: health and
+  medical preferences score lowest on utilisation and therapy and emotional preferences
+  second-lowest, despite therapy preferences having the highest recall accuracy of
+  any category.'
+new_concepts:
+- Know-Act dissociation
+- Utilisation Rate
+- Expression strength as an experimental dimension (Explicit, Incidental, Inferential)
+- Three-layer failure attribution via progressive oracle injection
+- Decoupled evaluation paradigm for possession versus use of information
+terminology:
+- Knowledge utilisation problem
+- Utilisation Rate
+- Know test and Act test
+- Inject-then-query protocol
+- Oracle chunk and oracle preference conditions
+- Retrieval, comprehension and application failure
+- Anti-stereotypical preference
+- Zero-memory baseline
+architectural_patterns:
+- Paired probes on the same item to separate two capabilities that aggregate metrics
+  conflate
+- Paired-comparison judging against a no-capability baseline from the same backbone,
+  rather than absolute scoring
+- Progressive oracle injection to localise a failure within a multi-stage pipeline
+- Holding the generation backbone constant across systems to isolate architectural
+  contribution
+- Controlled distractor sets identical across experimental conditions so only the
+  manipulated variable differs
+evaluation_methods:
+- Decoupled Know/Act paired testing
+- Zero-memory baseline validation that questions are unanswerable without the capability
+  under test
+- Dual judge-reliability establishment via human agreement and cross-model agreement
+- Oracle-condition failure attribution
+- Category-stratified analysis to expose risk concentration hidden by aggregate scores
+papers_to_read_next:
+- Hu et al. 2026, Evaluating memory in LLM agents via incremental multi-turn interactions
+  (MemoryAgentBench, ICLR)
+- 'Chhikara et al. 2025, Mem0: Building production-ready AI agents with scalable long-term
+  memory'
+- Jiang et al. 2025, PersonaMem-v1 and v2
+- Wu et al. 2025, LongMemEval (ICLR)
+- 'Chen et al. 2026, HaluMem: Evaluating hallucinations in memory systems of agents
+  (arXiv:2511.03506)'
+- Yoon et al. 2026, BenchPres (arXiv:2603.16557)
+wiki_concepts_to_link:
+- knowledge-utilization-gap
+- agent-memory
+- agent-evaluation-design
+- personalization-safety
+- retrieval-vs-comprehension
+tags:
+- llm-memory
+- personalization
+- agent-evaluation
+- benchmark
+- governance
+candidate_titles:
+- Your AI Remembers Your Allergy. That Does Not Mean It Will Act On It.
+- We Are Measuring What AI Assistants Know, Not What They Do
+- The Memory Gap Nobody Is Testing For, and Why It Is Worst in Healthcare
+keep: true
+knowledge_base_priority: High
+executive_relevance: 4
+technical_novelty: 4
+practical_applicability: 4
+thought_leadership_potential: 5
+recommended_next_action: Write LinkedIn Post

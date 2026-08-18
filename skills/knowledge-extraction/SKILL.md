@@ -11,7 +11,8 @@ Extract durable knowledge from a full paper, and decide whether it should become
 
 ## Input
 
-- `../../papers/pdf/<year-week>/<arxiv_id>.pdf` — PDFs are grouped by the ISO year-week they were downloaded in; if the exact week isn't already known, glob (`papers/pdf/*/<arxiv_id>.pdf`) rather than guess it
+- `../../papers/text/<arxiv_id>.md` — the paper's cleaned body text, built by `scripts/build_fulltext.py` from the PDF. This is what you read; see "Reading the paper" below
+- `../../papers/pdf/<year-week>/<arxiv_id>.pdf` — the source PDF, grouped by the ISO year-week it was downloaded in; if the exact week isn't already known, glob (`papers/pdf/*/<arxiv_id>.pdf`) rather than guess it
 - `../../papers/metadata/<arxiv_id>.json` (title, authors, dates, categories, editorial-triage's `overall_score`/`recommendation`/`headline`)
 - `../../papers/metadata/scores/<arxiv_id>.yaml` (from [[editorial-triage]])
 
@@ -23,9 +24,19 @@ Extract durable knowledge from a full paper, and decide whether it should become
 4. If eligible papers exceed the remaining budget, take the highest-ranked recommendation first (`Priority review` before `Review fully`, per `screening.recommendation_order`), `overall_score` as tiebreaker.
 5. If the user names a specific paper directly and it has a PDF downloaded, extract it regardless of budget — the weekly limit throttles the *unattended* queue, not an explicit request. If it has no PDF yet, that's a [[research-discovery]] step first, not something this skill can work around.
 
-## Reading the PDF
+## Reading the paper
 
-Use the Read tool on `../../papers/pdf/<year-week>/<arxiv_id>.pdf` (glob for the file if the week folder isn't already known — the metadata record's `downloaded_at` timestamp also tells you which week). For papers over ~20 pages, read in ranges via the `pages` parameter (e.g. `1-20`, then `21-40`) and synthesize across chunks — do not skip the back half of the paper, limitations and future work sections are frequently there.
+**Do not open the PDF with the Read tool.** It fails on this machine (no poppler), and no Python PDF library is installed. Build the text once, then read that:
+
+```bash
+python skills/knowledge-extraction/scripts/build_fulltext.py <arxiv_id>
+```
+
+That writes `../../papers/text/<arxiv_id>.md`: body text only, with references, acknowledgements and appendices removed, using the dependency-free extractor in `scripts/pdftext.py`. Use `--all` to build every downloaded PDF that lacks one, and `--force` to rebuild.
+
+Two properties of that file matter when you read it. **Page order does not always follow reading order**, because the extractor walks PDF objects rather than the page tree, so navigate by section heading rather than assuming the top of the file is the start of the paper. And **appendices are gone**, so a formulation or proof that lived there is not available; if the paper's contribution rests on it, say so in the worksheet rather than inferring it.
+
+Do not skip the back half. Limitations and future work are usually there, and they are what Section F depends on.
 
 ## The worksheet
 

@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2607.29459",
+  "title": "TFGformer: Multivariate Time Series Forecasting via Time-Frequency Graph Learning and Covariate Fusion",
+  "authors": [
+    "Yu Sun",
+    "Yuan Chang",
+    "Xiaohou Shi",
+    "Yan Sun"
+  ],
+  "abstract": "Large-scale multivariate time series from heterogeneous IoT sensors demand accurate long-term forecasting for resource scheduling and predictive maintenance. While recent time series foundation models exhibit strong generalization, they rely on static parametric knowledge and lack dynamic access to external historical patterns during inference. Retrieval-Augmented Generation (RAG) offers a potential remedy, yet its application to time series forecasting is challenged by magnitude variations across heterogeneous sources and the mismatch between historical similarity and future consistency. We propose CrossRAG, a retrieval-augmented forecasting framework that integrates Shape-Aware Memory (SAM) with RevIN normalization for magnitude-robust shape-level retrieval, Future-Consistent Contrastive (FCC) learning to distinguish informative references from hard negatives with similar history but divergent futures, and Cross-Attention Temporal Fusion (CATF) to fuse retrieved historical--future reference pairs into the backbone's representations at the representation level. Experiments on seven public benchmarks show that CrossRAG consistently outperforms both parametric-only baselines and existing retrieval-augmented forecasting methods.",
+  "categories": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "published": "2026-07-31T14:24:26Z",
+  "updated": "2026-07-31T14:24:26Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29459v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:43:02.287963+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 10,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:45:41.371718+00:00"
+}

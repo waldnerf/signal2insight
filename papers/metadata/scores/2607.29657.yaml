@@ -1,0 +1,24 @@
+enterprise_problem: HVAC fault detection tools produce fragmented, non-interoperable
+  outputs because there is no shared vocabulary for faults, symptoms and impacts.
+headline: A shared vocabulary for building-system faults, so diagnostic tools can
+  talk to each other.
+recommendation_reasoning: Locked to variable air volume HVAC systems in buildings
+  -- the clearest possible case of the vertical-lock rejection the reviewer applied
+  to 2607.25885. The general principle (a shared ontology is a precondition for interoperable
+  diagnostics and for digital-twin or AI-driven maintenance on top) is sound but entirely
+  unremarkable stated that way, and nothing about the execution transfers outside
+  building management.
+business_functions:
+- Operations
+enterprise_ai_themes:
+- Other
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

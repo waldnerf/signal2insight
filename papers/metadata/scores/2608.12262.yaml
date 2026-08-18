@@ -1,0 +1,23 @@
+enterprise_problem: 'Evaluating multimodal LLMs on scientific diagram understanding:
+  A benchmark for enterprise adoption of MLLMs in research/documentation workflows'
+headline: 'Diagram-MMU: Scientific diagram understanding is still immature in multimodal
+  LLMs'
+recommendation_reasoning: 'Useful benchmark for model selection, but narrower audience
+  than VAKRA. Diagram understanding is useful for some enterprises (research-heavy
+  orgs, documentation platforms) but not cross-industry. Story potential is moderate:
+  ''your MLLM can''t read your diagrams yet.'''
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- Evaluation
+primary_type: Benchmark
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 2
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

@@ -1,0 +1,31 @@
+enterprise_problem: Comparing models on a task is usually reduced to one accuracy
+  number, which hides the fact that different models fail in structurally different
+  ways.
+headline: Three frontier models fail at three different stages, so one accuracy score
+  cannot rank them.
+recommendation_reasoning: 'The meta-point is right and matters for model selection
+  generally: reducing a comparison to equivalent-or-not throws away the information
+  about where each model breaks, and the evaluation here produces independently re-checkable
+  certificates rather than a judge''s opinion. Reporting typed UNKNOWN and ABSENT
+  outcomes instead of guessing is unusually honest evaluation design. But the domain
+  is generating optimization models from natural language, which is narrow, and the
+  seven-relation profile (E0 through E6) has to be explained before any of it lands
+  with a business reader. Applying the corrected standard from 2607.29557: a narrow
+  domain pulls business fit down even when the underlying lesson is broadly true.'
+business_functions:
+- Data Science
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- Evaluation
+- Reliability
+primary_type: Evaluation methodology
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 3
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

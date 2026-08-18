@@ -1,0 +1,54 @@
+enterprise_problem: LLM-generated Kubernetes security patches are produced from scanner
+  findings in isolation, so a compliant-looking fix can sever a live service dependency
+  and take down downstream callers.
+headline: AI-generated security fixes break production unless the model can see your
+  live service graph.
+recommendation_reasoning: 'Directly answers a question CISOs and platform owners are
+  already asking about agentic auto-remediation: is it safe to let an LLM patch our
+  clusters? Unusually strong evidence design -- 248 trials, seven dependency classes,
+  and a topology-independent control group that rules out generic prompt enrichment
+  as the cause. The headline number (11.1% to 78.0% patch correctness with live topology
+  context) is concrete, quotable, and needs no ML background to land. Immediately
+  actionable: the finding is about what context you feed the model, not a new model.
+  || Recalibrated 2026-07-29. A CISO does ask whether AI can be trusted to patch infrastructure,
+  which keeps translatability moderate, but the content is Kubernetes, Istio call
+  edges and RBAC classes -- not something a business leader engages with directly.
+  Demoted from Priority review; the evidence design remains the strongest in the batch.'
+business_functions:
+- Security
+- Engineering
+- CIO/CTO
+- Compliance
+enterprise_ai_themes:
+- Security
+- Infrastructure
+- Reliability
+- LLMOps
+primary_type: Engineering technique
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 5
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 14
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: 'Archived at review: IT-only readership and narrow scope, agreeing
+  with the pre-review downward revision; reviewer took enterprise_readiness one point
+  lower still.'
+human_score_adjustments:
+  novelty:
+    from: 4
+    to: 3
+  enterprise_readiness:
+    from: 4
+    to: 2
+  business_translatability:
+    from: 3
+    to: 2
+  story_potential:
+    from: 2
+    to: 2

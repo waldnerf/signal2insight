@@ -1,0 +1,25 @@
+enterprise_problem: None identified for this profile -- concealing facial identity
+  across the physical, sensor and digital stages of image capture.
+headline: A survey of face de-identification from the sensor to the pixel.
+recommendation_reasoning: Privacy and responsible AI touch the governance theme, and
+  the observation that de-identification can be pushed into the sensor rather than
+  applied after capture is a nice design point. But this is a computer-vision survey
+  -- an explicit ignore topic -- with no enterprise AI systems decision attached,
+  and a survey is not new evidence. Archived as adjacent rather than ignored outright,
+  on the privacy-engineering angle alone.
+business_functions:
+- Compliance
+- Other
+enterprise_ai_themes:
+- Governance
+- Other
+primary_type: Scientific research
+adoption_horizon: 1-3 years
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 11
+recommendation: Archive
+fulltext_reassessed: false

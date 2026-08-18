@@ -1,0 +1,52 @@
+enterprise_problem: Computer-use agents cannot reliably tell whether their own last
+  action actually changed the screen, so stale or unrelated observations get misread
+  as progress and carried into further planning.
+headline: Desktop automation agents still cannot verify that their own last click
+  worked.
+recommendation_reasoning: Isolates the reliability failure that most undermines desktop-automation
+  ROI -- state verification and recovery -- and shows the gap survives across eight
+  model families. 2,013 human-verified instances with cross-trajectory decoy controls
+  is serious benchmark construction, and the results are specific enough to act on
+  (best exact-match ~65%; click F1 0.96 vs 0.76 for drag; task context helps decoy
+  detection but hurts non-decoy). Speaks straight to an executive weighing RPA-replacement
+  bets, without requiring any ML concept to be explained first. || Recalibrated 2026-07-29.
+  Whether desktop agents can run unattended is a genuine operations question, so this
+  keeps a real business reader, but the substance is GUI-agent state verification
+  and the framing needs that setup, so 5/5 on translatability and story was overstated.
+  Demoted from Priority review; benchmark quality and readiness unchanged.
+business_functions:
+- Engineering
+- Operations
+- Product
+- CIO/CTO
+enterprise_ai_themes:
+- Agentic AI
+- Evaluation
+- Reliability
+- Observability
+primary_type: Benchmark
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 5
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 14
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: The scope is very narrow.
+human_score_adjustments:
+  novelty:
+    from: 4
+    to: 3
+  enterprise_readiness:
+    from: 4
+    to: 2
+  business_translatability:
+    from: 3
+    to: 2
+  story_potential:
+    from: 3
+    to: 2

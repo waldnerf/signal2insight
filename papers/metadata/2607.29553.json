@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2607.29553",
+  "title": "COntExt: Towards Context-Aware Ontology Extension from Operational Metrics",
+  "authors": [
+    "Hussain Hussain",
+    "Stefan Schöberl",
+    "Angelika Schneider",
+    "Verena Geist"
+  ],
+  "abstract": "Organizations increasingly define operational metrics in structured, machine-readable formats to monitor systems, processes, and compliance. These metric definitions implicitly encode domain knowledge, such as referencing concepts, properties, and relationships, that often extends what is captured in formal ontologies. Yet the connection between operational metric catalogues and ontological knowledge remains manual, ad-hoc, and labor-intensive. We present COntExt, a framework for context-aware ontology extension that takes structured metric definitions as input and suggests how referenced concepts and properties should be integrated into an existing ontology, utilizing the context of these metrics. The framework defines the extension problem as three sub-tasks: parent class prediction, relation type prediction, and data property assignment. Across four cybersecurity ontologies, we evaluate different algorithms for each task. Our results show that metric-derived context improves the suggestions over ontology-context baselines for relation type prediction and data property assignment. Our work demonstrates that operational metric catalogues are a practical and underexploited source for ontology extension. This work enables organizations to maintain their ontologies at a significantly lower cost than manual engineering.",
+  "categories": [
+    "cs.AI"
+  ],
+  "published": "2026-07-31T15:46:02Z",
+  "updated": "2026-07-31T15:46:02Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29553v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:31:17.274221+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 10,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:34:17.924788+00:00"
+}

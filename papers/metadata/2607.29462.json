@@ -1,0 +1,30 @@
+{
+  "arxiv_id": "2607.29462",
+  "title": "MoPET: Parameter-Efficient Mixture-of-Experts for Unified Medical Image Classification",
+  "authors": [
+    "Sebastian Doerrich",
+    "Daniel Würtinger",
+    "Francesco Di Salvo",
+    "Shyam Nandan Rai",
+    "Christian Ledig"
+  ],
+  "abstract": "Adapting deep learning models to profound clinical heterogeneity typically relies on parameter-efficient fine-tuning (PEFT) to avoid the severe overfitting associated with full end-to-end network updates. Although PEFT successfully navigates limited data scenarios, it inherently forces the training of a separate, isolated adapter for every specific diagnostic task. Consolidating these isolated adapters into a single generalist network risks negative transfer, as optimization gradients from conflicting visual domains interfere. To address this, we propose MoPET, a mixture-of-experts (MoE) method that uses a learned sparse router to direct each input through a small subset of low-rank PEFT experts injected into a frozen foundation model, sharing capacity across datasets while limiting cross-domain gradient conflict. Through selected evaluations on the MedMNIST benchmark, we first establish that PEFT outperforms full network updates, improving average accuracy from 86.50% to 88.97%. We then show that a single MoPET model consolidates four heterogeneous datasets into one network, improving average accuracy over the best isolated PEFT adapters (93.46% versus 92.83%). Finally, we show that co-training with auxiliary datasets improves accuracy on data-constrained clinical targets, raising average target accuracy over the strongest isolated adapter from 81.58% to 83.58%. Our source code is publicly available at https://github.com/sdoerrich97/mopet .",
+  "categories": [
+    "eess.IV",
+    "cs.CV",
+    "cs.LG"
+  ],
+  "published": "2026-07-31T14:28:23Z",
+  "updated": "2026-07-31T14:28:23Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29462v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:43:02.286771+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 9,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:45:41.383632+00:00"
+}

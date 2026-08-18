@@ -1,0 +1,32 @@
+enterprise_problem: Enterprises deploying AI agents have no standardized way to decide
+  how much oversight, auditing, or control a given agent needs -- governance decisions
+  are made ad hoc per system rather than from a shared classification.
+headline: Not every AI agent needs the same governance -- a Nature framework offers
+  a way to tell them apart.
+recommendation_reasoning: 'Squarely a board-level question executives are already
+  asking: how much oversight does this AI agent need, and how do we decide? Four clean
+  dimensions (autonomy, efficacy, goal complexity, generality), illustrated with recognizable
+  systems (AlphaGo, ChatGPT, Claude, Waymo), give this real narrative pull, and the
+  Nature byline (CMU + Google DeepMind) adds authority. Evidence is conceptual rather
+  than empirical -- no benchmarks or validation, and the paper itself says metrics
+  and standards are still to be developed, which caps enterprise_readiness. Business
+  translatability and story potential stand on their own regardless.'
+business_functions:
+- Chief AI Officer
+- Compliance
+- CIO/CTO
+enterprise_ai_themes:
+- Governance
+- Agentic AI
+- Reliability
+- Evaluation
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 5
+story_potential: 5
+overall_score: 19
+recommendation: Priority review
+fulltext_reassessed: false

@@ -1,0 +1,31 @@
+enterprise_problem: Putting multi-agent LLM workflows into regulated risk and pricing
+  processes without being able to quantify how uncertain their outputs are.
+headline: Tracking how uncertainty compounds as it passes between agents in a regulated
+  workflow.
+recommendation_reasoning: 'The setting is genuinely business-facing -- actuarial pricing,
+  where a wrong output means mispricing or a regulatory finding -- and uncertainty
+  compounding across agent handoffs is an under-addressed governance problem. The
+  care taken not to treat token log-probabilities as probabilities of correctness,
+  calibrating them into task-level confidence first, is the right instinct. Demoted
+  on evidence: the result is that it ''reproduces baseline actuarial performance while
+  providing additional insight'', with no numbers offered for either the calibration
+  quality or the workflow it monitors.'
+business_functions:
+- Compliance
+- Data Science
+- Operations
+enterprise_ai_themes:
+- Governance
+- Agentic AI
+- Observability
+- Reliability
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

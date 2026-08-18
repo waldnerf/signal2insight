@@ -1,0 +1,26 @@
+enterprise_problem: None directly -- this measures tactical reasoning under dense
+  rule interactions using Dungeons & Dragons combat.
+headline: Frontier models win the fight and lose the day.
+recommendation_reasoning: 'There is a real long-horizon agent finding underneath the
+  theme: models win individual encounters but fail at budgeting scarce resources across
+  a linked sequence of them, which is the same failure mode as an agent that performs
+  each task well and manages a multi-step engagement badly. Genuinely quotable for
+  an engineering audience. But the domain is D&D combat, no enterprise reader will
+  accept it as evidence about their systems, and the transfer to real agentic workloads
+  is entirely my inference. The finding is worth remembering; the paper is not worth
+  an enterprise reader''s time.'
+business_functions:
+- Other
+enterprise_ai_themes:
+- Agentic AI
+- Evaluation
+primary_type: Benchmark
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 2
+story_potential: 3
+overall_score: 12
+recommendation: Ignore
+fulltext_reassessed: false

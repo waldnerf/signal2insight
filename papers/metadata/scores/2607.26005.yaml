@@ -1,0 +1,21 @@
+enterprise_problem: None identified -- autonomous driving policy training from egocentric
+  camera views.
+headline: Driving policies trained by self-play directly from camera views, not privileged
+  state.
+recommendation_reasoning: Strong work in its own field, but robotics and computer
+  vision are both explicit ignore topics and there is no enterprise-agent implication
+  that survives the transfer. Ignored on scope, not quality.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: System architecture
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 12
+recommendation: Ignore
+fulltext_reassessed: false

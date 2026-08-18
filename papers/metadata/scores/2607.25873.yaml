@@ -1,0 +1,28 @@
+enterprise_problem: LLM-based bug fixing succeeds inconsistently on similar bugs,
+  with no explanation of why or what to change about the input.
+headline: Automated repair fails when the model fixates on version metadata instead
+  of the stack trace.
+recommendation_reasoning: 'A practice change falls out of this that a team can act
+  on today: successful repairs show attention spread across descriptions, stack traces
+  and test cases, while failures over-focus on metadata such as version strings, so
+  what goes into a bug report determines whether automated repair works. Grounded
+  in 319 real bugs from SWE-bench Verified and Multi-SWE-bench. Demoted because the
+  reader is a software engineering team and the argument runs through model attention
+  distributions, which cannot be explained to a business audience without setup.'
+business_functions:
+- Engineering
+- Product
+enterprise_ai_themes:
+- Reliability
+- Evaluation
+- Observability
+primary_type: Scientific research
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

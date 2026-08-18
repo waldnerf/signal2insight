@@ -1,0 +1,62 @@
+enterprise_problem: A model version upgrade can hold every aggregate benchmark number
+  steady while silently changing behaviour on cases that matter, and standard release
+  testing has no way to see it.
+headline: The model upgrade passed every benchmark and still broke eleven things badly
+  enough to block the release.
+recommendation_reasoning: 'Same shape as 2607.25891, which the reviewer approved:
+  an evaluation finding that warns against trusting an aggregate number, applicable
+  across industries rather than locked to one. Alteron compares successive model versions
+  on metamorphically transformed inputs inside CI, and found 16 behavioural regressions
+  of which 11 were release-blocking -- while overall task performance was preserved.
+  That is the whole argument for version-to-version behavioural testing, and it needs
+  no ML vocabulary: your upgrade looked fine on the dashboard and was not fine. Evidence
+  held at 3, not higher: this is a tool-demo paper with modest scope (10 metamorphic
+  relations, 4 versions, 3 transitions) on NLP classifiers rather than LLMs, so whether
+  it transfers to generative systems is the open question a full read should settle.
+  Open source, so it is testable rather than just claimed.'
+business_functions:
+- Engineering
+- Data Science
+- CIO/CTO
+- Compliance
+enterprise_ai_themes:
+- Evaluation
+- LLMOps
+- Reliability
+- Observability
+primary_type: Framework
+adoption_horizon: Immediate
+novelty: 2
+evidence_quality: 2
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 3
+overall_score: 11
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: 'Archived at review with all five dimensions cut: novelty 3->2,
+  evidence_quality 3->2, enterprise_readiness 4->2, business_translatability 4->2,
+  story_potential 4->3. Key calibration: a small tool-demo paper does not earn high
+  enterprise_readiness or business_translatability just because its headline finding
+  is cleanly translatable. Scope (10 metamorphic relations, 4 versions, 3 transitions,
+  NLP classifiers rather than LLMs) has to pull the business-fit scores down too,
+  not only evidence_quality. My comparison to 2607.25891 was wrong -- that was cross-benchmark
+  agent evaluation at scale; this is not the same shape.'
+human_score_adjustments:
+  novelty:
+    from: 3
+    to: 2
+  evidence_quality:
+    from: 3
+    to: 2
+  enterprise_readiness:
+    from: 4
+    to: 2
+  business_translatability:
+    from: 4
+    to: 2
+  story_potential:
+    from: 4
+    to: 3

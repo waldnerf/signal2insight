@@ -1,0 +1,22 @@
+enterprise_problem: Automating construction of diagnostic logic models for complex
+  systems using RAG and LLMs
+headline: Automating diagnostic logic model construction with RAG and LLMs
+recommendation_reasoning: Relevant to operations teams, but unclear real ROI. Diagnostic
+  systems are already built manually by domain experts; this paper doesn't yet demonstrate
+  that automation saves time or improves outcomes in practice. Scope is too specialized.
+business_functions:
+- Engineering
+- Operations
+enterprise_ai_themes:
+- RAG
+- Observability
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 14
+recommendation: Read later
+fulltext_reassessed: false

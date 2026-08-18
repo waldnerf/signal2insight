@@ -1,0 +1,54 @@
+enterprise_problem: Proving whether a suspect model was derived from your own -- for
+  IP enforcement, licence compliance, or verifying that a vendor is serving the model
+  they claim.
+headline: You can prove a model came from yours -- black box, no weights, no cooperation
+  needed.
+recommendation_reasoning: 'Model lineage is a legal and commercial question before
+  it is a technical one: whether a competitor fine-tuned your weights, whether a licence
+  was breached, whether the endpoint you are paying for serves the model in the contract.
+  The audience includes IP counsel and procurement, not only security. Evidence is
+  solid -- 0.967 AUC over 770 source-suspect pairs from 56 checkpoints, and 0.995
+  AUC across 91 deployment instances, beating four baselines and holding up under
+  weight transformations. Readiness held at 3 because running it requires building
+  a black-box probe harness against the suspect model.'
+business_functions:
+- Compliance
+- Security
+- CIO/CTO
+- Data Science
+enterprise_ai_themes:
+- Governance
+- Security
+- Evaluation
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 11
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: 'Very much too specific. Reviewer also cut evidence_quality
+  4->2: a large clean benchmark (0.967 AUC over 770 checkpoint pairs) is not strong
+  evidence when the benchmark setup does not resemble the real scenario it claims
+  to inform.'
+human_score_adjustments:
+  novelty:
+    from: 4
+    to: 3
+  evidence_quality:
+    from: 4
+    to: 2
+  enterprise_readiness:
+    from: 3
+    to: 2
+  business_translatability:
+    from: 4
+    to: 2
+  story_potential:
+    from: 4
+    to: 2

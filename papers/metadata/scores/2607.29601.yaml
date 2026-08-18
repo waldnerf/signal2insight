@@ -1,0 +1,24 @@
+enterprise_problem: Fine-tuning one model across heterogeneous tasks causes interference
+  and catastrophic forgetting when a single shared adapter is used.
+headline: Organising which tasks share an adapter beats making the adapter bigger.
+recommendation_reasoning: 'A PEFT training-mechanics result: group and sequence tasks
+  into decoupled QLoRA adaptation paths instead of one shared LoRA, reaching 44.78
+  on TRACE at fixed trainable capacity. Entirely internal to the model-training loop,
+  evaluated on one benchmark, with no deployment or cost framing. There is no business
+  function above an ML engineering team with a reason to act on it, and the finding
+  cannot be stated at all without LoRA, adapter capacity and catastrophic forgetting
+  as prior concepts. Outside the enterprise-AI mission as the profile defines it.'
+business_functions:
+- Data Science
+enterprise_ai_themes:
+- Fine-tuning
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

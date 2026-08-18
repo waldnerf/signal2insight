@@ -1,0 +1,28 @@
+enterprise_problem: LLMs cannot reliably check their own quantitative answers, because
+  natural-language self-reflection does not perform exact computation.
+headline: Separate deciding what to verify from actually computing it.
+recommendation_reasoning: The architectural idea is transferable and mildly interesting
+  for agent design -- decouple the verification plan from its execution through an
+  interrupt-execute-resume interface, so the model reasons about what needs checking
+  while a tool does the arithmetic exactly. Up to 8.3 points over the strongest baseline
+  across five datasets and seven model configurations is a reasonable result. But
+  the whole demonstration is mathematical reasoning benchmarks, the audience is a
+  team building agent verification internals, and the business implication requires
+  explaining verification workflows and tool-call dispatch first. On-topic for agentic
+  AI, not worth acting on now.
+business_functions:
+- Data Science
+- Engineering
+enterprise_ai_themes:
+- Agentic AI
+- Reliability
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Archive
+fulltext_reassessed: false

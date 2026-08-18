@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2607.29552",
+  "title": "Improving the Understandability of Conceptual Models via Abstract Notation Engineering",
+  "authors": [
+    "Amine Abbad-Andaloussi",
+    "Daniel Jeppe Schütt",
+    "Kasper Solhøj Jørgensen",
+    "Tobias van Deurs Lundsgaard",
+    "Hugo A. López"
+  ],
+  "abstract": "Conceptual modeling supports the design, analysis, and communication of the properties of complex systems, yet conceptual models can be difficult to understand when domain-level abstractions must be encoded through low-level constructs required mainly for semantic conformity. Prior work has mainly improved how existing individual constructs are visually represented. We shift the focus from individual constructs to recurring configurations of constructs, and propose abstract notation engineering as a language-agnostic method for replacing such configurations with higher-level, semantically transparent constructs. The method comprises pattern identification, pattern formalization, visual notation design, and empirical validation. We instantiate it for Dynamic Condition Response (DCR) graphs, where common workflow patterns require elaborate low-level configurations. The resulting extension, DeCleaR, replaces such configurations with compact pattern-based abstractions. The results of our empirical validation show that DeCleaR improves perceived empirical quality, pragmatic quality, and user preference over standard DCR graphs.",
+  "categories": [
+    "cs.SE"
+  ],
+  "published": "2026-07-31T15:43:34Z",
+  "updated": "2026-07-31T15:43:34Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29552v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-03T21:31:17.274604+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 8,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-03T21:34:17.936991+00:00"
+}

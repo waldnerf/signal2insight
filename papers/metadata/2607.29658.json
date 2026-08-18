@@ -1,0 +1,39 @@
+{
+  "arxiv_id": "2607.29658",
+  "title": "Reusing Past Repairs Through Hierarchical Trajectory Abstraction for Coding Agents",
+  "authors": [
+    "Yisen Xu",
+    "Jiayuan Zhou",
+    "Ruiqi Pan",
+    "Tse-Hsun Chen"
+  ],
+  "abstract": "Although LLM-driven repair agents can tackle complex, repository-level issues, they treat every issue independently and discard the procedural knowledge accumulated from previous repairs. We introduce STAIR, a framework that converts historical repair trajectories into hierarchical, reusable plans that can be adapted to steer future repairs. Each past trajectory is transformed into a multi-level tree that ranges from fine-grained diagnostic actions to high-level repair strategies, encoding experience at several granularities. When a new issue arrives, STAIR selects relevant plan nodes from multiple abstraction levels, tailors them into executable, issue-specific plans, and supplies them to the agent through its prompt. On SWE-bench Verified, STAIR integrated with Lingxi reaches 81.2% Pass@1 using MiniMax M2.5 and 79.2% using GPT-5. The generated plans also generalize across agents: without any code change, they lift the Pass@1 of a structurally different agent, mini-SWE-agent v2, from 75.8% to 81.0%. Ablation experiments further show that mixing multiple abstraction levels surpasses any single level and that raw, unabstracted trajectories transfer substantially worse.",
+  "categories": [
+    "cs.SE"
+  ],
+  "published": "2026-07-31T17:38:48Z",
+  "updated": "2026-07-31T17:38:48Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.29658v1",
+  "downloaded": true,
+  "reviewed": true,
+  "status": "evaluated",
+  "discovered_at": "2026-08-03T21:21:22.554483+00:00",
+  "discovery_date": "2026-W32",
+  "overall_score": 20,
+  "recommendation": "Priority review",
+  "download_eligible": true,
+  "extract_eligible": true,
+  "reviewed_at": "2026-08-03T21:25:16.086169+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "approve",
+  "human_reviewed_at": "2026-08-03T21:31:08.679441+00:00",
+  "downloaded_at": "2026-08-04T05:21:04.119865+00:00",
+  "knowledge_base_priority": "Low",
+  "recommended_next_action": "Monitor",
+  "executive_relevance": 2,
+  "technical_novelty": 4,
+  "practical_applicability": 3,
+  "thought_leadership_potential": 2,
+  "keep": false,
+  "evaluated_at": "2026-08-04T07:53:25.309693+00:00"
+}

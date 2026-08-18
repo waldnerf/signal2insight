@@ -1,0 +1,33 @@
+enterprise_problem: Agent memory can find the right past conversation but cannot answer
+  questions that require counting, comparing or aggregating across everything it has
+  seen.
+headline: Retrieval memory can find the conversation; it cannot tell you how many
+  times the thing happened.
+recommendation_reasoning: 'The conceptual distinction is genuinely useful and I have
+  not seen it named this cleanly: retrieval memory answers ''what did they say about
+  X'', analytic memory answers ''how often, in what order, compared to what''. Most
+  production agent memory is the first kind only, which quietly rules out a whole
+  class of questions users assume it can handle. Discovering field structure from
+  dialogue rather than requiring a predefined schema is the right instinct for real
+  deployments. Held below the line on evidence and reach: gains of 11.3% and 7.3%
+  on two multimodal memory benchmarks, no deployment, and the multimodal framing narrows
+  it further. Promote if a text-only or production version appears -- the idea is
+  stronger than this instance of it.'
+business_functions:
+- Engineering
+- Product
+- Data Science
+enterprise_ai_themes:
+- Memory
+- Agentic AI
+- Infrastructure
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 3
+story_potential: 3
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

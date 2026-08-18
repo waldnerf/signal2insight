@@ -1,0 +1,28 @@
+enterprise_problem: Organisations maintain formal ontologies and operational metric
+  catalogues separately, and reconciling the two is manual and expensive.
+headline: The metrics you already track are an unused source of ontology structure.
+recommendation_reasoning: The observation that operational metric definitions implicitly
+  encode domain knowledge already missing from formal ontologies is a fair one, and
+  the cost framing is at least stated. But this is knowledge-engineering plumbing
+  evaluated on four cybersecurity ontologies, and acting on it presupposes an organisation
+  that already maintains formal ontologies -- a small and shrinking population. No
+  business function above a data governance specialist has a reason to act, and there
+  is no story here for any audience.
+business_functions:
+- Data Science
+- Compliance
+- Security
+enterprise_ai_themes:
+- Governance
+- Infrastructure
+- Other
+primary_type: Framework
+adoption_horizon: 1-3 years
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

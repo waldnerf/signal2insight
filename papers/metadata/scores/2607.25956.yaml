@@ -1,0 +1,35 @@
+enterprise_problem: No single optimisation formulation fits every warehouse allocation
+  instance, and choosing the wrong one per instance costs real allocation quality.
+headline: The LLM did not solve the optimisation problem -- it chose which one to
+  solve, and beat the incumbent.
+recommendation_reasoning: 'A rare thing in this queue: a deployed enterprise system
+  with real business numbers, on real instances from a major retailer, in a boring
+  high-value domain rather than a demo. The architectural pattern is the contribution
+  and it generalises well beyond inventory -- put the LLM in front of a library of
+  classical solvers as an instance-wise router rather than asking it to do the maths.
+  Concrete gains (Hit Ratio@1 21.45% to 50.42%, 12.57 points of allocation accuracy
+  over the incumbent, 4.85 points off the ex-post oracle) and an honest oracle gap.
+  The executive framing needs no ML vocabulary at all. || Recalibrated 2026-07-29
+  after reviewer feedback on C8/C9 inflation. Retained at Priority review and the
+  only one of the batch that survives at this tier: the audience is a supply-chain
+  or operations owner rather than a platform team, the existing solver stays in place
+  and stays auditable, and the decision can be stated without any ML vocabulary. Story
+  potential and translatability trimmed one point each for consistency with the corrected
+  standard.'
+business_functions:
+- Operations
+- Data Science
+- CIO/CTO
+enterprise_ai_themes:
+- Agentic AI
+- Other
+primary_type: System architecture
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 4
+overall_score: 20
+recommendation: Priority review
+fulltext_reassessed: false

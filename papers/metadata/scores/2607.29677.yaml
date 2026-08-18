@@ -1,0 +1,38 @@
+enterprise_problem: Enterprises run high-volume document extraction through agents
+  against user-defined schemas, but have no way to compare approaches on accuracy,
+  completeness, source traceability and cost at the same time -- so procurement decisions
+  are made blind.
+headline: Document-extraction models quietly truncate long records -- and the benchmark
+  that finally prices accuracy against cost says the expensive option is not always
+  the accurate one.
+recommendation_reasoning: 'Document extraction is one of the highest-volume enterprise
+  AI workloads, and this is the same shape as 2607.25891, which the reviewer approved:
+  cross-industry evaluation findings with a procurement-relevant warning, not vertical-locked.
+  4,869 pages across 370 real enterprise documents, 8 business domains, 67 document
+  types. The finding an executive can act on immediately: commercial VLMs look fine
+  on short documents but silently truncate record lists on long ones -- a correctness
+  failure that does not announce itself -- while coding agents stay accurate at much
+  higher cost. Scoring grounding and measured cost alongside accuracy is what makes
+  it a procurement instrument rather than a leaderboard. Evidence held at 3, not higher:
+  this is vendor-authored (LlamaIndex) and their own LlamaExtract ranks first on all
+  three metrics. Verifying that self-ranking is the main job of the full read.'
+business_functions:
+- CIO/CTO
+- Operations
+- Compliance
+- Data Science
+enterprise_ai_themes:
+- Evaluation
+- Agentic AI
+- Cost Optimization
+- Governance
+primary_type: Benchmark
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 4
+business_translatability: 5
+story_potential: 4
+overall_score: 19
+recommendation: Priority review
+fulltext_reassessed: false
