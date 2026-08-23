@@ -1,0 +1,22 @@
+enterprise_problem: Improving how LLMs recognize tool affordances and compose tool-call
+  workflows via a targeted mid-training data pipeline.
+headline: A training-data recipe for better tool-using agents -- but you need to mid-train
+  your own model.
+recommendation_reasoning: Model-builder-facing technique (mid-training corpus construction),
+  not something a typical enterprise AI adopter implements -- relevant to model vendors/AI
+  labs, not the pipeline's target reader.
+business_functions:
+- Engineering
+enterprise_ai_themes:
+- Agentic AI
+- Infrastructure
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 11
+recommendation: Archive
+fulltext_reassessed: false

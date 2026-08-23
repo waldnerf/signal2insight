@@ -1,0 +1,23 @@
+enterprise_problem: Reasoning models use a fixed token budget regardless of question
+  difficulty, wasting compute on easy problems and under-thinking hard ones.
+headline: Your AI doesn't need to think hard about easy questions -- teaching it to
+  know the difference cuts inference cost.
+recommendation_reasoning: Real cost-optimization angle (adaptive test-time compute),
+  but it's an RL training technique validated only on a 1.5B model on math -- a model-builder
+  technique, not yet something an enterprise AI adopter can just apply.
+business_functions:
+- Engineering
+- Operations
+enterprise_ai_themes:
+- Cost Optimization
+- LLMOps
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 16
+recommendation: Read later
+fulltext_reassessed: false

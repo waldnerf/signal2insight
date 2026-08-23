@@ -1,0 +1,28 @@
+enterprise_problem: Claims that a language model has 'self-improved' are usually measured
+  by noisy problem-level transitions rather than mean accuracy, and this audit shows
+  several standard measurement practices manufacture false gains.
+headline: Vendor claims of AI 'self-improvement' are often measurement artifacts,
+  not real gains.
+recommendation_reasoning: 'A rigorous, controlled audit finding seven distinct measurement
+  failures that each invert a reported self-improvement finding once a proper frozen
+  control is used. Directly actionable for any team evaluating vendor or internal
+  claims about self-improving AI systems -- a governance and procurement-relevant
+  skepticism story with a clear executive takeaway: demand a measured null before
+  believing a self-improvement claim.'
+business_functions:
+- CIO/CTO
+- Chief AI Officer
+- Data Science
+enterprise_ai_themes:
+- Evaluation
+- Governance
+primary_type: Evaluation methodology
+adoption_horizon: Immediate
+novelty: 5
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 5
+overall_score: 22
+recommendation: Priority review
+fulltext_reassessed: false

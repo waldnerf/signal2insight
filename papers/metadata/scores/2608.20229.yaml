@@ -1,0 +1,19 @@
+enterprise_problem: Improving anatomy-agnostic medical image segmentation via prompt-conditioned
+  channel attention.
+headline: A new attention mechanism for medical image segmentation.
+recommendation_reasoning: Medical imaging computer-vision technique, off-mission (not
+  LLM/agent enterprise AI).
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

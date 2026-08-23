@@ -1,0 +1,26 @@
+enterprise_problem: Current LLM unlearning benchmarks test isolated facts, not whether
+  concept-level removal preserves benign use -- so enterprises can't tell if a compliance-driven
+  unlearning pass actually worked without breaking legitimate functionality.
+headline: Most LLM 'forgetting' benchmarks can't tell if you erased the right thing.
+recommendation_reasoning: Solid governance-relevant benchmark work (right-to-erasure,
+  safety unlearning), but it's an evaluation-methodology paper for security/compliance
+  engineering teams, not yet a business-leader-ready story. Per feedback calibration,
+  don't inflate C8/C9 for a benchmark whose real audience is technical.
+business_functions:
+- Compliance
+- Security
+- Engineering
+enterprise_ai_themes:
+- Governance
+- Security
+- Evaluation
+primary_type: Benchmark
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 3
+overall_score: 16
+recommendation: Read later
+fulltext_reassessed: false

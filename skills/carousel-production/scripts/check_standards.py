@@ -28,8 +28,7 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 ROOT = Path(__file__).resolve().parents[3]
-CAROUSELS = ROOT / 'carousels'
-FULLTEXT = ROOT / 'papers' / 'text'
+OUTPUT_DIR = ROOT / 'output'
 SUMMARIES = ROOT / 'ArxivWiki' / 'summaries'
 WIKI = ROOT / 'ArxivWiki' / 'papers'
 EXTRACTIONS = ROOT / 'papers' / 'metadata' / 'extractions'
@@ -82,6 +81,43 @@ QUOTE_RE = re.compile(u'[“"]([^“”"\n]{25,})[”"]')
 WORD_RE = re.compile(r"[A-Za-z0-9]+(?:['\-][A-Za-z0-9]+)*")
 
 
+# ------------------------------------------------------------- paper dir
+# Every file for a paper lives in output/<year-week>/, named
+# <year-week>_<arxiv_id>[_suffix].md, keyed only by arxiv_id (the week isn't
+# derivable from the id), so resolve it by globbing rather than computing it.
+def resolve_dir(arxiv_id):
+    """(week_dir, filename_prefix) for a paper's output/<wk>/ folder, or
+    (None, None) if nothing has been written for this id yet."""
+    hits = sorted(OUTPUT_DIR.glob('*/*_%s*' % arxiv_id))
+    if not hits:
+        return None, None
+    week_dir = hits[0].parent
+    return week_dir, '%s_%s' % (week_dir.name, arxiv_id)
+
+
+def paper_path(arxiv_id, suffix):
+    """output/<wk>/<wk>_<arxiv_id><suffix>, or None if the paper dir can't be found."""
+    week_dir, prefix = resolve_dir(arxiv_id)
+    if week_dir is None:
+        return None
+    return week_dir / (prefix + suffix)
+
+
+def draft_path_for(arxiv_id):
+    return paper_path(arxiv_id, '_carousel-draft.md')
+
+
+def fulltext_path_for(arxiv_id):
+    return paper_path(arxiv_id, '.md')
+
+
+def history_dir_for(arxiv_id):
+    week_dir, prefix = resolve_dir(arxiv_id)
+    if week_dir is None:
+        return None
+    return week_dir / (prefix + '_history')
+
+
 def slide_bodies(text):
     """{slide number: body text, heading line stripped} for one draft."""
     marks = list(SLIDE_RE.finditer(text))
@@ -132,11 +168,11 @@ def load_source(arxiv_id):
 
     The cleaned full text comes first and is the one that matters: a quote
     lifted from the paper will not appear in a summary that paraphrases it,
-    which is why quote checking was advisory before papers/text/ existed.
+    which is why quote checking was advisory before the cleaned full text existed.
     """
     parts = []
-    f = FULLTEXT / ('%s.md' % arxiv_id)
-    if f.exists():
+    f = fulltext_path_for(arxiv_id)
+    if f is not None and f.exists():
         parts.append(f.read_text(encoding='utf-8', errors='replace'))
     s = SUMMARIES / ('%s.md' % arxiv_id)
     if s.exists():
@@ -322,9 +358,12 @@ def read_review(path):
 
 
 def gate(arxiv_id):
-    d = CAROUSELS / arxiv_id
-    reviews = {'business': read_review(d / 'review-business.md'),
-               'technical': read_review(d / 'review-technical.md')}
+    week_dir, prefix = resolve_dir(arxiv_id)
+    if week_dir is None:
+        print('\n=== gate: %s ===\n  no output/*/ folder found for this id' % arxiv_id)
+        return 1
+    reviews = {'business': read_review(week_dir / (prefix + '_review-business.md')),
+               'technical': read_review(week_dir / (prefix + '_review-technical.md'))}
 
     print('\n=== gate: %s ===' % arxiv_id)
     missing = [k for k, v in reviews.items() if v is None]
@@ -363,7 +402,7 @@ def gate(arxiv_id):
     # history, and it stays in the file so the grant is auditable rather than
     # implied. Effective passes = revision - pass_reset_at.
     passes, revision, reset_at = 0, 0, 0
-    draft = d / 'draft-carousel.md'
+    draft = week_dir / (prefix + '_carousel-draft.md')
     if draft.exists():
         t = draft.read_text(encoding='utf-8', errors='replace')
         m = re.search(r'^revision:\s*(\d+)', t, re.M)
@@ -408,15 +447,18 @@ def split_slides(text):
 
 
 def snapshot(arxiv_id):
-    d = CAROUSELS / arxiv_id
-    draft = d / 'draft-carousel.md'
+    week_dir, prefix = resolve_dir(arxiv_id)
+    if week_dir is None:
+        print('  no output/*/ folder found for this id')
+        return 1
+    draft = week_dir / (prefix + '_carousel-draft.md')
     if not draft.exists():
         print('  no draft at %s' % draft)
         return 1
     t = draft.read_text(encoding='utf-8', errors='replace')
     m = re.search(r'^revision:\s*(\d+)', t, re.M)
     rev = int(m.group(1)) if m else 0
-    hist = d / 'history'
+    hist = week_dir / (prefix + '_history')
     hist.mkdir(parents=True, exist_ok=True)
     dst = hist / ('rev-%02d.md' % rev)
     dst.write_text(t, encoding='utf-8')
@@ -426,10 +468,14 @@ def snapshot(arxiv_id):
 
 def churn(arxiv_id):
     """Which slides changed, and did each change have a finding behind it."""
-    d = CAROUSELS / arxiv_id
-    draft = d / 'draft-carousel.md'
-    hist = sorted((d / 'history').glob('rev-*.md')) if (d / 'history').exists() else []
+    week_dir, prefix = resolve_dir(arxiv_id)
     print('\n=== churn: %s ===' % arxiv_id)
+    if week_dir is None:
+        print('  no output/*/ folder found for this id')
+        return 1
+    draft = week_dir / (prefix + '_carousel-draft.md')
+    hist_dir = week_dir / (prefix + '_history')
+    hist = sorted(hist_dir.glob('rev-*.md')) if hist_dir.exists() else []
     if not draft.exists():
         print('  no draft')
         return 1
@@ -448,8 +494,8 @@ def churn(arxiv_id):
     new = split_slides(cur_text)
 
     flagged = set()
-    for f in ('review-business.md', 'review-technical.md'):
-        p = d / f
+    for suffix in ('_review-business.md', '_review-technical.md'):
+        p = week_dir / (prefix + suffix)
         if p.exists():
             flagged |= {int(n) for n in
                         FINDING_SLIDE_RE.findall(p.read_text(encoding='utf-8', errors='replace'))}
@@ -483,7 +529,7 @@ def main():
     ap.add_argument('--churn', action='store_true',
                     help='compare against the last snapshot: what changed, and why')
     ap.add_argument('--draft', help='explicit path, overrides the default location')
-    ap.add_argument('--all', action='store_true', help='every draft under carousels/')
+    ap.add_argument('--all', action='store_true', help='every draft under output/')
     ap.add_argument('--quiet-spine', action='store_true')
     args = ap.parse_args()
 
@@ -495,16 +541,24 @@ def main():
 
     targets = []
     if args.all:
-        for d in sorted(CAROUSELS.glob('*/draft-carousel.md')):
-            targets.append((d.parent.name, d))
+        for d in sorted(OUTPUT_DIR.glob('*/*_carousel-draft.md')):
+            # filename is <year-week>_<arxiv_id>_carousel-draft.md
+            arxiv_id = d.stem[len(d.parent.name) + 1:-len('_carousel-draft')]
+            targets.append((arxiv_id, d))
     elif args.arxiv_id:
-        p = Path(args.draft) if args.draft else CAROUSELS / args.arxiv_id / 'draft-carousel.md'
+        if args.draft:
+            p = Path(args.draft)
+        else:
+            p = draft_path_for(args.arxiv_id)
+            if p is None:
+                print('no output/*/ folder found for %s (no PDF or text file yet)' % args.arxiv_id)
+                return 1
         targets.append((args.arxiv_id, p))
     else:
         ap.error('give an arxiv_id or --all')
 
     if not targets:
-        print('no drafts found under %s' % CAROUSELS)
+        print('no drafts found under %s' % OUTPUT_DIR)
         return 0
 
     total = 0

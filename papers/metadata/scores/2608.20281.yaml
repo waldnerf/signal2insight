@@ -1,0 +1,28 @@
+enterprise_problem: LLMs can't answer questions about a bounded document set when
+  retrieval fails or isn't available at inference time; this proposes baking document
+  knowledge into model parameters as a retrieval-free alternative.
+headline: Should you keep paying for retrieval, or just bake your documents into the
+  model?
+recommendation_reasoning: A genuine architectural alternative to RAG that directly
+  maps to a real infrastructure-cost decision AI platform leads are already weighing
+  (retrieval overhead vs. parametric knowledge). Requires post-training infrastructure,
+  so enterprise readiness is moderate rather than immediate.
+business_functions:
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- RAG
+- Infrastructure
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 4
+overall_score: 17
+recommendation: Ignore
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: Ignored at review.

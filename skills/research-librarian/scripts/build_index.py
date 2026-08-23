@@ -41,7 +41,7 @@ WIKI_DIR = ROOT / "ArxivWiki"
 WIKI_PAPERS_DIR = WIKI_DIR / "papers"
 TAGS_DIR = WIKI_DIR / "tags"
 CONCEPTS_DIR = WIKI_DIR / "concepts"
-PDF_DIR = ROOT / "papers" / "pdf"  # PDFs live under PDF_DIR/<ISO year-week>/<id>.pdf
+PDF_DIR = ROOT / "output"  # PDFs live under PDF_DIR/<ISO year-week>/<year-week>_<id>.pdf
 ARCHIVE_DIR = ROOT / "archive"
 LOG_DIR = ROOT / "logs"
 CSV_PATH = ROOT / "papers" / "papers.csv"
@@ -90,9 +90,9 @@ def find_wiki_file(arxiv_id):
 
 
 def find_pdf(arxiv_id):
-    """PDFs live under PDF_DIR/<ISO year-week>/<arxiv_id>.pdf — glob for it
-    rather than assuming a flat layout, same pattern as find_wiki_file."""
-    matches = list(PDF_DIR.glob(f"*/{arxiv_id}.pdf"))
+    """PDFs live under PDF_DIR/<ISO year-week>/<ISO year-week>_<arxiv_id>.pdf —
+    glob for it rather than assuming a flat layout, same pattern as find_wiki_file."""
+    matches = list(PDF_DIR.glob(f"*/*_{arxiv_id}.pdf"))
     return matches[0] if matches else None
 
 
@@ -211,10 +211,12 @@ def archive_non_eligible_pdfs(metadata, config, log):
         src = find_pdf(arxiv_id)
         if src is None:
             continue
-        # preserve the week subfolder in the archive, same layout as the live PDF folder
+        # Archive keeps its own, older convention: a week subfolder (preserved)
+        # but no week prefix on the filename itself -- archive/pdf/ was never
+        # part of the output/ restructure, so its layout stays as it was.
         dest_dir = ARCHIVE_DIR / "pdf" / src.parent.name
         dest_dir.mkdir(parents=True, exist_ok=True)
-        dest = dest_dir / src.name
+        dest = dest_dir / f"{arxiv_id}.pdf"
         src.rename(dest)
         rec["archived"] = True
         with open(METADATA_DIR / f"{arxiv_id}.json", "w", encoding="utf-8") as f:

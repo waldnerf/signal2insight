@@ -1,0 +1,28 @@
+enterprise_problem: Legal AI benchmarks assume fully-specified queries, but real users
+  omit facts that change the legal answer -- and no benchmark tests whether models
+  recognize and flag that insufficiency instead of guessing.
+headline: No frontier LLM reliably recognizes when it doesn't have enough facts to
+  give legal advice.
+recommendation_reasoning: Rigorous, attorney-annotated benchmark (202 items, 24 US
+  jurisdictions) surfacing a concrete liability risk for any product deploying LLMs
+  for legal Q&A -- a real evaluation checklist item for legal/compliance teams vetting
+  AI tools before deployment.
+business_functions:
+- Compliance
+- Product
+enterprise_ai_themes:
+- Governance
+- Evaluation
+primary_type: Benchmark
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 4
+overall_score: 18
+recommendation: Ignore
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: Ignored at review.

@@ -1,0 +1,19 @@
+enterprise_problem: Comparing radar sensing technologies for contact-free in-bedroom
+  health monitoring.
+headline: Which radio sensor works best for bedroom sleep monitoring.
+recommendation_reasoning: Hardware sensing comparison for healthcare IoT, not an AI
+  system/LLM/agent paper at all. Off-mission.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Evaluation methodology
+adoption_horizon: Long-term research
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 8
+recommendation: Ignore
+fulltext_reassessed: false

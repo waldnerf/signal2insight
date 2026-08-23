@@ -1,0 +1,18 @@
+enterprise_problem: Speeding up gravitational-wave parameter estimation using ML-generated
+  surrogate waveforms.
+headline: ML surrogate waveforms speed up gravitational-wave analysis.
+recommendation_reasoning: Astrophysics application, entirely off-mission.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

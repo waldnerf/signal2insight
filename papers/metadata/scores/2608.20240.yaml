@@ -1,0 +1,20 @@
+enterprise_problem: Physical-layer authentication for X-band SAR satellite communications
+  using a quantum-classical hybrid model.
+headline: A quantum-classical model authenticates SAR satellites.
+recommendation_reasoning: Defense/satellite security niche with quantum computing
+  dependency, off-mission for enterprise AI systems.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Security
+- Other
+primary_type: Engineering technique
+adoption_horizon: Long-term research
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

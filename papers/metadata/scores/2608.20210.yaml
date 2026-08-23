@@ -1,0 +1,28 @@
+enterprise_problem: Small language models are usually scaled-down large-model architectures
+  retrofitted for CPU inference rather than designed for the constraint from the start,
+  leaving efficiency on the table for cheap, on-prem, or edge deployment.
+headline: A 150M-parameter model built for ordinary CPUs beats models trained on far
+  more data.
+recommendation_reasoning: A concretely deployable, open, CPU-native small model that
+  beats larger-data baselines -- directly actionable for infrastructure teams evaluating
+  cheap or edge AI deployment against GPU-dependent alternatives.
+business_functions:
+- Engineering
+- Operations
+- CIO/CTO
+enterprise_ai_themes:
+- Infrastructure
+- Cost Optimization
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 3
+story_potential: 3
+overall_score: 18
+recommendation: Ignore
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: Ignored at review.

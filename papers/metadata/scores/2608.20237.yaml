@@ -1,0 +1,20 @@
+enterprise_problem: Benchmarks whether multimodal LLMs can plan spatial actions while
+  obeying novel natural-language rules (maze navigation).
+headline: A maze benchmark for rule-following multimodal AI.
+recommendation_reasoning: Capability-research benchmark (maze navigation under rules),
+  no clear enterprise application or decision it informs.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Evaluation
+- Other
+primary_type: Benchmark
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 10
+recommendation: Archive
+fulltext_reassessed: false

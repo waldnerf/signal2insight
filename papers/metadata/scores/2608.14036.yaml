@@ -1,0 +1,35 @@
+enterprise_problem: Teams building on LLM agent 'skills' (structured procedural knowledge
+  packages) have no mechanistic account of when skills actually help, why they work,
+  or where they silently fail as skill libraries grow -- evaluations so far only report
+  aggregate task success, hiding retrieval collapse and brittle-assumption failures
+  until they hit production.
+headline: Your agent's skill library will quietly get worse as it grows -- retrieval
+  precision falls from 30% to 3% once it passes 100 skills.
+recommendation_reasoning: 'Rigorous, large-scale (8,135 trials) mechanistic study
+  of when agent skills help vs. fail -- strong evidence_quality and genuinely novel
+  taxonomy (B5/B6 high). Business translatability and story potential are moderate,
+  not high: the core finding (procedural anchoring, retrieval precision collapse at
+  scale) is real and quotable, but requires one inferential step from ''ML evaluation
+  methodology'' to ''my skill catalog is decaying'' that a business-leader reader
+  doesn''t take for free. Held C8/C9 at 3 rather than letting the strong B5/B6 halo
+  them upward, per the rubric''s own warning. Still clears Review fully on the strength
+  of an actionable, on-topic finding (agentic AI reliability) that engineering/platform
+  teams can act on now.'
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- Agentic AI
+- Evaluation
+- Reliability
+- Observability
+primary_type: Evaluation methodology
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 5
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 3
+overall_score: 18
+recommendation: Review fully
+fulltext_reassessed: false

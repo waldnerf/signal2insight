@@ -1,0 +1,21 @@
+enterprise_problem: None -- this is a pure probability/information-theory paper deriving
+  variational identities for martingale concentration inequalities.
+headline: A unifying math result for concentration inequalities -- no enterprise AI
+  angle.
+recommendation_reasoning: 'Off-mission: pure math.PR/info-theory result about martingale
+  concentration bounds. No connection to enterprise AI systems, agents, or evaluation
+  practice. Not even adjacent to our priority topics.'
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

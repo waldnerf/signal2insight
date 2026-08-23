@@ -1,0 +1,29 @@
+enterprise_problem: LLM agents that induce and reuse skills from past tasks can transfer
+  those skills unreliably, sometimes harming performance -- this identifies which
+  induction choices (task- vs subtask-level, text vs code) make transfer actually
+  work.
+headline: Letting your AI agent 'learn from experience' can make it worse, unless
+  you build memory the right way.
+recommendation_reasoning: 'A controlled, actionable finding for anyone building agent
+  memory/skill-reuse in production: coarse task-level skills actively hurt performance,
+  subtask-level skills help. Immediately applicable design guidance with a good contrarian
+  narrative for teams currently investing in agent memory.'
+business_functions:
+- Engineering
+- Product
+enterprise_ai_themes:
+- Agentic AI
+- Memory
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 3
+story_potential: 4
+overall_score: 19
+recommendation: Ignore
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: Ignored at review.

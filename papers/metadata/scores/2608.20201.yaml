@@ -1,0 +1,25 @@
+enterprise_problem: Argues software architecture is undergoing a third paradigm shift
+  -- from the three-tier web architecture to a 'storage, model, agent' form -- with
+  implications for how platform teams should structure future systems.
+headline: The three-tier architecture is being replaced by storage, models, and agents.
+recommendation_reasoning: A position paper, not an empirical result, so evidence_quality
+  is capped -- but it's a well-argued reframing of platform architecture strategy
+  that CTOs are actively debating right now, with a clean, quotable structure (three
+  elements replacing three tiers).
+business_functions:
+- CIO/CTO
+- Engineering
+- Product
+enterprise_ai_themes:
+- Agentic AI
+- Infrastructure
+primary_type: System architecture
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 3
+business_translatability: 4
+story_potential: 4
+overall_score: 18
+recommendation: Review fully
+fulltext_reassessed: false

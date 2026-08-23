@@ -22,15 +22,15 @@ You will be given an arxiv id, a depth pattern (`dual-track` or `spec-cards`), a
 
 **On figures.** Every number, proportion, ranking, count or magnitude claim must trace to the paper or to a named external source you cite on the slide. You have `WebSearch` and `WebFetch`: use them when a scene-setting figure matters to the business framing and the paper does not supply it. Name the publisher and the year so a reader can follow it. If you cannot source a figure either way, remove it, and do not rewrite it as vague prose to keep the claim without the accountability. External sources set the scene; anything about what the research found traces to the paper alone.
 
-- `papers/text/<arxiv_id>.md` — **the paper itself**, cleaned to body text with references and appendices removed. This is your primary source. Read it in full before drafting the first version of a deck; it is the only input that contains the paper's actual argument, its caveats and its exact wording. On a revision run, see On revision runs below instead of rereading it in full.
+- `output/<year-week>/<year-week>_<arxiv_id>.md` — **the paper itself**, cleaned to body text with references and appendices removed. This is your primary source. Read it in full before drafting the first version of a deck; it is the only input that contains the paper's actual argument, its caveats and its exact wording. On a revision run, see On revision runs below instead of rereading it in full. If the exact week isn't already known, glob (`output/*/*_<arxiv_id>.md`) rather than guess it.
 - `ArxivWiki/summaries/<arxiv_id>.md` — the one-pager. Useful for the business framing that triage already reasoned through, but it is a summary, so never quote from it.
 - `ArxivWiki/papers/<year>/<arxiv_id>.md` — the full wiki page, if it exists.
 - `papers/metadata/extractions/<arxiv_id>.yaml` — the structured extraction record, if it exists.
-- On a revision run: your own `carousels/<arxiv_id>/draft-carousel.md`, plus `review-business.md` and `review-technical.md` in the same folder.
+- On a revision run: your own `output/<year-week>/<year-week>_<arxiv_id>_carousel-draft.md`, plus `_review-business.md` and `_review-technical.md` in the same folder.
 
 ## Output
 
-`carousels/<arxiv_id>/draft-carousel.md`, with this frontmatter:
+`output/<year-week>/<year-week>_<arxiv_id>_carousel-draft.md`, with this frontmatter:
 
 ```yaml
 ---
@@ -67,7 +67,7 @@ The arc is Situation, Complication, Resolution, Impact. Mark each slide's stage.
 
 Read both review files in full before changing anything. Where the two reviewers conflict, the orchestrator will have told you which way to resolve it. If it did not, keep the existing copy and flag the conflict in your report rather than picking a side yourself.
 
-Do not reread `papers/text/<arxiv_id>.md` in full. You will be told which slides changed since the last snapshot and which drew findings; grep the paper for the claims tied to those slides instead. Read in full only if a finding requires checking something you have not already seen, or the changed-slide list covers most of the deck.
+Do not reread `output/<year-week>/<year-week>_<arxiv_id>.md` in full. You will be told which slides changed since the last snapshot and which drew findings; grep the paper for the claims tied to those slides instead. Read in full only if a finding requires checking something you have not already seen, or the changed-slide list covers most of the deck.
 
 Do not rewrite slides no reviewer raised. A revision pass that touches everything destroys the reviewers' ability to tell what changed.
 

@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2608.20285",
+  "title": "Dynamic Structural Causal Modeling for Sleep",
+  "authors": [
+    "Ranveer Singh",
+    "Saurabh Mathur",
+    "Pranuthi Tenali",
+    "Arun Badi",
+    "Sriraam Natarajan"
+  ],
+  "abstract": "The causal dynamics of sleep-disordered breathing are complex and vary across patient populations, hindering the development of targeted interventions. We learn dynamic causal graphs of sleep-disordered breathing from Home Sleep Apnea Test (HSAT) recordings, revealing systematic differences in causal structure across sex and age subcohorts. We do so using the PCMCI+ algorithm on windowed fractional variables derived from 105 HSAT recordings, exploiting domain knowledge via edge blacklisting and employing bootstrap aggregation to address small subcohort sizes. The learned graphs show that temporal self-dependencies and the apnea-desaturation relationship persist across all cohorts, while other relationships vary substantially.",
+  "categories": [
+    "cs.LG"
+  ],
+  "published": "2026-08-20T17:20:09Z",
+  "updated": "2026-08-20T17:20:09Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.20285v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-21T09:39:41.009845+00:00",
+  "discovery_date": "2026-W34",
+  "overall_score": 9,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-21T09:42:44.825692+00:00"
+}

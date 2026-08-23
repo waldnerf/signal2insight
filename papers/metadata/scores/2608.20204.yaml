@@ -1,0 +1,29 @@
+enterprise_problem: No formal evaluation exists of whether LLMs can reliably do 'contract
+  scrubbing' -- the final, detail-heavy review of transactional legal agreements for
+  errors -- despite it being routine, high-volume legal work that seems ripe for automation.
+headline: The first real test of whether LLMs can be trusted to do the final review
+  of a legal contract.
+recommendation_reasoning: Directly answers a concrete, high-economic-value automation
+  question (can we trust LLMs on final contract review) that legal ops and compliance
+  leaders are actively asking, with expert-crafted test contracts. Immediately relevant
+  to any enterprise evaluating legal-AI vendor claims.
+business_functions:
+- Compliance
+- Product
+- Operations
+enterprise_ai_themes:
+- Governance
+- Evaluation
+primary_type: Benchmark
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 4
+overall_score: 20
+recommendation: Archive
+fulltext_reassessed: false
+pre_override_recommendation: Priority review
+human_override: true
+human_override_reason: Archived at review.

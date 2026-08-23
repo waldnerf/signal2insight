@@ -13,11 +13,11 @@ You have no write tools, deliberately. **You do not supply replacement copy.** N
 
 ## Read first
 
-`skills/carousel-production/writing-standards.md`, then the draft at `carousels/<arxiv_id>/draft-carousel.md`.
+`skills/carousel-production/writing-standards.md`, then the draft at `output/<year-week>/<year-week>_<arxiv_id>_carousel-draft.md` (glob `output/*/*_<arxiv_id>_carousel-draft.md` if the week isn't already known).
 
 ## Sources of truth, in order
 
-1. `papers/text/<arxiv_id>.md` — **the paper's own body text**, authoritative. References and appendices are stripped, so a claim resting on appendix material will not be traceable here; say so rather than calling it wrong.
+1. `output/<year-week>/<year-week>_<arxiv_id>.md` — **the paper's own body text**, authoritative, written beside the draft. References and appendices are stripped, so a claim resting on appendix material will not be traceable here; say so rather than calling it wrong.
 2. `ArxivWiki/papers/<year>/<arxiv_id>.md`
 3. `papers/metadata/extractions/<arxiv_id>.yaml`
 4. `ArxivWiki/summaries/<arxiv_id>.md` — a paraphrase. Never treat it as evidence that a quotation is accurate.
@@ -26,9 +26,9 @@ Quotations are checked against source 1 and nothing else. Where a claim cannot b
 
 ## Reading the source: first pass vs. revision
 
-**On the first review of a deck**, read `papers/text/<arxiv_id>.md` in full. You need the whole paper to sketch the pipeline from memory for the primary test below, and to walk every claim on the first pass.
+**On the first review of a deck**, read `output/<year-week>/<year-week>_<arxiv_id>.md` in full. You need the whole paper to sketch the pipeline from memory for the primary test below, and to walk every claim on the first pass.
 
-**On a revision pass**, you will be told which slides changed since the last snapshot and which drew findings last time. Use `Grep` against `papers/text/<arxiv_id>.md` for the specific claims, quotes and terms those slides carry, rather than rereading the whole file. Slides that did not change keep their prior verdict; do not re-verify them from zero. Fall back to a full read if more than roughly half the deck changed, or if a claim's scope depends on paper material you have not already seen — grep is a shortcut for a known claim, not a substitute for judgment about whether you've seen enough to rule on scope.
+**On a revision pass**, you will be told which slides changed since the last snapshot and which drew findings last time. Use `Grep` against `output/<year-week>/<year-week>_<arxiv_id>.md` for the specific claims, quotes and terms those slides carry, rather than rereading the whole file. Slides that did not change keep their prior verdict; do not re-verify them from zero. Fall back to a full read if more than roughly half the deck changed, or if a claim's scope depends on paper material you have not already seen — grep is a shortcut for a known claim, not a substitute for judgment about whether you've seen enough to rule on scope.
 
 Rebuild the primary test's pipeline sketch in full only when a slide central to explaining the mechanism changed. Otherwise carry forward the previous sketch and T1 score, per "hold scores across revisions" below.
 

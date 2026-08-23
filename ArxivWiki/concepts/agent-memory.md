@@ -1,5 +1,6 @@
-# Concept: agent-memory
+# Concept: Agent memory
 
-1 paper(s).
+2 paper(s).
 
-- [Know It, Act on It: Investigating Memory Utilization in LLM Personalization](../papers/2026/2607.29433.md) — 2026-07-31 — Priority review
+- [Demystifying Agent Skills: Why They Work-Until They Don't](../papers/2026/2608.14036.md) — 2026-08-14 — Review fully
+- [@skills: Attention is all you have](../papers/2026/2608.12610.md) — 2026-08-12 — Review fully

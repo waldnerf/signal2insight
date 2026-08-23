@@ -1,0 +1,31 @@
+enterprise_problem: Organizations deploying computer-use agents need auditable models
+  of how work actually gets done, but existing methods can't induce structured, reusable
+  task models from raw, multi-threaded activity traces.
+headline: Your agents can learn how work is actually done -- and now you can audit
+  it.
+recommendation_reasoning: 'Directly on-mission: agent governance and auditability
+  of computer-use agents is a live enterprise concern as agents enter real workflows.
+  Genuinely new framing (disentangling concurrent latent tasks from raw traces), engineering
+  teams could act on it within a year. Business translatability kept moderate since
+  the pitch still requires explaining task induction to a non-technical reader.'
+business_functions:
+- Engineering
+- Operations
+- Compliance
+enterprise_ai_themes:
+- Agentic AI
+- Governance
+- Observability
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 3
+story_potential: 4
+overall_score: 19
+recommendation: Ignore
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: Ignored at review.

@@ -1,0 +1,28 @@
+enterprise_problem: LLM memory systems are evaluated on whether they store and retrieve
+  facts correctly, but not on whether a correctly retrieved memory can still distort
+  the model's reasoning on the current task.
+headline: A faithfully remembered fact can still make your AI agent reason worse.
+recommendation_reasoning: 'Identifies a reliability failure mode (memory-induced cognitive
+  traps) directly relevant to anyone deploying agent memory in production, tested
+  across two model families and five memory frameworks. Good contrarian story: correct
+  memory isn''t the same as helpful memory.'
+business_functions:
+- Engineering
+- Product
+enterprise_ai_themes:
+- Memory
+- Evaluation
+- Reliability
+primary_type: Benchmark
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 3
+story_potential: 4
+overall_score: 18
+recommendation: Ignore
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: Ignored at review.

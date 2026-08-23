@@ -1,0 +1,20 @@
+enterprise_problem: Predictive models over electronic health records need to jointly
+  handle lab values and be interpretable at the medical-event level.
+headline: An explainable transformer for clinical prediction on structured EHR data.
+recommendation_reasoning: Healthcare-vertical-locked modeling paper. Per calibration,
+  vertical lock penalizes translatability regardless of technical strength; this is
+  a healthcare-ML paper, not an enterprise-AI-systems one.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 2
+overall_score: 12
+recommendation: Archive
+fulltext_reassessed: false

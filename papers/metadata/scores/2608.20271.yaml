@@ -1,0 +1,19 @@
+enterprise_problem: Predicting fraudulent 'rug pull' memecoins on Solana within an
+  hour of launch using ML on liquidity and social signals.
+headline: Catching crypto rug pulls before they happen.
+recommendation_reasoning: Crypto-fraud-vertical application, off-mission for enterprise
+  AI systems design/evaluation/deployment. Catchy but not our audience.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 2
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

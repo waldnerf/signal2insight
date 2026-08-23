@@ -1,0 +1,19 @@
+enterprise_problem: Hydrographic offices manually review electronic navigational chart
+  changes for safety risk, which doesn't scale with update volume.
+headline: Automating risk classification of maritime chart updates.
+recommendation_reasoning: Real operational automation use case but locked to a narrow
+  maritime-hydrography vertical with no general enterprise-AI translation.
+business_functions:
+- Operations
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Archive
+fulltext_reassessed: false

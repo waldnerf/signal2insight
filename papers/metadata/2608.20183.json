@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2608.20183",
+  "title": "Exact Algebraic Computation of Learning Coefficients for Two-Dimensional Singular Models",
+  "authors": [
+    "Grégoire Sergeant-Perthuis",
+    "Elias Tsigaridas",
+    "Jules Tsukahara"
+  ],
+  "abstract": "Classical information criteria such as the Bayesian Information Criterion (BIC) rely on regularity assumptions that break down for singular models, leading to incorrect model selection in settings such as deep learning. The Widely Applicable Bayesian Information Criterion (WBIC) relies on local learning coefficients $λ$, which in the analytic case coincides with local Real Log Canonical Thresholds (RLCT) of the Kullback-Leibler divergence of the model, to capture correct marginal likelihood asymptotics. Exact computation of the learning coefficients has been limited to special cases, and only sampling-based estimation methods are generally applicable. We present the first deterministic algorithm that computes local RLCTs exactly for any two-dimensional model whose Kullback-Leibler distance is contact equivalent to a polynomial, derive a bound on its complexity, and demonstrate its effectiveness for a broad class of models, with applications including polynomial neural networks. Beyond providing ground truth to calibrate sampling-based estimators, exact computation reveals algebraic structure in learning coefficients that sampling cannot and out-speeds it in the shallow regime.",
+  "categories": [
+    "cs.LG",
+    "cs.SC",
+    "math.AG",
+    "stat.ML"
+  ],
+  "published": "2026-08-20T15:40:50Z",
+  "updated": "2026-08-20T15:40:50Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.20183v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-21T09:42:53.823651+00:00",
+  "discovery_date": "2026-W34",
+  "overall_score": 10,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-21T09:44:59.960493+00:00"
+}

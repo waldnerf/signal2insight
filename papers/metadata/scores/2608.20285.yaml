@@ -1,0 +1,19 @@
+enterprise_problem: Learning causal graphs of sleep-disordered breathing from home
+  sleep apnea test recordings.
+headline: Causal graphs of sleep apnea vary by sex and age.
+recommendation_reasoning: Medical research application, off-mission -- not an enterprise
+  AI systems paper.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

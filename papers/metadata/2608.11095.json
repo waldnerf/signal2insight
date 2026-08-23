@@ -23,5 +23,8 @@
   "recommendation": "Priority review",
   "download_eligible": true,
   "extract_eligible": true,
-  "reviewed_at": "2026-08-17T07:24:43.333814+00:00"
+  "reviewed_at": "2026-08-17T07:24:43.333814+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "approve",
+  "human_reviewed_at": "2026-08-23T11:14:12.566167+00:00"
 }

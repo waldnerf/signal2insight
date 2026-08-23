@@ -1,0 +1,20 @@
+enterprise_problem: Proposes an alternative token-mixing primitive to attention (Relation),
+  with faster inference variants at matched model scales.
+headline: A new architecture rivals attention while running faster.
+recommendation_reasoning: Fundamental model-architecture research most relevant to
+  model builders/AI labs, not typical enterprise AI adopters -- interesting but not
+  business-translatable today.
+business_functions:
+- Engineering
+enterprise_ai_themes:
+- Infrastructure
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 2
+overall_score: 13
+recommendation: Archive
+fulltext_reassessed: false

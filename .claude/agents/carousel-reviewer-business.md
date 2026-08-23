@@ -13,7 +13,7 @@ You have no write tools, and that is deliberate. **You do not supply replacement
 
 ## Read first
 
-`skills/carousel-production/writing-standards.md`, then the draft at `carousels/<arxiv_id>/draft-carousel.md`.
+`skills/carousel-production/writing-standards.md`, then the draft at `output/<year-week>/<year-week>_<arxiv_id>_carousel-draft.md` (glob `output/*/*_<arxiv_id>_carousel-draft.md` if the week isn't already known).
 
 ## What you are judging
 
@@ -39,7 +39,7 @@ Reach, engagement mechanics and posting strategy. Out of scope here.
 
 ## Output
 
-Return your findings as your report, in this shape. The orchestrator persists them to `carousels/<arxiv_id>/review-business.md` so the writer can read them on the revision run.
+Return your findings as your report, in this shape. The orchestrator persists them to `output/<year-week>/<year-week>_<arxiv_id>_review-business.md` so the writer can read them on the revision run.
 
 ```
 SLIDE 4 · blocker · "The durable asset is the rule model and the optimizer"

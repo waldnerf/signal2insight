@@ -1,0 +1,19 @@
+enterprise_problem: Determining whether a sparse-coding dictionary's learned atom
+  support has a physically justified interpretation under uncertainty.
+headline: Confidence sets for physically-interpretable sparse dictionary atoms.
+recommendation_reasoning: Signal-processing/statistics theory paper, off-mission --
+  no connection to enterprise AI systems.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 2
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 1
+story_potential: 1
+overall_score: 8
+recommendation: Ignore
+fulltext_reassessed: false

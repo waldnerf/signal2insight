@@ -1,0 +1,33 @@
+{
+  "arxiv_id": "2608.20204",
+  "title": "ContractScrub: A benchmark for final review of legal contracts",
+  "authors": [
+    "Yejin Bang",
+    "Kirsty Fielding",
+    "Brandan Oliver",
+    "Brian Birke",
+    "Nabeel Seedat",
+    "Andrew M. Bean"
+  ],
+  "abstract": "Legal work, with its heavy reliance on processing large amounts of text, is often considered one of the domains most exposed to the use of LLMs. Contract ``scrubbing,'' the final review of transactional agreements for errors and inconsistencies, is a particularly suitable task for automation, because it is routine, painstaking work requiring detailed attention to long documents. Scrubbing also seems to align naturally with the general capabilities expected of frontier LLMs around long-context reasoning, consistency checking, and named entity recognition (NER). Despite the economic value and potential for automation, no formal evaluations of LLMs performing contract scrubbing have been conducted. We introduce ContractScrub, the first benchmark designed to evaluate contract scrubbing capabilities, comprising contracts hand-crafted by experienced lawyers over diverse error categories such as misuse of defined terms, incorrect references, and inconsistent language. Frontier models perform surprisingly poorly with only one model reaching 0.75 macro average recall despite strong performance on seemingly related general benchmarks, demonstrating the practical limits of current models and the importance of narrowly targeted, domain-specific benchmarks for measuring real-world impact.",
+  "categories": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "published": "2026-08-20T16:01:42Z",
+  "updated": "2026-08-20T16:01:42Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.20204v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-21T09:42:53.814161+00:00",
+  "discovery_date": "2026-W34",
+  "overall_score": 20,
+  "recommendation": "Archive",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-21T09:44:59.939685+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "archive",
+  "human_reviewed_at": "2026-08-23T11:14:12.569956+00:00"
+}

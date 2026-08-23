@@ -11,8 +11,8 @@ Extract durable knowledge from a full paper, and decide whether it should become
 
 ## Input
 
-- `../../papers/text/<arxiv_id>.md` — the paper's cleaned body text, built by `scripts/build_fulltext.py` from the PDF. This is what you read; see "Reading the paper" below
-- `../../papers/pdf/<year-week>/<arxiv_id>.pdf` — the source PDF, grouped by the ISO year-week it was downloaded in; if the exact week isn't already known, glob (`papers/pdf/*/<arxiv_id>.pdf`) rather than guess it
+- `../../output/<year-week>/<year-week>_<arxiv_id>.md` — the paper's cleaned body text, built by `scripts/build_fulltext.py` from the PDF, written beside it. This is what you read; see "Reading the paper" below
+- `../../output/<year-week>/<year-week>_<arxiv_id>.pdf` — the source PDF, grouped by the ISO year-week it was downloaded in; if the exact week isn't already known, glob (`output/*/*_<arxiv_id>.pdf`) rather than guess it
 - `../../papers/metadata/<arxiv_id>.json` (title, authors, dates, categories, editorial-triage's `overall_score`/`recommendation`/`headline`)
 - `../../papers/metadata/scores/<arxiv_id>.yaml` (from [[editorial-triage]])
 
@@ -32,7 +32,7 @@ Extract durable knowledge from a full paper, and decide whether it should become
 python skills/knowledge-extraction/scripts/build_fulltext.py <arxiv_id>
 ```
 
-That writes `../../papers/text/<arxiv_id>.md`: body text only, with references, acknowledgements and appendices removed, using the dependency-free extractor in `scripts/pdftext.py`. Use `--all` to build every downloaded PDF that lacks one, and `--force` to rebuild.
+That writes `../../output/<year-week>/<year-week>_<arxiv_id>.md`, beside the source PDF: body text only, with references, acknowledgements and appendices removed, using the dependency-free extractor in `scripts/pdftext.py`. Use `--all` to build every downloaded PDF that lacks one, and `--force` to rebuild.
 
 Two properties of that file matter when you read it. **Page order does not always follow reading order**, because the extractor walks PDF objects rather than the page tree, so navigate by section heading rather than assuming the top of the file is the start of the paper. And **appendices are gone**, so a formulation or proof that lived there is not available; if the paper's contribution rests on it, say so in the worksheet rather than inferring it.
 

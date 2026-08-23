@@ -1,0 +1,26 @@
+enterprise_problem: Technical documentation is written for humans, but coding agents
+  now author a growing share of code changes -- and nobody has studied which docs
+  agents actually read, or what that implies for how documentation should be written.
+headline: Coding agents mostly ignore your official docs -- they read instruction
+  files and working notes instead.
+recommendation_reasoning: 'Large-scale empirical study (557 sessions, 33K PRs) with
+  a concrete, immediately actionable finding for any engineering org adopting coding
+  agents: documentation strategy needs to change for an agent-majority contributor
+  base. Business translatability held at 3 since the practical upshot is still an
+  engineering-process decision, not a P&L one.'
+business_functions:
+- Engineering
+- Product
+enterprise_ai_themes:
+- Agentic AI
+- Other
+primary_type: Evaluation methodology
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 5
+enterprise_readiness: 4
+business_translatability: 3
+story_potential: 4
+overall_score: 20
+recommendation: Review fully
+fulltext_reassessed: false

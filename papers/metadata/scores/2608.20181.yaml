@@ -1,0 +1,18 @@
+enterprise_problem: Standardizing evaluation of ML models for power-system electrical
+  fault protection.
+headline: A standardized evaluation framework for ML in power-grid protection.
+recommendation_reasoning: Utility/power-grid engineering vertical, off-mission.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Evaluation methodology
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Ignore
+fulltext_reassessed: false

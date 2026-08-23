@@ -73,11 +73,12 @@ Downloaded papers get `"downloaded": true` and `"downloaded_at"` in their metada
 ## What gets written
 
 ```
-papers/metadata/<arxiv_id>.json           — title, authors, abstract, categories, dates, pdf_url, status: "queued"
-papers/pdf/<year-week>/<arxiv_id>.pdf     — PDF, written only by download_top.py (or fetch.py --download)
-                                             grouped by the ISO year-week it was downloaded in (e.g. 2026-W31)
-logs/fetch-<timestamp>.log                — fetch.py run log
-logs/download_top-<timestamp>.log         — download_top.py run log
+papers/metadata/<arxiv_id>.json                     — title, authors, abstract, categories, dates, pdf_url, status: "queued"
+output/<year-week>/<year-week>_<arxiv_id>.pdf       — PDF, written only by download_top.py (or fetch.py --download)
+                                                       grouped by the ISO year-week it was downloaded in (e.g. 2026-W31),
+                                                       filename carries the same week prefix
+logs/fetch-<timestamp>.log                          — fetch.py run log
+logs/download_top-<timestamp>.log                   — download_top.py run log
 ```
 
 Every metadata record also carries `"discovery_date"` in the same `<year-week>` format (e.g. `"2026-W31"`), stamped once at discovery time — this is a fixed record of *when the paper was found*, independent of when (or whether) its PDF later gets downloaded, which can land in a later week if it's deferred by the `download_top_n` cap.

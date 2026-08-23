@@ -1,0 +1,19 @@
+enterprise_problem: Combines a chatbot survey with LLM-based prediction to model travel-mode
+  choice under weather scenarios.
+headline: A three-agent workflow for transportation demand modeling.
+recommendation_reasoning: Niche transportation-research application with a small survey
+  sample (454 responses). Not enterprise-AI-systems relevant, and evidence is thin.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 3
+evidence_quality: 2
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 9
+recommendation: Ignore
+fulltext_reassessed: false

@@ -1,0 +1,36 @@
+enterprise_problem: As organizations accumulate agent skills (56,804 public + many
+  private), the install-everything model means every skill's description permanently
+  occupies the LLM's limited system-prompt 'trigger slots' -- fewer than 100 -- so
+  skill libraries hit a hard operational ceiling long before they hit a knowledge
+  ceiling, and internal playbooks compete with third-party skills for the same scarce
+  space.
+headline: Skill sprawl has a prompt-budget ceiling, not a knowledge ceiling -- and
+  it's fixable by not installing skills at all.
+recommendation_reasoning: 'A shipped protocol (spec + CLI + hub), not just a proposal,
+  that an engineering team could adopt today (enterprise_readiness 4) to solve a real
+  and growing agent-skill-management problem squarely inside this pipeline''s own
+  domain. Evidence_quality is moderate: mostly architecture and worked examples, no
+  rigorous before/after evaluation of the protocol''s real-world effect. Business_translatability
+  and story_potential are deliberately low (2): the actual pain point -- system-prompt
+  trigger-slot scarcity, manifests, gh: identities -- is platform-team technical detail,
+  not something a CDO/CTO is already asking about or would find quotable without the
+  explanation first. Recommending Review fully on enterprise_readiness and topical
+  fit, explicitly not on business-narrative strength.'
+business_functions:
+- Engineering
+- CIO/CTO
+enterprise_ai_themes:
+- Agentic AI
+- Infrastructure
+- Cost Optimization
+- Governance
+primary_type: Framework
+adoption_horizon: Immediate
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 4
+business_translatability: 2
+story_potential: 2
+overall_score: 15
+recommendation: Review fully
+fulltext_reassessed: false

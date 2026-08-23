@@ -1,0 +1,25 @@
+enterprise_problem: Semantic caches for LLM serving need an eviction policy, but proposed
+  policies have rarely been compared under one protocol across workloads and capacities.
+headline: The fanciest LLM cache eviction policy isn't worth it -- the simple one
+  already wins.
+recommendation_reasoning: Directly actionable for infrastructure/platform engineering
+  teams running LLM caches (just use LFU), but this is a platform-team curiosity,
+  not an executive-facing story -- per calibration, that keeps C8/C9 modest even though
+  the finding is immediately useful.
+business_functions:
+- Engineering
+- Operations
+enterprise_ai_themes:
+- LLMOps
+- Cost Optimization
+- Infrastructure
+primary_type: Evaluation methodology
+adoption_horizon: Immediate
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 2
+story_potential: 2
+overall_score: 15
+recommendation: Read later
+fulltext_reassessed: false

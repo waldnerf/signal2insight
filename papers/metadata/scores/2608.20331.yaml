@@ -1,0 +1,20 @@
+enterprise_problem: Patients struggle to understand their own medical reports; this
+  proposes an RL method for accurate, accessible patient-facing explanations.
+headline: A reward-learning recipe for patient-friendly medical report explanations.
+recommendation_reasoning: Healthcare-vertical-locked RL technique, narrow application
+  (patient communication). Per calibration, industry-vertical lock is itself a translatability
+  penalty; this doesn't generalize to enterprise AI builders outside healthcare vendors.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Engineering technique
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 2
+story_potential: 2
+overall_score: 12
+recommendation: Archive
+fulltext_reassessed: false

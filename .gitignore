@@ -1,7 +1,9 @@
 # Regenerable and/or binary -- not the source of truth for this system.
 # Re-derive via research-discovery / research-librarian; don't hand-edit.
-/papers/pdf/**
-!/papers/pdf/.gitkeep
+# output/<year-week>/ mixes PDFs (binary, regenerable) with .md text and
+# carousel files (source of truth) in the same folder, so only the PDFs
+# themselves are ignored -- not the whole directory.
+/output/**/*.pdf
 /archive/pdf/**
 /logs/**
 !/logs/.gitkeep

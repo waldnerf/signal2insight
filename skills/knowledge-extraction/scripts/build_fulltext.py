@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Extract a downloaded PDF to cleaned markdown at papers/text/<arxiv_id>.md.
+"""Extract a downloaded PDF to cleaned markdown at
+output/<year-week>/<year-week>_<arxiv_id>.md, beside its source PDF.
 
 The body only: references, bibliography, acknowledgements and every appendix
 are dropped. What remains is the argument of the paper, which is what the
@@ -29,8 +30,7 @@ import pdftext  # noqa: E402
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 ROOT = Path(__file__).resolve().parents[3]
-PDF_DIR = ROOT / 'papers' / 'pdf'
-OUT_DIR = ROOT / 'papers' / 'text'
+OUTPUT_DIR = ROOT / 'output'
 
 PAGE_RE = re.compile(r'^=== page (\d+) ===$', re.M)
 
@@ -74,8 +74,9 @@ SUBSECTION_RE = re.compile(r'^(\d+\.\d+)\.?\s+([A-Z][^\n]{2,80})$')
 
 def find_pdf(arxiv_id):
     """PDFs are grouped by ISO download week, which is not derivable from the
-    id or from discovery_date, so glob rather than compute the path."""
-    hits = sorted(PDF_DIR.glob('*/%s.pdf' % arxiv_id))
+    id or from discovery_date, so glob rather than compute the path.
+    Filename is <year-week>_<arxiv_id>.pdf, e.g. output/2026-W31/2026-W31_2607.25891.pdf."""
+    hits = sorted(OUTPUT_DIR.glob('*/*_%s.pdf' % arxiv_id))
     return hits[0] if hits else None
 
 
@@ -224,9 +225,9 @@ def to_markdown(text):
 def build(arxiv_id, force=False):
     pdf = find_pdf(arxiv_id)
     if pdf is None:
-        print('  %s: no PDF under papers/pdf/*/ , skipped' % arxiv_id)
+        print('  %s: no PDF under output/*/ , skipped' % arxiv_id)
         return False
-    dst = OUT_DIR / ('%s.md' % arxiv_id)
+    dst = pdf.parent / ('%s_%s.md' % (pdf.parent.name, arxiv_id))
     if dst.exists() and not force:
         print('  %s: already built, use --force to rebuild' % arxiv_id)
         return False
@@ -262,7 +263,6 @@ def build(arxiv_id, force=False):
         '---',
         '',
     ]
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
     dst.write_text('\n'.join(fm) + md + '\n', encoding='utf-8')
     detail = ', cut at %r' % dropped_at if dropped_at else ', NO terminal heading'
     if n_biblio:
@@ -283,7 +283,8 @@ def main():
 
     ids = list(args.arxiv_ids)
     if args.all:
-        ids = sorted({p.stem for p in PDF_DIR.glob('*/*.pdf')})
+        # filename is <year-week>_<arxiv_id>.pdf; strip the week+underscore prefix
+        ids = sorted({p.stem[len(p.parent.name) + 1:] for p in OUTPUT_DIR.glob('*/*.pdf')})
     if not ids:
         ap.error('give an arxiv_id or --all')
 
@@ -297,7 +298,7 @@ def main():
         except Exception as exc:
             failed.append(i)
             print('  %s: FAILED, %s: %s' % (i, type(exc).__name__, exc))
-    print('wrote %d file(s) to %s' % (n, OUT_DIR.relative_to(ROOT)))
+    print('wrote %d file(s) to %s' % (n, OUTPUT_DIR.relative_to(ROOT)))
     if failed:
         print('%d failed: %s' % (len(failed), ', '.join(failed)))
     return 0

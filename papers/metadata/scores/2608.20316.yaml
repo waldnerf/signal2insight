@@ -1,0 +1,31 @@
+enterprise_problem: Routing queries across multiple AI models/specialists to balance
+  quality against cost requires estimating each specialist's expected value, but accurate
+  estimation is itself expensive.
+headline: How much should you spend figuring out which AI model to use? There's a
+  formula for that.
+recommendation_reasoning: Directly addresses AI spend management, a live CIO/CTO concern
+  as enterprises run multiple models. Gives a principled, implementable policy (closed-form
+  value-of-information thresholds) rather than just a benchmark. Story potential kept
+  moderate since the framing (Pandora's Box) needs translation for a non-technical
+  reader.
+business_functions:
+- CIO/CTO
+- Engineering
+- Operations
+enterprise_ai_themes:
+- Cost Optimization
+- LLMOps
+- Infrastructure
+primary_type: Engineering technique
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 4
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 3
+overall_score: 19
+recommendation: Ignore
+fulltext_reassessed: false
+pre_override_recommendation: Review fully
+human_override: true
+human_override_reason: Ignored at review.

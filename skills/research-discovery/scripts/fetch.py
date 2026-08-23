@@ -49,7 +49,7 @@ for _stream in (sys.stdout, sys.stderr):
 ROOT = Path(__file__).resolve().parents[3]  # repo root/ (.../repo root/skills/research-discovery/scripts/fetch.py)
 DEFAULT_CONFIG = ROOT / "config" / "editorial-profile.yaml"
 METADATA_DIR = ROOT / "papers" / "metadata"
-PDF_DIR = ROOT / "papers" / "pdf"  # PDFs live under PDF_DIR/<ISO year-week>/<id>.pdf — see pdf_path()
+PDF_DIR = ROOT / "output"  # PDFs live under PDF_DIR/<ISO year-week>/<year-week>_<id>.pdf — see pdf_path()
 LOG_DIR = ROOT / "logs"
 
 ARXIV_API = "http://export.arxiv.org/api/query"
@@ -155,9 +155,10 @@ def metadata_path(arxiv_id):
 
 def pdf_path(arxiv_id, when=None):
     """PDFs are grouped by the ISO year-week they're downloaded in:
-    papers/pdf/<YYYY-Www>/<arxiv_id>.pdf — `when` defaults to now (the
+    output/<YYYY-Www>/<YYYY-Www>_<arxiv_id>.pdf — `when` defaults to now (the
     moment of download), not the paper's discovery or publish date."""
-    return PDF_DIR / iso_week_str(when) / f"{arxiv_id}.pdf"
+    week = iso_week_str(when)
+    return PDF_DIR / week / f"{week}_{arxiv_id}.pdf"
 
 
 def already_known(arxiv_id):

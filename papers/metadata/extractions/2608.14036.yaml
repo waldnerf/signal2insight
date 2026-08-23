@@ -1,0 +1,263 @@
+summary_five_sentences: This paper studies not whether agent 'skills' (structured
+  procedural knowledge packages) help, but when, why, and where they fail. Through
+  controlled experiments across three benchmarks, two agent-model pairings, and a
+  normalized dataset of 8,135 trial records, the authors isolate the effects of representation
+  (skill vs. raw workflow memory), outcome annotation, cross-framework transfer, and
+  retrieval difficulty. A contrastive trajectory-analysis pipeline built from 238
+  human-validated labels finds that skills work primarily through 'procedural anchoring'
+  -- stabilizing execution steps -- rather than injecting missing facts, accounting
+  for 65.7% of skill mechanisms versus 4.5% for knowledge injection. Skills beat direct
+  workflow memory by 6.06 points in matched comparisons, but retrieval precision collapses
+  from 29.6% to 3.3% as the candidate skill pool grows from 5 to 100 items, even though
+  downstream task success stays comparatively flat. The paper concludes skills fail
+  under brittle assumptions, incompatible contexts, or when guidance is misapplied
+  rather than absent, and argues evaluation should move beyond aggregate success rates
+  to a lifecycle view of skill use.
+executive_explanation: 'When you give an AI agent a reusable ''skill'' (a written
+  playbook for doing something, like deploying code or debugging), it does help --
+  agents make fewer setup and execution mistakes. But that benefit isn''t really about
+  the agent ''learning facts'': it''s about the agent following a cleaner set of steps
+  instead of a messy history of trial and error. The catch: as an organization builds
+  up a large library of skills, finding the right one at the right moment gets dramatically
+  harder -- precision in picking the correct skill out of a pool falls from about
+  30% to about 3% once the library reaches 100 skills, even though the agent still
+  succeeds about as often, because it can partially compensate with related skills.
+  So the return on writing skills is real, but the return on having a large skill
+  library depends entirely on solving retrieval, not on writing more skills.'
+architect_explanation: 'The authors run a controlled 3-arm study (Raw / Workflow Memory
+  / Skill) holding source trajectories fixed, then use an LLM-judge taxonomy (12 modes,
+  3 categories, human-validated at kappa=0.952) to attribute why each arm succeeded
+  or failed on a matched-triple basis (528 triples across Terminal-Bench 2.0, SkillsBench,
+  Terminal-Bench-Pro). Key mechanism finding: skill_mechanism = procedural_anchor
+  in 65.7% of skill trajectories vs. knowledge_injection in 4.5%. Separately, RQ4
+  decomposes skill retrieval into three independent arms (embedding retrieval, explicit
+  agent selection, real execution with parsed skill-use) over SkillsBench''s native
+  task-skill ground truth, pool sizes 5-100, and three distractor regimes -- finding
+  Arm-3 actual-use precision collapsing from 29.6% to 3.3% as pool size grows, while
+  downstream success stays roughly flat (36.4%->39.3%), because exact ground-truth
+  invocation is neither necessary nor sufficient for success. Skills also introduce
+  a new failure surface: skill_guidance_misapplied_or_ignored (10.0% of skill-arm
+  trajectories vs 0.4-0.8% elsewhere).'
+central_contribution: A mechanistic, taxonomy-based account of when and why agent
+  skills help or fail -- moving skill evaluation beyond aggregate task-success rates
+  to a validated 12-mode contrastive taxonomy plus a decomposed retrieval study, showing
+  skills work via procedural anchoring and fail primarily via retrieval collapse and
+  misapplication rather than absence of relevant knowledge.
+industry_problem: Teams building self-improving/agentic systems accumulate 'skills'
+  (reusable procedural playbooks) but have no way to know, beyond a single aggregate
+  success-rate number, whether a given skill is actually helping, why it helps when
+  it does, or when a growing skill library will start silently failing to be found
+  or applied correctly.
+problem_importance: Because current evaluation is aggregate-only, teams operating
+  skill libraries in production have no early-warning signal for the retrieval-collapse
+  failure mode this paper documents until it shows up as degraded agent behavior;
+  without a mechanistic account, teams cannot tell whether a skill 'isn't helping'
+  because the content is bad, because it wasn't retrieved, or because it was retrieved
+  but misapplied -- three very different fixes.
+assumptions_challenged: Challenges the assumption that more prior experience in context
+  is inherently good (workflow memory can carry noise that hurts); challenges the
+  assumption that skills work mainly by injecting missing domain knowledge (it's procedural
+  anchoring, not knowledge injection); and challenges the assumption that correct
+  skill retrieval is a prerequisite for task success (exact ground-truth invocation
+  is neither sufficient nor necessary).
+gaps_identified: Prior work only reports whether skill-augmented agents solve more
+  tasks in aggregate, without decomposing why -- leaving open questions about representation
+  effects vs. raw experience, the role of outcome annotations during skill construction,
+  cross-framework portability of distilled skills, and how retrieval difficulty interacts
+  with downstream execution as libraries scale. This paper targets all four gaps as
+  its four research questions.
+proposed_architecture: 'Not a system architecture in the product sense -- an experimental/analytical
+  pipeline: (1) a controlled 3-arm study (Raw / Workflow Memory / Skill) built from
+  a shared trajectory pool across two agent-model pairings and three benchmarks; (2)
+  a contrastive trajectory-analysis pipeline that normalizes 8,135 trial records,
+  open-codes 240 sampled trajectories into 238 valid labels, and consolidates them
+  via two-round batched LLM induction into a 12-mode, 3-category taxonomy, validated
+  against human annotation (95.8% exact agreement, kappa=0.952); (3) a three-arm retrieval
+  study (embedding retrieval, explicit agent selection, real execution with parsed
+  skill-use) over controlled candidate pools (size 5-100, three distractor regimes).'
+differentiation: Unlike prior skill-evaluation work that reports only aggregate task
+  success, this paper holds source experience fixed and varies only its representation
+  to isolate a genuine causal effect of format; builds a human-validated mechanistic
+  taxonomy of why trajectories succeed or fail, not just whether they do; and decomposes
+  skill retrieval into three independent, non-sequential measurements rather than
+  treating retrieval as a single pass/fail gate.
+novel_concepts: '''Procedural anchoring'' as the dominant skill mechanism (vs. knowledge
+  injection); the 12-mode / 3-category skill-use taxonomy (SC1 successful procedural
+  anchoring, SC2 execution-layer/verification failures, SC3 invocation/applicability/boundary
+  failures); the distinction between offline retrieval identification and execution-time
+  actual skill use as independent, not sequential, measurements; matched paired-triple
+  contrastive trajectory analysis.'
+improves_upon: Improves over prior agent-memory/skill evaluations (e.g. Workflow Memory
+  baselines) by showing skills beat matched workflow-memory conditions by +6.06 points
+  even when built from the identical trajectory pool, and improves over simple compact-procedural-text
+  baselines (short-plan, test-first templates), which underperform both Workflow Memory
+  and Skill, ruling out 'any compact hint would do' as an explanation.
+tradeoffs: Skills cost more tokens than Workflow Memory despite using fewer tokens
+  than raw trajectories; skills introduce a new failure mode (misapplied/ignored guidance,
+  10.0% of skill-arm cases) not present without skills; and skill retrieval precision
+  trades off sharply against pool size, capping the benefit of a large skill library
+  on a retrieval bottleneck the paper measures but does not solve.
+evaluation_method: Controlled experiments across two agent-model pairings (Codex+GPT-5.3-Codex/GPT-5.4,
+  Gemini CLI+Gemini-3.1-Pro-Preview) and three benchmarks, with a fixed-budget trajectory-composition
+  grid for RQ1-RQ2, cross-framework transfer for RQ3, and three independent retrieval
+  experiments for RQ4; results analyzed both as raw success-rate tables and via an
+  LLM-judge contrastive taxonomy validated against independent human annotation.
+statistically_convincing: 'Reasonably so for the core representation and taxonomy
+  claims: the skill-vs-workflow-memory improvement carries a 95% bootstrap CI excluding
+  zero ([+0.76, +11.36] pp), the taxonomy is independently human-validated (714 trajectory-label
+  checks, 95.8% exact agreement, Cohen''s kappa=0.952), and the retrieval-precision
+  collapse is measured across multiple pool sizes and three distractor regimes with
+  two agent-model pairings. Weaker on RQ4 cross-pairing comparability (GPT-5.3-Codex
+  vs GPT-5.4 substitution, flagged as within-pairing only) and on taxonomy coverage
+  (open-coding sample is ~3% of normalized records).'
+evaluation_weaknesses: The mechanism taxonomy is derived from a stratified sample
+  (240 of 8,135+ records, ~3%), so rare behavioral modes may be underrepresented;
+  RQ4 substitutes GPT-5.4 for GPT-5.3-Codex for availability reasons, breaking direct
+  comparability with RQ1-RQ3; token-cost metrics are incomplete for some skill-arm
+  runs; and benchmarks are limited to terminal/tool-use tasks -- authors flag findings
+  may not generalize to long-horizon web interaction or open-ended collaboration.
+open_questions: Whether the procedural-anchoring mechanism and retrieval-collapse
+  pattern generalize to other agent scaffolds, model families, or task domains beyond
+  terminal/tool-use benchmarks; how to fix the retrieval bottleneck itself (measured
+  but not solved); and how skill misapplication can be detected or reduced.
+enterprise_meaning: Any enterprise building agent systems with a skills/playbook architecture
+  should expect skills to genuinely reduce setup/execution errors (the strongest,
+  most reproducible finding) but should not assume a bigger skill library is automatically
+  better -- past a certain size, the agent's ability to find and correctly apply the
+  right skill degrades sharply, invisibly, because aggregate success stays roughly
+  flat.
+enterprise_patterns_affected: Agent memory design (skill vs. workflow-memory representation
+  choices), skill/playbook library governance and curation as the library scales,
+  and evaluation methodology for agentic systems.
+reduces_cost: Indirectly -- skills reduce token use relative to raw trajectories (though
+  not relative to Workflow Memory) while improving success, so a well-curated skill
+  library can reduce inference cost per successful task versus raw-trajectory memory;
+  but this saving is undermined at scale by the retrieval bottleneck, which the paper
+  doesn't cost out.
+improves_reliability: Yes, specifically for execution-layer and environment/tooling
+  failures (environment_infrastructure_failure drops from 5.3% raw to 0.2% with skills)
+  -- but not for algorithmic-logic or verification-depth failures, which persist regardless
+  of skill use.
+improves_governance: Indirectly, by giving teams a mechanism-level vocabulary (procedural
+  anchoring vs. knowledge injection vs. misapplication) to audit why an agent-skill
+  deployment is or isn't working, rather than treating it as an opaque pass/fail number.
+improves_developer_productivity: 'Yes for engineers maintaining agent-skill libraries:
+  the taxonomy gives a concrete diagnostic vocabulary (12 modes) for triaging why
+  a specific skill deployment underperforms, instead of guessing.'
+cio_action: Before scaling an internal agent-skill library past a modest size, invest
+  in retrieval quality (search/ranking over the skill catalog) as a first-class problem
+  -- not just in writing more skills -- since precision collapses well before the
+  library reaches 100 items.
+ai_team_action: Instrument skill-augmented agent deployments to distinguish 'skill
+  wasn't retrieved' from 'skill was retrieved but misapplied' from 'skill retrieved
+  and applied correctly but task still failed' -- three different failure classes
+  requiring different fixes, conflated by aggregate success rate.
+surprising_claim: That retrieval precision can fall to 3% while task success stays
+  flat around 39% -- an agent's skill library can become almost impossible to search
+  correctly and the agent still succeeds about as often, because 'close enough' skills
+  provide partial procedural value even when not technically correct.
+misconceptions_challenged: Challenges the common assumption that a skill library's
+  value scales with its size, that correct-skill retrieval is a precondition for an
+  agent to succeed, and that skills primarily work by teaching the model facts it
+  didn't know.
+business_implications: A skills-based agent strategy needs a retrieval/curation roadmap
+  from day one, not just a content-writing roadmap -- past some real (demonstrated
+  below 100) library size, adding more skills without solving retrieval yields diminishing
+  or even negative returns on findability, even if aggregate success looks stable.
+future_trends: Expect agent-skill tooling to shift emphasis from 'how do we write
+  more skills' to 'how do we retrieve, rank, and prune skills reliably' -- retrieval
+  quality becomes the long-run bottleneck as libraries grow, which is exactly the
+  problem the companion @skills paper is separately trying to solve from a delivery-architecture
+  angle.
+future_research_to_monitor: Work on skill retrieval/ranking specifically for procedural
+  (not just declarative) content; studies generalizing this taxonomy beyond terminal/tool-use
+  benchmarks; and follow-up work quantifying how skill misapplication can be automatically
+  detected.
+worth_linkedin_post: Yes -- the retrieval-precision-collapse stat (30% to 3%) is a
+  strong, counterintuitive, quotable hook, and pairs naturally with the companion
+  @skills paper for a two-part narrative.
+worth_long_article: Yes, as part of a two-paper piece connecting 'why skills work'
+  (this paper) with 'how to deliver skills so retrieval doesn't collapse' (@skills)
+  -- together a complete before/after story about the same underlying problem.
+strongest_narrative: Your agent's skill library gets less findable exactly as it gets
+  more valuable -- procedural anchoring is real and skills genuinely stabilize agent
+  execution, but the retrieval mechanism that finds the right skill degrades from
+  ~30% to ~3% precision as the library scales past a handful of items, invisibly,
+  because the agent still limps to roughly the same success rate using whatever related
+  skill it happens to grab.
+key_takeaway: Skills genuinely work (via procedural anchoring, not knowledge injection)
+  -- but the payoff is capped by a retrieval bottleneck that degrades silently as
+  the skill library grows, so scaling a skill library requires investing in retrieval/curation,
+  not just in writing more skills.
+datasets_used:
+- Terminal-Bench 2.0 (89 tasks)
+- Terminal-Bench Pro (200-task public split of a 400-task benchmark)
+- SkillsBench (86 tasks across 11 domains, native task-skill ground-truth annotations)
+benchmarks_used:
+- Terminal-Bench 2.0
+- Terminal-Bench Pro
+- SkillsBench
+industries_benefiting:
+- Software engineering / DevOps platforms building coding agents
+- Enterprise platform teams operating internal agent-skill or playbook libraries
+- Vendors building agent orchestration or agent-memory products
+influences:
+- Agent design
+- Memory
+- Evaluation
+top_three_insights:
+- Skills work mainly by stabilizing procedure (procedural anchoring, 65.7% of skill
+  mechanisms), not by injecting missing knowledge (4.5%).
+- Skill retrieval precision collapses from ~30% to ~3% as a skill pool grows from
+  5 to 100 items, while downstream task success barely moves.
+- 'Skills introduce a genuinely new failure mode absent from raw or workflow-memory
+  execution: the agent has the right skill but misapplies or ignores it (10.0% of
+  skill-arm cases vs <1% elsewhere).'
+new_concepts:
+- Procedural anchoring (skill mechanism)
+- Skill-use taxonomy (SC1/SC2/SC3, 12 modes)
+- Paired-triple contrastive trajectory analysis
+- Offline vs. execution-time retrieval as independent measurements
+terminology:
+- Procedural anchoring
+- Workflow Memory
+- Skill-use Category (SC1/SC2/SC3)
+- Paired triple
+- Actual-use precision
+- Oracle-status success rate
+architectural_patterns:
+- Matched-trajectory-pool controlled comparison (Raw / Workflow Memory / Skill from
+  the same source trajectories)
+- Three-arm retrieval decomposition (offline embedding / offline agent-selection /
+  execution-time parsed use)
+- Two-round batched LLM taxonomy induction with human validation
+evaluation_methods:
+- Paired bootstrap confidence intervals on matched success-rate deltas
+- Precision/recall/F1 over parsed execution-time skill use against native ground-truth
+  annotations
+- Human-validated LLM-judge open-coding + taxonomy induction (Cohen's kappa reported)
+papers_to_read_next:
+- 'arXiv:2608.12610 (@skills: Attention is all you have) -- addresses the retrieval/delivery
+  side of the exact bottleneck this paper measures'
+- Agent Workflow Memory (cited as prior work on retrieval-based workflow induction)
+- SkillsBench / Terminal-Bench 2.0 / Terminal-Bench Pro (the evaluation substrate)
+wiki_concepts_to_link:
+- Agentic AI
+- Agent memory
+- Evaluation methodology
+tags:
+- agent-skills
+- evaluation
+- agent-memory
+- reliability
+candidate_titles:
+- Your Agent's Skill Library Is Getting Worse While It Looks Fine
+- Skills Don't Fail By Being Wrong -- They Fail By Being Unfindable
+- The Retrieval Cliff Every Growing Agent-Skill Library Will Hit
+keep: true
+knowledge_base_priority: High
+executive_relevance: 3
+technical_novelty: 4
+practical_applicability: 4
+thought_leadership_potential: 4
+recommended_next_action: Write LinkedIn Post

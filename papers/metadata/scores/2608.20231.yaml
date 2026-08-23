@@ -1,0 +1,22 @@
+enterprise_problem: Models a hypothetical post-AGI economy where corporations own
+  AI/robot populations that produce and consume without human demand.
+headline: GDP could keep growing after AGI even with zero human consumption, a model
+  argues.
+recommendation_reasoning: Speculative macroeconomic theory paper about a post-AGI
+  economy, not an operational enterprise-AI-systems paper. Provocative framing, but
+  per calibration novelty must not halo business-fit scores -- there is no near-term
+  enterprise decision this informs, and the evidence is purely theoretical modeling.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Scientific research
+adoption_horizon: Long-term research
+novelty: 5
+evidence_quality: 2
+enterprise_readiness: 1
+business_translatability: 2
+story_potential: 3
+overall_score: 13
+recommendation: Archive
+fulltext_reassessed: false

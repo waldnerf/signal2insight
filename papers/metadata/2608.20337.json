@@ -1,0 +1,27 @@
+{
+  "arxiv_id": "2608.20337",
+  "title": "Information on trajectories: martingales and random times",
+  "authors": [
+    "Akshay Balsubramani"
+  ],
+  "abstract": "Accounting for information flow on the path space of trajectories of a nonnegative martingale yields exact variational identities for it, even at arbitrary random times. This recovers the widely used classical concentration inequalities, from Ville to PAC-Bayes, and measures what each one discards. The tail a bound controls is itself a relative entropy, resolved by the chain rule into per-step conditional divergences. The discarded slack has an exact form in each of three geometries: a Gibbs tilt for the Azuma-Hoeffding and PAC-Bayes bounds, the crossing itself for Ville's and for pooled tests, and a dominating certificate for the $L^p$ maximal bound. That certificate's optional-stopping deficit resolves per step into Bregman divergences of the running maximum. On a path-time space, the same identity gains one factor that prices anticipation: an arbitrary random time carries an e-process ``peeking penalty.'' The partition function can be read as a coalescent--a prefix-sharing probability of independent copies--and geometric mixtures of test martingales gain a pooling benefit for multi-model safe testing.",
+  "categories": [
+    "math.PR",
+    "cs.IT",
+    "cs.LG",
+    "math.ST"
+  ],
+  "published": "2026-08-20T17:59:57Z",
+  "updated": "2026-08-20T17:59:57Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.20337v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-21T09:39:40.990214+00:00",
+  "discovery_date": "2026-W34",
+  "overall_score": 10,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-21T09:42:44.751600+00:00"
+}

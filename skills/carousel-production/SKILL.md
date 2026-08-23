@@ -15,7 +15,7 @@ The output of this skill is **markdown only**. Rendering a deck to HTML, PDF or 
 
 ## Scope
 
-Applies to a paper with a downloaded PDF and cleaned body text at `papers/text/<arxiv_id>.md`. That file is the primary input: the deck is written from the paper, not from a summary of it.
+Applies to a paper with a downloaded PDF and cleaned body text at `output/<year-week>/<year-week>_<arxiv_id>.md`. That file is the primary input: the deck is written from the paper, not from a summary of it. If the exact week isn't already known, glob (`output/*/*_<arxiv_id>.md`) rather than guess it.
 
 If it is missing, build it first:
 
@@ -27,14 +27,23 @@ python skills/knowledge-extraction/scripts/build_fulltext.py <arxiv_id>
 
 ## Files
 
+Every file for a paper lives together in its download-week folder, `output/<year-week>/`, alongside the PDF and cleaned text `build_fulltext.py` already wrote there — named `<year-week>_<arxiv_id>_<suffix>`:
+
 ```
-carousels/<arxiv_id>/
-├── draft-carousel.md        the deliverable. Writer creates it, designer annotates it.
-├── review-business.md       carousel-reviewer-business findings
-└── review-technical.md      carousel-reviewer-technical findings
+output/<year-week>/
+├── <year-week>_<arxiv_id>.pdf                    the source PDF
+├── <year-week>_<arxiv_id>.md                     cleaned body text
+├── <year-week>_<arxiv_id>_carousel-draft.md      the deliverable. Writer creates it, designer annotates it.
+├── <year-week>_<arxiv_id>_review-business.md     carousel-reviewer-business findings
+├── <year-week>_<arxiv_id>_review-technical.md    carousel-reviewer-technical findings
+├── <year-week>_<arxiv_id>_review-log.md          one row per pass, appended by the orchestrator
+└── <year-week>_<arxiv_id>_history/
+    └── rev-NN.md                                 snapshot before each revision pass
 ```
 
-`draft-carousel.md` carries frontmatter recording `source`, `depth_pattern`, `slides` and `status`. The depth pattern is recorded because it is not yet settled (see below), and the record is what will eventually settle it.
+The week isn't derivable from the arxiv id alone, so locate a paper's folder by globbing `output/*/*_<arxiv_id>*` rather than computing the path — `check_standards.py`'s `resolve_dir()` does this for every script entry point.
+
+`<year-week>_<arxiv_id>_carousel-draft.md` carries frontmatter recording `source`, `depth_pattern`, `slides` and `status`. The depth pattern is recorded because it is not yet settled (see below), and the record is what will eventually settle it.
 
 ## The two depth patterns
 
@@ -65,7 +74,7 @@ Reach and engagement are not reviewed here. That is a separate judgment about a 
 
 1. **Confirm the source and the depth pattern.** Read `ArxivWiki/summaries/<id>.md` yourself before spawning anything, so you can tell the writer what the deck is about rather than making it guess. Ask the user which depth pattern to use. Ask nothing else at this stage.
 
-2. **Spawn `carousel-writer`.** Pass the arxiv id, the depth pattern, the slide budget, and the paths to the source files. It writes `carousels/<id>/draft-carousel.md`.
+2. **Spawn `carousel-writer`.** Pass the arxiv id, the depth pattern, the slide budget, and the paths to the source files. It writes `output/<year-week>/<year-week>_<id>_carousel-draft.md`.
 
 3. **Run the linter.**
    ```bash
@@ -75,11 +84,11 @@ Reach and engagement are not reviewed here. That is a separate judgment about a 
 
 4. **Spawn both reviewers in parallel, in one message.** They are independent, and the friction between them is the point: the business reviewer pulls toward accessibility, the technical reviewer pulls toward precision. Neither wins automatically.
 
-   The first review of a deck gets `carousel-reviewer-technical` a full read of `papers/text/<id>.md`. From the second review pass onward, tell it which slides changed since the last snapshot and which drew findings last time (from `--churn`, below); it greps the paper for those slides' claims instead of rereading the file in full, per its own agent definition.
+   The first review of a deck gets `carousel-reviewer-technical` a full read of `output/<year-week>/<year-week>_<id>.md`. From the second review pass onward, tell it which slides changed since the last snapshot and which drew findings last time (from `--churn`, below); it greps the paper for those slides' claims instead of rereading the file in full, per its own agent definition.
 
-   Reviewers are read-only, so they return findings rather than writing them. **You persist each report verbatim** to `carousels/<id>/review-business.md` and `review-technical.md`, because the writer reads those files on the revision run and a report that only exists in your context is lost the moment it is compacted.
+   Reviewers are read-only, so they return findings rather than writing them. **You persist each report verbatim** to `output/<year-week>/<year-week>_<id>_review-business.md` and `_review-technical.md`, because the writer reads those files on the revision run and a report that only exists in your context is lost the moment it is compacted.
 
-5. **Persist both reports and apply the review gate.** Write each reviewer's report verbatim to `carousels/<id>/review-business.md` and `review-technical.md` (they have no write tools, so this is yours), and append a row to `review-log.md`. Then run the gate. See The loop below. It decides mechanically whether the draft goes back for another pass or forward to the user.
+5. **Persist both reports and apply the review gate.** Write each reviewer's report verbatim to `output/<year-week>/<year-week>_<id>_review-business.md` and `_review-technical.md` (they have no write tools, so this is yours), and append a row to `_review-log.md`. Then run the gate. See The loop below. It decides mechanically whether the draft goes back for another pass or forward to the user.
 
 5b. **Snapshot before revising.**
 
@@ -87,9 +96,9 @@ Reach and engagement are not reviewed here. That is a separate judgment about a 
    python skills/carousel-production/scripts/check_standards.py --snapshot <arxiv_id>
    ```
 
-   Copies the draft to `history/rev-NN.md`. Do this on every pass without exception, because the next pass cannot be churn-checked without it.
+   Copies the draft to `output/<year-week>/<year-week>_<id>_history/rev-NN.md`. Do this on every pass without exception, because the next pass cannot be churn-checked without it.
 
-6. **If the gate says revise:** spawn `carousel-writer` again straight away, **without consulting the user**. It reads its own previous draft and both review files, and increments `revision` in the frontmatter. The review files it reads are what scope its source reading too: from the second writer pass onward it greps `papers/text/<id>.md` for the claims on slides that drew findings, rather than rereading the file in full, per its own agent definition. **Return to step 3.** The linter and both reviewers run again on every pass; a fix on one slide routinely breaks the slide next to it. This is the loop, and interrupting it for approval on every pass defeats the point: the user's judgment is worth spending on a deck that has already cleared the bar, not on one the reviewers have already said is not ready.
+6. **If the gate says revise:** spawn `carousel-writer` again straight away, **without consulting the user**. It reads its own previous draft and both review files, and increments `revision` in the frontmatter. The review files it reads are what scope its source reading too: from the second writer pass onward it greps `output/<year-week>/<year-week>_<id>.md` for the claims on slides that drew findings, rather than rereading the file in full, per its own agent definition. **Return to step 3.** The linter and both reviewers run again on every pass; a fix on one slide routinely breaks the slide next to it. This is the loop, and interrupting it for approval on every pass defeats the point: the user's judgment is worth spending on a deck that has already cleared the bar, not on one the reviewers have already said is not ready.
 
 7. **If the gate says ship, or the pass cap is reached:** bring the draft to the user, with both subtotals, the two primary-test answers, and any findings still open. Walk those findings one at a time; where the reviewers conflicted and both were right, that is the user's call, not yours. This approval gate is real: the designer edits the same file, so a copy revision after design direction has been added overwrites that direction.
 
@@ -157,7 +166,7 @@ It compares the draft against the last snapshot and reports two things. **CHURN*
 
 Neither is automatically a failure, so this does not gate. It exists so an unrequested rewrite is visible instead of silent. Tell the writer in its brief which slides are scoring well and are not to be disturbed, and use this to check that it complied rather than taking its word.
 
-This report is also what scopes the technical reviewer's next read (step 4): full rereads of `papers/text/<id>.md` happen once, on the first review, and after that it greps for the claims on the slides this report names, instead of rereading the file in full. The writer's own next-pass reading is scoped the same way but from the review findings directly, since churn on its last pass isn't available until after it writes (step 6).
+This report is also what scopes the technical reviewer's next read (step 4): full rereads of `output/<year-week>/<year-week>_<id>.md` happen once, on the first review, and after that it greps for the claims on the slides this report names, instead of rereading the file in full. The writer's own next-pass reading is scoped the same way but from the review findings directly, since churn on its last pass isn't available until after it writes (step 6).
 
 **Resetting the budget.** Only the user grants a fresh three passes. Record it by setting `pass_reset_at: <current revision>` in the draft's frontmatter; the gate then counts `revision - pass_reset_at`. `revision` itself never rewinds, because it is the deck's history. A reset is a decision with a reason behind it, so the reason belongs in `review-log.md` next to the scores that prompted it. Never reset to escape a gate that keeps failing on the same finding: that is the signal the source or the depth pattern is wrong, which is what the cap exists to surface. A deck that cannot clear the bar in three passes has a problem in the source material or the chosen depth pattern, and further passes will not find it. Say which gate is still failing and what you think the underlying cause is.
 
@@ -179,6 +188,6 @@ The thresholds above are a starting point, not a calibrated standard. They were 
 
 ## Known constraint
 
-The Read tool cannot open PDFs in this environment and no PDF library is installed, which is why `build_fulltext.py` exists: it derives `papers/text/<id>.md` once, using a dependency-free extractor, and every skill reads that instead of the PDF.
+The Read tool cannot open PDFs in this environment and no PDF library is installed, which is why `build_fulltext.py` exists: it derives `output/<year-week>/<year-week>_<id>.md` once, beside the source PDF, using a dependency-free extractor, and every skill reads that instead of the PDF.
 
 Two limits carry through to review. **Appendices and references are removed**, so a claim resting on appendix material is unverifiable here even though it may be correct in the paper. And **page order in the extracted text does not always follow reading order**, so the body may not read start to finish. Neither affects quotation checking, which searches the whole file.

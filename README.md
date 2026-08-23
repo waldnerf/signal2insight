@@ -17,7 +17,7 @@ All 9 skill folders live under `skills/`, separate from the config, papers, and 
 | [research-discovery](skills/research-discovery/SKILL.md) | No — retrieval only | `scripts/fetch.py`, `scripts/download_top.py` |
 | [editorial-triage](skills/editorial-triage/SKILL.md) | Yes — scores against the editorial profile | `scripts/apply_scores.py`, `scripts/reassess_fulltext.py` (write-out helpers; the judgment itself is unscripted) |
 | [editorial-review](skills/editorial-review/SKILL.md) | Human reviews, not a new score — approves or overrides a Priority-review call before extraction | `scripts/build_summary.py`, `scripts/apply_human_review.py` (write-out helpers; the decision is a human, via an interactive widget) |
-| [knowledge-extraction](skills/knowledge-extraction/SKILL.md) | Yes — a second, full-text gate (`keep`) on papers that already passed triage | `scripts/build_fulltext.py` + `scripts/pdftext.py` (PDF → `papers/text/<id>.md`), `scripts/apply_extraction.py` (write-out helper; also renders the wiki page) |
+| [knowledge-extraction](skills/knowledge-extraction/SKILL.md) | Yes — a second, full-text gate (`keep`) on papers that already passed triage | `scripts/build_fulltext.py` + `scripts/pdftext.py` (PDF → `output/<wk>/<wk>_<id>.md`), `scripts/apply_extraction.py` (write-out helper; also renders the wiki page) |
 | [research-librarian](skills/research-librarian/SKILL.md) | No — aggregates and indexes | `scripts/build_index.py` |
 | [theme-dashboard](skills/theme-dashboard/SKILL.md) | No — visualizes what knowledge-extraction already decided | `scripts/build_dashboard.py` (write-out; publishing the result is a manual Artifact-tool step) |
 | [pipeline-builder](skills/pipeline-builder/SKILL.md) | No — scaffolding, scheduling, health checks | none |
@@ -35,14 +35,14 @@ Discovery, triage, and human review are also **interleaved per batch**, not sequ
 The human review gate is mandatory and it gates `download_top.py`: no PDF is downloaded for a paper the user has not approved. `screening.viable_target` (default 10) only caps how many candidates get put in front of the reviewer at a time.
 
 ```
-research-discovery                editorial-triage             research-discovery              knowledge-extraction                    research-librarian                    theme-dashboard
-(fetch.py)                        (judgment)                   (download_top.py)               (judgment)                              (build_index.py)                      (build_dashboard.py)
-     |                                  |                              |                              |                                      |                                      |
-     v                                  v                              v                              v                                      v                                      v
-papers/metadata/<id>.json  --> papers/metadata/scores/<id>.yaml --> papers/pdf/<wk>/<id>.pdf --> papers/metadata/extractions/<id>.yaml --> papers/papers.csv                    ArxivWiki/dashboard.html
-status: queued                  status: queued -> ignored          downloaded: true                (always written) --keep:true--> ArxivWiki/papers/<yr>/<id>.md               --> published as a Claude Artifact
-discovery_date: <wk>                       or triaged              (top N by score only,             status: extracted, or                  ArxivWiki/index.md                    (concept/tag frequency over
-                                                                     grouped by download week)         evaluated if keep:false                ArxivWiki/tags/*.md, concepts/*.md      kept papers only)
+research-discovery                editorial-triage             research-discovery                knowledge-extraction                    research-librarian                    theme-dashboard
+(fetch.py)                        (judgment)                   (download_top.py)                 (judgment)                              (build_index.py)                      (build_dashboard.py)
+     |                                  |                              |                                |                                      |                                      |
+     v                                  v                              v                                v                                      v                                      v
+papers/metadata/<id>.json  --> papers/metadata/scores/<id>.yaml --> output/<wk>/<wk>_<id>.pdf --> papers/metadata/extractions/<id>.yaml --> papers/papers.csv                    ArxivWiki/dashboard.html
+status: queued                  status: queued -> ignored          downloaded: true                  (always written) --keep:true--> ArxivWiki/papers/<yr>/<id>.md               --> published as a Claude Artifact
+discovery_date: <wk>                       or triaged              (top N by score only,               status: extracted, or                  ArxivWiki/index.md                    (concept/tag frequency over
+                                                                     grouped by download week)           evaluated if keep:false                ArxivWiki/tags/*.md, concepts/*.md      kept papers only)
 ```
 
 `<wk>` is an ISO year-week, e.g. `2026-W31` — see "Weekly grouping" below. `editorial-strategist` sits outside this main flow — it reads feedback (`logs/feedback.jsonl`) plus the outputs above, and writes proposals (`logs/strategist-proposal-<date>.md`) that a human applies to `config/editorial-profile.yaml` by hand.
@@ -73,7 +73,7 @@ Every `papers/metadata/<arxiv_id>.json` carries a `status` field, set by [editor
 Two independent week tags exist, both in ISO year-week format (`YYYY-Www`, e.g. `2026-W31`), and they can differ for the same paper:
 
 - **`discovery_date`** on the metadata record — stamped once, permanently, the week `fetch.py` first found the paper. Never changes.
-- **The PDF's folder** — `papers/pdf/<year-week>/<arxiv_id>.pdf` — is the week the PDF was actually *downloaded*, which can be later than `discovery_date` if the paper was deferred by the `download_top_n` cap and only cleared it in a subsequent week's run. `research-discovery/scripts/fetch.py`'s `iso_week_str()` computes both.
+- **The PDF's folder** — `output/<year-week>/<year-week>_<arxiv_id>.pdf` — is the week the PDF was actually *downloaded*, which can be later than `discovery_date` if the paper was deferred by the `download_top_n` cap and only cleared it in a subsequent week's run. `research-discovery/scripts/fetch.py`'s `iso_week_str()` computes both.
 
 `fetch.py` also hard-caps `max_results` at 100 papers per run regardless of config or `--max-results` override — search volume never exceeds 100/week.
 
@@ -84,16 +84,22 @@ signal2insights/
 ├── README.md                        this file
 ├── config/
 │   └── editorial-profile.yaml       shared config — mission, topics, screening rubric + recommendation gates, discovery scope
+├── output/<year-week>/               everything produced for a paper once it's selected, grouped by ISO year-week of download (e.g. 2026-W31/), filenames prefixed <year-week>_<arxiv_id>
+│   ├── <wk>_<id>.pdf                 downloaded PDF
+│   ├── <wk>_<id>.md                  cleaned body text extracted from the PDF — references, acknowledgements and appendices removed. What every skill actually reads; the Read tool cannot open PDFs here
+│   ├── <wk>_<id>_carousel-draft.md   carousel-production's deliverable — slide copy, then design direction appended
+│   ├── <wk>_<id>_review-business.md  carousel-reviewer-business findings, persisted by the orchestrator
+│   ├── <wk>_<id>_review-technical.md carousel-reviewer-technical findings, persisted by the orchestrator
+│   ├── <wk>_<id>_review-log.md       one row per review pass, appended by the orchestrator
+│   └── <wk>_<id>_history/rev-NN.md   draft snapshot before each revision pass
 ├── papers/
-│   ├── pdf/<year-week>/<id>.pdf     downloaded PDFs, grouped by ISO year-week of download (e.g. 2026-W31/)
-│   ├── text/<arxiv_id>.md           cleaned body text extracted from the PDF — references, acknowledgements and appendices removed. What every skill actually reads; the Read tool cannot open PDFs here
 │   ├── metadata/
 │   │   ├── <arxiv_id>.json          one record per paper, lifecycle status + discovery_date live here
 │   │   ├── scores/<arxiv_id>.yaml   editorial-triage's full screening record (Sections A-D, see its SKILL.md)
 │   │   └── extractions/<id>.yaml    knowledge-extraction's full worksheet record (Sections A-H + Final Assessment) — always written once read, regardless of keep
 │   └── papers.csv                   generated by research-librarian — the queue for Claude Co-work
 ├── logs/                            timestamped run logs, feedback.jsonl, strategist proposals
-├── archive/pdf/<year-week>/         PDFs archived by research-librarian (recommendation no longer download_eligible, week preserved) or superseded versions
+├── archive/pdf/<year-week>/<id>.pdf  PDFs archived by research-librarian (recommendation no longer download_eligible, week preserved) or superseded versions — keeps its own older, unprefixed filename convention, untouched by the output/ restructure
 ├── ArxivWiki/
 │   ├── index.md                     generated entry point, grouped by recommendation tier
 │   ├── papers/<year>/<arxiv_id>.md  one knowledge asset per paper
@@ -102,10 +108,6 @@ signal2insights/
 │   ├── dashboard.html               generated concept/tag frequency dashboard over kept papers (HTML fragment, publishable as a Claude Artifact)
 │   ├── .dashboard-artifact.json     bookkeeping only — last-published Artifact URL, so redeploys update the same link
 │   └── summaries/<arxiv_id>.md      one-pagers for Priority-review papers awaiting human review (editorial-review), pre-extraction
-├── carousels/<arxiv_id>/
-│   ├── draft-carousel.md            carousel-production's deliverable — slide copy, then design direction appended
-│   ├── review-business.md           carousel-reviewer-business findings, persisted by the orchestrator
-│   └── review-technical.md          carousel-reviewer-technical findings, persisted by the orchestrator
 ├── .claude/agents/                  the four carousel subagent definitions (writer, 2 reviewers, designer)
 └── skills/
     ├── research-discovery/
@@ -127,7 +129,7 @@ signal2insights/
     │   ├── SKILL.md
     │   └── scripts/
     │       ├── apply_extraction.py      write-out helper for extraction judgments; also renders the wiki page from the structured record
-    │       ├── build_fulltext.py        PDF -> papers/text/<id>.md, body only (drops references, acknowledgements, appendices)
+    │       ├── build_fulltext.py        PDF -> output/<wk>/<wk>_<id>.md, body only (drops references, acknowledgements, appendices)
     │       └── pdftext.py               dependency-free PDF text extractor; no PDF library is installable on this machine
     ├── research-librarian/
     │   ├── SKILL.md
@@ -155,7 +157,7 @@ python skills/research-discovery/scripts/fetch.py --batch-size 20
 #   (mandatory), recalibrate from their corrections, then re-run the same fetch
 #   command for the next batch if still short of the approval gate
 python skills/research-discovery/scripts/download_top.py   # approved papers only
-python skills/knowledge-extraction/scripts/build_fulltext.py --all   # PDF -> papers/text/<id>.md
+python skills/knowledge-extraction/scripts/build_fulltext.py --all   # PDF -> output/<wk>/<wk>_<id>.md
 # then: extract what's downloaded and extract_eligible (reasoning step, invoked as a skill)
 python skills/research-librarian/scripts/build_index.py
 python skills/theme-dashboard/scripts/build_dashboard.py

@@ -1,0 +1,24 @@
+enterprise_problem: Existing agentic-search benchmarks use small, benchmark-specific
+  corpora that make results look better than they'd be against a realistic web-scale
+  corpus.
+headline: Popular agentic-search benchmarks may be easier than the real web.
+recommendation_reasoning: Methodologically solid evaluation-corpus fix for RAG/agentic
+  search benchmarking, but the audience is squarely IT/research engineering -- per
+  the recurring 'no real audience beyond IT' calibration note, this doesn't clear
+  the business-fit bar.
+business_functions:
+- Engineering
+- Data Science
+enterprise_ai_themes:
+- RAG
+- Evaluation
+primary_type: Benchmark
+adoption_horizon: <12 months
+novelty: 3
+evidence_quality: 4
+enterprise_readiness: 3
+business_translatability: 2
+story_potential: 2
+overall_score: 14
+recommendation: Archive
+fulltext_reassessed: false

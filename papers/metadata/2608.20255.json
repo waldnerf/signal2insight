@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2608.20255",
+  "title": "Transfer Learning in Nonparametric Regression with Deep ReLU Networks",
+  "authors": [
+    "Junpeng Ren",
+    "Carlos Misael Madrid Padilla",
+    "Yanzhen Chen",
+    "Oscar Hernan Madrid Padilla"
+  ],
+  "abstract": "This paper develops a general transfer learning framework for nonparametric regression with data consisting of multiple groups. Under the assumption that groups share a common structure along with group-specific deviations in additive form, the proposed method employs a two-stage offset learning procedure: the first stage pools data from all groups to estimate an overall mean function, and the second stage estimates offsets for each group, yielding final group-level estimators through additive combination. Upper bounds on the $\\mathcal L_2$ error are established for the proposed framework, covering a broad class of nonparametric estimators under mild complexity and noise conditions. When instantiated with deep ReLU networks, explicit convergence rates are derived under hierarchical composition models, demonstrating the ability to overcome the curse of dimensionality. Conditions that enable positive transfer with faster rates are considered, including learning with simpler functions and data augmentation through pooling samples across groups. Various simulations and real-data experiments further validate the effectiveness of the proposed method.",
+  "categories": [
+    "stat.ML",
+    "cs.LG",
+    "stat.ME"
+  ],
+  "published": "2026-08-20T16:53:00Z",
+  "updated": "2026-08-20T16:53:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.20255v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-21T09:42:53.795289+00:00",
+  "discovery_date": "2026-W34",
+  "overall_score": 10,
+  "recommendation": "Ignore",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-21T09:44:59.902891+00:00"
+}

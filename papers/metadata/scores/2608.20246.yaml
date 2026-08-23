@@ -1,0 +1,22 @@
+enterprise_problem: Evaluating retrieval quality for RAG-based answer retrieval in
+  Arabic Islamic jurisprudence question answering.
+headline: Domain-aware retrieval filtering more than doubles accuracy for Islamic
+  jurisprudence Q&A.
+recommendation_reasoning: RAG evaluation technique with an interesting domain-filtering
+  idea, but locked to a narrow religious-jurisprudence vertical with no general enterprise
+  translation.
+business_functions:
+- Other
+enterprise_ai_themes:
+- RAG
+- Evaluation
+primary_type: Evaluation methodology
+adoption_horizon: 1-3 years
+novelty: 3
+evidence_quality: 3
+enterprise_readiness: 2
+business_translatability: 1
+story_potential: 1
+overall_score: 10
+recommendation: Archive
+fulltext_reassessed: false

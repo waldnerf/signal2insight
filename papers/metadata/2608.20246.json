@@ -1,0 +1,30 @@
+{
+  "arxiv_id": "2608.20246",
+  "title": "What Makes a Good Fiqh Retriever? Answer Retrieval for Arabic Islamic Jurisprudence",
+  "authors": [
+    "Somaya Eltanbouly",
+    "Heba Sbahi",
+    "Samer Rashwani",
+    "Abdessalam Bouchekif",
+    "Mutaz al-Khatib",
+    "Shahd Gaben",
+    "Mohammed Ghaly"
+  ],
+  "abstract": "Retrieval-Augmented Generation is used for Islamic question answering, but most systems are evaluated end-to-end, making retrieval failures difficult to isolate from generation failures. We study answer-bearing retrieval for Arabic fiqh, where a passage is relevant only if it states the ruling required by the question. We build a retrieval test collection for Arabic fiqh and use it to evaluate dense, lexical, hybrid, fine-tuned, and madhhab-aware retrieval strategies. The best retriever achieves 0.524 MRR@5, while fine-tuning improves performance to 0.553. Hybrid retrieval provides limited gains for strong models, whereas madhhab-aware filtering more than doubles MRR@5 on school-specific questions. We further present an error analysis showing that the main challenge is distinguishing answer-bearing passages from topically similar passages that do not contain the requested ruling.",
+  "categories": [
+    "cs.IR"
+  ],
+  "published": "2026-08-20T16:42:16Z",
+  "updated": "2026-08-20T16:42:16Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.20246v1",
+  "downloaded": false,
+  "reviewed": true,
+  "status": "ignored",
+  "discovered_at": "2026-08-21T09:42:53.797175+00:00",
+  "discovery_date": "2026-W34",
+  "overall_score": 10,
+  "recommendation": "Archive",
+  "download_eligible": false,
+  "extract_eligible": false,
+  "reviewed_at": "2026-08-21T09:44:59.906215+00:00"
+}

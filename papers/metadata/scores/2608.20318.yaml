@@ -1,0 +1,21 @@
+enterprise_problem: Tests whether an AI agent can improve its own training algorithm
+  (recursive self-improvement), via a benchmark of frozen research repos.
+headline: A benchmark for AI that rewrites its own training algorithm.
+recommendation_reasoning: Frontier-lab capability research (recursive self-improvement),
+  not something an enterprise implements or evaluates against. Flashy headline but
+  no enterprise decision it maps to -- per calibration, novelty must not halo into
+  business-fit scores.
+business_functions:
+- Other
+enterprise_ai_themes:
+- Other
+primary_type: Benchmark
+adoption_horizon: Long-term research
+novelty: 5
+evidence_quality: 3
+enterprise_readiness: 1
+business_translatability: 2
+story_potential: 3
+overall_score: 14
+recommendation: Archive
+fulltext_reassessed: false
