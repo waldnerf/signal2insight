@@ -1,6 +1,5 @@
-# Concept: Agentic AI
+# Concept: agentic-ai
 
-2 paper(s).
+1 paper(s).
 
-- [Demystifying Agent Skills: Why They Work-Until They Don't](../papers/2026/2608.14036.md) — 2026-08-14 — Review fully
-- [@skills: Attention is all you have](../papers/2026/2608.12610.md) — 2026-08-12 — Review fully
+- [AI Agents Push Humans Out of the Loop](../papers/2026/2608.23642.md) — 2026-08-24 — Review fully

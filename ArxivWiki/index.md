@@ -1,8 +1,8 @@
 # ArxivWiki Index
 
-_Generated 2026-08-21 11:07_
+_Generated 2026-09-04 14:11_
 
-7 paper(s) in the wiki. 148 total tracked in `papers/papers.csv`.
+8 paper(s) in the wiki. 189 total tracked in `papers/papers.csv`.
 
 ## Priority review
 
@@ -14,6 +14,7 @@ _Generated 2026-08-21 11:07_
 
 ## Review fully
 
+- [AI Agents Push Humans Out of the Loop](papers/2026/2608.23642.md) — 2026-08-24
 - [Demystifying Agent Skills: Why They Work-Until They Don't](papers/2026/2608.14036.md) — 2026-08-14
 - [@skills: Attention is all you have](papers/2026/2608.12610.md) — 2026-08-12
 

@@ -142,6 +142,29 @@ def squash(s):
     return re.sub(r'\s+', ' ', s).strip()
 
 
+def check_title(rep, where, title):
+    """Title-level mechanics shared by a draft's slide headings and a brief's
+    storyline lines: sentence case, not a label, no negation-led claim."""
+    if not re.search(r'[a-z]', title):
+        rep.add('WARN', where, 'title has no lowercase, check it is a sentence')
+
+    words = re.findall(r"[A-Za-z][A-Za-z'&]*", title)
+    capped = [w for w in words[1:]
+              if w[:1].isupper() and w.lower() not in ALLOW_CAPS and not w.isupper()]
+    if len(capped) >= 3:
+        rep.add('WARN', where, 'looks like title case, use sentence case',
+                'capitalised: %s' % ', '.join(capped[:6]))
+
+    for pat in NEGATION:
+        if re.search(pat, title, re.I):
+            rep.add('WARN', where, 'title claim is built on negation, assert the positive',
+                    title)
+            break
+
+    if len(title.split()) < 5:
+        rep.add('WARN', where, 'title may be a label rather than a claim', title)
+
+
 class Report:
     def __init__(self):
         self.rows = []
@@ -240,26 +263,7 @@ def check(arxiv_id, draft_path, show_spine=True):
     titles = []
     for num, title in slides:
         titles.append((int(num), title))
-        where = 'slide %s' % num
-
-        if not re.search(r'[a-z]', title):
-            rep.add('WARN', where, 'title has no lowercase, check it is a sentence')
-
-        words = re.findall(r"[A-Za-z][A-Za-z'&]*", title)
-        capped = [w for w in words[1:]
-                  if w[:1].isupper() and w.lower() not in ALLOW_CAPS and not w.isupper()]
-        if len(capped) >= 3:
-            rep.add('WARN', where, 'looks like title case, use sentence case',
-                    'capitalised: %s' % ', '.join(capped[:6]))
-
-        for pat in NEGATION:
-            if re.search(pat, title, re.I):
-                rep.add('WARN', where, 'title claim is built on negation, assert the positive',
-                        title)
-                break
-
-        if len(title.split()) < 5:
-            rep.add('WARN', where, 'title may be a label rather than a claim', title)
+        check_title(rep, 'slide %s' % num, title)
 
     # ---- body word count (dual-track only) ----------------------------
     if pattern == 'dual-track':

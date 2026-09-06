@@ -1,6 +1,6 @@
 ---
 name: carousel-production
-description: Produce a LinkedIn carousel draft from a paper this pipeline has already summarised, using a writer subagent, two review subagents, and a design-direction subagent. Use when the user asks for a carousel, slide copy, a LinkedIn deck, or a storyline from a paper, and when they ask to review or revise an existing carousel draft. Trigger on phrases like "make a carousel from this paper", "draft the slides", "write the LinkedIn deck", "review the carousel draft", "add design direction".
+description: Produce a LinkedIn carousel draft, and the post caption that accompanies it, from a paper this pipeline has already summarised, via a gated brief stage, a writer subagent, two review subagents, a design-direction subagent, and a post-writer subagent. Use when the user asks for a carousel, slide copy, a LinkedIn deck, a storyline from a paper, or the post caption for an approved deck, and when they ask to review or revise an existing carousel brief or draft. Trigger on phrases like "make a carousel from this paper", "draft the slides", "write the LinkedIn deck", "review the carousel draft", "add design direction", "write the post caption".
 ---
 
 # Carousel production
@@ -33,10 +33,12 @@ Every file for a paper lives together in its download-week folder, `output/<year
 output/<year-week>/
 ├── <year-week>_<arxiv_id>.pdf                    the source PDF
 ├── <year-week>_<arxiv_id>.md                     cleaned body text
+├── <year-week>_<arxiv_id>_carousel-brief.md      the editorial decisions, made before any writer subagent runs
 ├── <year-week>_<arxiv_id>_carousel-draft.md      the deliverable. Writer creates it, designer annotates it.
 ├── <year-week>_<arxiv_id>_review-business.md     carousel-reviewer-business findings
 ├── <year-week>_<arxiv_id>_review-technical.md    carousel-reviewer-technical findings
 ├── <year-week>_<arxiv_id>_review-log.md          one row per pass, appended by the orchestrator
+├── <year-week>_<arxiv_id>_post-caption.md        the LinkedIn post text, written after approval
 └── <year-week>_<arxiv_id>_history/
     └── rev-NN.md                                 snapshot before each revision pass
 ```
@@ -57,24 +59,51 @@ The deck serves business and technical leaders at once. Two patterns do that, an
 
 ## The agents
 
-Four subagent definitions live in `.claude/agents/`. They are workers; this file and [writing-standards.md](writing-standards.md) are the knowledge.
+Five subagent definitions live in `.claude/agents/`. They are workers; this file and [writing-standards.md](writing-standards.md) are the knowledge. Brief authoring (Process step 1 below) is not delegated to a subagent: it is the main agent reasoning directly, the same split [[editorial-triage]] uses between judgment and write-out, because a subagent starts cold and cannot negotiate storyline or voice with the user turn by turn.
 
 | Agent | Model | Writes? | Role |
 |---|---|---|---|
-| `carousel-writer` | Opus | Yes | Drafts and revises the slide copy |
+| `carousel-writer` | Opus | Yes | Drafts and revises the slide copy, from the approved brief |
 | `carousel-reviewer-business` | Sonnet | No | Reads as a commercial leader |
 | `carousel-reviewer-technical` | Sonnet | No | Traces every claim to the source |
 | `carousel-designer` | Opus | Edits | Appends render notes and design direction |
+| `carousel-post-writer` | Opus | Yes | Writes the LinkedIn caption, after approval, from the same brief |
 
 Reviewers are deliberately **read-only**. A reviewer with write access rewrites the draft instead of reviewing it, and the separation the roster exists for is lost.
 
 Reach and engagement are not reviewed here. That is a separate judgment about a specific post, and it belongs to whatever post-evaluation step the user runs at publication time.
 
+Cross-deck calibration, what keeps getting corrected across many decks, is not this skill's job either. See [[carousel-strategist]], which reads accumulated feedback and proposes changes to `writing-standards.md`, never per-deck and never written by this skill's own agents.
+
 ## Process
 
-1. **Confirm the source and the depth pattern.** Read `ArxivWiki/summaries/<id>.md` yourself before spawning anything, so you can tell the writer what the deck is about rather than making it guess. Ask the user which depth pattern to use. Ask nothing else at this stage.
+1. **Author the brief, then clear the brief gate, before any writer subagent runs.** This is the stage that used to happen as unstructured back-and-forth in conversation. It is now a real artifact: `output/<year-week>/<year-week>_<id>_carousel-brief.md`, with this frontmatter and these sections:
 
-2. **Spawn `carousel-writer`.** Pass the arxiv id, the depth pattern, the slide budget, and the paths to the source files. It writes `output/<year-week>/<year-week>_<id>_carousel-draft.md`.
+   ```yaml
+   ---
+   type: carousel-brief
+   arxiv_id: "<arxiv_id>"
+   source: output/<year-week>/<year-week>_<arxiv_id>.md
+   depth_pattern: dual-track | spec-cards
+   slides: <n>
+   framework: scr | pyramid
+   status: draft | approved
+   revision: 0
+   ---
+   ```
+   followed by `## Key takeaway`, `## Framework choice`, `## Storyline` (numbered `N. [stage] Title` lines), `## Standalone test` (`verdict: yes|no` plus `reason:`), `## Supporting elements` (each bullet tagged `[paper]` or `[external, publisher, year]`), and `## Visuals` (`- Slide N: what it shows`, at least one).
+
+   Read `output/<year-week>/<year-week>_<id>.md` yourself before writing any of this, it is the primary source, not `ArxivWiki/summaries/<id>.md`, which paraphrases. Pull the paper's own emphasis where it exists (bolded topic sentences survive extraction as `**...**`, see [[knowledge-extraction]]'s `pdftext.py`) rather than paraphrasing the argument in your own words from a first read; a drafted argument that doesn't come from the source's own structure is how a deck drifts off the paper across revisions.
+
+   Then run:
+   ```bash
+   python skills/carousel-production/scripts/check_brief.py <arxiv_id>
+   ```
+   If it reports any ERROR, revise the brief yourself and recheck, capped at **three self-revision passes** (matching the writer loop's cap below), before surfacing it to the user regardless, with a note on what isn't converging. The standalone-test verdict is the one check that stays a judgment: record `yes` or `no` yourself, honestly, and treat a `no` exactly like any other ERROR, another pass, not a rubber stamp on your own storyline.
+
+   Present the cleared brief to the user for approval (set `status: approved` on their yes) before step 2. This is the one interactive checkpoint before the writer loop; the writer loop itself, steps 2 through 6, runs without asking, same as before.
+
+2. **Spawn `carousel-writer`.** Pass the arxiv id and the path to the approved brief. It reads the brief's storyline, framework, and supporting elements directly rather than re-deriving them, and writes `output/<year-week>/<year-week>_<id>_carousel-draft.md`.
 
 3. **Run the linter.**
    ```bash
@@ -98,11 +127,22 @@ Reach and engagement are not reviewed here. That is a separate judgment about a 
 
    Copies the draft to `output/<year-week>/<year-week>_<id>_history/rev-NN.md`. Do this on every pass without exception, because the next pass cannot be churn-checked without it.
 
-6. **If the gate says revise:** spawn `carousel-writer` again straight away, **without consulting the user**. It reads its own previous draft and both review files, and increments `revision` in the frontmatter. The review files it reads are what scope its source reading too: from the second writer pass onward it greps `output/<year-week>/<year-week>_<id>.md` for the claims on slides that drew findings, rather than rereading the file in full, per its own agent definition. **Return to step 3.** The linter and both reviewers run again on every pass; a fix on one slide routinely breaks the slide next to it. This is the loop, and interrupting it for approval on every pass defeats the point: the user's judgment is worth spending on a deck that has already cleared the bar, not on one the reviewers have already said is not ready.
+6. **If the gate says revise:** log it, then spawn `carousel-writer` again straight away, **without consulting the user**.
+
+   ```bash
+   python skills/carousel-production/scripts/log_carousel_feedback.py <batch.json>
+   ```
+   with `{"arxiv_id": "<id>", "revision": <n>, "decision": "revise", "note": "<what the reviewers found, in their words>"}`. Every forced pass gets logged, not only the final outcome, because a correction that recurs across decks is [[carousel-strategist]]'s only signal.
+
+   Then `carousel-writer` reads its own previous draft and both review files, and increments `revision` in the frontmatter. The review files it reads are what scope its source reading too: from the second writer pass onward it greps `output/<year-week>/<year-week>_<id>.md` for the claims on slides that drew findings, rather than rereading the file in full, per its own agent definition. **Return to step 3.** The linter and both reviewers run again on every pass; a fix on one slide routinely breaks the slide next to it. This is the loop, and interrupting it for approval on every pass defeats the point: the user's judgment is worth spending on a deck that has already cleared the bar, not on one the reviewers have already said is not ready.
 
 7. **If the gate says ship, or the pass cap is reached:** bring the draft to the user, with both subtotals, the two primary-test answers, and any findings still open. Walk those findings one at a time; where the reviewers conflicted and both were right, that is the user's call, not yours. This approval gate is real: the designer edits the same file, so a copy revision after design direction has been added overwrites that direction.
 
+   On the user's decision, log it the same way as step 6, `decision` is `approve` (set `status: approved` on the draft) or `reject` (the user declines it, or the pass cap was hit with no convergence); the note should say what tipped it, in the user's own words where possible, not a paraphrase.
+
 8. **Spawn `carousel-designer`.** It appends a render note per slide. It changes no copy.
+
+8b. **Spawn `carousel-post-writer`**, only once the draft is `status: approved`. It reads the approved brief and draft and writes `output/<year-week>/<year-week>_<id>_post-caption.md`. Bring the caption to the user for approval alongside, or right after, the deck itself; it is a separate deliverable, not a formality.
 
 9. **Stop.** Rendering is not part of this skill and needs its own explicit instruction.
 
@@ -191,3 +231,5 @@ The thresholds above are a starting point, not a calibrated standard. They were 
 The Read tool cannot open PDFs in this environment and no PDF library is installed, which is why `build_fulltext.py` exists: it derives `output/<year-week>/<year-week>_<id>.md` once, beside the source PDF, using a dependency-free extractor, and every skill reads that instead of the PDF.
 
 Two limits carry through to review. **Appendices and references are removed**, so a claim resting on appendix material is unverifiable here even though it may be correct in the paper. And **page order in the extracted text does not always follow reading order**, so the body may not read start to finish. Neither affects quotation checking, which searches the whole file.
+
+The extractor also preserves the paper's own bolded emphasis as `**markdown**` (matched on font weight in the PDF, `NimbusRomNo9L-Medi` and equivalents), so a paper's own topic sentences and defined terms survive into the cleaned text instead of flattening into undifferentiated prose. Brief authoring (step 1) should read for these before paraphrasing the argument from scratch. One known artifact: a results table that bolds its values can come through as isolated `**0**`, `**241**`-style spans, harmless noise, not a sign the extraction is wrong.

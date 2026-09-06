@@ -181,8 +181,48 @@ def tj_parts(arr, cmap):
     return "".join(out)
 
 
+# Bold weight indicated in a font's BaseFont name. Covers the base-14 fonts
+# (Times-Bold, Helvetica-Bold), LaTeX's Computer/Latin Modern bold families
+# (CMBX*, CMBSY*), and the Nimbus substitutes pdfTeX emits for mathptmx/Times
+# (NimbusRomNo9L-Medi, -MediItal), which is what arXiv PDFs commonly use for
+# section headings and emphasised topic sentences.
+BOLD_RE = re.compile(r"bold|black|semibold|heavy|-medi(?:ital)?$|cmbx|cmbsy", re.I)
+
+
+def is_bold_font(basefont_name):
+    return bool(BOLD_RE.search(basefont_name))
+
+
+def flush_run(cur):
+    """Join (text, is_bold) pieces into one string, wrapping contiguous bold
+    runs in markdown emphasis so a paper's own bolded topic sentences survive
+    extraction instead of flattening into plain prose. Whitespace at a run's
+    edges stays outside the ** markers so spacing between words is untouched."""
+    out, run_text, run_bold = [], "", None
+    for text, bold in cur:
+        if not text:
+            continue
+        if run_bold is None or bold == run_bold:
+            run_text += text
+        else:
+            out.append(_wrap_bold(run_text, run_bold))
+            run_text = text
+        run_bold = bold
+    if run_text:
+        out.append(_wrap_bold(run_text, run_bold))
+    return "".join(out)
+
+
+def _wrap_bold(text, bold):
+    if not bold or not text.strip():
+        return text
+    lead = text[:len(text) - len(text.lstrip())]
+    trail = text[len(text.rstrip()):]
+    return "%s**%s**%s" % (lead, text.strip(), trail)
+
+
 def page_text(content, fontmaps):
-    lines, cur, cmap = [], [], {}
+    lines, cur, cmap, bold = [], [], {}, False
     for m in re.finditer(rb"BT(.*?)ET", content, re.S):
         blk = m.group(1)
         for op in re.finditer(
@@ -195,17 +235,17 @@ def page_text(content, fontmaps):
             re.S,
         ):
             if op.group(1) is not None:
-                cmap = fontmaps.get(op.group(1).decode("latin-1"), {})
+                cmap, bold = fontmaps.get(op.group(1).decode("latin-1"), ({}, False))
             elif op.group(2) is not None:
-                cur.append(decode(unescape(op.group(2)[1:-1]), cmap))
+                cur.append((decode(unescape(op.group(2)[1:-1]), cmap), bold))
             elif op.group(3) is not None:
-                cur.append(tj_parts(op.group(3), cmap))
+                cur.append((tj_parts(op.group(3), cmap), bold))
             elif op.group(4) is not None:
                 if float(op.group(5)) != 0:
-                    lines.append("".join(cur)); cur = []
+                    lines.append(flush_run(cur)); cur = []
             else:
-                lines.append("".join(cur)); cur = []
-        lines.append("".join(cur)); cur = []
+                lines.append(flush_run(cur)); cur = []
+        lines.append(flush_run(cur)); cur = []
     return "\n".join(l for l in lines if l.strip())
 
 
@@ -261,9 +301,16 @@ def extract(path, first=1, last=10**6):
         if fontblk:
             for name, fnum in re.findall(rb"/([^\s/]+)\s+(\d+)\s+0\s+R", fontblk.group(1)):
                 fd = objs.get(int(fnum), (b"", None))[0]
+                cmap = {}
                 tu = re.search(rb"/ToUnicode\s+(\d+)\s+0\s+R", fd)
                 if tu and int(tu.group(1)) in maps:
-                    fontmaps[name.decode("latin-1")] = maps[int(tu.group(1))]
+                    cmap = maps[int(tu.group(1))]
+                bf = re.search(rb"/BaseFont\s*/([^\s/>]+)", fd)
+                basefont = bf.group(1).decode("latin-1", "replace") if bf else ""
+                # Every font resource gets an entry, even with no ToUnicode map,
+                # so boldness is tracked whether or not this font's text also
+                # decodes through a CMap.
+                fontmaps[name.decode("latin-1")] = (cmap, is_bold_font(basefont))
         body = b""
         for cnum in re.findall(rb"/Contents\s+(?:(\d+)\s+0\s+R|\[([^\]]*)\])", dic):
             refs = [cnum[0]] if cnum[0] else re.findall(rb"(\d+)\s+0\s+R", cnum[1])
