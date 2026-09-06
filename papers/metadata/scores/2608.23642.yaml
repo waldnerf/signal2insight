@@ -1,0 +1,42 @@
+enterprise_problem: Human oversight ("human in the loop") is the standard proposed
+  safeguard for AI agents and is written into regulation and vendor practice, but
+  current agent design makes that oversight ineffective and the extended use of agents
+  erodes the overseer's judgment, situational awareness and domain skill. The safeguard
+  is self-defeating.
+headline: '"Human in the loop" is quietly becoming a rubber stamp, and the agents
+  are the reason.'
+recommendation_reasoning: 'Position paper (Mitchell, Ghosh, Passi) synthesising ~110
+  sources, no new empirical study, and honest about that, so evidence quality is mid.
+  But the reframe is strong and transformational for a widely held best practice:
+  keeping a human in the loop is not a sufficient safeguard because current agent
+  design (approval fatigue, unreviewable information volume, no support for the mental-model
+  load) plus deskilling from sustained use degrade the very capacities oversight needs.
+  "Oversight degrades the overseer." The solution inventory is concrete and adoptable
+  now (pre-commitment before seeing the agent''s answer, action gating, batch-diff
+  review, behavioural-monitoring signatures, canaries, rotation and unaided-skill
+  protocols). Maps directly to a question leaders are already asking about whether
+  their approval workflows are real oversight or theatre, needs no ML background,
+  and is highly quotable. Extract-worthy; not Priority review only because the evidence
+  is synthesis, not primary.'
+business_functions:
+- Chief AI Officer
+- CIO/CTO
+- Compliance
+- Engineering
+- Operations
+enterprise_ai_themes:
+- Agentic AI
+- Governance
+- Reliability
+- Observability
+- Other
+primary_type: Operational guidance
+adoption_horizon: <12 months
+novelty: 4
+evidence_quality: 3
+enterprise_readiness: 4
+business_translatability: 4
+story_potential: 5
+overall_score: 20
+recommendation: Review fully
+fulltext_reassessed: false

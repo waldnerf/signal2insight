@@ -131,6 +131,16 @@ Where two analyses share vocabulary with different meanings, keep them visibly a
 - Every resolution slide carries an explicit business consequence, whatever the depth pattern.
 - The closing slide asks a specific, open question that requires the reader to contribute real experience. "What do you think?" fails. "Where in your planning stack does a human still reconcile the model output by hand?" works.
 
+## LinkedIn post caption
+
+The short text post that sits above the carousel attachment, written by the post-writer step after the deck is approved (see [[SKILL]], "Post caption"). Everything above in this document applies to it (mechanics, banned language, attribution, assert-do-not-negate, the sourcing rule for every figure), plus:
+
+- **One hook, one argument, one call to action.** LinkedIn truncates a post after roughly two to three lines before "see more," so the opening line has to work standalone, the same discipline the deck's titles are held to.
+- **Argue the same case as the deck's brief**, its `key takeaway` and `framework choice`, not a second, independently invented framing. The caption and the deck should read as one argument continued across two surfaces.
+- **Do not re-tell the deck slide by slide.** State the tension the deck resolves, in different words than the titles use, and stop. A caption that walks the reader through slide 1, then slide 2, then slide 3 gives away the deck before they swipe.
+- **Close on the same open question the deck's closing slide asks**, or a tighter version of it, not a generic "thoughts?"
+- **Length**: short enough to read before "see more" cuts it, roughly 40 to 80 words for the visible portion, with the rest of the post continuing past the fold if there's a genuine reason to.
+
 ## Final check
 
 Before a draft goes to review:

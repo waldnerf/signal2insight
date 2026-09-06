@@ -31,8 +31,13 @@ skills/editorial-triage/scripts/reassess_fulltext.py
 skills/editorial-review/scripts/build_summary.py
 skills/editorial-review/scripts/apply_human_review.py
 skills/knowledge-extraction/scripts/apply_extraction.py
+skills/knowledge-extraction/scripts/build_fulltext.py
+skills/knowledge-extraction/scripts/pdftext.py
 skills/research-librarian/scripts/build_index.py
 skills/theme-dashboard/scripts/build_dashboard.py
+skills/carousel-production/scripts/check_brief.py
+skills/carousel-production/scripts/check_standards.py
+skills/carousel-production/scripts/log_carousel_feedback.py
 ```
 
 If any of these are missing (fresh clone, accidental deletion), recreate them — this is idempotent, safe to run any time:
@@ -57,6 +62,11 @@ python -c "import ast; ast.parse(open('skills/editorial-review/scripts/build_sum
 python -c "import ast; ast.parse(open('skills/editorial-review/scripts/apply_human_review.py', encoding='utf-8').read())"
 python -c "import ast; ast.parse(open('skills/research-librarian/scripts/build_index.py', encoding='utf-8').read())"
 python -c "import ast; ast.parse(open('skills/theme-dashboard/scripts/build_dashboard.py', encoding='utf-8').read())"
+python -c "import ast; ast.parse(open('skills/knowledge-extraction/scripts/pdftext.py', encoding='utf-8').read())"
+python -c "import ast; ast.parse(open('skills/knowledge-extraction/scripts/build_fulltext.py', encoding='utf-8').read())"
+python -c "import ast; ast.parse(open('skills/carousel-production/scripts/check_brief.py', encoding='utf-8').read())"
+python -c "import ast; ast.parse(open('skills/carousel-production/scripts/check_standards.py', encoding='utf-8').read())"
+python -c "import ast; ast.parse(open('skills/carousel-production/scripts/log_carousel_feedback.py', encoding='utf-8').read())"
 python -c "import yaml" || echo "PyYAML missing: pip install pyyaml"
 ```
 

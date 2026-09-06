@@ -1,0 +1,39 @@
+{
+  "arxiv_id": "2608.23642",
+  "title": "AI Agents Push Humans Out of the Loop",
+  "authors": [
+    "Margaret Mitchell",
+    "Avijit Ghosh",
+    "Samir Passi"
+  ],
+  "abstract": "AI agents pose significant risks as they are granted increasing autonomy. A commonly proposed solution is human oversight and keeping a ''human in the loop'', but this is not a simple solution: Not only do current approaches to AI agent design impede effective human oversight, but the cognitive capacities required for it are also themselves degraded by extended use of AI systems. This position paper argues that current approaches to the development and deployment of AI agent systems do not support effective human oversight -- they contribute to its degradation. To address this, a top priority in the advancement of AI agents should be supporting the situated goals and cognitive requirements of effective human oversight, treating the human needs of overseers at the same level of importance as AI agent capability. To put this idea into practice, we connect work on automation and human-computer interaction to AI agent processes, outlining design-level affordances and organizational protocols that (1) support overseers in exercising critical judgement and (2) counteract the skill atrophy that arises from extended use of automation. We urge developers and deployers to adopt these or similar approaches. Without explicit support for the cognitive demands of effective human-agent interaction, AI agent systems will continue to passively incentivize the degradation of the very human skills they rely on.",
+  "categories": [
+    "cs.AI",
+    "cs.HC"
+  ],
+  "published": "2026-08-24T02:58:02Z",
+  "updated": "2026-09-02T15:34:30Z",
+  "pdf_url": "https://arxiv.org/pdf/2608.23642v2",
+  "downloaded": true,
+  "downloaded_at": "2026-09-04T12:07:42.558344+00:00",
+  "reviewed": true,
+  "status": "extracted",
+  "discovered_at": "2026-09-04T12:07:42.558344+00:00",
+  "discovery_date": "2026-W36",
+  "overall_score": 20,
+  "recommendation": "Review fully",
+  "download_eligible": true,
+  "extract_eligible": true,
+  "reviewed_at": "2026-09-04T12:09:17.204818+00:00",
+  "human_reviewed": true,
+  "human_review_decision": "approve",
+  "human_reviewed_at": "2026-09-04T12:09:17.298101+00:00",
+  "knowledge_base_priority": "High",
+  "recommended_next_action": "Write LinkedIn Post",
+  "executive_relevance": 5,
+  "technical_novelty": 3,
+  "practical_applicability": 4,
+  "thought_leadership_potential": 5,
+  "keep": true,
+  "extracted_at": "2026-09-04T12:11:45.839541+00:00"
+}

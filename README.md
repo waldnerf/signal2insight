@@ -8,21 +8,22 @@ Research (arXiv) → Knowledge (ArxivWiki) → Content queue (papers.csv)
 
 Everything for this system lives in this repository, and nothing outside it is written by any of these skills. One deliberate read exception: [carousel-production](skills/carousel-production/SKILL.md) may search the web, and only to source or verify a figure that the paper does not supply. Any figure it takes from outside is cited on the slide with its publisher and year. External sources set the scene around a paper; they never support a claim about what the research found.
 
-## The 9 skills
+## The 10 skills
 
-All 9 skill folders live under `skills/`, separate from the config, papers, and wiki data they operate on.
+All 10 skill folders live under `skills/`, separate from the config, papers, and wiki data they operate on.
 
 | Skill | Judges papers? | Backing script |
 |---|---|---|
 | [research-discovery](skills/research-discovery/SKILL.md) | No — retrieval only | `scripts/fetch.py`, `scripts/download_top.py` |
 | [editorial-triage](skills/editorial-triage/SKILL.md) | Yes — scores against the editorial profile | `scripts/apply_scores.py`, `scripts/reassess_fulltext.py` (write-out helpers; the judgment itself is unscripted) |
 | [editorial-review](skills/editorial-review/SKILL.md) | Human reviews, not a new score — approves or overrides a Priority-review call before extraction | `scripts/build_summary.py`, `scripts/apply_human_review.py` (write-out helpers; the decision is a human, via an interactive widget) |
-| [knowledge-extraction](skills/knowledge-extraction/SKILL.md) | Yes — a second, full-text gate (`keep`) on papers that already passed triage | `scripts/build_fulltext.py` + `scripts/pdftext.py` (PDF → `output/<wk>/<wk>_<id>.md`), `scripts/apply_extraction.py` (write-out helper; also renders the wiki page) |
+| [knowledge-extraction](skills/knowledge-extraction/SKILL.md) | Yes — a second, full-text gate (`keep`) on papers that already passed triage | `scripts/build_fulltext.py` + `scripts/pdftext.py` (PDF → `output/<wk>/<wk>_<id>.md`, preserving the paper's own bolded emphasis as markdown), `scripts/apply_extraction.py` (write-out helper; also renders the wiki page) |
 | [research-librarian](skills/research-librarian/SKILL.md) | No — aggregates and indexes | `scripts/build_index.py` |
 | [theme-dashboard](skills/theme-dashboard/SKILL.md) | No — visualizes what knowledge-extraction already decided | `scripts/build_dashboard.py` (write-out; publishing the result is a manual Artifact-tool step) |
 | [pipeline-builder](skills/pipeline-builder/SKILL.md) | No — scaffolding, scheduling, health checks | none |
 | [editorial-strategist](skills/editorial-strategist/SKILL.md) | No — analyzes past judgments, proposes profile changes | none |
-| [carousel-production](skills/carousel-production/SKILL.md) | No — turns an already-summarised paper into LinkedIn carousel copy, via four subagents | `scripts/check_standards.py` (lints copy against `writing-standards.md`; the writing and the review are subagent judgment) |
+| [carousel-production](skills/carousel-production/SKILL.md) | No — turns an already-summarised paper into a gated brief, LinkedIn carousel copy, and a post caption, via five subagents | `scripts/check_brief.py` (lints the brief before any writer subagent runs), `scripts/check_standards.py` (lints copy against `writing-standards.md`), `scripts/log_carousel_feedback.py` (write-out helper for `logs/carousel-feedback.jsonl`; the writing, review, and design are subagent judgment) |
+| [carousel-strategist](skills/carousel-strategist/SKILL.md) | No — analyzes accumulated carousel feedback, proposes `writing-standards.md` changes | none |
 
 Deterministic, mechanical steps (arXiv API calls, dedup, CSV/index rebuilding) run as real Python scripts. Anything requiring judgment (does this paper matter, what does it mean, is the model calibrated) is reasoned through by the skill directly at run time — there is no way to script "is this worth an enterprise AI builder's time."
 
@@ -86,11 +87,13 @@ signal2insights/
 │   └── editorial-profile.yaml       shared config — mission, topics, screening rubric + recommendation gates, discovery scope
 ├── output/<year-week>/               everything produced for a paper once it's selected, grouped by ISO year-week of download (e.g. 2026-W31/), filenames prefixed <year-week>_<arxiv_id>
 │   ├── <wk>_<id>.pdf                 downloaded PDF
-│   ├── <wk>_<id>.md                  cleaned body text extracted from the PDF — references, acknowledgements and appendices removed. What every skill actually reads; the Read tool cannot open PDFs here
+│   ├── <wk>_<id>.md                  cleaned body text extracted from the PDF — references, acknowledgements and appendices removed, bolded emphasis preserved as markdown. What every skill actually reads; the Read tool cannot open PDFs here
+│   ├── <wk>_<id>_carousel-brief.md   carousel-production's gated brief — key takeaway, framework choice, storyline, supporting elements, visuals — authored and self-checked before any writer subagent runs
 │   ├── <wk>_<id>_carousel-draft.md   carousel-production's deliverable — slide copy, then design direction appended
 │   ├── <wk>_<id>_review-business.md  carousel-reviewer-business findings, persisted by the orchestrator
 │   ├── <wk>_<id>_review-technical.md carousel-reviewer-technical findings, persisted by the orchestrator
 │   ├── <wk>_<id>_review-log.md       one row per review pass, appended by the orchestrator
+│   ├── <wk>_<id>_post-caption.md     the LinkedIn post text, written after the deck is approved
 │   └── <wk>_<id>_history/rev-NN.md   draft snapshot before each revision pass
 ├── papers/
 │   ├── metadata/
@@ -98,7 +101,7 @@ signal2insights/
 │   │   ├── scores/<arxiv_id>.yaml   editorial-triage's full screening record (Sections A-D, see its SKILL.md)
 │   │   └── extractions/<id>.yaml    knowledge-extraction's full worksheet record (Sections A-H + Final Assessment) — always written once read, regardless of keep
 │   └── papers.csv                   generated by research-librarian — the queue for Claude Co-work
-├── logs/                            timestamped run logs, feedback.jsonl, strategist proposals
+├── logs/                            timestamped run logs, feedback.jsonl, carousel-feedback.jsonl, strategist proposals
 ├── archive/pdf/<year-week>/<id>.pdf  PDFs archived by research-librarian (recommendation no longer download_eligible, week preserved) or superseded versions — keeps its own older, unprefixed filename convention, untouched by the output/ restructure
 ├── ArxivWiki/
 │   ├── index.md                     generated entry point, grouped by recommendation tier
@@ -108,7 +111,7 @@ signal2insights/
 │   ├── dashboard.html               generated concept/tag frequency dashboard over kept papers (HTML fragment, publishable as a Claude Artifact)
 │   ├── .dashboard-artifact.json     bookkeeping only — last-published Artifact URL, so redeploys update the same link
 │   └── summaries/<arxiv_id>.md      one-pagers for Priority-review papers awaiting human review (editorial-review), pre-extraction
-├── .claude/agents/                  the four carousel subagent definitions (writer, 2 reviewers, designer)
+├── .claude/agents/                  the five carousel subagent definitions (writer, 2 reviewers, designer, post-writer)
 └── skills/
     ├── research-discovery/
     │   ├── SKILL.md
@@ -129,8 +132,8 @@ signal2insights/
     │   ├── SKILL.md
     │   └── scripts/
     │       ├── apply_extraction.py      write-out helper for extraction judgments; also renders the wiki page from the structured record
-    │       ├── build_fulltext.py        PDF -> output/<wk>/<wk>_<id>.md, body only (drops references, acknowledgements, appendices)
-    │       └── pdftext.py               dependency-free PDF text extractor; no PDF library is installable on this machine
+    │       ├── build_fulltext.py        PDF -> output/<wk>/<wk>_<id>.md, body only (drops references, acknowledgements, appendices; preserves bolded emphasis as markdown)
+    │       └── pdftext.py               dependency-free PDF text extractor, tracks font weight for bold; no PDF library is installable on this machine
     ├── research-librarian/
     │   ├── SKILL.md
     │   └── scripts/build_index.py
@@ -139,10 +142,14 @@ signal2insights/
     │   └── scripts/build_dashboard.py   write-out helper; publishing the result via the Artifact tool is a manual step
     ├── carousel-production/
     │   ├── SKILL.md
-    │   ├── writing-standards.md        canonical copy standard for carousels; the agents read it, the script enforces it
-    │   └── scripts/check_standards.py  lints a draft: dashes, banned phrases, attribution, title case, verbatim quotes
+    │   ├── writing-standards.md            canonical copy standard for carousels and post captions; the agents read it, the scripts enforce it
+    │   └── scripts/
+    │       ├── check_brief.py              lints the brief gate, before any writer subagent runs
+    │       ├── check_standards.py          lints a draft: dashes, banned phrases, attribution, title case, verbatim quotes
+    │       └── log_carousel_feedback.py    write-out helper, appends to logs/carousel-feedback.jsonl
     ├── pipeline-builder/SKILL.md
-    └── editorial-strategist/SKILL.md
+    ├── editorial-strategist/SKILL.md
+    └── carousel-strategist/SKILL.md    reads logs/carousel-feedback.jsonl, proposes changes to carousel-production/writing-standards.md; never writes it
 ```
 
 ## Running the full pipeline
@@ -170,6 +177,6 @@ Python 3 with PyYAML (`pip install pyyaml`) for the backend scripts. On Windows,
 
 ## Scope note
 
-Carousel copy is now produced inside this system by [carousel-production](skills/carousel-production/SKILL.md), which takes a paper that already has an `ArxivWiki/summaries/<id>.md` one-pager and drafts, reviews and revises the slides. `papers/papers.csv`'s `LinkedIn written = False` rows, sorted by score, remain the queue that selects which paper to draft next.
+Carousel copy, and the LinkedIn post caption that accompanies it, are now produced inside this system by [carousel-production](skills/carousel-production/SKILL.md), which takes a paper that already has an `ArxivWiki/summaries/<id>.md` one-pager, authors and gates a brief, then drafts, reviews and revises the slides before writing the caption from the same brief. `papers/papers.csv`'s `LinkedIn written = False` rows, sorted by score, remain the queue that selects which paper to draft next. [carousel-strategist](skills/carousel-strategist/SKILL.md) is the cross-deck counterpart: once enough decks have gone through the loop, it proposes changes to `writing-standards.md` from the accumulated corrections in `logs/carousel-feedback.jsonl`, never writing the file itself.
 
-Two things stay outside it. **Rendering** a draft to HTML, PDF or images is a separate action requiring its own explicit instruction, and no skill or agent here performs it. **Other content formats** (long-form posts, articles, talks) have no skill yet.
+Two things stay outside it. **Rendering** a draft to HTML, PDF or images is a separate action requiring its own explicit instruction, and no skill or agent here performs it. **Other content formats** (long-form posts, articles, talks) still have no skill.
